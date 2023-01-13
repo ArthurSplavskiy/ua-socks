@@ -1,0 +1,54 @@
+@import "src/assets/styles/placeholders/label";
+@import "src/assets/styles/placeholders/input";
+
+.Select {
+  width: 100%;
+  margin-bottom: 1.14rem;
+  display: flex;
+  flex-direction: column;
+
+  &-input {
+    @extend %input;
+    transition: var(--animation-timing);
+    cursor: pointer;
+    appearance: none;
+    padding-right: 3rem;
+    padding-left: 1em;
+    text-transform: capitalize;
+    &.error {
+      border-color: var(--red-0);
+    }
+  }
+
+  &-label {
+    @extend %label;
+  }
+
+  &-icon-container {
+    position: relative;
+  }
+
+  & .Select-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    pointer-events: none;
+  }
+
+  &-error-message {
+    color: var(--red-0);
+    padding-top: 0.25rem;
+    font-size: var(--fSize13);
+    text-align: left;
+  }
+
+  &-placeholder {
+    color: var(--gray-10);
+  }
+
+  &-option {
+    text-transform: capitalize;
+  }
+}

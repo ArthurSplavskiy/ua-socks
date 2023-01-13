@@ -1,0 +1,15 @@
+@import "src/assets/styles/index";
+
+.ReactSelect {
+  @extend %react-select;
+
+  .ReactSelect-select__dropdown-indicator {
+    display: flex;
+  }
+
+  &.hidden-arrow {
+    .ReactSelect-select__dropdown-indicator {
+      display: none;
+    }
+  }
+}

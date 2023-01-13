@@ -1,0 +1,58 @@
+{
+  "menu": [
+    {
+      "id": 1,
+      "name": "Переваги",
+      "slug": "advantage"
+    },
+    {
+      "id": 2,
+      "name": "Тарифи",
+      "slug": "tariffs"
+    },
+    {
+      "id": 3,
+      "name": "Підтримка",
+      "slug": "support"
+    },
+    {
+      "id": 4,
+      "name": "Технології",
+      "slug": "tech"
+    },
+    {
+      "id": 5,
+      "name": "FAQ",
+      "slug": "faq"
+    }
+  ],
+  "interface": {
+    "account_btn": "Мій кабінет",
+    "buyProxy_btn": "Придбати проксі",
+    "question_btn": "Поставити запитання",
+    "register_btn": "Зареєструватися",
+    "register_text1": "Ви вже маєте акаунт?",
+    "register_text2": "Авторизуватися",
+    "form_email": "E-mail",
+    "form_password": "Пароль",
+    "form_repeat_password": "Повторити пароль",
+    "registration_title": "Реєстрація",
+    "login_title": "Авторизація",
+    "forgot_password": "Забули пароль?",
+    "no_have_acc": "Немає акаунту?",
+    "registration_link": "Зареєструватися",
+    "error_title": "Помилка"
+  },
+  "users": [
+    {
+      "email": "arthur2000701@gmail.com",
+      "password": "$2a$10$rNxWsxB3ITo23Sk/q28fzO1f6yPEXWqYLhzQxYh.VYq0ZQY/rql4e",
+      "id": 1
+    },
+    {
+      "email": "arthur2000702@gmail.com",
+      "password": "$2a$10$Q73hc4XLliwTN99D9jALWOIXJKSlbaRfqLhJJjBbMESS69tQD5tni",
+      "id": 2
+    }
+  ]
+}

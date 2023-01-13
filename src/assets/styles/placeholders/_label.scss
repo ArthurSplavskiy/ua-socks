@@ -1,0 +1,13 @@
+%label {
+	display: flex;
+	color: var(--black-60);
+	font-weight: 400;
+	margin-bottom: 0.57rem;
+	font-size: var(--fSize14);
+	text-align: left;
+	width: 100%;
+
+	&.error {
+		color: var(--system-red);
+	}
+}

@@ -1,0 +1,343 @@
+.Background {
+	position: fixed;
+	inset: 0 0 0 0;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none;
+	z-index: -1;
+	overflow: hidden;
+
+	&.few {
+		div:nth-child(3n + 1) {
+			display: none;
+		}
+	}
+
+	&.yellow {
+		div {
+			&:nth-child(4n + 1) {
+				background: var(--system-yellow);
+			}
+			&:nth-child(3n + 1) {
+				background: var(--system-yellow);
+				opacity: 0.5;
+			}
+			&:nth-child(2n + 1) {
+				background: var(--system-yellow);
+				opacity: 0.3;
+			}
+			&:nth-child(1n + 1) {
+				background: var(--system-yellow);
+				opacity: 0.2;
+			}
+		}
+	}
+	&.green {
+		color: var(--system-green);
+		div {
+			&:nth-child(4n + 1) {
+				background: var(--system-green);
+			}
+			&:nth-child(3n + 1) {
+				background: var(--system-green);
+				opacity: 0.5;
+			}
+			&:nth-child(2n + 1) {
+				background: var(--system-green);
+				opacity: 0.3;
+			}
+			&:nth-child(1n + 1) {
+				background: var(--system-green);
+				opacity: 0.2;
+			}
+		}
+	}
+	&.red {
+		color: var(--elements-red-100);
+		div {
+			&:nth-child(4n + 1) {
+				background: var(--elements-red-100);
+			}
+			&:nth-child(3n + 1) {
+				background: var(--elements-red-100);
+				opacity: 0.5;
+			}
+			&:nth-child(2n + 1) {
+				background: var(--elements-red-100);
+				opacity: 0.3;
+			}
+			&:nth-child(1n + 1) {
+				background: var(--elements-red-100);
+				opacity: 0.2;
+			}
+		}
+	}
+	&.primary {
+		color: var(--primary);
+		div {
+			&:nth-child(4n + 1) {
+				background: var(--primary);
+			}
+			&:nth-child(3n + 1) {
+				background: var(--primary);
+				opacity: 0.5;
+			}
+			&:nth-child(2n + 1) {
+				background: var(--primary);
+				opacity: 0.3;
+			}
+			&:nth-child(1n + 1) {
+				background: var(--primary);
+				opacity: 0.2;
+			}
+		}
+	}
+
+	div {
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		&:nth-child(1) {
+			bottom: 10%;
+			left: 1%;
+			animation: animate 12s linear infinite;
+		}
+		&:nth-child(2) {
+			bottom: 17%;
+			left: 10%;
+			animation: animate 12s linear infinite;
+		}
+		&:nth-child(3) {
+			bottom: 5%;
+			left: 8%;
+			animation: animate 9s linear infinite;
+		}
+		&:nth-child(4) {
+			bottom: -2%;
+			left: 14%;
+			animation: animate 15s linear infinite;
+		}
+		&:nth-child(5) {
+			bottom: 30%;
+			left: 18%;
+			animation: animate 10s linear infinite;
+		}
+		&:nth-child(6) {
+			bottom: 22%;
+			left: 20%;
+			animation: animate 13s linear infinite;
+		}
+		&:nth-child(7) {
+			bottom: 12%;
+			left: 16%;
+			animation: animate 7s linear infinite;
+		}
+		&:nth-child(8) {
+			bottom: 6%;
+			left: 19%;
+			animation: animate 12s linear infinite;
+		}
+		&:nth-child(9) {
+			bottom: 25%;
+			left: 24%;
+			animation: animate 7s linear infinite;
+		}
+		&:nth-child(10) {
+			bottom: 21%;
+			left: 34%;
+			animation: animate 13s linear infinite;
+		}
+		&:nth-child(11) {
+			bottom: 11%;
+			left: 44%;
+			animation: animate 10s linear infinite;
+		}
+		&:nth-child(12) {
+			bottom: 21%;
+			left: 54%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(13) {
+			bottom: 16%;
+			left: 56%;
+			animation: animate 11s linear infinite;
+		}
+		&:nth-child(14) {
+			bottom: 8%;
+			left: 58%;
+			animation: animate 9s linear infinite;
+		}
+		&:nth-child(15) {
+			bottom: -1%;
+			left: 62%;
+			animation: animate 14s linear infinite;
+		}
+		&:nth-child(16) {
+			bottom: -8%;
+			left: 65%;
+			animation: animate 9s linear infinite;
+		}
+		&:nth-child(17) {
+			bottom: 7%;
+			left: 72%;
+			animation: animate 7s linear infinite;
+		}
+		&:nth-child(18) {
+			bottom: 20%;
+			left: 76%;
+			animation: animate 6s linear infinite;
+		}
+		&:nth-child(19) {
+			bottom: 15%;
+			left: 79%;
+			animation: animate 10s linear infinite;
+		}
+		&:nth-child(20) {
+			bottom: 2%;
+			left: 82%;
+			animation: animate 5s linear infinite;
+		}
+		&:nth-child(21) {
+			bottom: 17%;
+			left: 85%;
+			animation: animate 11s linear infinite;
+		}
+		&:nth-child(22) {
+			bottom: 11%;
+			left: 88%;
+			animation: animate 7s linear infinite;
+		}
+		&:nth-child(23) {
+			bottom: 28%;
+			left: 92%;
+			animation: animate 12s linear infinite;
+		}
+		&:nth-child(24) {
+			bottom: -3%;
+			left: 97%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(25) {
+			bottom: 23%;
+			left: 98%;
+			animation: animate 10s linear infinite;
+		}
+		&:nth-child(26) {
+			bottom: -1%;
+			left: 99%;
+			animation: animate 6s linear infinite;
+		}
+		&:nth-child(27) {
+			bottom: 35%;
+			left: 3%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(28) {
+			bottom: 38%;
+			left: 17%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(29) {
+			bottom: 32%;
+			left: 28%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(30) {
+			bottom: 35%;
+			left: 35%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(31) {
+			bottom: 39%;
+			left: 52%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(32) {
+			bottom: 31%;
+			left: 64%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(33) {
+			bottom: 33%;
+			left: 69%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(34) {
+			bottom: 34%;
+			left: 74%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(35) {
+			bottom: 30%;
+			left: 82%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(36) {
+			bottom: 35%;
+			left: 95%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(37) {
+			bottom: -1%;
+			left: 34%;
+			animation: animate 13s linear infinite;
+		}
+		&:nth-child(38) {
+			bottom: 5%;
+			left: 40%;
+			animation: animate 6s linear infinite;
+		}
+		&:nth-child(39) {
+			bottom: 10%;
+			left: 42%;
+			animation: animate 10s linear infinite;
+		}
+	}
+
+	.bgGrey {
+		background: var(--addition-grey);
+	}
+
+	.bgWhite {
+		background: var(--white);
+	}
+
+	.circle {
+		border-radius: 100%;
+	}
+
+	.systemAqua {
+		background: var(--system-aqua);
+	}
+
+	.elementsRed {
+		background: var(--elements-red-80);
+	}
+
+	.primary60 {
+		background: var(--primary-60);
+	}
+
+	.primary20 {
+		background: var(--primary-80);
+	}
+
+	.elementsGreen {
+		background: var(--elements-green-80);
+	}
+
+	.systemRed {
+		background: var(--system-red);
+	}
+}
+
+@keyframes animate {
+	0% {
+		transform: translate(0) scale(0) rotate(0);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(-90px) scale(1) rotate(360deg);
+		opacity: 0;
+	}
+}

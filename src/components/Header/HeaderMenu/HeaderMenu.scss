@@ -1,0 +1,60 @@
+.HeaderMenu {
+	align-self: center;
+	justify-self: center;
+
+	@media screen and (max-width: 600px) {
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+		inset: 0 0 0 0;
+		z-index: 3;
+		padding: 88px 24px 24px 24px;
+		transform: translate3d(-100%, 0, 0);
+		transition: var(--transition);
+		&-active {
+			transform: translate3d(0, 0, 0);
+		}
+	}
+	&-list {
+		display: flex;
+		flex-wrap: wrap;
+		@media screen and (max-width: 600px) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	&-item {
+		font-weight: 500;
+		font-size: var(--fSize16);
+		color: var(--black-100);
+		transition: var(--transition);
+		cursor: pointer;
+		&:hover {
+			color: var(--primary);
+		}
+		&:not(:last-child) {
+			margin-right: 40px;
+			@media screen and (max-width: 1024px) {
+				margin-right: 36px;
+			}
+			@media screen and (max-width: 600px) {
+				margin: 0 0 24px 0;
+			}
+		}
+
+		@media screen and (max-width: 1024px) {
+			font-weight: 400;
+			font-size: var(--fSize14);
+		}
+		@media screen and (max-width: 600px) {
+			font-weight: 700;
+			font-size: var(--fSize20);
+		}
+	}
+	&-footer {
+		margin-top: auto;
+		@media screen and (min-width: 600px) {
+			display: none;
+		}
+	}
+}

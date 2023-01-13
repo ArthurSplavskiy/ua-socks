@@ -1,0 +1,50 @@
+@import "src/assets/styles/placeholders/label";
+
+.PhoneField {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  flex: 1;
+  margin-bottom: 1.14rem;
+  &-label {
+    @extend %label;
+  }
+
+  .react-tel-input .flag-dropdown {
+    background: transparent;
+  }
+
+  .react-tel-input .form-control {
+    height: 40px;
+    width: 100%;
+    border-radius: 3px;
+    padding-left: 58px;
+  }
+
+  .react-tel-input .selected-flag {
+    padding: 0 0 0 1rem;
+    width: 52px;
+  }
+
+  &.error {
+    .react-tel-input {
+      .flag-dropdown {
+        border: 1px solid var(--red-0);
+      }
+      .form-control {
+        border: 1px solid var(--red-0);
+      }
+    }
+    .label {
+      color: var(--red-0);
+    }
+  }
+
+  &-error {
+    color: var(--red-0);
+    padding-top: 0.25rem;
+    font-size: var(--fSize13);
+    text-align: left;
+  }
+}

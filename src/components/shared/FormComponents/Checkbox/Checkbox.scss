@@ -1,0 +1,73 @@
+@import "src/assets/styles/placeholders/label";
+
+.Checkbox {
+  &-input {
+    position: absolute;
+    left: -100%;
+    top: 0;
+    opacity: 0;
+  }
+
+  &-input:checked~&-label:after {
+    border-color: var(--black-10);
+  }
+
+  &-input:checked~&-label,
+  &-input:checked~&-label:before {
+    background-color: var(--gray-40);
+  }
+
+  &-input:checked~&-label:before {
+    border: none;
+  }
+
+  &-input:disabled~&-label {
+    cursor: not-allowed;
+  }
+
+  &-label {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: var(--fSize14);
+    padding: 0.65rem 0.85em 0.65em 2.36rem;
+    width: fit-content;
+    border: 1px solid var(--gray-40);
+    border-radius: 0.142rem;
+    --checkboxSize: 16px;
+
+    &:before,
+    &:after {
+      content: "";
+      display: block;
+    }
+
+    &:before {
+      width: var(--checkboxSize);
+      height: var(--checkboxSize);
+      background: var(--gray-40);
+      position: absolute;
+      top: 50%;
+      left: 0.86rem;
+      transform: translateY(-50%);
+      border-radius: 0.071rem;
+    }
+
+    &:after {
+      position: absolute;
+      left: 1.35rem;
+      top: 50%;
+      width: 8px;
+      height: 5px;
+      transform: rotateZ(-45deg) translateY(-100%);
+      border-width: 0 0 2px 2px;
+      border-style: solid;
+      border-color: transparent;
+    }
+  }
+
+  &-title {
+    @extend %label;
+  }
+}

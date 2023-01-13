@@ -1,0 +1,24 @@
+.AuthPopup {
+	&-title {
+		font-size: var(--fSize20);
+		font-weight: 700;
+		font-size: var(--fSize24);
+		line-height: var(--fSize24);
+		margin-bottom: 40px;
+		@media (max-width: 768px) {
+			margin-bottom: 32px;
+			font-size: var(--fSize18);
+			line-height: var(--fSize18);
+			font-weight: 500;
+		}
+	}
+	&-form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		button[type='submit'] {
+			margin-top: 2rem;
+			align-self: center;
+		}
+	}
+}

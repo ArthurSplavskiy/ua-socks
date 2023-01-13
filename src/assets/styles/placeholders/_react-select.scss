@@ -1,0 +1,53 @@
+// need to pass props to the ReactSelect
+// classNamePrefix="ReactSelect-select"
+
+%react-select {
+  .ReactSelect-select__indicator-separator,
+  .ReactSelect-select__dropdown-indicator {
+    display: none;
+  }
+
+  .ReactSelect-select__control {
+    @extend %input;
+    padding: 0;
+    box-shadow: none;
+    text-align: left;
+    &:hover {
+      border: 1px solid var(--gray-20);
+    }
+  }
+
+  .ReactSelect-select__option {
+    cursor: pointer;
+    text-align: left;
+    z-index: 12;
+    &--is-focused {
+      background: var(--gray-40);
+    }
+
+    &--is-selected {
+      background: var(--white-0);
+      color: var(--black-0);
+    }
+    &:active {
+      background-color: var(--gray-40);
+    }
+  }
+  .ReactSelect-select__option--is-focused {
+    &.ReactSelect-select__option--is-selected {
+      background: var(--gray-40);
+    }
+  }
+  .ReactSelect-select__menu {
+    z-index: 2;
+    box-shadow: var(--light-shadow);
+    border-radius: 3px;
+    border: 1px solid var(--gray-30);
+  }
+  .ReactSelect-select__menu-list {
+    z-index: 4;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 250px;
+  }
+}

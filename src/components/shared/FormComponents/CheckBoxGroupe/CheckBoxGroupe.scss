@@ -1,0 +1,19 @@
+@import "src/assets/styles/placeholders/label";
+
+.CheckBoxGroupe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+
+  .label {
+    @extend %label;
+    width: 100%;
+  }
+
+  & > .error {
+    color: var(--red-0);
+    padding-top: 0.25rem;
+    font-size: var(--fSize13);
+    text-align: left;
+  }
+}

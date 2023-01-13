@@ -1,0 +1,33 @@
+%input {
+	font-weight: 400;
+	height: 50px;
+	border: 1px solid var(--black-20);
+	border-radius: 50px;
+	outline: none;
+	position: relative;
+	width: 100%;
+	font-size: 1rem;
+	padding: 1.21rem 4.4rem 1.21rem 1.14rem;
+	box-sizing: border-box;
+	resize: none;
+	transition: var(--transition);
+	color: var(--black-100);
+
+	&::placeholder {
+		color: var(--black-100);
+	}
+
+	&:focus {
+		border: 1px solid var(--black-40);
+	}
+
+	&:disabled {
+		border: 1px solid var(--black-10);
+		background: var(--black-10);
+		color: var(--black-10);
+	}
+
+	// &:hover {
+	// 	border: 1px solid var(--black-10);
+	// }
+}

@@ -1,0 +1,30 @@
+.TagsSelectGroup {
+  height: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  grid-gap: 0.5rem;
+
+  &-title {
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  &-tags-wrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-row-gap: 1rem;
+  }
+
+  .tags-group {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 0.5rem;
+
+    .tag-link {
+      width: 100%;
+    }
+  }
+}
