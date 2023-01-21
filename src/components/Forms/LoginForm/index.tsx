@@ -10,7 +10,7 @@ import { FormFooter } from '../FormFooter';
 export const LoginForm = () => {
 	const { pageInterfaceText, openRegistration } = useCommon();
 	const { isMobile } = useDevice();
-	const { onSubmit, formData } = useLogin();
+	const { onSubmit, formData, isLoading } = useLogin();
 	return (
 		<div className='AuthPopup'>
 			<h3 className='AuthPopup-title'>{pageInterfaceText?.login_title}</h3>
@@ -26,7 +26,9 @@ export const LoginForm = () => {
 					label={pageInterfaceText?.form_password}
 					errors={formData.password.errors}
 					autoComplete='new-password'
+					className='above-forgot-pass'
 				/>
+				<div className='AuthPopup-forgot-pass'>{pageInterfaceText?.forgot_password}</div>
 
 				{isMobile && (
 					<div className='FormFooter-policy'>
@@ -36,22 +38,22 @@ export const LoginForm = () => {
 					</div>
 				)}
 
-				<Button type='submit' color='primary'>
-					{pageInterfaceText?.register_btn}
+				<Button type='submit' color='primary' loading={isLoading}>
+					{pageInterfaceText?.login_btn}
 				</Button>
 
 				{isMobile && (
 					<div className='FormFooter-link'>
-						<div>{pageInterfaceText?.register_text1}</div>
-						<button onClick={openRegistration}>{pageInterfaceText?.register_text2}</button>
+						<div>{pageInterfaceText?.no_have_acc}</div>
+						<button onClick={openRegistration}>{pageInterfaceText?.registration_link}</button>
 					</div>
 				)}
 			</form>
 
 			{!isMobile && (
 				<FormFooter
-					leftText={pageInterfaceText?.register_text1}
-					rightText={pageInterfaceText?.register_text2}
+					leftText={pageInterfaceText?.no_have_acc}
+					rightText={pageInterfaceText?.registration_link}
 					linkCallback={openRegistration}
 				/>
 			)}

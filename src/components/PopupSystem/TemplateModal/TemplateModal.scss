@@ -41,6 +41,13 @@
 		flex-direction: column;
 		min-height: 248px;
 		padding: 40px 10px 10px 10px;
+		&.without-icon {
+			justify-content: center;
+			padding: 10px;
+			.TemplateModal-title {
+				margin: 0;
+			}
+		}
 	}
 	&-title {
 		margin-top: 20px;

@@ -1,3 +1,5 @@
+export * from './SpeedometerIcon';
+export * from './SpeedometerArrow';
 export * from './Logo';
-export * from './LogoRounded';
-export * from './IconFlagUS';
+export * from './Mark';
+export * from './Wave';

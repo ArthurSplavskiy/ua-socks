@@ -1,5 +1,5 @@
 import { dataOrEmptyArray } from '@/helpers';
-import { IMenu } from '@/interfaces/api';
+import { IMenu } from '@/interfaces/shared';
 import { IDataHooks } from '@/interfaces/shared';
 import { useCallback, useEffect, useState } from 'react';
 import api from '../';
@@ -17,7 +17,9 @@ export const useMenuList = (): IDataHooks<IMenu[]> => {
 		} catch {
 			setIsError('Something went wrong :(');
 		} finally {
-			setIsLoading(false);
+			setTimeout(() => {
+				setIsLoading(false);
+			}, 200);
 		}
 	}, []);
 

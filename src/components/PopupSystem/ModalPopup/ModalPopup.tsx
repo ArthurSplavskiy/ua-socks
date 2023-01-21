@@ -52,7 +52,14 @@ export const ModalPopup: FC<iModalPopUpProps> = ({
 				} ${hide ? 'ModalPopUp-portal-hide' : ''}`}>
 				<div tabIndex={0} onKeyDown={handleKeyPress} />
 				{/* onFocus={closeFocusInModal} */}
-				{withBackdrop && (
+				<div
+					className='ModalPopUp-backdrop backdrop'
+					role='dialog'
+					aria-modal='true'
+					onClick={handleClose}
+					data-testid='ModalPopUp-wrapper'
+				/>
+				{/* {withBackdrop && (
 					<div
 						className='ModalPopUp-backdrop backdrop'
 						role='dialog'
@@ -60,7 +67,7 @@ export const ModalPopup: FC<iModalPopUpProps> = ({
 						onClick={handleClose}
 						data-testid='ModalPopUp-wrapper'
 					/>
-				)}
+				)} */}
 
 				<div className={`ModalPopUp-container container ${size} ${type} ${containerClass}`}>
 					{showCloseButton && (

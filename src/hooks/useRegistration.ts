@@ -1,21 +1,14 @@
-import { useNavigate } from 'react-router-dom';
-import { useProfile } from '@/context/UserContext';
 import { useTextInput } from './useTextInput/useTextInput';
-import { AppRoutes } from '@/routes/AppRouter';
 import { getApiError, notValidForm } from '@/helpers/index';
 import { TRegistrationPostData } from '@/interfaces/shared';
 import { useComparePasswordFields } from './useTextInput/useComparePasswordFields';
 import api from '@/api';
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import { useCommon } from '@/context/CommonContext';
-import { eventBus } from '@/helpers/EventBus/EventBus';
 
 export const useRegistration = () => {
-	const navigate = useNavigate();
-	const { user } = useProfile();
-	const { openLogin } = useCommon();
-	const { setToken } = useProfile();
-	//const { call, isLoading } = useHttp();
+	const { openLogin, openError, setError } = useCommon();
+	const [isLoading, setIsLoading] = useState(false);
 
 	const formData = {
 		email: useTextInput({ validators: ['email'], isRequired: true }),
@@ -33,27 +26,26 @@ export const useRegistration = () => {
 		if (notValidForm(formData)) return;
 
 		try {
+			setIsLoading(true);
 			const data: Partial<TRegistrationPostData> = {
 				email: formData.email.value || '',
 				password: formData.password.value || ''
 			};
-			console.log('register data', data);
-			const res = await api.auth.registration(data);
-			console.log('register res', res);
-			setToken(res?.data?.accessToken);
-			openLogin();
-			//await getUser?.();
-			//navigate(AppRoutes.ACCOUNT);
+			await api.auth.registration(data);
+			setTimeout(() => {
+				setIsLoading(false);
+				openLogin();
+			}, 2000);
 		} catch (error) {
 			const { msg } = getApiError(error, formData);
-			console.log('msg', msg);
-			eventBus.dispatch('showErrorPopup', { type: 'error', text: msg || 'Error !' });
+			setError({ type: 'error', text: msg || 'Error !' });
+			openError();
 		}
 	};
 
 	return {
 		formData,
-		onSubmit
-		//isLoading,
+		onSubmit,
+		isLoading
 	};
 };

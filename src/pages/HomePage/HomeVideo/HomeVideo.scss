@@ -1,0 +1,19 @@
+.HomeVideo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	&-video {
+		width: 100% !important;
+		padding-bottom: 56%;
+		border-radius: 20px;
+		overflow: hidden;
+		position: relative;
+		& > * {
+			position: absolute;
+			inset: 0 0 0 0;
+			object-fit: cover;
+			width: 100% !important;
+			height: 100% !important;
+		}
+	}
+}

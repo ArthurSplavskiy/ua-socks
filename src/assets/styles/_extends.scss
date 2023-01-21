@@ -131,3 +131,18 @@
 		transform: scaleX(1);
 	}
 }
+
+%comingSoon {
+	position: relative;
+	&:after {
+		position: absolute;
+		inset: 0px 0px 0px 0px;
+		z-index: 2;
+		background: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		content: 'Coming soon';
+		font-size: 32px;
+	}
+}

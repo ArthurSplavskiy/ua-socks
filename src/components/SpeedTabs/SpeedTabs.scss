@@ -1,0 +1,212 @@
+.SpeedTabs {
+	&-btns {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: 24px;
+		gap: 16px;
+		@media screen and (max-width: 768px) {
+			margin-top: 18px;
+			gap: 8px;
+		}
+		@media screen and (max-width: 530px) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	.Tab {
+		padding: 40px 88px;
+		position: relative;
+		background: var(--white);
+		border-radius: 20px;
+		display: none;
+		grid-template-columns: auto 1fr;
+		gap: 120px;
+		@media screen and (max-width: 1256px) {
+			padding: 24px 16px;
+			gap: 32px;
+		}
+		@media screen and (max-width: 1024px) {
+			grid-template-columns: 1fr;
+		}
+		&.active {
+			display: grid;
+		}
+		&-stats {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 72px;
+			margin-bottom: 56px;
+			@media screen and (max-width: 1330px) {
+				column-gap: 10px;
+				row-gap: 24px;
+			}
+			@media screen and (max-width: 1256px) {
+				margin-bottom: 24px;
+			}
+			@media screen and (max-width: 530px) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+			@media screen and (max-width: 370px) {
+				grid-template-columns: 1fr;
+			}
+		}
+		&-stat {
+			&-name {
+				display: flex;
+				align-items: center;
+				color: var(--black-60);
+				font-weight: 500;
+				font-size: var(--fSize16);
+				line-height: 100%;
+				gap: 8px;
+				@media screen and (max-width: 768px) {
+					font-weight: 400;
+					font-size: var(--fSize14);
+				}
+			}
+			&-value {
+				color: var(--primary);
+				font-weight: 700;
+				font-size: var(--fSize56);
+				line-height: var(--fSize64);
+				@media screen and (max-width: 768px) {
+					font-size: var(--fSize32);
+					line-height: var(--fSize40);
+				}
+				span {
+					color: var(--black-100);
+					margin-left: var(--fSize16);
+					font-weight: 500;
+					font-size: var(--fSize16);
+					line-height: var(--fSize28);
+					@media screen and (max-width: 768px) {
+						font-weight: 400;
+						font-size: var(--fSize14);
+						line-height: var(--fSize24);
+						margin-left: 8px;
+					}
+				}
+			}
+		}
+		&-text {
+			h3 {
+				margin-bottom: 16px;
+				@media screen and (max-width: 768px) {
+					margin-bottom: 12px;
+				}
+			}
+			p {
+				font-weight: 400;
+				font-size: var(--fSize14);
+				line-height: var(--fSize24);
+				color: var(--black-60);
+				&:not(:last-child) {
+					margin-bottom: 16px;
+					@media screen and (max-width: 768px) {
+						margin-bottom: 8px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.Speedometer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	&.active-90 {
+		.Speedometer-arrow {
+			animation: speedGrover90 1.1s ease-out forwards;
+		}
+	}
+	&.active-60 {
+		.Speedometer-arrow {
+			animation: speedGrover60 1.1s ease-out forwards;
+		}
+	}
+	&.active-40 {
+		.Speedometer-arrow {
+			animation: speedGrover40 1.1s ease-out forwards;
+		}
+	}
+	&-panel {
+		width: 376px;
+		height: 314px;
+		position: relative;
+		overflow: hidden;
+		@media screen and (max-width: 768px) {
+			width: 280px;
+			height: 234px;
+		}
+		@media screen and (max-width: 370px) {
+			width: 240px;
+			height: 234px;
+		}
+	}
+	&-desk {
+		position: absolute;
+		inset: 0 0 0 0;
+		width: 100%;
+		height: 100%;
+	}
+	&-arrow {
+		position: absolute;
+		bottom: 35%;
+		left: 50%;
+		transform-origin: 3% 97%;
+		transform: scale(0.5) rotate(-170deg);
+		// 100 // 80deg
+		// 60 // 36deg
+		// 40 // -5deg
+		// 20 // -45deg
+		// 10 // -90deg
+		// 1 // -125deg
+		// 0 // -170deg
+	}
+	&-value {
+		font-weight: 700;
+		font-size: var(--fSize56);
+		line-height: var(--64px);
+		margin-bottom: 8px;
+		@media screen and (max-width: 768px) {
+			font-size: var(--fSize42);
+			line-height: var(--fSize48);
+		}
+	}
+	&-dimension {
+		font-weight: 500;
+		font-size: var(--fSize16);
+		color: var(--primary);
+		line-height: 100%;
+		@media screen and (max-width: 768px) {
+			font-size: var(--fSize12);
+		}
+	}
+}
+
+@keyframes speedGrover90 {
+	0% {
+		transform: rotate(-170deg) scale(0.5);
+	}
+	100% {
+		transform: rotate(80deg) scale(0.5);
+	}
+}
+@keyframes speedGrover60 {
+	0% {
+		transform: rotate(-170deg) scale(0.5);
+	}
+	100% {
+		transform: rotate(36deg) scale(0.5);
+	}
+}
+@keyframes speedGrover40 {
+	0% {
+		transform: rotate(-170deg) scale(0.5);
+	}
+	100% {
+		transform: rotate(-5deg) scale(0.5);
+	}
+}

@@ -6,13 +6,14 @@ import api from '@/api';
 import { useTextInput } from './useTextInput/useTextInput';
 import { notValidForm, getApiError } from '@/helpers';
 import { useProfile } from '@/context/UserContext';
+import { useCommon } from '@/context/CommonContext';
+import Cookies from 'js-cookie';
 
 export const useLogin = () => {
 	const navigate = useNavigate();
-	const { setToken } = useProfile();
-	//const { getUser } = useContextProfile();
-	//const { call, isLoading } = useHttp();
-	//const [rememberMe, setRememberMe] = useState(false);
+	const { setToken, getProfileData } = useProfile();
+	const { openError, setError, openThank } = useCommon();
+	const [isLoading, setIsLoading] = useState(false);
 
 	const formData = {
 		email: useTextInput({ validators: ['email'] }),
@@ -24,29 +25,32 @@ export const useLogin = () => {
 		if (notValidForm(formData)) return;
 
 		try {
+			setIsLoading(true);
 			const data: TLoginPostData = {
 				email: formData.email.value || '',
 				password: formData.password.value || ''
 			};
-			//const res = await call(auth.login(data));
-			//rememberAuthData({ rememberMe, data: res?.data });
-			console.log('login data', data);
 			const res = await api.auth.login(data);
-
-			//await getUser?.();
-			navigate(AppRoutes.ACCOUNT);
+			const resData = JSON.parse(res.config.data);
+			Cookies.set('user_password_email', resData.email);
+			Cookies.set('user_password_test', resData.password);
+			setToken(res?.data?.accessToken);
+			getProfileData();
+			setTimeout(() => {
+				setIsLoading(false);
+				navigate(AppRoutes.ACCOUNT);
+				openThank();
+			}, 300);
 		} catch (error) {
 			const { msg } = getApiError(error, formData);
-			console.log('msg', msg);
-			//eventBus.dispatch('showToast', { type: 'error', text: msg || 'Error !' });
+			setError({ type: 'error', text: msg || 'Error !' });
+			openError();
 		}
 	};
 
 	return {
 		formData,
-		onSubmit
-		// isLoading,
-		// rememberMe,
-		// setRememberMe
+		onSubmit,
+		isLoading
 	};
 };

@@ -1,1 +1,1 @@
-export type tEventBusActions = 'showErrorPopup';
+export type tEventBusActions = 'showErrorPopup' | 'closeSpollers';

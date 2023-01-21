@@ -36,7 +36,7 @@ export const TemplateModal: FC<iTemplateModalProps> = ({
 	return (
 		<div className={`TemplateModal ${size} ${type} ${color}`}>
 			{title && (
-				<div className='TemplateModal-header'>
+				<div className={`TemplateModal-header ${!icon && 'without-icon'}`}>
 					{icon}
 					<h3 className='TemplateModal-title'>{title}</h3>
 					<p className='TemplateModal-text'>{subTitle}</p>

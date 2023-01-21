@@ -1,0 +1,154 @@
+.Slider {
+	&-slide {
+		display: grid;
+		grid-template-columns: 1.8fr 1fr;
+		gap: 88px;
+		@media screen and (max-width: 1200px) {
+			gap: 24px;
+		}
+		@media screen and (max-width: 992px) {
+			grid-template-columns: 1fr;
+			gap: 8px;
+		}
+	}
+	&-image {
+		img {
+			max-width: 100%;
+		}
+	}
+	&-text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	&-slide-index {
+		display: block;
+		font-weight: 500;
+		font-size: var(--fSize16);
+		line-height: 100%;
+		margin-bottom: 16px;
+		color: var(--primary);
+	}
+	&-slide-title {
+		margin-bottom: 32px;
+		@media screen and (max-width: 768px) {
+			margin-bottom: 8px;
+		}
+	}
+	&-slide-text {
+		color: var(--black-80);
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 24px;
+		&:not(:last-child) {
+			margin-bottom: 16px;
+			@media screen and (max-width: 768px) {
+				margin-bottom: 8px;
+			}
+		}
+	}
+	.swiper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	&.line-delay {
+		.swiper-pagination:after {
+			animation-play-state: paused;
+			//animation-delay: 2s;
+		}
+	}
+	.swiper-pagination {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 26px;
+		width: 100%;
+		max-width: 566px;
+		position: relative;
+		margin-top: 24px;
+		@media screen and (max-width: 640px) {
+			max-width: 95%;
+		}
+		&.stop-animate {
+			&:after {
+				animation: none;
+				opacity: 0;
+			}
+		}
+		&:before {
+			content: '';
+			width: 100%;
+			height: 1px;
+			background: var(--primary-20);
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			pointer-events: none;
+		}
+		&:after {
+			content: '';
+			width: 100%;
+			height: 1px;
+			background: var(--primary);
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translate(0, -50%);
+			z-index: 2;
+			transform-origin: 0 0;
+			pointer-events: none;
+			animation-name: paginationLine;
+			//animation-duration: 10s;
+			animation-duration: inherit;
+			animation-play-state: inherit;
+			//animation-delay: 0.1s;
+			animation-fill-mode: backwards;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+		}
+		&-bullet {
+			display: block;
+			width: 12px;
+			height: 12px;
+			border-radius: 100%;
+			background: var(--primary);
+			position: relative;
+			&:after {
+				content: '';
+				width: 24px;
+				height: 24px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%) scale(0);
+				border: 1px solid var(--primary);
+				border-radius: 100%;
+				transition: all 0.2s;
+			}
+			&-active {
+				background: var(--primary);
+				& ~ span {
+					background: var(--primary-20);
+				}
+				&:after {
+					transform: translate(-50%, -50%) scale(1);
+				}
+			}
+		}
+	}
+	.swiper-slide:not(.swiper-slide-active) {
+		opacity: 0 !important;
+		z-index: -1;
+	}
+}
+
+@keyframes paginationLine {
+	0% {
+		transform: scaleX(0);
+	}
+	100% {
+		transform: scaleX(1);
+	}
+}

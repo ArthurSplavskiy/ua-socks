@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const axiosInstance = axios.create({
-	baseURL: 'http://localhost:3030' // https://nestjs-boilerplate-test.fly.dev/api
+	baseURL: import.meta.env.VITE_API_URL // https://nestjs-boilerplate-test.fly.dev/api
 });
 
 axiosInstance.interceptors.request.use(

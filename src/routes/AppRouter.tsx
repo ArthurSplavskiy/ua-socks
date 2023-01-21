@@ -1,7 +1,7 @@
 import { createBrowserRouter, redirect } from 'react-router-dom';
 import PageLayout from '@/layouts/PageLayout';
-import ErrorPage from '@/view/pages/ErrorPage';
-import HomePage from '@/view/pages/HomePage';
+import ErrorPage from '@/pages/ErrorPage';
+import HomePage from '@/pages/HomePage';
 import AccountLayout, { accountLayoutLoader } from '@/layouts/AccountLayout';
 import { useProfile } from '@/context/UserContext';
 

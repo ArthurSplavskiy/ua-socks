@@ -3,14 +3,6 @@ import { IUserProfile } from '@/interfaces/api';
 import Cookies from 'js-cookie';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
-// "user": {
-// 	"userId": "12345",
-// 	"email": "useremail@gmail.com",
-// 	"telegram": "@telegram.account",
-// 	"balance": 450,
-// 	"password": "some_pass"
-// }
-
 type State = {
 	isLoaded: boolean;
 	user: IUserProfile | null;
@@ -18,6 +10,7 @@ type State = {
 	setUser: (user: IUserProfile | null) => void;
 	setToken: (token: string) => void;
 	logOut: () => void;
+	getProfileData: () => void;
 };
 type UserProviderProps = { children: React.ReactNode };
 
@@ -27,7 +20,8 @@ const UserContext = createContext<State>({
 	token: null,
 	setUser: () => {},
 	setToken: () => {},
-	logOut: () => {}
+	logOut: () => {},
+	getProfileData: () => {}
 });
 
 function UserProvider({ children }: UserProviderProps) {
@@ -37,10 +31,8 @@ function UserProvider({ children }: UserProviderProps) {
 
 	const setToken = useCallback((tokenData: string | null) => {
 		setTokenData(tokenData);
-		console.log('tokenData1', tokenData);
 		if (tokenData) {
 			Cookies.set('auth-token', tokenData);
-			console.log('tokenData', tokenData);
 		} else {
 			Cookies.remove('auth-token');
 		}
@@ -51,15 +43,19 @@ function UserProvider({ children }: UserProviderProps) {
 		setUser(null);
 	}, []);
 
-	const loadData = useCallback(async () => {
+	const getProfileData = useCallback(async () => {
 		const tokenData = Cookies.get('auth-token');
 		setTokenData(tokenData || null);
 
 		try {
-			// if (tokenData) {
-			// 	const { data } = await api.auth.getProfile();
-			// 	setUser(data);
-			// }
+			if (tokenData) {
+				const { data } = await api.auth.getProfile();
+				setUser({
+					...data,
+					email: Cookies.get('user_password_email'),
+					password: Cookies.get('user_password_test')
+				});
+			}
 		} catch {
 			setToken(null);
 		} finally {
@@ -68,8 +64,8 @@ function UserProvider({ children }: UserProviderProps) {
 	}, [setToken]);
 
 	useEffect(() => {
-		loadData();
-	}, [loadData]);
+		getProfileData();
+	}, [setToken]);
 
 	const contextValue = useMemo(
 		() => ({
@@ -78,9 +74,10 @@ function UserProvider({ children }: UserProviderProps) {
 			token,
 			setUser,
 			setToken,
-			logOut
+			logOut,
+			getProfileData
 		}),
-		[isLoaded, user, token, setToken, logOut]
+		[isLoaded, user, token, setToken, logOut, getProfileData]
 	);
 
 	return <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>;

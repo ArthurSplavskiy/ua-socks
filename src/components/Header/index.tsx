@@ -7,14 +7,11 @@ import { Link } from 'react-router-dom';
 import { Button } from '../shared/Button';
 import { Icon } from '../shared/Icon/Icon';
 import { HeaderMenu } from './HeaderMenu/HeaderMenu';
-import './Header.scss';
 import { MenuIcon } from './HeaderMenu/MenuIcon';
 import { useCommon } from '@/context/CommonContext';
-import { ModalPopup } from '../PopupSystem/ModalPopup/ModalPopup';
-import { TemplateModal } from '../PopupSystem/TemplateModal/TemplateModal';
-import { RegisterForm } from '../Forms/RegisterForm';
-import { Background } from '../shared/Background';
 import { useProfile } from '@/context/UserContext';
+import Cookies from 'js-cookie';
+import './Header.scss';
 
 interface Props {
 	type: 'account' | 'default';
@@ -24,25 +21,36 @@ export const Header: FC<Props> = ({ type = 'default' }) => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const { isTablet } = useDevice();
 	const { user } = useProfile();
-	const {
-		pageInterfaceText,
-		isRegistrationPopupOpen,
-		openRegistration,
-		openLogin,
-		closeRegistration,
-		popupHide,
-		isPopupHide
-	} = useCommon();
+	const { pageInterfaceText, openLogin } = useCommon();
 	const { data } = useMenuList();
-
-	// const [isOpen, setIsOpen] = useState(false);
-	// const [isHide, setIsHide] = useState(false);
-	const [isOpen2, setIsOpen2] = useState(false);
-	const [isOpen3, setIsOpen3] = useState(false);
 
 	const handleClick = () => {
 		setMenuOpen((prev) => !prev);
 	};
+
+	const HeaderProfile = () => (
+		<div className='HeaderProfile'>
+			<div className='HeaderProfile-icon'>
+				<Icon icon='acc' size='20' color='white' />
+			</div>
+			<div className='HeaderProfile-email'>{user?.email}</div>
+		</div>
+	);
+
+	const HeaderSign = () =>
+		Cookies.get('auth-token') ? (
+			<Link to={AppRoutes.ACCOUNT} className='HeaderAuth-link'>
+				<Button color='outline' size='md' icon='account' btnType='iconRight'>
+					{!isTablet && pageInterfaceText?.account_btn}
+				</Button>
+			</Link>
+		) : (
+			<Link to={AppRoutes.ACCOUNT} className='HeaderAuth-link'>
+				<Button color='outline' size='md' icon='account' btnType='iconRight' onClick={openLogin}>
+					{!isTablet && pageInterfaceText?.account_btn}
+				</Button>
+			</Link>
+		);
 
 	return (
 		<header className={`Header Header-${type} page-offset`}>
@@ -63,26 +71,8 @@ export const Header: FC<Props> = ({ type = 'default' }) => {
 					)}
 				</div>
 				<HeaderMenu data={data} active={menuOpen} />
-				<div className='Header-sign'>
-					{type === 'default' ? (
-						<Link to={AppRoutes.ACCOUNT}>
-							<Button color='outline' size='md' icon='account' btnType='iconRight'>
-								{!isTablet && pageInterfaceText?.account_btn}
-							</Button>
-						</Link>
-					) : (
-						<div className='HeaderProfile'>
-							<div className='HeaderProfile-icon'>
-								<Icon icon='acc' size='20' color='white' />
-							</div>
-							<div className='HeaderProfile-email'>{user?.email}</div>
-						</div>
-					)}
-				</div>
+				<div className='Header-sign'>{type === 'default' ? <HeaderSign /> : <HeaderProfile />}</div>
 			</div>
-
-			<button onClick={openRegistration}>popup open</button>
-			<button onClick={openLogin}>popup open 2</button>
 		</header>
 	);
 };

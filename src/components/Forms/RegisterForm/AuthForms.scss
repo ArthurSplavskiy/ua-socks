@@ -1,4 +1,7 @@
+@import 'src/assets/styles/index';
+
 .AuthPopup {
+	@extend %comingSoon;
 	&-title {
 		font-size: var(--fSize20);
 		font-weight: 700;
@@ -17,8 +20,19 @@
 		flex-direction: column;
 		justify-content: center;
 		button[type='submit'] {
-			margin-top: 2rem;
+			margin-top: 4rem;
 			align-self: center;
 		}
+	}
+	&-forgot-pass {
+		color: var(--black-60);
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 24px;
+		text-decoration: underline;
+		align-self: end;
+	}
+	.above-forgot-pass {
+		margin-bottom: 8px;
 	}
 }
