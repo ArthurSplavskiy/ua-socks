@@ -88,7 +88,7 @@
 		"title": "Приватні мобільні проксі",
 		"subtitle": "Наша компанія гарантує якісне обслугоування, безперебійне виконання послуг та цілодобову підтримку користувачів, щоб відповісти на будь-яке питання",
 		"title_gradient": "Україна 3G/4G",
-		"img": "assets/images/hero-screenshot.svg"
+		"img": "src/assets/images/hero-screenshot.svg"
 	},
 	"home_advantages": {
 		"title": "Переваги",
@@ -98,37 +98,37 @@
 				"id": 1,
 				"title": "Швидка заміна IP",
 				"text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
-				"img": "assets/images/advantages/01.svg"
+				"img": "src/assets/images/advantages/01.svg"
 			},
 			{
 				"id": 2,
 				"title": "Стабільна робота. Автономна електроенергія",
 				"text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
-				"img": "assets/images/advantages/02.svg"
+				"img": "src/assets/images/advantages/02.svg"
 			},
 			{
 				"id": 3,
 				"title": "Насолоджуйтель найвищою швидкісттю в 125 МГ/Бт",
 				"text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
-				"img": "assets/images/advantages/03.svg"
+				"img": "src/assets/images/advantages/03.svg"
 			},
 			{
 				"id": 4,
 				"title": "Оперативна технічна підтримка",
 				"text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
-				"img": "assets/images/advantages/04.svg"
+				"img": "src/assets/images/advantages/04.svg"
 			},
 			{
 				"id": 5,
 				"title": "Повернення коштів",
 				"text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
-				"img": "assets/images/advantages/05.svg"
+				"img": "src/assets/images/advantages/05.svg"
 			},
 			{
 				"id": 6,
 				"title": "При оплаті в гривні, розрахунок по офіційному курсу НБУ",
 				"text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
-				"img": "assets/images/advantages/06.svg"
+				"img": "src/assets/images/advantages/06.svg"
 			}
 		]
 	},
@@ -632,7 +632,7 @@
 					"Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
 					"Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
 				],
-				"img": "assets/images/hero-screenshot.svg"
+				"img": "src/assets/images/hero-screenshot.svg"
 			},
 			{
 				"title": "Зайдіть у особистий кабінет 2",
@@ -640,14 +640,14 @@
 					"Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
 					"Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
 				],
-				"img": "assets/images/hero-screenshot.svg"
+				"img": "src/assets/images/hero-screenshot.svg"
 			},
 			{
 				"title": "Зайдіть у особистий кабінет 3",
 				"text": [
 					"Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту"
 				],
-				"img": "assets/images/hero-screenshot.svg"
+				"img": "src/assets/images/hero-screenshot.svg"
 			},
 			{
 				"title": "Зайдіть у особистий кабінет 4",
@@ -655,7 +655,7 @@
 					"Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
 					"Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
 				],
-				"img": "assets/images/hero-screenshot.svg"
+				"img": "src/assets/images/hero-screenshot.svg"
 			},
 			{
 				"title": "Зайдіть у особистий кабінет 5",
@@ -663,7 +663,7 @@
 					"Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
 					"Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
 				],
-				"img": "assets/images/hero-screenshot.svg"
+				"img": "src/assets/images/hero-screenshot.svg"
 			},
 			{
 				"title": "Зайдіть у особистий кабінет 6",
@@ -671,7 +671,7 @@
 					"Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
 					"Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
 				],
-				"img": "assets/images/hero-screenshot.svg"
+				"img": "src/assets/images/hero-screenshot.svg"
 			}
 		]
 	},
@@ -681,42 +681,42 @@
 		"social": [
 			{
 				"name": "octopus",
-				"icon": "assets/images/social-icon/octopus.svg",
+				"icon": "src/assets/images/social-icon/octopus.svg",
 				"link": "https://www.octopus.ua/"
 			},
 			{
 				"name": "octopus",
-				"icon": "assets/images/social-icon/some-01.svg",
+				"icon": "src/assets/images/social-icon/some-01.svg",
 				"link": "https://www.octopus.ua/"
 			},
 			{
 				"name": "octopus",
-				"icon": "assets/images/social-icon/some-02.svg",
+				"icon": "src/assets/images/social-icon/some-02.svg",
 				"link": "https://www.octopus.ua/"
 			},
 			{
 				"name": "octopus",
-				"icon": "assets/images/social-icon/some-03.svg",
+				"icon": "src/assets/images/social-icon/some-03.svg",
 				"link": "https://www.octopus.ua/"
 			},
 			{
 				"name": "Facebook",
-				"icon": "assets/images/social-icon/facebook.svg",
+				"icon": "src/assets/images/social-icon/facebook.svg",
 				"link": "https://uk-ua.facebook.com/"
 			},
 			{
 				"name": "Tiktok",
-				"icon": "assets/images/social-icon/tiktok.svg",
+				"icon": "src/assets/images/social-icon/tiktok.svg",
 				"link": "https://www.tiktok.com/uk-UA/"
 			},
 			{
 				"name": "Instagram",
-				"icon": "assets/images/social-icon/insta.svg",
+				"icon": "src/assets/images/social-icon/insta.svg",
 				"link": "https://www.instagram.com/"
 			},
 			{
 				"name": "Google",
-				"icon": "assets/images/social-icon/google.svg",
+				"icon": "src/assets/images/social-icon/google.svg",
 				"link": "https://google.com/"
 			}
 		]
@@ -757,7 +757,7 @@
 	"home_question": {
 		"title": "Вперше придбали мобільні проксі?",
 		"subtitle": "Наша підтримка вже готова дати відповідь на усі ваші запитання та допомогти з налаштуванням",
-		"img": "assets/images/slider/01.svg"
+		"img": "src/assets/images/slider/01.svg"
 	},
 	"footer_links": {
 		"footer_telegram": "https://telegram.com",
