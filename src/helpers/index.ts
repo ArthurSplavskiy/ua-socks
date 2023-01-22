@@ -1,6 +1,7 @@
 export const dataOrEmptyArray = (data: any[] | undefined | null) => (data ? data : []);
 
 export function notValidForm<T>(data: T, scrollToFirstError = false) {
+	//@ts-ignore
 	const invalidFields = Object.entries(data).filter(([key, value]) => !value?.checkValidity());
 
 	if (!!invalidFields?.length && scrollToFirstError) {
@@ -44,4 +45,8 @@ export const easeOutElastic = (t: number, b: number, c: number, d: number) => {
 		var s = p / 4;
 	} else var s = (p / (2 * Math.PI)) * Math.asin(c / a);
 	return a * Math.pow(2, -10 * t) * Math.sin(((t * d - s) * (2 * Math.PI)) / p) + c + b;
+};
+
+export const uid = function () {
+	return Date.now().toString(36) + Math.random().toString(36).substr(2);
 };

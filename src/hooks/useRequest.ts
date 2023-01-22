@@ -1,6 +1,6 @@
 import useSWR, { SWRConfiguration, SWRResponse } from 'swr';
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export type GetRequest = AxiosRequestConfig | null;
 
