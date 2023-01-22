@@ -34,8 +34,14 @@ export const HoverTabs: FC<Props> = ({ data }) => {
 				))}
 			</div>
 			<div className='HoverTabs-images'>
-				{data.map((item) => (
-					<HoverImage key={item.img} data-id={item.id} activeId={activeIndex} image={item.img} />
+				{data.map((item, idx) => (
+					<HoverImage
+						key={item.img}
+						data-id={item.id}
+						activeId={activeIndex}
+						image={`/images/advantages/0${idx + 1}.svg`}
+					/>
+					//image={item.img}
 				))}
 			</div>
 		</div>

@@ -21,7 +21,8 @@ export const HomeHero = () => {
 			<div className={`HomeHero-image`}>
 				<img
 					className={styles.img}
-					src={data?.img}
+					src={'/images/hero-screenshot.svg'}
+					//src={data?.img}
 					alt={data?.title + ' ' + data?.title_gradient}
 				/>
 			</div>

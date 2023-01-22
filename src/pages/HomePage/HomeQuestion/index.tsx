@@ -19,7 +19,8 @@ export const HomeQuestion = () => {
 				{pageInterfaceText?.question_btn}
 			</Button>
 			<div className={`HomeQuestion-image`}>
-				<img src={data?.img} alt={data?.title} />
+				<img src={'/images/hero-screenshot.svg'} alt={data?.title} />
+				{/* {data?.img} */}
 			</div>
 		</section>
 	);

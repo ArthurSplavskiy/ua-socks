@@ -47,7 +47,8 @@ export const Social: FC<Props> = ({ data }) => {
 						href={data?.[0].link}
 						target='_blank'
 						className={`Social-icon ${inView && 'fadeIn'}`}>
-						<img src={data?.[0].icon} alt={data?.[0].name} />
+						<img src={`/images/social-icon/octopus.svg`} alt={data?.[0].name} />
+						{/* {data?.[0].icon} */}
 						<div className='Social-icon-name'>{data?.[0].name}</div>
 					</a>
 					<SocialLine className={`Social-line ${inView && 'draw'}`} index={1} />
@@ -58,7 +59,8 @@ export const Social: FC<Props> = ({ data }) => {
 						href={data?.[1].link}
 						target='_blank'
 						className={`Social-icon ${inView2 && 'fadeIn'}`}>
-						<img src={data?.[1].icon} alt={data?.[1].name} />
+						<img src={`/images/social-icon/some-01.svg`} alt={data?.[1].name} />
+						{/* {data?.[1].icon} */}
 						<div className='Social-icon-name'>{data?.[1].name}</div>
 					</a>
 					<SocialLine className={`Social-line ${inView2 && 'draw'}`} index={2} />
@@ -69,7 +71,8 @@ export const Social: FC<Props> = ({ data }) => {
 						href={data?.[2].link}
 						target='_blank'
 						className={`Social-icon ${inView3 && 'fadeIn'}`}>
-						<img src={data?.[2].icon} alt={data?.[2].name} />
+						<img src={`/images/social-icon/some-02.svg`} alt={data?.[2].name} />
+						{/* {data?.[2].icon} */}
 						<div className='Social-icon-name'>{data?.[2].name}</div>
 					</a>
 					<SocialLine className={`Social-line ${inView3 && 'draw'}`} index={3} />
@@ -80,14 +83,16 @@ export const Social: FC<Props> = ({ data }) => {
 						href={data?.[3].link}
 						target='_blank'
 						className={`Social-icon ${inView4 && 'fadeIn'}`}>
-						<img src={data?.[3].icon} alt={data?.[3].name} />
+						<img src={`/images/social-icon/some-03.svg`} alt={data?.[3].name} />
+						{/* {data?.[3].icon} */}
 						<div className='Social-icon-name'>{data?.[3].name}</div>
 					</a>
 					<SocialLine className={`Social-line ${inView4 && 'draw'}`} index={4} />
 				</div>
 			</div>
 			<div ref={logoRef} className={`Social-logo ${inViewLogo && 'fadeIn'}`}>
-				<img src='src/assets/images/ua-big.svg' alt='ua socks' />
+				<img src={`/images/ua-big.svg`} alt='ua socks' />
+				{/* 'src/assets/images/ua-big.svg' */}
 			</div>
 			<div className={'Social-right'}>
 				{/* {rightIcons?.map((icon, index) => (
@@ -100,28 +105,32 @@ export const Social: FC<Props> = ({ data }) => {
 				))} */}
 				<div className='Social-item'>
 					<a href={data?.[4].link} target='_blank' className={`Social-icon ${inView && 'fadeIn'}`}>
-						<img src={data?.[4].icon} alt={data?.[4].name} />
+						<img src={`/images/social-icon/facebook.svg`} alt={data?.[4].name} />
+						{/* {data?.[4].icon} */}
 						<div className='Social-icon-name'>{data?.[4].name}</div>
 					</a>
 					<SocialLine className={`Social-line ${inView && 'draw'}`} index={5} />
 				</div>
 				<div className='Social-item'>
 					<a href={data?.[5].link} target='_blank' className={`Social-icon ${inView2 && 'fadeIn'}`}>
-						<img src={data?.[5].icon} alt={data?.[5].name} />
+						<img src={`/images/social-icon/tiktok.svg`} alt={data?.[5].name} />
+						{/* {data?.[5].icon} */}
 						<div className='Social-icon-name'>{data?.[5].name}</div>
 					</a>
 					<SocialLine className={`Social-line ${inView2 && 'draw'}`} index={6} />
 				</div>
 				<div className='Social-item'>
 					<a href={data?.[6].link} target='_blank' className={`Social-icon ${inView3 && 'fadeIn'}`}>
-						<img src={data?.[6].icon} alt={data?.[6].name} />
+						<img src={`/images/social-icon/insta.svg`} alt={data?.[6].name} />
+						{/* {data?.[6].icon} */}
 						<div className='Social-icon-name'>{data?.[6].name}</div>
 					</a>
 					<SocialLine className={`Social-line ${inView3 && 'draw'}`} index={7} />
 				</div>
 				<div className='Social-item'>
 					<a href={data?.[7].link} target='_blank' className={`Social-icon ${inView4 && 'fadeIn'}`}>
-						<img src={data?.[7].icon} alt={data?.[7].name} />
+						<img src={`/images/social-icon/google.svg`} alt={data?.[7].name} />
+						{/* {data?.[7].icon} */}
 						<div className='Social-icon-name'>{data?.[7].name}</div>
 					</a>
 					<SocialLine className={`Social-line ${inView4 && 'draw'}`} index={8} />
