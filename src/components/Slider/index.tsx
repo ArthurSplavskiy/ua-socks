@@ -53,6 +53,7 @@ export const Slider: FC<Props> = ({ slides }) => {
 				effect='fade'
 				speed={0}
 				autoHeight={true}
+				simulateTouch={false}
 				autoplay={{ delay: slidesDelay, disableOnInteraction: false }}
 				pagination={{ clickable: false }}>
 				{slides?.map((slideContent, index) => (
