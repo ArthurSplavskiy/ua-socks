@@ -12,8 +12,8 @@ export const useMenuList = (): IDataHooks<IMenu[]> => {
 	const loadData = useCallback(async () => {
 		try {
 			setIsLoading(true);
-			const { data } = await api.homePage.getMenuList();
-			setData(data);
+			//const { data } = await api.homePage.getMenuList();
+			//setData(data);
 		} catch {
 			setIsError('Something went wrong :(');
 		} finally {
