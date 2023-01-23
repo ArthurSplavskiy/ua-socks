@@ -1,4 +1,5 @@
 import api from '@/api';
+import useRequest from '@/hooks/useRequest';
 import { IPageTextInterface } from '@/interfaces/api';
 import { IEventError } from '@/interfaces/shared';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
@@ -98,25 +99,33 @@ function CommonProvider({ children }: CommonProviderProps) {
 		setPageError(null);
 	};
 
-	const loadPageInterfaceText = useCallback(async () => {
-		try {
-			document.body.classList.add('interface-text-loading');
-			const { data } = await api.common.getPageInterfaceText();
-			setPageInterfaceText(data);
-		} catch {
-			setPageInterfaceText(null);
-		} finally {
-			setTimeout(() => {
-				document.body.classList.remove('interface-text-loading');
-			}, 200);
-		}
-	}, []);
-
+	const { data } = useRequest<IPageTextInterface>({
+		method: 'GET',
+		url: api.common.getPageInterfaceText
+	});
 	useEffect(() => {
-		loadPageInterfaceText();
-	}, []);
+		if (data) {
+			setPageInterfaceText(data);
+		}
+	}, [data]);
 
-	useEffect(() => {}, []);
+	// const loadPageInterfaceText = useCallback(async () => {
+	// 	try {
+	// 		document.body.classList.add('interface-text-loading');
+	// 		const { data } = await api.common.getPageInterfaceText();
+	// 		setPageInterfaceText(data);
+	// 	} catch {
+	// 		setPageInterfaceText(null);
+	// 	} finally {
+	// 		setTimeout(() => {
+	// 			document.body.classList.remove('interface-text-loading');
+	// 		}, 200);
+	// 	}
+	// }, []);
+
+	// useEffect(() => {
+	// 	loadPageInterfaceText();
+	// }, []);
 
 	const contextValue = useMemo(
 		() => ({

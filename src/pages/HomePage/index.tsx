@@ -10,7 +10,7 @@ import { HomeVideo } from './HomeVideo';
 
 export default function HomePage() {
 	return (
-		<div>
+		<>
 			<HomeHero />
 			<HomeAdvantages />
 			<HomeSpeed />
@@ -20,6 +20,6 @@ export default function HomePage() {
 			<HomeSocial />
 			<HomeFaq />
 			<HomeQuestion />
-		</div>
+		</>
 	);
 }

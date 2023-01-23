@@ -11,7 +11,10 @@ import { MenuIcon } from './HeaderMenu/MenuIcon';
 import { useCommon } from '@/context/CommonContext';
 import { useProfile } from '@/context/UserContext';
 import Cookies from 'js-cookie';
+import useRequest from '@/hooks/useRequest';
+import api from '@/api';
 import './Header.scss';
+import { IMenu } from '@/interfaces/shared';
 
 interface Props {
 	type: 'account' | 'default';
@@ -22,7 +25,11 @@ export const Header: FC<Props> = ({ type = 'default' }) => {
 	const { isTablet } = useDevice();
 	const { user } = useProfile();
 	const { pageInterfaceText, openLogin } = useCommon();
-	const { data } = useMenuList();
+	const { data } = useRequest<IMenu[]>({
+		method: 'GET',
+		url: api.homePage.getMenuList
+	});
+	//const { data } = useMenuList();
 
 	const handleClick = () => {
 		setMenuOpen((prev) => !prev);

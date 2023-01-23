@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-columns: 1fr 292px 1fr;
 	column-gap: 28px;
-	overflow: hidden;
+	max-width: 100vw;
 	@media screen and (max-width: 800px) {
 		grid-template-columns: 1fr;
 		grid-template-rows: 74px 44px 74px;

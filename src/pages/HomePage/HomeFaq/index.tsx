@@ -12,9 +12,9 @@ export const HomeFaq: FC = () => {
 		url: api.homePage.getFaqs
 	});
 	return (
-		<div id='faq' className='HomeFaq section-offset'>
+		<section id='faq' className='HomeFaq section-offset'>
 			<SectionHead title={data?.title} />
 			<Spollers data={data?.faqs} />
-		</div>
+		</section>
 	);
 };

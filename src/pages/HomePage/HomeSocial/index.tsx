@@ -12,9 +12,9 @@ export const HomeSocial: FC = () => {
 	});
 
 	return (
-		<div className='section-offset'>
+		<section className='section-offset'>
 			<SectionHead title={data?.title} subtitle={data?.subtitle} />
 			<Social data={data?.social} />
-		</div>
+		</section>
 	);
 };

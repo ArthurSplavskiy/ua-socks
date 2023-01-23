@@ -6,7 +6,7 @@ import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
 import './HeaderMenu.scss';
 
 interface Props extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-	data: IMenu[];
+	data?: IMenu[];
 	active: boolean;
 }
 
@@ -20,7 +20,7 @@ export const HeaderMenu: FC<Props> = ({ data, active, ...props }) => {
 	return (
 		<nav className={`${props.className} HeaderMenu ${active && 'HeaderMenu-active'}`}>
 			<ul className='HeaderMenu-list'>
-				{data.map((item) => (
+				{data?.map((item) => (
 					<li className='HeaderMenu-item' key={item.slug} onClick={() => handleClick(item.slug)}>
 						{item.name}
 					</li>
