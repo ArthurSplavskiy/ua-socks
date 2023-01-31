@@ -1,6 +1,5 @@
 import api from '@/api';
 import useRequest from '@/hooks/useRequest';
-import { useScroll } from '@/hooks/useScroll';
 import { IPageTextInterface } from '@/interfaces/api';
 import { IEventError } from '@/interfaces/shared';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
