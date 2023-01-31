@@ -1,6 +1,9 @@
 .PageLayout {
+	overflow: hidden;
 	&-main {
 		margin: 0 auto;
 		max-width: 1360px;
+		position: relative;
+		z-index: 2;
 	}
 }

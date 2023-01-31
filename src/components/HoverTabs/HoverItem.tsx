@@ -4,9 +4,10 @@ interface Props extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDi
 	activeId: number;
 	title: string;
 	text: string;
+	mobileImage: string;
 }
 
-export const HoverItem: FC<Props> = ({ activeId, title, text, ...props }) => {
+export const HoverItem: FC<Props> = ({ activeId, title, text, mobileImage, ...props }) => {
 	const itemTextRef = useRef<HTMLDivElement>(null);
 	const itemRef = useRef<HTMLDivElement>(null);
 	const [itemHeight, setItemHeight] = useState(0);
@@ -21,11 +22,19 @@ export const HoverItem: FC<Props> = ({ activeId, title, text, ...props }) => {
 	}, [props]);
 
 	return (
-		<div ref={itemRef} className={`HoverTabs-item ${!!itemHeight && 'active'}`} {...props}>
-			<div className='HoverTabs-item-title'>{title}</div>
-			<div ref={itemTextRef} className='HoverTabs-item-text' style={{ height: itemHeight + 'px' }}>
-				{text}
+		<>
+			<div className={`HoverTabs-mobile-img ${!!itemHeight && 'active'}`}>
+				<img src={mobileImage} />
 			</div>
-		</div>
+			<div ref={itemRef} className={`HoverTabs-item ${!!itemHeight && 'active'}`} {...props}>
+				<div className='HoverTabs-item-title'>{title}</div>
+				<div
+					ref={itemTextRef}
+					className='HoverTabs-item-text'
+					style={{ height: itemHeight + 'px' }}>
+					{text}
+				</div>
+			</div>
+		</>
 	);
 };

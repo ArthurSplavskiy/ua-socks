@@ -97,11 +97,12 @@
 					align-items: flex-start;
 					margin-bottom: 20px;
 				}
-				a {
+				li {
 					font-weight: 500;
 					font-size: var(--fSize16);
 					line-height: 100%;
 					color: var(--primary);
+					cursor: pointer;
 					&:hover {
 						color: var(--primary-hover);
 					}

@@ -1,6 +1,7 @@
 import useSWR, { SWRConfiguration, SWRResponse } from 'swr';
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { useEffect } from 'react';
+import { useScroll } from './useScroll';
 
 export type GetRequest = AxiosRequestConfig | null;
 

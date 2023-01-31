@@ -2,7 +2,7 @@ import { useMenuList } from '@/api/hooks/useMenuList';
 import { Logo } from '@/assets/icons';
 import { useDevice } from '@/context/DeviceContext';
 import { AppRoutes } from '@/routes/AppRouter';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../shared/Button';
 import { Icon } from '../shared/Icon/Icon';
@@ -15,17 +15,19 @@ import useRequest from '@/hooks/useRequest';
 import api from '@/api';
 import './Header.scss';
 import { IMenu } from '@/interfaces/shared';
+import { useScrollY } from '@/hooks/useScrollY';
 
 interface Props {
 	type: 'account' | 'default';
 }
 
 export const Header: FC<Props> = ({ type = 'default' }) => {
+	const { scrollY, direction } = useScrollY();
 	const [menuOpen, setMenuOpen] = useState(false);
 	const { isTablet } = useDevice();
 	const { user } = useProfile();
 	const { pageInterfaceText, openLogin } = useCommon();
-	const { data } = useRequest<IMenu[]>({
+	const { data, isLoading } = useRequest<IMenu[]>({
 		method: 'GET',
 		url: api.homePage.getMenuList
 	});
@@ -34,6 +36,14 @@ export const Header: FC<Props> = ({ type = 'default' }) => {
 	const handleClick = () => {
 		setMenuOpen((prev) => !prev);
 	};
+
+	useEffect(() => {
+		if (menuOpen) {
+			document.body.classList.add('noscroll');
+		} else {
+			document.body.classList.remove('noscroll');
+		}
+	}, [menuOpen]);
 
 	const HeaderProfile = () => (
 		<div className='HeaderProfile'>
@@ -52,34 +62,42 @@ export const Header: FC<Props> = ({ type = 'default' }) => {
 				</Button>
 			</Link>
 		) : (
-			<Link to={AppRoutes.ACCOUNT} className='HeaderAuth-link'>
+			<div className='HeaderAuth-link'>
 				<Button color='outline' size='md' icon='account' btnType='iconRight' onClick={openLogin}>
 					{!isTablet && pageInterfaceText?.account_btn}
 				</Button>
-			</Link>
+			</div>
 		);
 
 	return (
-		<header className={`Header Header-${type} page-offset`}>
-			<div className='Header-wrapper'>
-				{type === 'default' && (
-					<div className='Header-menu-icon'>
-						<MenuIcon active={menuOpen} onClick={handleClick} />
-					</div>
-				)}
-				<div className='Header-logo'>
-					<Link to={AppRoutes.HOME}>
-						<Logo type={isTablet ? 'mobile' : 'desktop'} />
-					</Link>
-					{type === 'account' && (
-						<div className={`Header-userId`}>
-							ID:&nbsp;<span>12345</span>
+		<>
+			<div className={`Header-preloader Header-${type}`}></div>
+			<header
+				className={`Header Header-${type} page-offset ${scrollY > 50 ? 'Header-scroll' : ''} ${
+					direction > 0 && scrollY > 768 ? 'Header-hide' : ''
+				} ${isLoading ? 'Header-hide' : ''} ${menuOpen ? 'Header-fixed' : ''}`}>
+				<div className='Header-wrapper'>
+					{type === 'default' && (
+						<div className='Header-menu-icon'>
+							<MenuIcon active={menuOpen} onClick={handleClick} />
 						</div>
 					)}
+					<div className='Header-logo'>
+						<Link to={AppRoutes.HOME}>
+							<Logo type={isTablet ? 'mobile' : 'desktop'} />
+						</Link>
+						{type === 'account' && (
+							<div className={`Header-userId`}>
+								ID:&nbsp;<span>12345</span>
+							</div>
+						)}
+					</div>
+					<HeaderMenu data={data} active={menuOpen} menuHandler={setMenuOpen} />
+					<div className='Header-sign'>
+						{type === 'default' ? <HeaderSign /> : <HeaderProfile />}
+					</div>
 				</div>
-				<HeaderMenu data={data} active={menuOpen} />
-				<div className='Header-sign'>{type === 'default' ? <HeaderSign /> : <HeaderProfile />}</div>
-			</div>
-		</header>
+			</header>
+		</>
 	);
 };

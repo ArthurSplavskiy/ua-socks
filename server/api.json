@@ -52,7 +52,14 @@
 		"rent_term_text": "Термін оренди",
 		"operators_text": "Оператори",
 		"geo_text": "Геолокація",
-		"profile_acc_text": "Особистий кабінет"
+		"profile_acc_text": "Особистий кабінет",
+		"account_link_1": "Мої проксі",
+		"account_link_2": "Придбати проксі",
+		"account_link_3": "Налаштування",
+		"account_link_4": "Підтримка",
+		"cookies_agreement_text": "З метою поліпшення взаємодії відвідувачів з сайтом та надання їм послуг, я надаю згоду на обробку своїх персональних даних та підтверджую, що ознайомлений (а) з Політикою конфіденційності цього сайту. Політика конфіденційності",
+		"yes": "Так",
+		"no": "Ні"
 	},
 	"users": [
 		{
@@ -64,6 +71,11 @@
 			"email": "arthur2000701@gmail.com",
 			"password": "$2a$10$7nEpUd8qW.7Cte2U.BPPKObe.IAsdTK6ydx/InfbZVFc16RopFNtK",
 			"id": 2
+		},
+		{
+			"email": "arthur2000702@gmail.com",
+			"password": "$2a$10$l1XvvU1uZPcmp4fr9vZAtujR8B56Go0uQazRh1u.mwbftkHhuyOzW",
+			"id": 3
 		}
 	],
 	"profile": {
@@ -88,7 +100,7 @@
 		"title": "Приватні мобільні проксі",
 		"subtitle": "Наша компанія гарантує якісне обслугоування, безперебійне виконання послуг та цілодобову підтримку користувачів, щоб відповісти на будь-яке питання",
 		"title_gradient": "Україна 3G/4G",
-		"img": "src/assets/images/hero-screenshot.svg"
+		"img": "src/assets/images/hero-screenshot.png"
 	},
 	"home_advantages": {
 		"title": "Переваги",
@@ -765,24 +777,24 @@
 			{
 				"id": 1,
 				"name": "Політика конфіденційності",
-				"slug": "privacy_police"
+				"slug": "privacy-policy"
 			},
 			{
 				"id": 2,
 				"name": "Публічна оферта",
-				"slug": "public_offer"
+				"slug": "privacy-policy"
 			},
 			{
 				"id": 2,
 				"name": "Правила використання",
-				"slug": "terms_of_use"
+				"slug": "privacy-policy"
 			}
 		],
 		"footer_menu": [
 			{
 				"id": 1,
 				"name": "Головна",
-				"slug": "index"
+				"slug": ""
 			},
 			{
 				"id": 2,
@@ -792,12 +804,12 @@
 			{
 				"id": 3,
 				"name": "Вартість",
-				"slug": "price"
+				"slug": "tariffs"
 			},
 			{
 				"id": 4,
 				"name": "Переваги",
-				"slug": "advantages"
+				"slug": "advantage"
 			}
 		]
 	}

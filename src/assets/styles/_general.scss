@@ -22,10 +22,10 @@ body,
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-tap-highlight-color: transparent;
 	-moz-tap-highlight-color: transparent;
+	//overflow-x: hidden;
 }
 
 body {
-	background-color: var(--addition-grey);
 	&.noscroll {
 		overflow: hidden;
 	}
@@ -39,6 +39,7 @@ a {
 
 a,
 button {
+	font-family: var(--ukraineFont);
 	cursor: pointer;
 	text-decoration: inherit;
 	color: unset;

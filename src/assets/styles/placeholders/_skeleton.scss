@@ -96,6 +96,15 @@ $color-accent: #651eee;
 			fill: transparent;
 		}
 	}
+	.MenuIcon {
+		&::after,
+		&::before,
+		span {
+			display: none;
+		}
+		@include skeleton;
+		border-radius: 4px;
+	}
 }
 
 .HomeHero-image {

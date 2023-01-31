@@ -46,6 +46,13 @@ export interface IPageTextInterface {
 	operators_text: string;
 	geo_text: string;
 	profile_acc_text: string;
+	account_link_1: string;
+	account_link_2: string;
+	account_link_3: string;
+	account_link_4: string;
+	cookies_agreement_text: string;
+	yes: string;
+	no: string;
 }
 
 export interface IHomeHero extends ISectionHead {

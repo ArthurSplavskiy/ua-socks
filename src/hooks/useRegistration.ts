@@ -40,6 +40,8 @@ export const useRegistration = () => {
 			const { msg } = getApiError(error, formData);
 			setError({ type: 'error', text: msg || 'Error !' });
 			openError();
+		} finally {
+			setIsLoading(false);
 		}
 	};
 

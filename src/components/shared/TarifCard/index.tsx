@@ -103,9 +103,9 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
 						options={operators?.map((o) => ({ value: o, label: o }))}
 					/>
 				</div>
-				<div className='TarifCard-btn'>
+				{/* <div className='TarifCard-btn'>
 					<Button color={color}>{pageInterfaceText?.buy_btn}</Button>
-				</div>
+				</div> */}
 				<div className='TarifCard-wave' />
 			</div>
 		</div>

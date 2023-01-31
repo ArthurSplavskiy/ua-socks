@@ -20,7 +20,7 @@ export const HomeHero = () => {
 			<Button className={styles.buyBtn}>{pageInterfaceText?.buyProxy_btn}</Button>
 			<div className={`HomeHero-image`}>
 				<img
-					className={styles.img}
+					className={`${styles.img} ${isLoading ? '' : styles.imgLoaded}`}
 					src={'/images/hero-screenshot.svg'}
 					//src={data?.img}
 					alt={data?.title + ' ' + data?.title_gradient}

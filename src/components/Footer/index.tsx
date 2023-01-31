@@ -18,6 +18,11 @@ export const Footer: FC = () => {
 	});
 	const { pageInterfaceText, openLogin } = useCommon();
 	const { isMobile } = useDevice();
+
+	const handleClick = (hash: string) => {
+		location.hash = '#' + hash;
+	};
+
 	return (
 		<footer className='Footer'>
 			<div className='Footer-wrapper'>
@@ -27,8 +32,8 @@ export const Footer: FC = () => {
 						<nav className='Footer-menu-nav'>
 							<ul>
 								{data?.footer_menu.map((item) => (
-									<li key={item.id}>
-										<Link to={item.slug}>{item.name}</Link>
+									<li key={item.id} onClick={() => handleClick(item.slug)}>
+										{item.name}
 									</li>
 								))}
 							</ul>
@@ -49,7 +54,7 @@ export const Footer: FC = () => {
 						<ul>
 							{data?.footer_privacy_links.map((item, idx) => (
 								<li key={item.id + idx}>
-									<Link to={item.slug}>{item.name}</Link>
+									<Link to={'/' + item.slug}>{item.name}</Link>
 								</li>
 							))}
 						</ul>

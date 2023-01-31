@@ -13,6 +13,9 @@
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 		}
+		@media screen and (max-width: 370px) {
+			grid-template-columns: 1fr;
+		}
 	}
 	.Tab {
 		padding: 40px 88px;
@@ -26,7 +29,7 @@
 			padding: 24px 16px;
 			gap: 32px;
 		}
-		@media screen and (max-width: 1024px) {
+		@media screen and (max-width: 1080px) {
 			grid-template-columns: 1fr;
 		}
 		&.active {
@@ -34,12 +37,15 @@
 		}
 		&-stats {
 			display: grid;
-			grid-template-columns: repeat(3, 1fr);
+			grid-template-columns: 152px 178px 178px;
 			gap: 72px;
 			margin-bottom: 56px;
 			@media screen and (max-width: 1330px) {
-				column-gap: 10px;
+				column-gap: 20px;
 				row-gap: 24px;
+			}
+			@media screen and (max-width: 1080px) {
+				grid-template-columns: repeat(3, 1fr);
 			}
 			@media screen and (max-width: 1256px) {
 				margin-bottom: 24px;

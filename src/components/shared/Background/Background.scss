@@ -1,6 +1,8 @@
 .Background {
 	position: fixed;
-	inset: 0 0 0 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	width: 100vw;
 	height: 100vh;
 	pointer-events: none;
@@ -91,6 +93,12 @@
 				opacity: 0.2;
 			}
 		}
+	}
+	&.bgGrey {
+		background: var(--addition-grey);
+	}
+	&.bgWhite {
+		background: var(--white);
 	}
 
 	div {
@@ -294,14 +302,6 @@
 		}
 	}
 
-	.bgGrey {
-		background: var(--addition-grey);
-	}
-
-	.bgWhite {
-		background: var(--white);
-	}
-
 	.circle {
 		border-radius: 100%;
 	}
@@ -328,6 +328,79 @@
 
 	.systemRed {
 		background: var(--system-red);
+	}
+}
+
+.Bg-CookieBanner {
+	position: absolute;
+	inset: 0 0 0 0;
+	pointer-events: none;
+	z-index: 1;
+	span {
+		background: var(--primary);
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		&:nth-child(1) {
+			bottom: 1%;
+			left: 1%;
+			animation: animate 12s linear infinite;
+		}
+		&:nth-child(2) {
+			bottom: 2%;
+			left: 6%;
+			border-radius: 100%;
+			background: var(--elements-red-60);
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(3) {
+			bottom: 10%;
+			left: 14%;
+			background: var(--system-aqua);
+			animation: animate 11s linear infinite;
+		}
+		&:nth-child(4) {
+			bottom: 5%;
+			left: 20%;
+			border-radius: 100%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(5) {
+			bottom: 10%;
+			left: 34%;
+			animation: animate 12s linear infinite;
+			background: var(--elements-green-80);
+		}
+		&:nth-child(6) {
+			bottom: 8%;
+			left: 40%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(7) {
+			bottom: -1%;
+			left: 50%;
+			border-radius: 100%;
+			animation: animate 10s linear infinite;
+			background: var(--system-red);
+		}
+		&:nth-child(8) {
+			bottom: 17%;
+			left: 70%;
+			border-radius: 100%;
+			animation: animate 5s linear infinite;
+			background: var(--system-aqua);
+		}
+		&:nth-child(9) {
+			bottom: -1%;
+			left: 74%;
+			animation: animate 8s linear infinite;
+		}
+		&:nth-child(10) {
+			bottom: 17%;
+			left: 90%;
+			border-radius: 100%;
+			animation: animate 4s linear infinite;
+		}
 	}
 }
 

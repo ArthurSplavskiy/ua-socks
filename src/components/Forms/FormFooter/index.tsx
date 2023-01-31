@@ -17,8 +17,8 @@ export const FormFooter: FC<Props> = ({ linkCallback, leftText, rightText }) => 
 			</div>
 			<div className='FormFooter-policy'>
 				Натиснавши на кнопку, ви даєте згоду на обробку персональних даних та погоджуєтеся з
-				<Link to='/'>політикою конфіденційності</Link> та{' '}
-				<Link to='/'>угодою публічної оферти</Link>
+				<Link to='/privacy-policy'> політикою конфіденційності</Link> та
+				<Link to='/'> угодою публічної оферти</Link>
 			</div>
 		</div>
 	);

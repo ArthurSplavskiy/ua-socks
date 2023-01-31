@@ -5,6 +5,7 @@ import useRequest from '@/hooks/useRequest';
 import { Button } from '@/components/shared/Button';
 import { SectionHead } from '@/components/shared/SectionHead';
 import './HomeQuestion.scss';
+import { useInView } from 'react-intersection-observer';
 
 export const HomeQuestion = () => {
 	const { pageInterfaceText } = useCommon();
@@ -12,8 +13,9 @@ export const HomeQuestion = () => {
 		method: 'GET',
 		url: api.homePage.getHeroData
 	});
+
 	return (
-		<section className='HomeQuestion section-offset'>
+		<section id='support' className={`HomeQuestion section-offset`}>
 			<SectionHead title={data?.title} subtitle={data?.subtitle} />
 			<Button icon='telegram' btnType='iconLeft'>
 				{pageInterfaceText?.question_btn}

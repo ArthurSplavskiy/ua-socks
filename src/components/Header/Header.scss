@@ -1,13 +1,41 @@
 @use '../../assets/styles/extends';
 
 .Header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	height: 76px;
+	max-width: 100vw;
+	z-index: 4;
+	transition: var(--transition);
 	@media screen and (max-width: 600px) {
 		height: 56px;
 		.Header-logo,
 		.Header-sign {
 			position: relative;
 			z-index: 4;
+		}
+	}
+	&-scroll {
+		z-index: 4;
+		background: var(--white);
+		box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
+		will-change: transform;
+	}
+	&-hide {
+		transform: translateY(-100%);
+	}
+	&-preloader {
+		background: var(--addition-grey);
+		height: 76px;
+		@media screen and (max-width: 600px) {
+			height: 56px;
+		}
+	}
+	&-fixed {
+		@media screen and (max-width: 600px) {
+			transform: translate(0) !important;
 		}
 	}
 	&.Header-default {
@@ -17,6 +45,8 @@
 		}
 	}
 	&.Header-account {
+		position: absolute;
+		background: var(--white);
 		.Header-logo {
 			@media screen and (max-width: 1200px) {
 				flex-direction: column;

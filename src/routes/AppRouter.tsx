@@ -3,27 +3,17 @@ import PageLayout from '@/layouts/PageLayout';
 import ErrorPage from '@/pages/ErrorPage';
 import HomePage from '@/pages/HomePage';
 import AccountLayout, { accountLayoutLoader } from '@/layouts/AccountLayout';
-import { useProfile } from '@/context/UserContext';
+import { AccountDashboard } from '@/pages/AccountPage/AccountDashboard';
+import { AccountBuy } from '@/pages/AccountPage/AccountBuy';
+import { AccountSettings } from '@/pages/AccountPage/AccountSettings';
+import { AccountSupport } from '@/pages/AccountPage/AccountSupport';
+import PrivacyPage from '@/pages/PrivacyPage';
 
 export enum AppRoutes {
 	HOME = '/',
-	ACCOUNT = '/account'
+	ACCOUNT = '/account',
+	PRIVACY_POLICY = '/privacy-policy'
 }
-
-const getUser = async () => {
-	return new Promise((resolve) => setTimeout(resolve, 5000));
-};
-
-const loader = async () => {
-	const user = await getUser();
-	if (!user) {
-		return redirect('/');
-	}
-};
-
-const Account: React.FC = () => {
-	return <>Account</>;
-};
 
 const AppRouter = createBrowserRouter([
 	{
@@ -44,8 +34,31 @@ const AppRouter = createBrowserRouter([
 		loader: accountLayoutLoader,
 		children: [
 			{
-				path: '/account',
-				element: <Account />
+				path: '/account/dashboard',
+				element: <AccountDashboard />
+			},
+			{
+				path: '/account/buy',
+				element: <AccountBuy />
+			},
+			{
+				path: '/account/settings',
+				element: <AccountSettings />
+			},
+			{
+				path: '/account/support',
+				element: <AccountSupport />
+			}
+		]
+	},
+	{
+		path: '/privacy-policy',
+		element: <PageLayout />,
+		errorElement: <ErrorPage />,
+		children: [
+			{
+				path: '/privacy-policy',
+				element: <PrivacyPage />
 			}
 		]
 	}

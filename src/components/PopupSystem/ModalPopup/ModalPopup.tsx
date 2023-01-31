@@ -59,7 +59,7 @@ export const ModalPopup: FC<iModalPopUpProps> = ({
 					onClick={handleClose}
 					data-testid='ModalPopUp-wrapper'
 				/>
-				{/* {withBackdrop && (
+				{withBackdrop && (
 					<div
 						className='ModalPopUp-backdrop backdrop'
 						role='dialog'
@@ -67,7 +67,7 @@ export const ModalPopup: FC<iModalPopUpProps> = ({
 						onClick={handleClose}
 						data-testid='ModalPopUp-wrapper'
 					/>
-				)} */}
+				)}
 
 				<div className={`ModalPopUp-container container ${size} ${type} ${containerClass}`}>
 					{showCloseButton && (

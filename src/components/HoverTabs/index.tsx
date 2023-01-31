@@ -1,5 +1,7 @@
+import { useDevice } from '@/context/DeviceContext';
 import { IAdvantages } from '@/interfaces/shared';
 import React, { FC, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { HoverImage } from './HoverImage';
 import { HoverItem } from './HoverItem';
 import './HoverTabs.scss';
@@ -10,6 +12,10 @@ interface Props {
 
 export const HoverTabs: FC<Props> = ({ data }) => {
 	const [activeIndex, setActiveIndex] = useState(1);
+	const { isMobile } = useDevice();
+	const { ref, inView } = useInView({
+		threshold: 0.5
+	});
 
 	const mouseOverHandler = (e: React.MouseEvent) => {
 		const itemIndex = e.currentTarget as HTMLDivElement;
@@ -19,21 +25,22 @@ export const HoverTabs: FC<Props> = ({ data }) => {
 	const mouseLeaveHandler = () => {};
 
 	return (
-		<div className='HoverTabs'>
-			<div className='HoverTabs-items'>
-				{data.map((item) => (
+		<div ref={ref} className='HoverTabs'>
+			<div className={`HoverTabs-items ${inView && !isMobile ? 'in-view' : ''}`}>
+				{data.map((item, idx) => (
 					<HoverItem
 						key={item.id}
 						data-id={item.id}
 						activeId={activeIndex}
 						title={item.title}
 						text={item.text}
+						mobileImage={`/images/advantages/0${idx + 1}.svg`}
 						onMouseOver={mouseOverHandler}
 						onMouseLeave={mouseLeaveHandler}
 					/>
 				))}
 			</div>
-			<div className='HoverTabs-images'>
+			<div className={`HoverTabs-images ${inView && !isMobile ? 'in-view' : ''}`}>
 				{data.map((item, idx) => (
 					<HoverImage
 						key={item.img}

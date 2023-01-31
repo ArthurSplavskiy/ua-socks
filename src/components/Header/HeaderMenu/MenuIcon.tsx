@@ -8,7 +8,7 @@ interface IMenuIconProps
 
 export const MenuIcon: FC<IMenuIconProps> = ({ active, ...props }) => {
 	return (
-		<div className={`${styles.menuIcon} ${active ? styles.active : ''}`} {...props}>
+		<div className={`MenuIcon ${styles.menuIcon} ${active ? styles.active : ''}`} {...props}>
 			<span></span>
 		</div>
 	);
