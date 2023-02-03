@@ -41,8 +41,8 @@ export const CookieBanner: FC<Props> = ({ bg }) => {
 					</Button>
 					<Button onClick={() => handleClick(true)}>{pageInterfaceText?.yes}</Button>
 				</div>
+				{bg}
 			</div>
-			{bg}
 		</div>
 	);
 };

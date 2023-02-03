@@ -8,8 +8,9 @@ import { IncreateCopyright } from './IncreateCopyright';
 import api from '@/api';
 import { Link } from 'react-router-dom';
 import { useCommon } from '@/context/CommonContext';
-import './Footer.scss';
 import { useDevice } from '@/context/DeviceContext';
+import { scrollToBlock } from '@/helpers/scrollToBlock';
+import './Footer.scss';
 
 export const Footer: FC = () => {
 	const { data } = useRequest<IFooterLinks>({
@@ -18,10 +19,6 @@ export const Footer: FC = () => {
 	});
 	const { pageInterfaceText, openLogin } = useCommon();
 	const { isMobile } = useDevice();
-
-	const handleClick = (hash: string) => {
-		location.hash = '#' + hash;
-	};
 
 	return (
 		<footer className='Footer'>
@@ -32,8 +29,10 @@ export const Footer: FC = () => {
 						<nav className='Footer-menu-nav'>
 							<ul>
 								{data?.footer_menu.map((item) => (
-									<li key={item.id} onClick={() => handleClick(item.slug)}>
-										{item.name}
+									<li key={item.id}>
+										<Link to={`/#${item.slug}`} onClick={() => scrollToBlock(item.slug)}>
+											{item.name}
+										</Link>
 									</li>
 								))}
 							</ul>

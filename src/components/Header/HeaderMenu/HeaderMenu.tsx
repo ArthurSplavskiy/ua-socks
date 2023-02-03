@@ -1,6 +1,7 @@
 import { Background } from '@/components/shared/Background';
 import { Button } from '@/components/shared/Button';
 import { useCommon } from '@/context/CommonContext';
+import { scrollToBlock } from '@/helpers/scrollToBlock';
 import { useScrollY } from '@/hooks/useScrollY';
 import { IMenu } from '@/interfaces/shared';
 import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
@@ -15,13 +16,9 @@ interface Props extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDi
 
 export const HeaderMenu: FC<Props> = ({ data, active, menuHandler, ...props }) => {
 	const { pageInterfaceText } = useCommon();
-	const { setScrollY } = useScrollY();
 
 	const handleClick = (hash: string) => {
-		setTimeout(() => {
-			document.querySelector('#' + hash)?.scrollIntoView({ block: 'start', behavior: 'smooth' });
-			document.querySelector('.Header')?.classList.add('Header-scroll');
-		}, 100);
+		scrollToBlock(hash);
 		menuHandler(false);
 	};
 

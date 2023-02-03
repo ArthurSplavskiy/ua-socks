@@ -10,12 +10,21 @@ export const useScrollY = (): {
 
 	const [scrollY, setScrollY] = useState<number>(0);
 	const [direction, setDirection] = useState<number>(0);
+	let lastScrollTop = 0;
 
 	const handleScroll = (e: any): void => {
 		clearTimeout(timerRef.current);
 		const currentScroll = isBrowser ? window.scrollY : 0;
 		setScrollY(currentScroll);
-		setDirection(e.deltaY);
+
+		let st = window.pageYOffset || document.documentElement.scrollTop;
+		if (st > lastScrollTop) {
+			setDirection(1);
+		} else if (st < lastScrollTop) {
+			setDirection(-1);
+		}
+		lastScrollTop = st <= 0 ? 0 : st;
+
 		timerRef.current = setTimeout(() => {
 			setDirection(-1);
 		}, 500);
@@ -23,7 +32,7 @@ export const useScrollY = (): {
 
 	useEffect(() => {
 		setScrollY(window.scrollY);
-		window.addEventListener('wheel', handleScroll, { passive: true });
+		window.addEventListener('scroll', handleScroll, { passive: true });
 
 		setTimeout(() => {
 			if (window.pageYOffset > 0) {
@@ -31,7 +40,7 @@ export const useScrollY = (): {
 			}
 		}, 1000);
 
-		return () => window.removeEventListener('wheel', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
 	return { scrollY, direction, setScrollY };

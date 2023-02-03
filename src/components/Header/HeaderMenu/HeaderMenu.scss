@@ -69,7 +69,7 @@
 	&-footer {
 		position: relative;
 		z-index: 4;
-		margin-top: auto;
+		margin-top: 32px;
 		@media screen and (min-width: 600px) {
 			display: none;
 		}

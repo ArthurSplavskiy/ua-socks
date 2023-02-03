@@ -26,6 +26,7 @@
 	transition: var(--transition);
 
 	& > * {
+		position: relative;
 		z-index: 2;
 	}
 

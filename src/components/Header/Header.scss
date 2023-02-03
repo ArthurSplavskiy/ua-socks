@@ -8,7 +8,7 @@
 	height: 76px;
 	max-width: 100vw;
 	z-index: 4;
-	transition: var(--transition);
+	transition: all 0.2s ease-out;
 	@media screen and (max-width: 600px) {
 		height: 56px;
 		.Header-logo,

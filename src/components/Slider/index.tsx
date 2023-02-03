@@ -52,7 +52,7 @@ export const Slider: FC<Props> = ({ slides }) => {
 				onSlideChange={(swiper) => changeSlide(swiper)}
 				effect='fade'
 				speed={0}
-				autoHeight={true}
+				autoHeight={false}
 				simulateTouch={false}
 				autoplay={{ delay: slidesDelay, disableOnInteraction: false }}
 				pagination={{ clickable: false }}>
