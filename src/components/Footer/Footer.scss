@@ -136,6 +136,10 @@
 			width: 16px;
 			height: 16px;
 			margin-right: 8px;
+			i {
+				font-size: 10px;
+				margin-right: 1px;
+			}
 		}
 		transition: var(--transition);
 		&:hover {

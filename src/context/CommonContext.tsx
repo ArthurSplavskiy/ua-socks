@@ -23,6 +23,7 @@ type State = {
 	closeError: () => void;
 	closeThank: () => void;
 	popupHide: () => void;
+	setNoScroll: (lock: boolean) => void;
 };
 type CommonProviderProps = { children: React.ReactNode };
 
@@ -44,12 +45,14 @@ const CommonContext = createContext<State>({
 	closeLogin: () => {},
 	closeError: () => {},
 	closeThank: () => {},
-	popupHide: () => {}
+	popupHide: () => {},
+	setNoScroll: (lock: boolean) => {}
 });
 
 function CommonProvider({ children }: CommonProviderProps) {
 	const [pageInterfaceText, setPageInterfaceText] = useState<IPageTextInterface | null>(null);
 	const [pageError, setPageError] = useState<IEventError | null>(null);
+	const [noScroll, setNoScroll] = useState(false);
 
 	const [isRegistrationPopupOpen, setIsRegistrationPopupOpen] = useState(false);
 	const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
@@ -109,6 +112,14 @@ function CommonProvider({ children }: CommonProviderProps) {
 		}
 	}, [data]);
 
+	useEffect(() => {
+		if (noScroll) {
+			document.body.classList.add('noscroll');
+		} else {
+			document.body.classList.remove('noscroll');
+		}
+	}, [noScroll]);
+
 	// const loadPageInterfaceText = useCallback(async () => {
 	// 	try {
 	// 		document.body.classList.add('interface-text-loading');
@@ -146,7 +157,8 @@ function CommonProvider({ children }: CommonProviderProps) {
 			isPopupHide,
 			error: pageError,
 			setError,
-			clearError
+			clearError,
+			setNoScroll
 		}),
 		[
 			pageInterfaceText,
@@ -166,7 +178,8 @@ function CommonProvider({ children }: CommonProviderProps) {
 			popupHide,
 			pageError,
 			setError,
-			clearError
+			clearError,
+			setNoScroll
 		]
 	);
 

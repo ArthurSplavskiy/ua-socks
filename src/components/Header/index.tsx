@@ -56,7 +56,7 @@ export const Header: FC<Props> = ({ type = 'default' }) => {
 
 	const HeaderSign = () =>
 		Cookies.get('auth-token') ? (
-			<Link to={AppRoutes.ACCOUNT} className='HeaderAuth-link'>
+			<Link to={AppRoutes.ACCOUNT_DASHBOARD} className='HeaderAuth-link'>
 				<Button color='outline' size='md' icon='account' btnType='iconRight'>
 					{!isTablet && pageInterfaceText?.account_btn}
 				</Button>

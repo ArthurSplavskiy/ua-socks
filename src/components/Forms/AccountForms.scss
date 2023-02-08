@@ -1,0 +1,65 @@
+.AccountPopup {
+	position: relative;
+	z-index: 2;
+	&-title {
+		font-size: var(--fSize20);
+		font-weight: 700;
+		font-size: var(--fSize24);
+		line-height: var(--fSize24);
+		margin-bottom: 40px;
+		@media (max-width: 768px) {
+			margin-bottom: 32px;
+			font-size: var(--fSize18);
+			line-height: var(--fSize18);
+			font-weight: 500;
+		}
+	}
+	&-info {
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 24px;
+		margin-bottom: 40px;
+		&-primary {
+			white-space: nowrap;
+			font-weight: 700;
+			color: var(--primary);
+		}
+	}
+}
+
+.BalancePopup {
+	.AccountPopup-title {
+		margin-bottom: 24px;
+		@media screen and (max-width: 768px) {
+			margin-bottom: 32px;
+		}
+	}
+	&-variants {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		margin-top: 8px;
+		margin-bottom: 8px;
+		@media screen and (max-width: 768px) {
+			margin-top: 0;
+		}
+	}
+	&-form {
+		button[type='submit'] {
+			margin: 56px auto 0 auto;
+			@media screen and (max-width: 768px) {
+				margin: 48px auto 0 auto;
+				width: 100%;
+			}
+		}
+		label {
+			color: var(--black-60) !important;
+		}
+	}
+	input {
+		font-family: 'e-Ukraine', serif;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 14px;
+	}
+}

@@ -1,5 +1,3 @@
-import axios from '../axios';
-
 const endpoints = {
 	//getMenuList: () => axios.get('/menu'),
 	getMenuList: import.meta.env.VITE_API_URL + '/menu',

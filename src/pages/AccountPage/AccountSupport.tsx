@@ -1,5 +1,5 @@
 import { FC } from 'react';
 
 export const AccountSupport: FC = () => {
-	return <>Support</>;
+	return <div className='AccountContent'>Support</div>;
 };

@@ -1,73 +1,96 @@
-@import "src/assets/styles/placeholders/label";
+@import 'src/assets/styles/placeholders/label';
 
 .Checkbox {
-  &-input {
-    position: absolute;
-    left: -100%;
-    top: 0;
-    opacity: 0;
-  }
+	&.green {
+		.Checkbox-input:checked ~ .Checkbox-label:after {
+			border-color: var(--system-green);
+		}
+		.Checkbox-input:checked ~ .Checkbox-label:before {
+			border: 1px solid var(--system-green);
+		}
+		.Checkbox-label:before {
+			border: 1px solid var(--black-100);
+		}
+		.Checkbox-label:after {
+			//background: var(--system-green);
+		}
+	}
+	&.purple {
+		.Checkbox-label:before {
+			border: 1px solid var(--system-purple);
+		}
+		.Checkbox-label:after {
+			background: var(--system-purple);
+		}
+	}
 
-  &-input:checked~&-label:after {
-    border-color: var(--black-10);
-  }
+	&-input {
+		position: absolute;
+		left: -100%;
+		top: 0;
+		opacity: 0;
+	}
 
-  &-input:checked~&-label,
-  &-input:checked~&-label:before {
-    background-color: var(--gray-40);
-  }
+	&-input:checked ~ &-label:after {
+		border-color: var(--black-10);
+	}
 
-  &-input:checked~&-label:before {
-    border: none;
-  }
+	&-input:checked ~ &-label,
+	&-input:checked ~ &-label:before {
+		background-color: none;
+	}
 
-  &-input:disabled~&-label {
-    cursor: not-allowed;
-  }
+	&-input:checked ~ &-label:before {
+		//border: none;
+	}
 
-  &-label {
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    align-items: center;
-    font-size: var(--fSize14);
-    padding: 0.65rem 0.85em 0.65em 2.36rem;
-    width: fit-content;
-    border: 1px solid var(--gray-40);
-    border-radius: 0.142rem;
-    --checkboxSize: 16px;
+	&-input:disabled ~ &-label {
+		cursor: not-allowed;
+	}
 
-    &:before,
-    &:after {
-      content: "";
-      display: block;
-    }
+	&-label {
+		cursor: pointer;
+		position: relative;
+		display: flex;
+		align-items: center;
+		font-size: var(--fSize14);
+		padding: 0.65rem 0.85em 0.65em 2.36rem;
+		width: fit-content;
+		border: 1px solid var(--gray-40);
+		border-radius: 0.142rem;
+		--checkboxSize: 12px;
 
-    &:before {
-      width: var(--checkboxSize);
-      height: var(--checkboxSize);
-      background: var(--gray-40);
-      position: absolute;
-      top: 50%;
-      left: 0.86rem;
-      transform: translateY(-50%);
-      border-radius: 0.071rem;
-    }
+		&:before,
+		&:after {
+			content: '';
+			display: block;
+		}
 
-    &:after {
-      position: absolute;
-      left: 1.35rem;
-      top: 50%;
-      width: 8px;
-      height: 5px;
-      transform: rotateZ(-45deg) translateY(-100%);
-      border-width: 0 0 2px 2px;
-      border-style: solid;
-      border-color: transparent;
-    }
-  }
+		&:before {
+			width: var(--checkboxSize);
+			height: var(--checkboxSize);
+			background: var(--gray-40);
+			position: absolute;
+			top: 50%;
+			left: 0.86rem;
+			transform: translateY(-50%);
+			border-radius: 0.071rem;
+		}
 
-  &-title {
-    @extend %label;
-  }
+		&:after {
+			position: absolute;
+			left: 1.35rem;
+			top: 51%;
+			width: 8px;
+			height: 5px;
+			transform: rotateZ(-45deg) translateY(-100%) scale(0.7);
+			border-width: 0 0 2px 2px;
+			border-style: solid;
+			border-color: transparent;
+		}
+	}
+
+	&-title {
+		@extend %label;
+	}
 }

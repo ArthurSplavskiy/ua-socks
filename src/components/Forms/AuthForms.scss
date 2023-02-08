@@ -22,6 +22,9 @@
 		button[type='submit'] {
 			margin-top: 3.5rem;
 			align-self: center;
+			@media screen and (max-width: 768px) {
+				margin-top: 1.5rem;
+			}
 		}
 	}
 	&-forgot-pass {
@@ -31,6 +34,9 @@
 		line-height: 24px;
 		text-decoration: underline;
 		align-self: end;
+		@media screen and (max-width: 768px) {
+			margin-bottom: 1.5rem;
+		}
 	}
 	.above-forgot-pass {
 		margin-bottom: 8px;

@@ -4,23 +4,29 @@
  */
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type State = { isMobile: boolean; isTablet: boolean };
+type State = { isMobile: boolean; isTablet: boolean; is810: boolean };
 type DeviceProviderProps = { children: React.ReactNode };
 
 const DeviceStateContext = createContext<State>({
 	isMobile: false,
-	isTablet: false
+	isTablet: false,
+	is810: false
 });
 
 function DeviceProvider({ children }: DeviceProviderProps) {
 	const [state, setState] = useState({
 		isMobile: !window.matchMedia('(min-width: 768px)').matches,
-		isTablet: !window.matchMedia('(min-width: 1024px)').matches
+		isTablet: !window.matchMedia('(min-width: 1024px)').matches,
+		is810: !window.matchMedia('(min-width: 811px)').matches
 	});
 
 	useEffect(() => {
 		window.matchMedia('(min-width: 768px)').onchange = ({ matches }) => {
 			return setState((prevState) => ({ ...prevState, isMobile: !matches }));
+		};
+
+		window.matchMedia('(min-width: 810px)').onchange = ({ matches }) => {
+			return setState((prevState) => ({ ...prevState, is810: !matches }));
 		};
 
 		window.matchMedia('(min-width: 1024px)').onchange = ({ matches }) => {

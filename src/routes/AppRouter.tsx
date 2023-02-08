@@ -1,6 +1,6 @@
-import { createBrowserRouter, redirect } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import PageLayout from '@/layouts/PageLayout';
-import ErrorPage from '@/pages/ErrorPage';
+import ErrorPage from '@/pages/ErrorsPage';
 import HomePage from '@/pages/HomePage';
 import AccountLayout, { accountLayoutLoader } from '@/layouts/AccountLayout';
 import { AccountDashboard } from '@/pages/AccountPage/AccountDashboard';
@@ -11,7 +11,7 @@ import PrivacyPage from '@/pages/PrivacyPage';
 
 export enum AppRoutes {
 	HOME = '/',
-	ACCOUNT = '/account',
+	ACCOUNT_DASHBOARD = '/account/dashboard',
 	PRIVACY_POLICY = '/privacy-policy'
 }
 
@@ -28,7 +28,6 @@ const AppRouter = createBrowserRouter([
 		]
 	},
 	{
-		path: '/account',
 		element: <AccountLayout />,
 		errorElement: <ErrorPage />,
 		loader: accountLayoutLoader,

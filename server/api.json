@@ -59,23 +59,34 @@
 		"account_link_4": "Підтримка",
 		"cookies_agreement_text": "З метою поліпшення взаємодії відвідувачів з сайтом та надання їм послуг, я надаю згоду на обробку своїх персональних даних та підтверджую, що ознайомлений (а) з Політикою конфіденційності цього сайту. Політика конфіденційності",
 		"yes": "Так",
-		"no": "Ні"
+		"no": "Ні",
+		"acc_title1": "Мої проксі",
+		"acc_group_btn": "Групові дії",
+		"acc_balance": "Баланс",
+		"acc_add": "Поповнити",
+		"acc_proxy": "Проксі",
+		"acc_validity": "Термін дії",
+		"acc_auto_continue": "Автопродовження",
+		"acc_ip_change_link:": "Посилання заміни IP",
+		"acc_continue": "Продовження",
+		"acc_exchange": "Автозаміна IP",
+		"acc_export": "Експорт",
+		"acc_proxy_info": "Поповнюйте баланс для автопродовження проксі",
+		"acc_not_have_proxy": "Нажаль, ви ще не придбали проксі",
+		"acc_days_info": "Після закінчення дії аренди, проксі необхідно буде знову активовувати. Поповнюйте баланс для автопродовження проксі.",
+		"copied": "Скопійовано",
+		"close": "Закрити",
+		"acc_max_add_sum": "Максимальна сума поповнення",
+		"acc_add_sum": "Cума поповнення",
+		"acc_payment_type": "Спосіб оплати",
+		"acc_payment_input_text": "Введіть суму для поповнення",
+		"acc_payment_btn_text": "Поповнити баланс"
 	},
 	"users": [
 		{
-			"email": "vadimsvider@gmail.com",
-			"password": "$2a$10$LRDHEwpfMfWAJskyF1I9i.Z8781/13xY7l6uNrgL0wY6o73.YDm.W",
+			"email": "admin@admin.com",
+			"password": "$2a$10$eufvvtn.wT7LstM05YiuY./zNANOO9g88jISctedfyFJQDFVjTqjW",
 			"id": 1
-		},
-		{
-			"email": "arthur2000701@gmail.com",
-			"password": "$2a$10$7nEpUd8qW.7Cte2U.BPPKObe.IAsdTK6ydx/InfbZVFc16RopFNtK",
-			"id": 2
-		},
-		{
-			"email": "arthur2000702@gmail.com",
-			"password": "$2a$10$l1XvvU1uZPcmp4fr9vZAtujR8B56Go0uQazRh1u.mwbftkHhuyOzW",
-			"id": 3
 		}
 	],
 	"profile": {
@@ -87,15 +98,53 @@
 		"proxy": [
 			{
 				"id": 1,
-				"name": "Vodafone, Ukraine",
+				"country": "Ukraine",
+				"logo": "/images/vodafone.png",
+				"name": "Vodafone",
 				"validity": 5,
 				"socks": "178.151.69.50:7032:user32:Rd6SwYDG ",
 				"http": "178.151.69.50:7032:user32:Rd6SwYDG ",
 				"url_ip_replace": "http://178.151.69.50:80/32_recon nect +ID-836594654-vf.php",
 				"auto_continue": false
+			},
+			{
+				"id": 2,
+				"country": "Ukraine",
+				"logo": "/images/vodafone.png",
+				"name": "Vodafone",
+				"validity": 1,
+				"socks": "178.151.69.50:7032:user32:Rd6SwYDG ",
+				"http": "178.151.69.50:7032:user32:Rd6SwYDG ",
+				"url_ip_replace": "http://178.151.69.50:80/32_recon nect +ID-836594654-vf.php",
+				"auto_continue": true
+			},
+			{
+				"id": 3,
+				"country": "Ukraine",
+				"logo": "/images/vodafone.png",
+				"name": "Vodafone",
+				"validity": 2,
+				"socks": "178.151.69.50:7032:user32:Rd6SwYDG ",
+				"http": "178.151.69.50:7032:user32:Rd6SwYDG ",
+				"url_ip_replace": "http://178.151.69.50:80/32_recon nect +ID-836594654-vf.php",
+				"auto_continue": true
 			}
 		]
 	},
+	"payment_methods": [
+		{
+			"label": "LIQPAY (*за офіційним курсом НБУ)",
+			"value": "http://link"
+		},
+		{
+			"label": "USDT",
+			"value": "http://link"
+		},
+		{
+			"label": "CAPITALIST",
+			"value": "http://link"
+		}
+	],
 	"home_hero": {
 		"title": "Приватні мобільні проксі",
 		"subtitle": "Наша компанія гарантує якісне обслугоування, безперебійне виконання послуг та цілодобову підтримку користувачів, щоб відповісти на будь-яке питання",

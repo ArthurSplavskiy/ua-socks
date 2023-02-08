@@ -2,12 +2,11 @@ import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes } from '@/routes/AppRouter';
 import { TLoginPostData } from '@/interfaces/shared';
-import api from '@/api';
 import { useTextInput } from './useTextInput/useTextInput';
 import { notValidForm, getApiError } from '@/helpers';
 import { useProfile } from '@/context/UserContext';
 import { useCommon } from '@/context/CommonContext';
-import Cookies from 'js-cookie';
+import api from '@/api';
 
 export const useLogin = () => {
 	const navigate = useNavigate();
@@ -31,14 +30,14 @@ export const useLogin = () => {
 				password: formData.password.value || ''
 			};
 			const res = await api.auth.login(data);
-			const resData = JSON.parse(res.config.data);
-			Cookies.set('user_password_email', resData.email);
-			Cookies.set('user_password_test', resData.password);
+			// const resData = JSON.parse(res.config.data);
+			// Cookies.set('user_password_email', resData.email);
+			// Cookies.set('user_password_test', resData.password);
 			setToken(res?.data?.accessToken);
 			getProfileData();
 			setTimeout(() => {
 				setIsLoading(false);
-				navigate(AppRoutes.ACCOUNT);
+				navigate(AppRoutes.ACCOUNT_DASHBOARD);
 				openThank();
 			}, 300);
 		} catch (error) {

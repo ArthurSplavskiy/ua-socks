@@ -6,7 +6,7 @@ import { useDevice } from '@/context/DeviceContext';
 import { useRegistration } from '@/hooks/useRegistration';
 import { Link } from 'react-router-dom';
 import { FormFooter } from '../FormFooter';
-import './AuthForms.scss';
+import '../AuthForms.scss';
 
 export const RegisterForm = () => {
 	const { pageInterfaceText, openLogin } = useCommon();

@@ -50,3 +50,9 @@ export const easeOutElastic = (t: number, b: number, c: number, d: number) => {
 export const uid = function () {
 	return Date.now().toString(36) + Math.random().toString(36).substr(2);
 };
+
+export const formatter = new Intl.NumberFormat('uk', {
+	style: 'unit',
+	unit: 'day',
+	unitDisplay: 'long'
+});

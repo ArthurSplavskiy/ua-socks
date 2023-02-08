@@ -1,5 +1,5 @@
 import { FC } from 'react';
 
 export const AccountBuy: FC = () => {
-	return <>Buy</>;
+	return <div className='AccountContent'>Buy</div>;
 };

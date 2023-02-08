@@ -1,5 +1,5 @@
 import { FC } from 'react';
 
 export const AccountSettings: FC = () => {
-	return <>Settings</>;
+	return <div className='AccountContent'>Settings</div>;
 };

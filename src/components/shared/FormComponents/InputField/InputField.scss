@@ -1,5 +1,6 @@
 @use 'src/assets/styles/placeholders/label';
 @use 'src/assets/styles/placeholders/input';
+@use 'src/assets/styles/mixins' as *;
 
 .InputField {
 	position: relative;
@@ -10,7 +11,9 @@
 		margin-bottom: 1.71rem;
 	}
 
+	margin-bottom: 18px;
 	&.error {
+		margin-bottom: 6px;
 		.label {
 			color: var(--system-error);
 		}
@@ -21,6 +24,10 @@
 
 	&-input {
 		@extend %input;
+		@include placeholder-content {
+			font-family: 'e-Ukraine', sans-serif;
+			color: var(--black-60);
+		}
 	}
 
 	&-error-message {

@@ -1,6 +1,8 @@
 import api from '@/api';
 import { IUserProfile } from '@/interfaces/api';
+import { AppRoutes } from '@/routes/AppRouter';
 import Cookies from 'js-cookie';
+import jwt_decode from 'jwt-decode';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 type State = {
@@ -41,6 +43,7 @@ function UserProvider({ children }: UserProviderProps) {
 	const logOut = useCallback(() => {
 		setToken(null);
 		setUser(null);
+		window.location.href = AppRoutes.HOME;
 	}, []);
 
 	const getProfileData = useCallback(async () => {
@@ -50,9 +53,11 @@ function UserProvider({ children }: UserProviderProps) {
 		try {
 			if (tokenData) {
 				const { data } = await api.auth.getProfile();
+				const { email } = jwt_decode(tokenData) as any;
+				//console.log('tokenData', jwt_decode(tokenData));
 				setUser({
 					...data,
-					email: Cookies.get('user_password_email'),
+					email: email,
 					password: Cookies.get('user_password_test')
 				});
 			}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './InputField.scss';
 
 export interface InterfaceInputField extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -9,6 +9,7 @@ export interface InterfaceInputField extends React.InputHTMLAttributes<HTMLInput
 	refProp?: React.Ref<HTMLInputElement>;
 	typeField?: 'horizontalLabel';
 	suffix?: string;
+	buttonsVariantGroup?: ReactNode;
 }
 
 export const InputField: React.FC<InterfaceInputField> = ({
@@ -19,6 +20,7 @@ export const InputField: React.FC<InterfaceInputField> = ({
 	refProp,
 	typeField = '',
 	suffix = '',
+	buttonsVariantGroup,
 	...props
 }) => {
 	return (
@@ -28,6 +30,8 @@ export const InputField: React.FC<InterfaceInputField> = ({
 					{label}
 				</label>
 			)}
+
+			{buttonsVariantGroup ? buttonsVariantGroup : null}
 
 			{!suffix && <input ref={refProp} {...props} className='InputField-input input' />}
 

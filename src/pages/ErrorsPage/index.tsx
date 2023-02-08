@@ -1,11 +1,13 @@
+import { withErrorLayout } from '@/layouts/ErrorPageLayout';
 import { useRouteError } from 'react-router-dom';
+import { ErrorPage404 } from './404';
 
-export default function ErrorPage() {
+function ErrorPage() {
 	// @ts-ignore
 	const error: { statusText: string; message: string; status: number } = useRouteError();
 
 	if (error.status === 404) {
-		//console.log('djkwej');
+		return <ErrorPage404 />;
 	}
 
 	return (
@@ -18,3 +20,5 @@ export default function ErrorPage() {
 		</div>
 	);
 }
+
+export default withErrorLayout(ErrorPage);

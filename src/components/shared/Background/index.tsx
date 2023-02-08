@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import './Background.scss';
 
 interface Props {
@@ -8,6 +8,22 @@ interface Props {
 }
 
 export const Background: FC<Props> = ({ color, particleColor, particleCount }) => {
+	//const [bgHeight, setBgHeight] = useState(window.innerHeight);
+
+	const resizeHandler = () => {
+		//setBgHeight(window.innerHeight);
+		let vh = window.innerHeight * 0.01;
+		// Then we set the value in the --vh custom property to the root of the document
+		//document.documentElement.style.setProperty('--vh', `${vh}px`);
+	};
+
+	useEffect(() => {
+		let vh = window.innerHeight * 0.01;
+		// Then we set the value in the --vh custom property to the root of the document
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
+		window.addEventListener('resize', resizeHandler);
+		() => window.removeEventListener('resize', resizeHandler);
+	}, []);
 	return (
 		<div
 			className={`Background ${

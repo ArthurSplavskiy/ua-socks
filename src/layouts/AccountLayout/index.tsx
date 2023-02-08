@@ -2,6 +2,7 @@ import { AccountSidebar } from '@/components/Account';
 import { Header } from '@/components/Header';
 import { PrivatePopups } from '@/components/PopupSystem/privatePopups';
 import { Background } from '@/components/shared/Background';
+import { AccountProvider } from '@/context/Account/AccountContextProvider';
 import { AppRoutes } from '@/routes/AppRouter';
 import Cookies from 'js-cookie';
 import { FC } from 'react';
@@ -18,15 +19,17 @@ export async function accountLayoutLoader() {
 
 const AccountLayout: FC = () => {
 	return (
-		<div className='AccountLayout'>
-			<Header type='account' />
-			<div className='AccountLayout-main'>
-				<AccountSidebar />
-				<Outlet />
+		<AccountProvider>
+			<div className='AccountLayout'>
+				<Header type='account' />
+				<div className='AccountLayout-main'>
+					<AccountSidebar />
+					<Outlet />
+				</div>
+				<Background color='white' />
+				<PrivatePopups />
 			</div>
-			<Background color='white' />
-			<PrivatePopups />
-		</div>
+		</AccountProvider>
 	);
 };
 

@@ -1,11 +1,16 @@
 import { Icon } from '@/components/shared/Icon/Icon';
 import { useCommon } from '@/context/CommonContext';
+import { useDevice } from '@/context/DeviceContext';
+import { useProfile } from '@/context/UserContext';
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import './index.scss';
 
 export const AccountSidebar: FC = () => {
 	const { pageInterfaceText } = useCommon();
+	const { isTablet } = useDevice();
+	const { logOut } = useProfile();
+
 	return (
 		<div className={'Sidebar'}>
 			<nav className={'Sidebar-nav'}>
@@ -58,12 +63,24 @@ export const AccountSidebar: FC = () => {
 							<span className={'Sidebar-nav-text'}>{pageInterfaceText?.account_link_4}</span>
 						</NavLink>
 					</li>
+					{isTablet && (
+						<button className={'Sidebar-exit'} onClick={logOut}>
+							<span>
+								<Icon icon='exit' />
+							</span>
+							<span>Вихід</span>
+						</button>
+					)}
 				</ul>
 			</nav>
-			<button className={'Sidebar-exit'}>
-				<Icon icon='exit' />
-				<span>Вихід</span>
-			</button>
+			{!isTablet && (
+				<button className={'Sidebar-exit'} onClick={logOut}>
+					<span>
+						<Icon icon='exit' />
+					</span>
+					<span>Вихід</span>
+				</button>
+			)}
 		</div>
 	);
 };

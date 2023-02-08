@@ -53,6 +53,27 @@ export interface IPageTextInterface {
 	cookies_agreement_text: string;
 	yes: string;
 	no: string;
+	acc_title1: string;
+	acc_group_btn: string;
+	acc_balance: string;
+	acc_add: string;
+	acc_proxy: string;
+	acc_validity: string;
+	acc_auto_continue: string;
+	acc_ip_change_link: string;
+	acc_continue: string;
+	acc_exchange: string;
+	acc_export: string;
+	acc_proxy_info: string;
+	acc_not_have_proxy: string;
+	acc_days_info: string;
+	copied: string;
+	close: string;
+	acc_max_add_sum: string;
+	acc_add_sum: string;
+	acc_payment_type: string;
+	acc_payment_input_text: string;
+	acc_payment_btn_text: string;
 }
 
 export interface IHomeHero extends ISectionHead {

@@ -20,9 +20,15 @@ export type TLoginPostData = {
 	password: string;
 };
 
+export type TBalancePostData = {
+	balance: string;
+};
+
 export interface IProxy {
 	id: number;
 	name: string;
+	logo: string;
+	country: string;
 	validity: number;
 	socks: string;
 	http: string;

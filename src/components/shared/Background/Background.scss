@@ -2,12 +2,17 @@
 	position: fixed;
 	left: 0;
 	right: 0;
-	bottom: 0;
+	top: 0;
+	//bottom: 0;
 	width: 100vw;
-	height: 100vh;
+	//height: 100vh;
 	pointer-events: none;
 	z-index: -1;
 	overflow: hidden;
+	height: calc(var(--vh, 1vh) * 100);
+	@media screen and (max-width: 480px) {
+		height: calc(var(--vh, 1vh) * 120);
+	}
 
 	&.few {
 		div:nth-child(3n + 1) {

@@ -95,7 +95,6 @@
 			color: var(--primary);
 		}
 	}
-
 	&.card.primary {
 		.ReactSelect-select__value-container {
 			&:before {
@@ -221,6 +220,37 @@
 			@media screen and (max-width: 480px) {
 				padding: 8px 18px 8px 8px;
 			}
+		}
+	}
+	&.usual {
+		.ReactSelect-select__value-container {
+			padding: 2px 8px 2px 16px;
+		}
+		.ReactSelect-select__control {
+			height: 50px;
+			border-color: var(--black-20);
+			background: var(--white);
+			&--menu-is-open {
+				border-color: var(--primary-20);
+			}
+		}
+		.ReactSelect-select__menu {
+			border: 1px solid var(--primary-20);
+			border-top: none;
+			background: var(--white);
+		}
+		.ReactSelect-select__option {
+			padding: 2px 8px 2px 18px;
+			&--is-focused {
+				color: var(--primary);
+				background: var(--primary-10);
+			}
+			&:hover {
+				color: var(--primary);
+			}
+		}
+		.ReactSelect-select__indicator:after {
+			color: #68686d;
 		}
 	}
 }

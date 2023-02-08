@@ -1,0 +1,44 @@
+.AccountDashboardContent {
+	&-head {
+		display: grid;
+		grid-template-columns: 1fr 456px;
+		gap: 36px;
+		@media screen and (max-width: 768px) {
+			gap: 0;
+			grid-template-columns: 1fr;
+		}
+	}
+	button {
+		justify-self: baseline;
+	}
+}
+
+.BalanceWidget {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	border-radius: 20px;
+	padding: 32px;
+	gap: 10px;
+	background: var(--addition-grey);
+	@media screen and (max-width: 600px) {
+		padding: 16px;
+		border-radius: 10px;
+	}
+	&-info {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 8px;
+	}
+	&-balance {
+		color: var(--black-60);
+		font-size: 14px;
+		line-height: 100%;
+	}
+	&-total {
+		font-weight: 700;
+		font-size: 32px;
+		line-height: 40px;
+	}
+}

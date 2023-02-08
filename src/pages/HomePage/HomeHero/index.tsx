@@ -17,7 +17,7 @@ export const HomeHero = () => {
 				<span>{data?.title}</span> <br /> <span>{data?.title_gradient}</span>
 			</h1>
 			<p className={`HomeHero-subtitle ${styles.subTitle}`}>{data?.subtitle}</p>
-			<Button className={styles.buyBtn}>{pageInterfaceText?.buyProxy_btn}</Button>
+			{/* <Button className={styles.buyBtn}>{pageInterfaceText?.buyProxy_btn}</Button> */}
 			<div className={`HomeHero-image`}>
 				<img
 					className={`${styles.img} ${isLoading ? '' : styles.imgLoaded}`}
