@@ -2,8 +2,8 @@ import { Icon } from '@/components/shared/Icon/Icon';
 import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
 import { FC, ReactNode, useEffect, useRef, useState } from 'react';
-import './index.scss';
 import { Popover } from './Popover';
+import './index.scss';
 
 interface Props {
 	bodyChildren: ReactNode;
