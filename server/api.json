@@ -34,7 +34,7 @@
 		"register_btn": "Зареєструватися",
 		"register_text1": "Ви вже маєте акаунт?",
 		"register_text2": "Авторизуватися",
-		"form_email": "E-mail",
+		"form_email": "Новий E-mail",
 		"form_password": "Пароль",
 		"form_repeat_password": "Повторити пароль",
 		"registration_title": "Реєстрація",
@@ -80,7 +80,33 @@
 		"acc_add_sum": "Cума поповнення",
 		"acc_payment_type": "Спосіб оплати",
 		"acc_payment_input_text": "Введіть суму для поповнення",
-		"acc_payment_btn_text": "Поповнити баланс"
+		"acc_payment_btn_text": "Поповнити баланс",
+		"back_home": "На головну",
+		"acc_auto_replace_ip": "Увімкнути автозаміну IP",
+		"apply": "Застосувати",
+		"cancel": "Відхилити",
+		"minute": "хв",
+		"acc_export_proxy": "Експорт проксі",
+		"acc_format": "Формат",
+		"acc_export_setting": "Доступні параметри",
+		"acc_export_setting_label": "Оберіть один, або кілька параметрів для експорту проксі",
+		"acc_export_btn": "Експортувати",
+		"acc_continue_proxy": "Продовжити проксі",
+		"acc_access_period": "Термін доступу",
+		"form_error_balance": "Недостатньо коштів на вашому балансі",
+		"acc_continue_btn": "Продовжити",
+		"acc_paid": "До сплати",
+		"forgot_pass_info": "Введіть свій e-mail, ми надішлемо вам посилання для авторизації",
+		"spam_check": "Перевірте папку “спам”",
+		"send": "Надіслати",
+		"support_info": "Зверніться у нашу службу підтримки",
+		"support_feedback": "Ми відповідаємо орієнтовно протягом 5-ти хвилин",
+		"personal_data": "Персональні дані",
+		"personal_mail": "Моя пошта",
+		"old_password": "Старий пароль",
+		"new_password": "Новий пароль",
+		"confirm_password": "Підтвердити пароль",
+		"save": "Зберегти"
 	},
 	"users": [
 		{
@@ -143,6 +169,60 @@
 		{
 			"label": "CAPITALIST",
 			"value": "http://link"
+		}
+	],
+	"export_setting": [
+		{
+			"id": 0,
+			"name": "ip"
+		},
+		{
+			"id": 1,
+			"name": "pass"
+		},
+		{
+			"id": 2,
+			"name": "port"
+		},
+		{
+			"id": 3,
+			"name": "type"
+		},
+		{
+			"id": 4,
+			"name": "login"
+		},
+		{
+			"id": 5,
+			"name": "reboot"
+		}
+	],
+	"export_formats": [
+		{
+			"label": "http\\htps",
+			"value": "http\\htps"
+		},
+		{
+			"label": "socks5",
+			"value": "socks5"
+		}
+	],
+	"access_period": [
+		{
+			"label": 3,
+			"value": 35
+		},
+		{
+			"label": 7,
+			"value": 78
+		},
+		{
+			"label": 30,
+			"value": 99
+		},
+		{
+			"label": 180,
+			"value": 155
 		}
 	],
 	"home_hero": {

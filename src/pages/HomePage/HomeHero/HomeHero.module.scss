@@ -14,7 +14,7 @@
 		opacity 0.75s cubic-bezier(0.38, 0.005, 0.215, 1);
 	opacity: 0;
 	pointer-events: none;
-	transition-delay: 1s;
+	//transition-delay: 1s;
 	span:last-child {
 		display: block;
 		margin-top: 8px;
@@ -26,7 +26,7 @@
 
 		transform: inherit;
 		transition: inherit;
-		transition-delay: 1.2s;
+		//transition-delay: 1.2s;
 		opacity: inherit;
 		pointer-events: inherit;
 		padding-bottom: 3px;
@@ -75,7 +75,7 @@
 	}
 	&.imgLoaded {
 		animation: scaleIn 0.2s ease-out forwards;
-		animation-delay: 1s;
+		//animation-delay: 1s;
 	}
 }
 

@@ -3,12 +3,12 @@ import { InputField } from '@/components/shared/FormComponents/InputField/InputF
 import { PasswordField } from '@/components/shared/FormComponents/PasswordField/PasswordField';
 import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
-import { useLogin } from '@/hooks/useLogin';
+import { useLogin } from '@/components/Forms/LoginForm/useLogin';
 import { Link } from 'react-router-dom';
 import { FormFooter } from '../FormFooter';
 
 export const LoginForm = () => {
-	const { pageInterfaceText, openRegistration } = useCommon();
+	const { pageInterfaceText, openRegistration, openForgotPass } = useCommon();
 	const { isMobile } = useDevice();
 	const { onSubmit, formData, isLoading } = useLogin();
 	return (
@@ -28,7 +28,9 @@ export const LoginForm = () => {
 					autoComplete='new-password'
 					className='above-forgot-pass'
 				/>
-				<div className='AuthPopup-forgot-pass'>{pageInterfaceText?.forgot_password}</div>
+				<div className='AuthPopup-forgot-pass' onClick={openForgotPass}>
+					{pageInterfaceText?.forgot_password}
+				</div>
 
 				{isMobile && (
 					<div className='FormFooter-policy'>

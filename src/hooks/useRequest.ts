@@ -59,9 +59,10 @@ export default function useRequest<Data = unknown, Error = unknown>(
 	// }, 200);
 
 	const removeLoadind = () => {
-		setTimeout(() => {
-			document.body.classList.remove('content-loading');
-		}, 1000);
+		// setTimeout(() => {
+		// 	document.body.classList.remove('content-loading');
+		// }, 1000);
+		document.body.classList.remove('content-loading');
 	};
 
 	useEffect(() => {

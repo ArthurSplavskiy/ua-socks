@@ -9,6 +9,8 @@ export interface InterfaceInputField extends React.InputHTMLAttributes<HTMLInput
 	refProp?: React.Ref<HTMLInputElement>;
 	typeField?: 'horizontalLabel';
 	suffix?: string;
+	prefix?: string;
+	rightPrefix?: string;
 	buttonsVariantGroup?: ReactNode;
 }
 
@@ -20,6 +22,8 @@ export const InputField: React.FC<InterfaceInputField> = ({
 	refProp,
 	typeField = '',
 	suffix = '',
+	prefix = '',
+	rightPrefix = '',
 	buttonsVariantGroup,
 	...props
 }) => {
@@ -33,7 +37,7 @@ export const InputField: React.FC<InterfaceInputField> = ({
 
 			{buttonsVariantGroup ? buttonsVariantGroup : null}
 
-			{!suffix && <input ref={refProp} {...props} className='InputField-input input' />}
+			{!suffix && !prefix && <input ref={refProp} {...props} className='InputField-input input' />}
 
 			{!!suffix && (
 				<div className={`inputWrap`}>
@@ -44,6 +48,21 @@ export const InputField: React.FC<InterfaceInputField> = ({
 					<input ref={refProp} {...props} className='InputField-input input' />
 				</div>
 			)}
+
+			{!!prefix && (
+				<div className={`inputWrap`}>
+					<span className='inputShadow'>
+						{props?.value && prefix + ' '} {props?.value}
+					</span>
+					<input
+						ref={refProp}
+						{...props}
+						className={`InputField-input input ${props?.value ? 'filled' : ''}`}
+					/>
+				</div>
+			)}
+
+			{!!rightPrefix && <span className={`InputField-RightPrefix`}>{rightPrefix}</span>}
 
 			{errors.map((error, i) => (
 				<span key={i} className='InputField-error-message error'>

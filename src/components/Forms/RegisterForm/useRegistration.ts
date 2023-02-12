@@ -1,7 +1,7 @@
-import { useTextInput } from './useTextInput/useTextInput';
+import { useTextInput } from '../../../hooks/useTextInput/useTextInput';
 import { getApiError, notValidForm } from '@/helpers/index';
 import { TRegistrationPostData } from '@/interfaces/shared';
-import { useComparePasswordFields } from './useTextInput/useComparePasswordFields';
+import { useComparePasswordFields } from '../../../hooks/useTextInput/useComparePasswordFields';
 import api from '@/api';
 import { FormEvent, useState } from 'react';
 import { useCommon } from '@/context/CommonContext';

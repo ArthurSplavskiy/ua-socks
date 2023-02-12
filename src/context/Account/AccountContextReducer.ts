@@ -23,6 +23,48 @@ export function AccountReducer(state: State, action: Action) {
 			};
 		}
 
+		case ActionType.OPEN_REPLACE_IP_POPUP: {
+			return {
+				...state,
+				isReplaceIpPopup: true
+			};
+		}
+
+		case ActionType.CLOSE_REPLACE_IP_POPUP: {
+			return {
+				...state,
+				isReplaceIpPopup: false
+			};
+		}
+
+		case ActionType.OPEN_EXPORT_POPUP: {
+			return {
+				...state,
+				isExportPopup: true
+			};
+		}
+
+		case ActionType.CLOSE_EXPORT_POPUP: {
+			return {
+				...state,
+				isExportPopup: false
+			};
+		}
+
+		case ActionType.OPEN_CONTINUE_POPUP: {
+			return {
+				...state,
+				isContinuePopup: true
+			};
+		}
+
+		case ActionType.CLOSE_CONTINUE_POPUP: {
+			return {
+				...state,
+				isContinuePopup: false
+			};
+		}
+
 		default: {
 			throw new Error(`Unhandled action type:`); //${action.type}
 		}

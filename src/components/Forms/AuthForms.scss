@@ -1,8 +1,9 @@
 @import 'src/assets/styles/index';
 
 .AuthPopup {
-	@extend %comingSoon;
+	//@extend %comingSoon;
 	&-title {
+		max-width: 90%;
 		font-size: var(--fSize20);
 		font-weight: 700;
 		font-size: var(--fSize24);
@@ -34,9 +35,28 @@
 		line-height: 24px;
 		text-decoration: underline;
 		align-self: end;
+		cursor: pointer;
+		&:hover {
+			text-decoration: none;
+		}
 		@media screen and (max-width: 768px) {
 			margin-bottom: 1.5rem;
 		}
+	}
+	&-subtitle {
+		color: var(--black-80);
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 24px;
+		margin-bottom: 8px;
+	}
+	&-info {
+		color: var(--primary);
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 24px;
+		display: block;
+		margin-bottom: 32px;
 	}
 	.above-forgot-pass {
 		margin-bottom: 8px;

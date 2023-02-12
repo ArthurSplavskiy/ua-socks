@@ -21,7 +21,6 @@ export const useBalance = () => {
 
 	const onSubmit = async (event: FormEvent) => {
 		event.preventDefault();
-		console.log(formData);
 		if (notValidForm(formData)) return;
 
 		try {

@@ -3,14 +3,20 @@
 }
 
 .ModalPopUp {
-	min-height: 248px;
+	min-height: 194px;
+	&-message {
+		min-height: 248px;
+		.ModalPopUp.content {
+			min-height: 248px;
+		}
+	}
 	&-container {
 		position: relative;
 		width: 100%;
 
 		&.content {
 			max-width: 648px;
-			min-height: 248px;
+			min-height: 194px;
 			background: var(--white);
 			box-shadow: 0px 4px 40px rgba(95, 97, 100, 0.25);
 			border-radius: 20px;

@@ -5,5 +5,9 @@
 	min-height: 100vh;
 	&-main {
 		align-self: flex-end;
+		padding: 0 !important;
+	}
+	Footer {
+		margin: 0;
 	}
 }

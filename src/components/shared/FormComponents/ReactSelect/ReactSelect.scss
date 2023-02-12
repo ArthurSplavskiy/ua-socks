@@ -240,7 +240,8 @@
 			background: var(--white);
 		}
 		.ReactSelect-select__option {
-			padding: 2px 8px 2px 18px;
+			border-top: 1px solid var(--addition-grey);
+			padding: 14px 8px 2px 18px;
 			&--is-focused {
 				color: var(--primary);
 				background: var(--primary-10);

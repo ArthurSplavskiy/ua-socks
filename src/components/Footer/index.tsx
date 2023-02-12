@@ -11,6 +11,8 @@ import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
 import { scrollToBlock } from '@/helpers/scrollToBlock';
 import './Footer.scss';
+import { AppRoutes } from '@/routes/AppRouter';
+import Cookies from 'js-cookie';
 
 export const Footer: FC = () => {
 	const { data } = useRequest<IFooterLinks>({
@@ -37,9 +39,15 @@ export const Footer: FC = () => {
 								))}
 							</ul>
 						</nav>
-						<button className='Footer-acc-btn' onClick={openLogin}>
-							{pageInterfaceText?.profile_acc_text}
-						</button>
+						{Cookies.get('auth-token') ? (
+							<Link to={AppRoutes.ACCOUNT_DASHBOARD} className='Footer-acc-btn'>
+								{pageInterfaceText?.profile_acc_text}
+							</Link>
+						) : (
+							<button className='Footer-acc-btn' onClick={openLogin}>
+								{pageInterfaceText?.profile_acc_text}
+							</button>
+						)}
 					</div>
 				</div>
 				<div className='Footer-bottom'>

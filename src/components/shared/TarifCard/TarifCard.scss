@@ -104,7 +104,16 @@ $mobilePadding: 24px;
 		@media screen and (max-width: 728px) {
 			gap: 16px;
 		}
+		&-head {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 32px;
+			@media screen and (max-width: 728px) {
+				gap: 16px;
+			}
+		}
 	}
+
 	&-mark {
 		position: absolute;
 		top: 0;
@@ -166,6 +175,7 @@ $mobilePadding: 24px;
 		justify-content: center;
 	}
 	&-selects {
+		margin-top: auto;
 		z-index: 3;
 	}
 	&-wave {

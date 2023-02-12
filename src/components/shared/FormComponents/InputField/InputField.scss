@@ -28,6 +28,12 @@
 			font-family: 'e-Ukraine', sans-serif;
 			color: var(--black-60);
 		}
+		&:disabled {
+			font-weight: 600;
+			color: var(--primary-disabled);
+			border: 1px solid var(--primary-disabled);
+			background: transparent;
+		}
 	}
 
 	&-error-message {
@@ -59,25 +65,33 @@
 		}
 	}
 
+	&-RightPrefix {
+	}
+
 	& > .inputWrap {
 		position: relative;
 
 		.inputShadow {
 			position: absolute;
-			top: 0;
+			top: 50%;
 			left: 0;
-			font-size: var(--fSize13);
-			color: var(--black-10);
+			font-size: var(--fSize14);
+			line-height: var(--fSize14);
+			color: var(--black-100);
 			text-transform: capitalize;
+			transform: translateY(-50%);
 			z-index: 0;
-
-			padding: 0.75rem 0.86rem;
+			padding: 0.75rem 1.1rem;
 		}
 
 		.InputField-input {
 			color: transparent !important;
 			background-color: transparent !important;
-			caret-color: var(--black-10);
+			caret-color: var(--black-100);
+			transition-duration: 0s !important;
+			&.filled {
+				padding-left: 30px;
+			}
 		}
 	}
 }

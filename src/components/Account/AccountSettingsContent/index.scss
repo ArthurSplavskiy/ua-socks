@@ -1,0 +1,115 @@
+.AccountSettingsContent {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 24px;
+	padding-bottom: 32px;
+	@media screen and (max-width: 768px) {
+		gap: 16px;
+	}
+	&-col {
+		&:first-child {
+			display: grid;
+			grid-template-columns: 1fr 456px;
+			gap: 24px;
+			@media screen and (max-width: 1280px) {
+				grid-template-columns: 1fr;
+				.AccountSettingsWidget {
+					order: 1;
+				}
+			}
+			@media screen and (max-width: 768px) {
+				gap: 16px;
+			}
+		}
+	}
+}
+
+.AccountSettingsWidget {
+	overflow: hidden;
+	padding: 24px 24px 24px 24px;
+	border-radius: 20px;
+	@media screen and (max-width: 768px) {
+		padding: 20px;
+		border-radius: 10px;
+	}
+	&-head {
+		font-weight: 500;
+		margin-bottom: 16px;
+		font-size: 18px;
+		line-height: 100%;
+		@media screen and (max-width: 768px) {
+			margin-bottom: 20px;
+			font-size: 16px;
+		}
+	}
+	&-form form {
+		display: flex;
+		gap: 24px;
+		@media screen and (max-width: 768px) {
+			gap: 16px;
+		}
+		button[type='submit'] {
+			height: 48px;
+			max-width: 150px;
+			margin-top: 28px;
+			@media screen and (max-width: 1200px) {
+				margin-top: 0;
+			}
+			@media screen and (max-width: 768px) {
+				margin-top: 8px;
+				width: 100%;
+				max-width: 100%;
+			}
+		}
+		.InputField {
+			margin: 0;
+			&-input {
+				background: none;
+			}
+			&-label {
+				@media screen and (max-width: 768px) {
+					font-size: 12px;
+					margin-bottom: 4px;
+				}
+			}
+		}
+		.PasswordField {
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			&-input {
+				background: none;
+			}
+			&-label {
+				@media screen and (max-width: 768px) {
+					font-size: 12px;
+					margin-bottom: 4px;
+				}
+			}
+		}
+	}
+	.PasswordWidget-form {
+		@media screen and (max-width: 1200px) {
+			flex-direction: column;
+		}
+	}
+	.EmailWidget-form {
+		@media screen and (max-width: 768px) {
+			flex-direction: column;
+		}
+	}
+	.TelegramWidget-form {
+		@media screen and (max-width: 768px) {
+			flex-direction: column;
+		}
+	}
+	&.blue {
+		background: var(--addition-blue);
+	}
+	&.pink {
+		background: var(--addition-pink);
+	}
+	&.green {
+		background: #eaf9f8;
+	}
+}

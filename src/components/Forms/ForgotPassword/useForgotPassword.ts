@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppRoutes } from '@/routes/AppRouter';
 import { TLoginPostData } from '@/interfaces/shared';
-import { useTextInput } from './useTextInput/useTextInput';
+import { useTextInput } from '../../../hooks/useTextInput/useTextInput';
 import { notValidForm, getApiError } from '@/helpers';
 import { useProfile } from '@/context/UserContext';
 import { useCommon } from '@/context/CommonContext';

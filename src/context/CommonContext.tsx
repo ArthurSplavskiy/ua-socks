@@ -13,15 +13,18 @@ type State = {
 	isLoginPopupOpen: boolean;
 	isErrorPopupOpen: boolean;
 	isThankPopupOpen: boolean;
+	isForgotPassPopupOpen: boolean;
 	isPopupHide: boolean;
 	openRegistration: () => void;
 	openLogin: () => void;
 	openThank: () => void;
+	openForgotPass: () => void;
 	openError: () => void;
 	closeRegistration: () => void;
 	closeLogin: () => void;
 	closeError: () => void;
 	closeThank: () => void;
+	closeForgotPass: () => void;
 	popupHide: () => void;
 	setNoScroll: (lock: boolean) => void;
 };
@@ -36,15 +39,18 @@ const CommonContext = createContext<State>({
 	isLoginPopupOpen: false,
 	isErrorPopupOpen: false,
 	isThankPopupOpen: false,
+	isForgotPassPopupOpen: false,
 	isPopupHide: false,
 	openRegistration: () => {},
 	openLogin: () => {},
 	openError: () => {},
 	openThank: () => {},
+	openForgotPass: () => {},
 	closeRegistration: () => {},
 	closeLogin: () => {},
 	closeError: () => {},
 	closeThank: () => {},
+	closeForgotPass: () => {},
 	popupHide: () => {},
 	setNoScroll: (lock: boolean) => {}
 });
@@ -58,6 +64,7 @@ function CommonProvider({ children }: CommonProviderProps) {
 	const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
 	const [isErrorPopupOpen, setIsErrorPopupOpen] = useState(false);
 	const [isThankPopupOpen, setIsThankPopupOpen] = useState(false);
+	const [isForgotPassPopupOpen, setIsForgotPassPopupOpen] = useState(false);
 	const [isPopupHide, setIsPopupHide] = useState(false);
 
 	const openRegistration = () => {
@@ -67,6 +74,10 @@ function CommonProvider({ children }: CommonProviderProps) {
 	const openLogin = () => {
 		closeAllPopups();
 		setIsLoginPopupOpen(true);
+	};
+	const openForgotPass = () => {
+		closeAllPopups();
+		setIsForgotPassPopupOpen(true);
 	};
 	const openError = () => {
 		setIsErrorPopupOpen(true);
@@ -82,6 +93,10 @@ function CommonProvider({ children }: CommonProviderProps) {
 		setIsLoginPopupOpen(false);
 		setIsPopupHide(false);
 	};
+	const closeForgotPass = () => {
+		setIsForgotPassPopupOpen(false);
+		setIsPopupHide(false);
+	};
 	const closeError = () => {
 		setIsErrorPopupOpen(false);
 	};
@@ -94,6 +109,7 @@ function CommonProvider({ children }: CommonProviderProps) {
 	function closeAllPopups() {
 		closeRegistration();
 		closeLogin();
+		closeForgotPass();
 	}
 	const setError = (error: IEventError | null) => {
 		setPageError(error);
@@ -145,15 +161,18 @@ function CommonProvider({ children }: CommonProviderProps) {
 			openThank,
 			openLogin,
 			openError,
+			openForgotPass,
 			closeRegistration,
 			closeThank,
 			closeLogin,
 			closeError,
+			closeForgotPass,
 			popupHide,
 			isRegistrationPopupOpen,
 			isThankPopupOpen,
 			isLoginPopupOpen,
 			isErrorPopupOpen,
+			isForgotPassPopupOpen,
 			isPopupHide,
 			error: pageError,
 			setError,
@@ -166,14 +185,17 @@ function CommonProvider({ children }: CommonProviderProps) {
 			openLogin,
 			openError,
 			openThank,
+			openForgotPass,
 			closeRegistration,
 			closeLogin,
 			closeError,
 			closeThank,
+			closeForgotPass,
 			isRegistrationPopupOpen,
 			isThankPopupOpen,
 			isLoginPopupOpen,
 			isErrorPopupOpen,
+			isForgotPassPopupOpen,
 			isPopupHide,
 			popupHide,
 			pageError,

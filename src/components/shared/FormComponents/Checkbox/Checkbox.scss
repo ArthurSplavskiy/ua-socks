@@ -16,11 +16,27 @@
 		}
 	}
 	&.purple {
+		.Checkbox-input:checked ~ .Checkbox-label {
+			color: var(--primary);
+		}
+		.Checkbox-input:checked ~ .Checkbox-label:after {
+			border-color: var(--primary);
+		}
+		.Checkbox-input:checked ~ .Checkbox-label:before {
+			border: 1px solid var(--primary);
+		}
 		.Checkbox-label:before {
-			border: 1px solid var(--system-purple);
+			border: 1px solid var(--primary);
+			left: 0;
 		}
 		.Checkbox-label:after {
 			background: var(--system-purple);
+			left: 0.5rem;
+		}
+		.Checkbox-label {
+			padding-left: 22px;
+			padding-top: 0;
+			padding-bottom: 0;
 		}
 	}
 
@@ -54,6 +70,7 @@
 		display: flex;
 		align-items: center;
 		font-size: var(--fSize14);
+		line-height: 100%;
 		padding: 0.65rem 0.85em 0.65em 2.36rem;
 		width: fit-content;
 		border: 1px solid var(--gray-40);

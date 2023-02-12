@@ -3,7 +3,7 @@ import { InputField } from '@/components/shared/FormComponents/InputField/InputF
 import { PasswordField } from '@/components/shared/FormComponents/PasswordField/PasswordField';
 import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
-import { useRegistration } from '@/hooks/useRegistration';
+import { useRegistration } from '@/components/Forms/RegisterForm/useRegistration';
 import { Link } from 'react-router-dom';
 import { FormFooter } from '../FormFooter';
 import '../AuthForms.scss';

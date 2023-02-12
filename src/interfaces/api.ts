@@ -74,6 +74,32 @@ export interface IPageTextInterface {
 	acc_payment_type: string;
 	acc_payment_input_text: string;
 	acc_payment_btn_text: string;
+	back_home: string;
+	acc_auto_replace_ip: string;
+	apply: string;
+	cancel: string;
+	minute: string;
+	acc_export_proxy: string;
+	acc_format: string;
+	acc_export_setting: string;
+	acc_export_setting_label: string;
+	acc_export_btn: string;
+	acc_continue_proxy: string;
+	acc_access_period: string;
+	form_error_balance: string;
+	acc_continue_btn: string;
+	acc_paid: string;
+	forgot_pass_info: string;
+	spam_check: string;
+	send: string;
+	support_info: string;
+	support_feedback: string;
+	personal_data: string;
+	personal_mail: string;
+	old_password: string;
+	new_password: string;
+	confirm_password: string;
+	save: string;
 }
 
 export interface IHomeHero extends ISectionHead {
@@ -128,4 +154,9 @@ export interface IFooterLinks {
 	footer_telegram: string;
 	footer_privacy_links: IMenu[];
 	footer_menu: IMenu[];
+}
+
+export interface IExportSettings {
+	id: string | number;
+	name: string;
 }

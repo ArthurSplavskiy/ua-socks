@@ -68,12 +68,14 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
 		<div className={`${className} TarifCard ${color} ${animate && 'animate'} delay-${dataId}`}>
 			{mark && <Mark className='TarifCard-mark' color={color || 'primary'} />}
 			<div className='TarifCard-content'>
-				<div className='TarifCard-status'>
-					<span>{status}</span>
-				</div>
-				<div className='TarifCard-price'>
-					<span>$</span>
-					<span>{price}</span>
+				<div className='TarifCard-content-head'>
+					<div className='TarifCard-status'>
+						<span>{status}</span>
+					</div>
+					<div className='TarifCard-price'>
+						<span>$</span>
+						<span>{price}</span>
+					</div>
 				</div>
 				<ul className='TarifCard-stats'>
 					{stats?.map((text, idx) => (

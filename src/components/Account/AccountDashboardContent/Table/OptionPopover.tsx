@@ -1,4 +1,5 @@
 import { Icon } from '@/components/shared/Icon/Icon';
+import { useAccount } from '@/context/Account/AccountContextHooks';
 import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
 import { FC, useEffect } from 'react';
@@ -11,6 +12,9 @@ interface Props {
 export const OptionPopover: FC<Props> = ({ isOpen, setIsOpen }) => {
 	const { pageInterfaceText, setNoScroll } = useCommon();
 	const { is810 } = useDevice();
+	const {
+		state: { openContinuePopup, openReplaceIpPopup, openExportPopup }
+	} = useAccount();
 
 	useEffect(() => {
 		if (isOpen && is810) {
@@ -27,16 +31,29 @@ export const OptionPopover: FC<Props> = ({ isOpen, setIsOpen }) => {
 				onClick={() => setIsOpen?.(false)}>
 				<div
 					className={`ProxyItem-option-popover ${isOpen ? 'active' : ''}`}
-					onClick={(e) => e.stopPropagation()}>
-					<button>
+					//onClick={(e) => e.stopPropagation()}
+				>
+					<button
+						onClick={() => {
+							openContinuePopup();
+							setIsOpen?.(false);
+						}}>
 						<Icon icon='wallet' />
 						{pageInterfaceText?.acc_continue}
 					</button>
-					<button>
+					<button
+						onClick={() => {
+							openReplaceIpPopup();
+							setIsOpen?.(false);
+						}}>
 						<Icon icon='setting' />
 						{pageInterfaceText?.acc_exchange}
 					</button>
-					<button>
+					<button
+						onClick={() => {
+							openExportPopup();
+							setIsOpen?.(false);
+						}}>
 						<Icon icon='document' />
 						{pageInterfaceText?.acc_export}
 					</button>
@@ -52,15 +69,27 @@ export const OptionPopover: FC<Props> = ({ isOpen, setIsOpen }) => {
 	return (
 		<>
 			<div className={`ProxyItem-option-popover ${isOpen ? 'active' : ''}`}>
-				<button>
+				<button
+					onClick={() => {
+						openContinuePopup();
+						setIsOpen?.(false);
+					}}>
 					<Icon icon='wallet' />
 					{pageInterfaceText?.acc_continue}
 				</button>
-				<button>
+				<button
+					onClick={() => {
+						openReplaceIpPopup();
+						setIsOpen?.(false);
+					}}>
 					<Icon icon='setting' />
 					{pageInterfaceText?.acc_exchange}
 				</button>
-				<button>
+				<button
+					onClick={() => {
+						openExportPopup();
+						setIsOpen?.(false);
+					}}>
 					<Icon icon='document' />
 					{pageInterfaceText?.acc_export}
 				</button>

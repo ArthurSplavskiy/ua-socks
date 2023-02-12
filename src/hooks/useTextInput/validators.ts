@@ -68,6 +68,7 @@ export const urlValidation = <T>(value: T) => {
 };
 
 export const numberRangeValidation = <T>(value: T) => {
+	if (value === '') return true;
 	if (typeof value !== 'string') return false;
 	if (Number(value) < 1 || Number(value) > 5000) return false;
 	const str = new RegExp(/^[0-9]*$/gm);

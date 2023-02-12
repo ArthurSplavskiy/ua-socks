@@ -25,6 +25,7 @@ export const Button: FC<IButtonProps> = ({
 	width = '',
 	loading = false,
 	btnLink = false,
+	link,
 	hidePadding = '',
 	children,
 	btnType = '',
@@ -36,7 +37,7 @@ export const Button: FC<IButtonProps> = ({
 	return (
 		<>
 			{btnLink ? (
-				<Link to=''>
+				<Link to={link || ''}>
 					<button
 						className={`Button ${size} ${color} ${loadingClassName} ${width} ${className} ${hidePadding} ${btnType} ${textAlign} ${icon}`}
 						{...props}>

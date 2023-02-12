@@ -2,26 +2,21 @@ import { Button } from '@/components/shared/Button';
 import { InputField } from '@/components/shared/FormComponents/InputField/InputField';
 import { useCommon } from '@/context/CommonContext';
 import { useBalance } from './useBalance';
-import '../AccountForms.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ReactSelect } from '@/components/shared/FormComponents/ReactSelect/ReactSelect';
 import useRequest from '@/hooks/useRequest';
 import { ISelectOption } from '@/interfaces/shared';
 import api from '@/api';
+import '../AccountForms.scss';
 
 export const AddToBalanceForm = () => {
 	const { pageInterfaceText } = useCommon();
 	const { onSubmit, formData, variantPrice } = useBalance();
-	const [value, setValue] = useState(formData.balance.value);
 	const [selectedOption, setSelectedOption] = useState<ISelectOption>();
 	const { data: paymentMethods, isLoading } = useRequest<ISelectOption[]>({
 		method: 'GET',
 		url: api.account.getPaymentMethods
 	});
-
-	// useEffect(() => {
-	// 	setValue(formData.balance.value);
-	// }, [formData.balance.value]);
 
 	const VarriantPrices = () => {
 		return (
@@ -29,10 +24,10 @@ export const AddToBalanceForm = () => {
 				{variantPrice.map((num, idx) => (
 					<Button
 						type='button'
-						color={`${value === num ? 'primary' : 'outline'}`}
+						color={`${formData.balance.value === num ? 'primary' : 'outline'}`}
 						key={idx}
 						size='sm'
-						onClick={() => (formData.balance.value = num)}>
+						onClick={() => formData.balance.setValue(num)}>
 						${num}
 					</Button>
 				))}
@@ -51,6 +46,7 @@ export const AddToBalanceForm = () => {
 				<InputField
 					{...formData.balance.inputProps}
 					type='number'
+					prefix='$'
 					value={formData.balance.value}
 					placeholder={pageInterfaceText?.acc_payment_input_text}
 					label={pageInterfaceText?.acc_payment_input_text}

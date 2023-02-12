@@ -25,7 +25,7 @@ export const CheckBoxGroupe: FC<iCheckBoxGroupeProps> = ({
 	return (
 		<div className={`CheckBoxGroupe ${customClass}`}>
 			{label && <div className='CheckBoxGroupe-label label'>{label}</div>}
-			{/* {checkBoxList?.map(({ name, id }) => {
+			{checkBoxList?.map(({ name, id }) => {
 				const isChecked = initValue?.find((item) => item.toString() === id.toString());
 				return (
 					<Checkbox
@@ -35,10 +35,11 @@ export const CheckBoxGroupe: FC<iCheckBoxGroupeProps> = ({
 						label={name}
 						onChange={onChange}
 						checked={!!isChecked}
+						colorType={'purple'}
 						{...inputProps}
 					/>
 				);
-			})} */}
+			})}
 
 			{errors?.map((error, i) => (
 				<span key={i} className='error'>

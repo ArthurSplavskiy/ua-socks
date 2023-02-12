@@ -1,7 +1,8 @@
 import { Play } from '@/assets/icons';
 import { ModalPopup } from '@/components/PopupSystem/ModalPopup/ModalPopup';
 import { TemplateModalVideo } from '@/components/PopupSystem/TemplateModal/TemplateModalVideo';
-import { FC, useState } from 'react';
+import { Loader } from '@/components/shared/Loader';
+import { FC, useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import './HomeVideo.scss';
 
@@ -9,6 +10,21 @@ export const HomeVideo: FC = () => {
 	const [leftIsOpen, setLeftIsOpen] = useState(false);
 	const [centerIsOpen, setCenterIsOpen] = useState(false);
 	const [rightIsOpen, setRightIsOpen] = useState(false);
+	const [isLoadingLeft, setIsloadingLeft] = useState(true);
+	const [isLoadingCenter, setIsloadingCenter] = useState(true);
+	const [isLoadingRight, setIsloadingRight] = useState(true);
+
+	useEffect(() => {
+		if (!rightIsOpen) {
+			setIsloadingRight(true);
+		}
+		if (!centerIsOpen) {
+			setIsloadingCenter(true);
+		}
+		if (!leftIsOpen) {
+			setIsloadingLeft(true);
+		}
+	}, [leftIsOpen, centerIsOpen, rightIsOpen]);
 
 	return (
 		<div className={`HomeVideo section-offset`}>
@@ -27,7 +43,9 @@ export const HomeVideo: FC = () => {
 							<TemplateModalVideo>
 								<ReactPlayer
 									url={leftIsOpen ? 'https://www.youtube.com/watch?v=lR8wafJfSxg' : ''}
+									onReady={() => setIsloadingLeft(false)}
 								/>
+								{isLoadingLeft && <Loader />}
 							</TemplateModalVideo>
 						</ModalPopup>
 					</div>
@@ -44,7 +62,9 @@ export const HomeVideo: FC = () => {
 							<TemplateModalVideo>
 								<ReactPlayer
 									url={centerIsOpen ? 'https://www.youtube.com/watch?v=lR8wafJfSxg' : ''}
+									onReady={() => setIsloadingCenter(false)}
 								/>
+								{isLoadingCenter && <Loader />}
 							</TemplateModalVideo>
 						</ModalPopup>
 					</div>
@@ -61,7 +81,9 @@ export const HomeVideo: FC = () => {
 							<TemplateModalVideo>
 								<ReactPlayer
 									url={rightIsOpen ? 'https://www.youtube.com/watch?v=lR8wafJfSxg' : ''}
+									onReady={() => setIsloadingRight(false)}
 								/>
+								{isLoadingRight && <Loader />}
 							</TemplateModalVideo>
 						</ModalPopup>
 					</div>

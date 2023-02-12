@@ -45,7 +45,7 @@ export const AccountDashboardContent = () => {
 							<Button color='outline' onClick={() => setOptionOpen(true)}>
 								{pageInterfaceText?.acc_group_btn}
 							</Button>
-							<OptionPopover isOpen={optionOpen} />
+							<OptionPopover isOpen={optionOpen} setIsOpen={setOptionOpen} />
 						</div>
 					)}
 				</div>

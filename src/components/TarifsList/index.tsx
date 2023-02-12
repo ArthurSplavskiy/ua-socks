@@ -8,9 +8,10 @@ import './TarifsList.scss';
 
 interface Props {
 	data?: IProxyTarifList[];
+	type?: 'account';
 }
 
-export const TarifsList: FC<Props> = ({ data }) => {
+export const TarifsList: FC<Props> = ({ data, type }) => {
 	const { pageInterfaceText } = useCommon();
 	const initGeoValue = data?.map((d) => d.geo).map((l) => ({ value: l, label: l }))[0].value;
 	const [selectedOption, setSelectedOption] = useState<ISelectOption>();
@@ -25,7 +26,7 @@ export const TarifsList: FC<Props> = ({ data }) => {
 	}, [initGeoValue]);
 
 	return (
-		<div className='TarifsList'>
+		<div className={`TarifsList ${type === 'account' ? 'TarifsList-account' : ''}`}>
 			<div className='TarifsList-select'>
 				<ReactSelect
 					type='geo'

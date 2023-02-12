@@ -13,6 +13,7 @@ interface iTemplateModalProps {
 	type?: 'video' | 'content';
 	background?: ReactNode;
 	color?: 'yellow' | 'green' | 'red' | 'primary';
+	className?: string;
 }
 
 export const TemplateModal: FC<iTemplateModalProps> = ({
@@ -26,7 +27,8 @@ export const TemplateModal: FC<iTemplateModalProps> = ({
 	type = 'content',
 	background,
 	icon,
-	color
+	color,
+	className
 }) => {
 	const cancelHandler = (e: MouseEvent<HTMLButtonElement>) => {
 		e.stopPropagation();
@@ -34,7 +36,7 @@ export const TemplateModal: FC<iTemplateModalProps> = ({
 	};
 
 	return (
-		<div className={`TemplateModal ${size} ${type} ${color}`}>
+		<div className={`TemplateModal ${size} ${type} ${color} ${className}`}>
 			{title && (
 				<div className={`TemplateModal-header ${!icon && 'without-icon'}`}>
 					{icon}

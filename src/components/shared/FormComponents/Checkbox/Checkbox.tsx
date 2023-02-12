@@ -6,7 +6,7 @@ interface iCheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 	label: string;
 	title?: string;
 	showTitle?: boolean;
-	color?: 'green' | 'purple';
+	colorType?: 'green' | 'purple';
 }
 
 export const Checkbox: FC<iCheckboxProps> = ({
@@ -16,7 +16,7 @@ export const Checkbox: FC<iCheckboxProps> = ({
 	className = '',
 	id = '',
 	showTitle = true,
-	color,
+	colorType,
 	...inputProps
 }) => {
 	const [checked, setChecked] = useState(false);
@@ -32,7 +32,7 @@ export const Checkbox: FC<iCheckboxProps> = ({
 	};
 
 	return (
-		<div className={`Checkbox ${className} ${color ? color : ''}`}>
+		<div className={`Checkbox ${className} ${colorType ? colorType : ''}`}>
 			<input
 				type='checkbox'
 				id={identification}
