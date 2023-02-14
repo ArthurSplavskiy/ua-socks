@@ -1,945 +1,993 @@
 {
-	"menu": [
-		{
-			"id": 1,
-			"name": "Переваги",
-			"slug": "advantage"
-		},
-		{
-			"id": 2,
-			"name": "Тарифи",
-			"slug": "tariffs"
-		},
-		{
-			"id": 3,
-			"name": "Підтримка",
-			"slug": "support"
-		},
-		{
-			"id": 4,
-			"name": "Технології",
-			"slug": "tech"
-		},
-		{
-			"id": 5,
-			"name": "FAQ",
-			"slug": "faq"
-		}
-	],
-	"interface": {
-		"account_btn": "Мій кабінет",
-		"buyProxy_btn": "Придбати проксі",
-		"buy_btn": "Придбати",
-		"question_btn": "Поставити запитання",
-		"register_btn": "Зареєструватися",
-		"register_text1": "Ви вже маєте акаунт?",
-		"register_text2": "Авторизуватися",
-		"form_email": "Новий E-mail",
-		"form_password": "Пароль",
-		"form_repeat_password": "Повторити пароль",
-		"registration_title": "Реєстрація",
-		"login_title": "Авторизація",
-		"forgot_password": "Забули пароль?",
-		"no_have_acc": "Немає акаунту?",
-		"registration_link": "Зареєструватися",
-		"login_btn": "Увійти",
-		"error_title": "Помилка",
-		"thank_text": "Вітаємо!",
-		"thank_message": "Ви успішно авторизувались",
-		"ping": "Пінг",
-		"download": "Завантаження",
-		"upload": "Вивантаження",
-		"rent_term_text": "Термін оренди",
-		"operators_text": "Оператори",
-		"geo_text": "Геолокація",
-		"profile_acc_text": "Особистий кабінет",
-		"account_link_1": "Мої проксі",
-		"account_link_2": "Придбати проксі",
-		"account_link_3": "Налаштування",
-		"account_link_4": "Підтримка",
-		"cookies_agreement_text": "З метою поліпшення взаємодії відвідувачів з сайтом та надання їм послуг, я надаю згоду на обробку своїх персональних даних та підтверджую, що ознайомлений (а) з Політикою конфіденційності цього сайту. Політика конфіденційності",
-		"yes": "Так",
-		"no": "Ні",
-		"acc_title1": "Мої проксі",
-		"acc_group_btn": "Групові дії",
-		"acc_balance": "Баланс",
-		"acc_add": "Поповнити",
-		"acc_proxy": "Проксі",
-		"acc_validity": "Термін дії",
-		"acc_auto_continue": "Автопродовження",
-		"acc_ip_change_link:": "Посилання заміни IP",
-		"acc_continue": "Продовження",
-		"acc_exchange": "Автозаміна IP",
-		"acc_export": "Експорт",
-		"acc_proxy_info": "Поповнюйте баланс для автопродовження проксі",
-		"acc_not_have_proxy": "Нажаль, ви ще не придбали проксі",
-		"acc_days_info": "Після закінчення дії аренди, проксі необхідно буде знову активовувати. Поповнюйте баланс для автопродовження проксі.",
-		"copied": "Скопійовано",
-		"close": "Закрити",
-		"acc_max_add_sum": "Максимальна сума поповнення",
-		"acc_add_sum": "Cума поповнення",
-		"acc_payment_type": "Спосіб оплати",
-		"acc_payment_input_text": "Введіть суму для поповнення",
-		"acc_payment_btn_text": "Поповнити баланс",
-		"back_home": "На головну",
-		"acc_auto_replace_ip": "Увімкнути автозаміну IP",
-		"apply": "Застосувати",
-		"cancel": "Відхилити",
-		"minute": "хв",
-		"acc_export_proxy": "Експорт проксі",
-		"acc_format": "Формат",
-		"acc_export_setting": "Доступні параметри",
-		"acc_export_setting_label": "Оберіть один, або кілька параметрів для експорту проксі",
-		"acc_export_btn": "Експортувати",
-		"acc_continue_proxy": "Продовжити проксі",
-		"acc_access_period": "Термін доступу",
-		"form_error_balance": "Недостатньо коштів на вашому балансі",
-		"acc_continue_btn": "Продовжити",
-		"acc_paid": "До сплати",
-		"forgot_pass_info": "Введіть свій e-mail, ми надішлемо вам посилання для авторизації",
-		"spam_check": "Перевірте папку “спам”",
-		"send": "Надіслати",
-		"support_info": "Зверніться у нашу службу підтримки",
-		"support_feedback": "Ми відповідаємо орієнтовно протягом 5-ти хвилин",
-		"personal_data": "Персональні дані",
-		"personal_mail": "Моя пошта",
-		"old_password": "Старий пароль",
-		"new_password": "Новий пароль",
-		"confirm_password": "Підтвердити пароль",
-		"save": "Зберегти"
-	},
-	"users": [
-		{
-			"email": "admin@admin.com",
-			"password": "$2a$10$eufvvtn.wT7LstM05YiuY./zNANOO9g88jISctedfyFJQDFVjTqjW",
-			"id": 1
-		}
-	],
-	"profile": {
-		"userId": 12345,
-		"email": "",
-		"telegram": "@telegram.account",
-		"password": "",
-		"balance": 450,
-		"proxy": [
-			{
-				"id": 1,
-				"country": "Ukraine",
-				"logo": "/images/vodafone.png",
-				"name": "Vodafone",
-				"validity": 5,
-				"socks": "178.151.69.50:7032:user32:Rd6SwYDG ",
-				"http": "178.151.69.50:7032:user32:Rd6SwYDG ",
-				"url_ip_replace": "http://178.151.69.50:80/32_recon nect +ID-836594654-vf.php",
-				"auto_continue": false
-			},
-			{
-				"id": 2,
-				"country": "Ukraine",
-				"logo": "/images/vodafone.png",
-				"name": "Vodafone",
-				"validity": 1,
-				"socks": "178.151.69.50:7032:user32:Rd6SwYDG ",
-				"http": "178.151.69.50:7032:user32:Rd6SwYDG ",
-				"url_ip_replace": "http://178.151.69.50:80/32_recon nect +ID-836594654-vf.php",
-				"auto_continue": true
-			},
-			{
-				"id": 3,
-				"country": "Ukraine",
-				"logo": "/images/vodafone.png",
-				"name": "Vodafone",
-				"validity": 2,
-				"socks": "178.151.69.50:7032:user32:Rd6SwYDG ",
-				"http": "178.151.69.50:7032:user32:Rd6SwYDG ",
-				"url_ip_replace": "http://178.151.69.50:80/32_recon nect +ID-836594654-vf.php",
-				"auto_continue": true
-			}
-		]
-	},
-	"payment_methods": [
-		{
-			"label": "LIQPAY (*за офіційним курсом НБУ)",
-			"value": "http://link"
-		},
-		{
-			"label": "USDT",
-			"value": "http://link"
-		},
-		{
-			"label": "CAPITALIST",
-			"value": "http://link"
-		}
-	],
-	"export_setting": [
-		{
-			"id": 0,
-			"name": "ip"
-		},
-		{
-			"id": 1,
-			"name": "pass"
-		},
-		{
-			"id": 2,
-			"name": "port"
-		},
-		{
-			"id": 3,
-			"name": "type"
-		},
-		{
-			"id": 4,
-			"name": "login"
-		},
-		{
-			"id": 5,
-			"name": "reboot"
-		}
-	],
-	"export_formats": [
-		{
-			"label": "http\\htps",
-			"value": "http\\htps"
-		},
-		{
-			"label": "socks5",
-			"value": "socks5"
-		}
-	],
-	"access_period": [
-		{
-			"label": 3,
-			"value": 35
-		},
-		{
-			"label": 7,
-			"value": 78
-		},
-		{
-			"label": 30,
-			"value": 99
-		},
-		{
-			"label": 180,
-			"value": 155
-		}
-	],
-	"home_hero": {
-		"title": "Приватні мобільні проксі",
-		"subtitle": "Наша компанія гарантує якісне обслугоування, безперебійне виконання послуг та цілодобову підтримку користувачів, щоб відповісти на будь-яке питання",
-		"title_gradient": "Україна 3G/4G",
-		"img": "src/assets/images/hero-screenshot.png"
-	},
-	"home_advantages": {
-		"title": "Переваги",
-		"subtitle": "Наша компанія гарантує якісне та безперібійне виконання послуг. Ви завжди можете звернутися у сервісний центр",
-		"advantages": [
-			{
-				"id": 1,
-				"title": "Швидка заміна IP",
-				"text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
-				"img": "src/assets/images/advantages/01.svg"
-			},
-			{
-				"id": 2,
-				"title": "Стабільна робота. Автономна електроенергія",
-				"text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
-				"img": "src/assets/images/advantages/02.svg"
-			},
-			{
-				"id": 3,
-				"title": "Насолоджуйтель найвищою швидкісттю в 125 МГ/Бт",
-				"text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
-				"img": "src/assets/images/advantages/03.svg"
-			},
-			{
-				"id": 4,
-				"title": "Оперативна технічна підтримка",
-				"text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
-				"img": "src/assets/images/advantages/04.svg"
-			},
-			{
-				"id": 5,
-				"title": "Повернення коштів",
-				"text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
-				"img": "src/assets/images/advantages/05.svg"
-			},
-			{
-				"id": 6,
-				"title": "При оплаті в гривні, розрахунок по офіційному курсу НБУ",
-				"text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
-				"img": "src/assets/images/advantages/06.svg"
-			}
-		]
-	},
-	"home_speed": {
-		"title": "Швидкість",
-		"subtitle": "Користуйтесь нашим продуктом та відслідковуйте якість роботи сервісу. Ми пропонуємо для вибору кілька пакетів послуг з різними характеристиками, де кожен може підібрати своє",
-		"tabs": [
-			{
-				"name": "Приватний",
-				"descr_title": "Описові характеристики",
-				"descr": [
-					"Пінг - час, який витрачається на пересилку даних в комп'ютерній мережі від клієнта до сервера і навпаки. Зазвичай вимірюється мілісекундами. Швидкість передачі інформації, з якою ваш комп'ютер передає дані.",
-					"Перевірка швидкості інтернету залежить від інтернет кабелю напряму до комп’ютера чи ноутбука — під'єднайте його та буде найточніший тест"
-				],
-				"speed": 40,
-				"stats": {
-					"ping": 420,
-					"download": 160,
-					"upload": 180
-				}
-			},
-			{
-				"name": "Приватний +",
-				"descr_title": "Описові характеристики",
-				"descr": [
-					"Пінг - час, який витрачається на пересилку даних в комп'ютерній мережі від клієнта до сервера і навпаки. Зазвичай вимірюється мілісекундами. Швидкість передачі інформації, з якою ваш комп'ютер передає дані.",
-					"Перевірка швидкості інтернету залежить від інтернет кабелю напряму до комп’ютера чи ноутбука — під'єднайте його та буде найточніший тест"
-				],
-				"speed": 60,
-				"stats": {
-					"ping": 300,
-					"download": 200,
-					"upload": 200
-				}
-			},
-			{
-				"name": "Шаред",
-				"descr_title": "Описові характеристики",
-				"descr": [
-					"Пінг - час, який витрачається на пересилку даних в комп'ютерній мережі від клієнта до сервера і навпаки. Зазвичай вимірюється мілісекундами. Швидкість передачі інформації, з якою ваш комп'ютер передає дані.",
-					"Перевірка швидкості інтернету залежить від інтернет кабелю напряму до комп’ютера чи ноутбука — під'єднайте його та буде найточніший тест"
-				],
-				"speed": 90,
-				"stats": {
-					"ping": 259,
-					"download": 240,
-					"upload": 253
-				}
-			}
-		]
-	},
-	"home_tarifs": {
-		"title": "Тарифи",
-		"subtitle": "Ми розробили три тарифи для користування. У кожного з них є свої переваги, тому ви з легкісттю можете підібрати той, що підходить вам найбільше. Наша підтримка проконсультує з приводу ваших запитань які можуть виникнути"
-	},
-	"proxy_tarifs": [
-		{
-			"geo": "Україна",
-			"proxy": [
-				{
-					"id": 1,
-					"status": "Приватний +",
-					"mark": false,
-					"color": "green",
-					"operators": ["kyivstar", "vadafone", "lifecell"],
-					"rent_terms": ["10 діб", "20 діб", "1 міс"],
-					"prices": [
-						{
-							"active": false,
-							"total": 155,
-							"rent_term": "10 діб",
-							"operator": "kyivstar"
-						},
-						{
-							"active": true,
-							"total": 150,
-							"rent_term": "10 діб",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 125,
-							"rent_term": "10 діб",
-							"operator": "lifecell"
-						},
-						{
-							"active": false,
-							"total": 305,
-							"rent_term": "20 діб",
-							"operator": "kyivstar"
-						},
-						{
-							"active": false,
-							"total": 260,
-							"rent_term": "20 діб",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 250,
-							"rent_term": "20 діб",
-							"operator": "lifecell"
-						},
-						{
-							"active": false,
-							"total": 405,
-							"rent_term": "1 міс",
-							"operator": "kyivstar"
-						},
-						{
-							"active": false,
-							"total": 360,
-							"rent_term": "1 міс",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 350,
-							"rent_term": "1 міс",
-							"operator": "lifecell"
-						}
-					],
-					"stats": [
-						"Скорость соединения 30+ мб/сек",
-						"Безлімітний трафік",
-						"Зміна по посиланню IP / автозміна часу",
-						"Протокол Socks5, НТТР",
-						"Оператори Vodafone, Life, Kyivstar"
-					]
-				},
-				{
-					"id": 2,
-					"status": "Приватний",
-					"mark": true,
-					"color": "primary",
-					"operators": ["kyivstar", "vadafone", "lifecell"],
-					"rent_terms": ["10 діб", "20 діб", "1 міс"],
-					"prices": [
-						{
-							"active": false,
-							"total": 155,
-							"rent_term": "10 діб",
-							"operator": "kyivstar"
-						},
-						{
-							"active": true,
-							"total": 135,
-							"rent_term": "10 діб",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 125,
-							"rent_term": "10 діб",
-							"operator": "lifecell"
-						},
-						{
-							"active": false,
-							"total": 305,
-							"rent_term": "20 діб",
-							"operator": "kyivstar"
-						},
-						{
-							"active": false,
-							"total": 260,
-							"rent_term": "20 діб",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 250,
-							"rent_term": "20 діб",
-							"operator": "lifecell"
-						},
-						{
-							"active": false,
-							"total": 405,
-							"rent_term": "1 міс",
-							"operator": "kyivstar"
-						},
-						{
-							"active": false,
-							"total": 360,
-							"rent_term": "1 міс",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 350,
-							"rent_term": "1 міс",
-							"operator": "lifecell"
-						}
-					],
-					"stats": [
-						"Скорость соединения 10 мб/сек",
-						"Безлімітний трафік",
-						"Зміна по посиланню IP / автозміна часу",
-						"Протокол Socks5, НТТР",
-						"Оператори Vodafone, Life, Kyivstar"
-					]
-				},
-				{
-					"id": 3,
-					"status": "Шаред",
-					"mark": false,
-					"color": "red",
-					"operators": ["kyivstar", "vadafone", "lifecell"],
-					"rent_terms": ["10 діб", "20 діб", "1 міс"],
-					"prices": [
-						{
-							"active": false,
-							"total": 155,
-							"rent_term": "10 діб",
-							"operator": "kyivstar"
-						},
-						{
-							"active": true,
-							"total": 235,
-							"rent_term": "10 діб",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 125,
-							"rent_term": "10 діб",
-							"operator": "lifecell"
-						},
-						{
-							"active": false,
-							"total": 305,
-							"rent_term": "20 діб",
-							"operator": "kyivstar"
-						},
-						{
-							"active": false,
-							"total": 260,
-							"rent_term": "20 діб",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 250,
-							"rent_term": "20 діб",
-							"operator": "lifecell"
-						},
-						{
-							"active": false,
-							"total": 405,
-							"rent_term": "1 міс",
-							"operator": "kyivstar"
-						},
-						{
-							"active": false,
-							"total": 360,
-							"rent_term": "1 міс",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 350,
-							"rent_term": "1 міс",
-							"operator": "lifecell"
-						}
-					],
-					"stats": [
-						"Скорость соединения 30+ мб/сек",
-						"Безлімітний трафік",
-						"Зміна по посиланню IP / автозміна часу",
-						"Протокол Socks5, НТТР",
-						"Оператори Vodafone, Life, Kyivstar"
-					]
-				}
-			]
-		},
-		{
-			"geo": "США",
-			"proxy": [
-				{
-					"id": 1,
-					"status": "Приватний +",
-					"mark": false,
-					"color": "green",
-					"operators": ["kyivstar", "vadafone", "lifecell"],
-					"rent_terms": ["10 діб", "20 діб", "1 міс"],
-					"prices": [
-						{
-							"active": false,
-							"total": 255,
-							"rent_term": "10 діб",
-							"operator": "kyivstar"
-						},
-						{
-							"active": true,
-							"total": 235,
-							"rent_term": "10 діб",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 225,
-							"rent_term": "10 діб",
-							"operator": "lifecell"
-						},
-						{
-							"active": false,
-							"total": 405,
-							"rent_term": "20 діб",
-							"operator": "kyivstar"
-						},
-						{
-							"active": false,
-							"total": 360,
-							"rent_term": "20 діб",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 350,
-							"rent_term": "20 діб",
-							"operator": "lifecell"
-						},
-						{
-							"active": false,
-							"total": 505,
-							"rent_term": "1 міс",
-							"operator": "kyivstar"
-						},
-						{
-							"active": false,
-							"total": 460,
-							"rent_term": "1 міс",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 450,
-							"rent_term": "1 міс",
-							"operator": "lifecell"
-						}
-					],
-					"stats": [
-						"Скорость соединения 30+ мб/сек",
-						"Безлімітний трафік",
-						"Зміна по посиланню IP / автозміна часу",
-						"Протокол Socks5, НТТР",
-						"Оператори Vodafone, Life, Kyivstar"
-					]
-				},
-				{
-					"id": 2,
-					"status": "Приватний",
-					"mark": false,
-					"color": "primary",
-					"operators": ["kyivstar", "vadafone", "lifecell"],
-					"rent_terms": ["10 діб", "20 діб", "1 міс"],
-					"prices": [
-						{
-							"active": false,
-							"total": 255,
-							"rent_term": "10 діб",
-							"operator": "kyivstar"
-						},
-						{
-							"active": true,
-							"total": 205,
-							"rent_term": "10 діб",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 225,
-							"rent_term": "10 діб",
-							"operator": "lifecell"
-						},
-						{
-							"active": false,
-							"total": 405,
-							"rent_term": "20 діб",
-							"operator": "kyivstar"
-						},
-						{
-							"active": false,
-							"total": 360,
-							"rent_term": "20 діб",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 350,
-							"rent_term": "20 діб",
-							"operator": "lifecell"
-						},
-						{
-							"active": false,
-							"total": 505,
-							"rent_term": "1 міс",
-							"operator": "kyivstar"
-						},
-						{
-							"active": false,
-							"total": 460,
-							"rent_term": "1 міс",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 450,
-							"rent_term": "1 міс",
-							"operator": "lifecell"
-						}
-					],
-					"stats": [
-						"Скорость соединения 10 мб/сек",
-						"Безлімітний трафік",
-						"Зміна по посиланню IP / автозміна часу",
-						"Протокол Socks5, НТТР",
-						"Оператори Vodafone, Life, Kyivstar"
-					]
-				},
-				{
-					"id": 3,
-					"status": "Шаред",
-					"mark": false,
-					"color": "red",
-					"operators": ["kyivstar", "vadafone", "lifecell"],
-					"rent_terms": ["10 діб", "20 діб", "1 міс"],
-					"prices": [
-						{
-							"active": false,
-							"total": 255,
-							"rent_term": "10 діб",
-							"operator": "kyivstar"
-						},
-						{
-							"active": true,
-							"total": 275,
-							"rent_term": "10 діб",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 225,
-							"rent_term": "10 діб",
-							"operator": "lifecell"
-						},
-						{
-							"active": false,
-							"total": 405,
-							"rent_term": "20 діб",
-							"operator": "kyivstar"
-						},
-						{
-							"active": false,
-							"total": 360,
-							"rent_term": "20 діб",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 350,
-							"rent_term": "20 діб",
-							"operator": "lifecell"
-						},
-						{
-							"active": false,
-							"total": 505,
-							"rent_term": "1 міс",
-							"operator": "kyivstar"
-						},
-						{
-							"active": false,
-							"total": 460,
-							"rent_term": "1 міс",
-							"operator": "vadafone"
-						},
-						{
-							"active": false,
-							"total": 450,
-							"rent_term": "1 міс",
-							"operator": "lifecell"
-						}
-					],
-					"stats": [
-						"Скорость соединения 30+ мб/сек",
-						"Безлімітний трафік",
-						"Зміна по посиланню IP / автозміна часу",
-						"Протокол Socks5, НТТР",
-						"Оператори Vodafone, Life, Kyivstar"
-					]
-				}
-			]
-		}
-	],
-	"home_usage": {
-		"title": "Технологія використання",
-		"subtitle": "Ми розробили три тарифи для користування. У кожного з них є свої переваги, тому ви з легкісттю можете підібрати той, що підходить вам найбільше. Наша підтримка проконсультує з приводу ваших запитань які можуть виникнути",
-		"slider": [
-			{
-				"title": "Зайдіть у особистий кабінет",
-				"text": [
-					"Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
-					"Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
-				],
-				"img": "src/assets/images/hero-screenshot.svg"
-			},
-			{
-				"title": "Зайдіть у особистий кабінет 2",
-				"text": [
-					"Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
-					"Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
-				],
-				"img": "src/assets/images/hero-screenshot.svg"
-			},
-			{
-				"title": "Зайдіть у особистий кабінет 3",
-				"text": [
-					"Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту"
-				],
-				"img": "src/assets/images/hero-screenshot.svg"
-			},
-			{
-				"title": "Зайдіть у особистий кабінет 4",
-				"text": [
-					"Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
-					"Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
-				],
-				"img": "src/assets/images/hero-screenshot.svg"
-			},
-			{
-				"title": "Зайдіть у особистий кабінет 5",
-				"text": [
-					"Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
-					"Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
-				],
-				"img": "src/assets/images/hero-screenshot.svg"
-			},
-			{
-				"title": "Зайдіть у особистий кабінет 6",
-				"text": [
-					"Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
-					"Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
-				],
-				"img": "src/assets/images/hero-screenshot.svg"
-			}
-		]
-	},
-	"home_social": {
-		"title": "Слідкуйте за нашими соцмережами",
-		"subtitle": "Ми присутні на усіх можливих платформак, для зручнішої комунікації з користувачами",
-		"social": [
-			{
-				"name": "octopus",
-				"icon": "src/assets/images/social-icon/octopus.svg",
-				"link": "https://www.octopus.ua/"
-			},
-			{
-				"name": "octopus",
-				"icon": "src/assets/images/social-icon/some-01.svg",
-				"link": "https://www.octopus.ua/"
-			},
-			{
-				"name": "octopus",
-				"icon": "src/assets/images/social-icon/some-02.svg",
-				"link": "https://www.octopus.ua/"
-			},
-			{
-				"name": "octopus",
-				"icon": "src/assets/images/social-icon/some-03.svg",
-				"link": "https://www.octopus.ua/"
-			},
-			{
-				"name": "Facebook",
-				"icon": "src/assets/images/social-icon/facebook.svg",
-				"link": "https://uk-ua.facebook.com/"
-			},
-			{
-				"name": "Tiktok",
-				"icon": "src/assets/images/social-icon/tiktok.svg",
-				"link": "https://www.tiktok.com/uk-UA/"
-			},
-			{
-				"name": "Instagram",
-				"icon": "src/assets/images/social-icon/insta.svg",
-				"link": "https://www.instagram.com/"
-			},
-			{
-				"name": "Google",
-				"icon": "src/assets/images/social-icon/google.svg",
-				"link": "https://google.com/"
-			}
-		]
-	},
-	"home_faq": {
-		"title": "Популярні запитання",
-		"faqs": [
-			{
-				"question": "Як швидко можна отримати доступ?",
-				"answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
-			},
-			{
-				"question": "Чи можна замінити тариф?",
-				"answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
-			},
-			{
-				"question": "Чи є повернення коштів, якщо продукт працює з перебоями?",
-				"answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
-			},
-			{
-				"question": "Наскільки швидко працюють проксі?",
-				"answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
-			},
-			{
-				"question": "Коли працює служба підтримки?",
-				"answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
-			},
-			{
-				"question": "Чи можна замінити дані у особистому кабінеті?",
-				"answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
-			},
-			{
-				"question": "Наскільки швидко працюють проксі?",
-				"answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
-			}
-		]
-	},
-	"home_question": {
-		"title": "Вперше придбали мобільні проксі?",
-		"subtitle": "Наша підтримка вже готова дати відповідь на усі ваші запитання та допомогти з налаштуванням",
-		"img": "src/assets/images/slider/01.svg"
-	},
-	"footer_links": {
-		"footer_telegram": "https://telegram.com",
-		"footer_privacy_links": [
-			{
-				"id": 1,
-				"name": "Політика конфіденційності",
-				"slug": "privacy-policy"
-			},
-			{
-				"id": 2,
-				"name": "Публічна оферта",
-				"slug": "privacy-policy"
-			},
-			{
-				"id": 2,
-				"name": "Правила використання",
-				"slug": "privacy-policy"
-			}
-		],
-		"footer_menu": [
-			{
-				"id": 1,
-				"name": "Головна",
-				"slug": ""
-			},
-			{
-				"id": 2,
-				"name": "Підтримка",
-				"slug": "support"
-			},
-			{
-				"id": 3,
-				"name": "Вартість",
-				"slug": "tariffs"
-			},
-			{
-				"id": 4,
-				"name": "Переваги",
-				"slug": "advantage"
-			}
-		]
-	}
+  "menu": [
+    {
+      "id": 1,
+      "name": "Переваги",
+      "slug": "advantage"
+    },
+    {
+      "id": 2,
+      "name": "Тарифи",
+      "slug": "tariffs"
+    },
+    {
+      "id": 3,
+      "name": "Підтримка",
+      "slug": "support"
+    },
+    {
+      "id": 4,
+      "name": "Технології",
+      "slug": "tech"
+    },
+    {
+      "id": 5,
+      "name": "FAQ",
+      "slug": "faq"
+    }
+  ],
+  "interface": {
+    "account_btn": "Мій кабінет",
+    "buyProxy_btn": "Придбати проксі",
+    "buy_btn": "Придбати",
+    "question_btn": "Поставити запитання",
+    "register_btn": "Зареєструватися",
+    "register_text1": "Ви вже маєте акаунт?",
+    "register_text2": "Авторизуватися",
+    "form_email": "Новий E-mail",
+    "form_password": "Пароль",
+    "form_repeat_password": "Повторити пароль",
+    "registration_title": "Реєстрація",
+    "login_title": "Авторизація",
+    "forgot_password": "Забули пароль?",
+    "no_have_acc": "Немає акаунту?",
+    "registration_link": "Зареєструватися",
+    "login_btn": "Увійти",
+    "error_title": "Помилка",
+    "thank_text": "Вітаємо!",
+    "thank_message": "Ви успішно авторизувались",
+    "ping": "Пінг",
+    "download": "Завантаження",
+    "upload": "Вивантаження",
+    "rent_term_text": "Термін оренди",
+    "operators_text": "Оператори",
+    "geo_text": "Геолокація",
+    "profile_acc_text": "Особистий кабінет",
+    "account_link_1": "Мої проксі",
+    "account_link_2": "Придбати проксі",
+    "account_link_3": "Налаштування",
+    "account_link_4": "Підтримка",
+    "cookies_agreement_text": "З метою поліпшення взаємодії відвідувачів з сайтом та надання їм послуг, я надаю згоду на обробку своїх персональних даних та підтверджую, що ознайомлений (а) з Політикою конфіденційності цього сайту. Політика конфіденційності",
+    "yes": "Так",
+    "no": "Ні",
+    "acc_title1": "Мої проксі",
+    "acc_group_btn": "Групові дії",
+    "acc_balance": "Баланс",
+    "acc_add": "Поповнити",
+    "acc_proxy": "Проксі",
+    "acc_validity": "Термін дії",
+    "acc_auto_continue": "Автопродовження",
+    "acc_ip_change_link:": "Посилання заміни IP",
+    "acc_continue": "Продовження",
+    "acc_exchange": "Автозаміна IP",
+    "acc_export": "Експорт",
+    "acc_proxy_info": "Поповнюйте баланс для автопродовження проксі",
+    "acc_not_have_proxy": "Нажаль, ви ще не придбали проксі",
+    "acc_days_info": "Після закінчення дії аренди, проксі необхідно буде знову активовувати. Поповнюйте баланс для автопродовження проксі.",
+    "copied": "Скопійовано",
+    "close": "Закрити",
+    "acc_max_add_sum": "Максимальна сума поповнення",
+    "acc_add_sum": "Cума поповнення",
+    "acc_payment_type": "Спосіб оплати",
+    "acc_payment_input_text": "Введіть суму для поповнення",
+    "acc_payment_btn_text": "Поповнити баланс",
+    "back_home": "На головну",
+    "acc_auto_replace_ip": "Увімкнути автозаміну IP",
+    "apply": "Застосувати",
+    "cancel": "Відхилити",
+    "minute": "хв",
+    "acc_export_proxy": "Експорт проксі",
+    "acc_format": "Формат",
+    "acc_export_setting": "Доступні параметри",
+    "acc_export_setting_label": "Оберіть один, або кілька параметрів для експорту проксі",
+    "acc_export_btn": "Експортувати",
+    "acc_continue_proxy": "Продовжити проксі",
+    "acc_access_period": "Термін доступу",
+    "form_error_balance": "Недостатньо коштів на вашому балансі",
+    "acc_continue_btn": "Продовжити",
+    "acc_paid": "До сплати",
+    "forgot_pass_info": "Введіть свій e-mail, ми надішлемо вам посилання для авторизації",
+    "spam_check": "Перевірте папку “спам”",
+    "send": "Надіслати",
+    "support_info": "Зверніться у нашу службу підтримки",
+    "support_feedback": "Ми відповідаємо орієнтовно протягом 5-ти хвилин",
+    "personal_data": "Персональні дані",
+    "personal_mail": "Моя пошта",
+    "old_password": "Старий пароль",
+    "new_password": "Новий пароль",
+    "confirm_password": "Підтвердити пароль",
+    "save": "Зберегти"
+  },
+  "users": [
+    {
+      "email": "admin@admin.com",
+      "password": "$2a$10$eufvvtn.wT7LstM05YiuY./zNANOO9g88jISctedfyFJQDFVjTqjW",
+      "id": 1
+    }
+  ],
+  "profile": {
+    "userId": 12345,
+    "email": "admin@2admin.com",
+    "telegram": "@telegram.account195",
+    "balance": 450,
+    "proxy": [
+      {
+        "id": 1,
+        "country": "Ukraine",
+        "logo": "/images/vodafone.png",
+        "name": "Vodafone",
+        "validity": 5,
+        "socks": "178.151.69.50:7032:user32:Rd6SwYDG ",
+        "http": "178.151.69.50:7032:user32:Rd6SwYDG ",
+        "url_ip_replace": "http://178.151.69.50:80/32_recon nect +ID-836594654-vf.php",
+        "auto_continue": false
+      },
+      {
+        "id": 2,
+        "country": "Ukraine",
+        "logo": "/images/vodafone.png",
+        "name": "Vodafone",
+        "validity": 1,
+        "socks": "178.151.69.50:7032:user32:Rd6SwYDG ",
+        "http": "178.151.69.50:7032:user32:Rd6SwYDG ",
+        "url_ip_replace": "http://178.151.69.50:80/32_recon nect +ID-836594654-vf.php",
+        "auto_continue": true
+      },
+      {
+        "id": 3,
+        "country": "Ukraine",
+        "logo": "/images/vodafone.png",
+        "name": "Vodafone",
+        "validity": 2,
+        "socks": "178.151.69.50:7032:user32:Rd6SwYDG ",
+        "http": "178.151.69.50:7032:user32:Rd6SwYDG ",
+        "url_ip_replace": "http://178.151.69.50:80/32_recon nect +ID-836594654-vf.php",
+        "auto_continue": true
+      }
+    ],
+    "password": "Admin1111"
+  },
+  "payment_methods": [
+    {
+      "label": "LIQPAY (*за офіційним курсом НБУ)",
+      "value": "http://link"
+    },
+    {
+      "label": "USDT",
+      "value": "http://link"
+    },
+    {
+      "label": "CAPITALIST",
+      "value": "http://link"
+    }
+  ],
+  "export_setting": [
+    {
+      "id": 0,
+      "name": "ip"
+    },
+    {
+      "id": 1,
+      "name": "pass"
+    },
+    {
+      "id": 2,
+      "name": "port"
+    },
+    {
+      "id": 3,
+      "name": "type"
+    },
+    {
+      "id": 4,
+      "name": "login"
+    },
+    {
+      "id": 5,
+      "name": "reboot"
+    }
+  ],
+  "export_formats": [
+    {
+      "label": "http\\htps",
+      "value": "http\\htps"
+    },
+    {
+      "label": "socks5",
+      "value": "socks5"
+    }
+  ],
+  "access_period": [
+    {
+      "label": 3,
+      "value": 35
+    },
+    {
+      "label": 7,
+      "value": 78
+    },
+    {
+      "label": 30,
+      "value": 99
+    },
+    {
+      "label": 180,
+      "value": 155
+    }
+  ],
+  "home_hero": {
+    "title": "Приватні мобільні проксі",
+    "subtitle": "Наша компанія гарантує якісне обслугоування, безперебійне виконання послуг та цілодобову підтримку користувачів, щоб відповісти на будь-яке питання",
+    "title_gradient": "Україна 3G/4G",
+    "img": "src/assets/images/hero-screenshot.png"
+  },
+  "home_advantages": {
+    "title": "Переваги",
+    "subtitle": "Наша компанія гарантує якісне та безперібійне виконання послуг. Ви завжди можете звернутися у сервісний центр",
+    "advantages": [
+      {
+        "id": 1,
+        "title": "Швидка заміна IP",
+        "text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
+        "img": "src/assets/images/advantages/01.svg"
+      },
+      {
+        "id": 2,
+        "title": "Стабільна робота. Автономна електроенергія",
+        "text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
+        "img": "src/assets/images/advantages/02.svg"
+      },
+      {
+        "id": 3,
+        "title": "Насолоджуйтель найвищою швидкісттю в 125 МГ/Бт",
+        "text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
+        "img": "src/assets/images/advantages/03.svg"
+      },
+      {
+        "id": 4,
+        "title": "Оперативна технічна підтримка",
+        "text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
+        "img": "src/assets/images/advantages/04.svg"
+      },
+      {
+        "id": 5,
+        "title": "Повернення коштів",
+        "text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
+        "img": "src/assets/images/advantages/05.svg"
+      },
+      {
+        "id": 6,
+        "title": "При оплаті в гривні, розрахунок по офіційному курсу НБУ",
+        "text": "Процес заміни IP займає менше 1 секунди. Також доступна фунуція автозаміни по часу",
+        "img": "src/assets/images/advantages/06.svg"
+      }
+    ]
+  },
+  "home_speed": {
+    "title": "Швидкість",
+    "subtitle": "Користуйтесь нашим продуктом та відслідковуйте якість роботи сервісу. Ми пропонуємо для вибору кілька пакетів послуг з різними характеристиками, де кожен може підібрати своє",
+    "tabs": [
+      {
+        "name": "Приватний",
+        "descr_title": "Описові характеристики",
+        "descr": [
+          "Пінг - час, який витрачається на пересилку даних в комп'ютерній мережі від клієнта до сервера і навпаки. Зазвичай вимірюється мілісекундами. Швидкість передачі інформації, з якою ваш комп'ютер передає дані.",
+          "Перевірка швидкості інтернету залежить від інтернет кабелю напряму до комп’ютера чи ноутбука — під'єднайте його та буде найточніший тест"
+        ],
+        "speed": 40,
+        "stats": {
+          "ping": 420,
+          "download": 160,
+          "upload": 180
+        }
+      },
+      {
+        "name": "Приватний +",
+        "descr_title": "Описові характеристики",
+        "descr": [
+          "Пінг - час, який витрачається на пересилку даних в комп'ютерній мережі від клієнта до сервера і навпаки. Зазвичай вимірюється мілісекундами. Швидкість передачі інформації, з якою ваш комп'ютер передає дані.",
+          "Перевірка швидкості інтернету залежить від інтернет кабелю напряму до комп’ютера чи ноутбука — під'єднайте його та буде найточніший тест"
+        ],
+        "speed": 60,
+        "stats": {
+          "ping": 300,
+          "download": 200,
+          "upload": 200
+        }
+      },
+      {
+        "name": "Шаред",
+        "descr_title": "Описові характеристики",
+        "descr": [
+          "Пінг - час, який витрачається на пересилку даних в комп'ютерній мережі від клієнта до сервера і навпаки. Зазвичай вимірюється мілісекундами. Швидкість передачі інформації, з якою ваш комп'ютер передає дані.",
+          "Перевірка швидкості інтернету залежить від інтернет кабелю напряму до комп’ютера чи ноутбука — під'єднайте його та буде найточніший тест"
+        ],
+        "speed": 90,
+        "stats": {
+          "ping": 259,
+          "download": 240,
+          "upload": 253
+        }
+      }
+    ]
+  },
+  "home_tarifs": {
+    "title": "Тарифи",
+    "subtitle": "Ми розробили три тарифи для користування. У кожного з них є свої переваги, тому ви з легкісттю можете підібрати той, що підходить вам найбільше. Наша підтримка проконсультує з приводу ваших запитань які можуть виникнути"
+  },
+  "proxy_tarifs": [
+    {
+      "geo": "Україна",
+      "proxy": [
+        {
+          "id": 1,
+          "status": "Приватний +",
+          "mark": false,
+          "color": "green",
+          "operators": [
+            "kyivstar",
+            "vadafone",
+            "lifecell"
+          ],
+          "rent_terms": [
+            "10 діб",
+            "20 діб",
+            "1 міс"
+          ],
+          "prices": [
+            {
+              "active": false,
+              "total": 155,
+              "rent_term": "10 діб",
+              "operator": "kyivstar"
+            },
+            {
+              "active": true,
+              "total": 150,
+              "rent_term": "10 діб",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 125,
+              "rent_term": "10 діб",
+              "operator": "lifecell"
+            },
+            {
+              "active": false,
+              "total": 305,
+              "rent_term": "20 діб",
+              "operator": "kyivstar"
+            },
+            {
+              "active": false,
+              "total": 260,
+              "rent_term": "20 діб",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 250,
+              "rent_term": "20 діб",
+              "operator": "lifecell"
+            },
+            {
+              "active": false,
+              "total": 405,
+              "rent_term": "1 міс",
+              "operator": "kyivstar"
+            },
+            {
+              "active": false,
+              "total": 360,
+              "rent_term": "1 міс",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 350,
+              "rent_term": "1 міс",
+              "operator": "lifecell"
+            }
+          ],
+          "stats": [
+            "Скорость соединения 30+ мб/сек",
+            "Безлімітний трафік",
+            "Зміна по посиланню IP / автозміна часу",
+            "Протокол Socks5, НТТР",
+            "Оператори Vodafone, Life, Kyivstar"
+          ]
+        },
+        {
+          "id": 2,
+          "status": "Приватний",
+          "mark": true,
+          "color": "primary",
+          "operators": [
+            "kyivstar",
+            "vadafone",
+            "lifecell"
+          ],
+          "rent_terms": [
+            "10 діб",
+            "20 діб",
+            "1 міс"
+          ],
+          "prices": [
+            {
+              "active": false,
+              "total": 155,
+              "rent_term": "10 діб",
+              "operator": "kyivstar"
+            },
+            {
+              "active": true,
+              "total": 135,
+              "rent_term": "10 діб",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 125,
+              "rent_term": "10 діб",
+              "operator": "lifecell"
+            },
+            {
+              "active": false,
+              "total": 305,
+              "rent_term": "20 діб",
+              "operator": "kyivstar"
+            },
+            {
+              "active": false,
+              "total": 260,
+              "rent_term": "20 діб",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 250,
+              "rent_term": "20 діб",
+              "operator": "lifecell"
+            },
+            {
+              "active": false,
+              "total": 405,
+              "rent_term": "1 міс",
+              "operator": "kyivstar"
+            },
+            {
+              "active": false,
+              "total": 360,
+              "rent_term": "1 міс",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 350,
+              "rent_term": "1 міс",
+              "operator": "lifecell"
+            }
+          ],
+          "stats": [
+            "Скорость соединения 10 мб/сек",
+            "Безлімітний трафік",
+            "Зміна по посиланню IP / автозміна часу",
+            "Протокол Socks5, НТТР",
+            "Оператори Vodafone, Life, Kyivstar"
+          ]
+        },
+        {
+          "id": 3,
+          "status": "Шаред",
+          "mark": false,
+          "color": "red",
+          "operators": [
+            "kyivstar",
+            "vadafone",
+            "lifecell"
+          ],
+          "rent_terms": [
+            "10 діб",
+            "20 діб",
+            "1 міс"
+          ],
+          "prices": [
+            {
+              "active": false,
+              "total": 155,
+              "rent_term": "10 діб",
+              "operator": "kyivstar"
+            },
+            {
+              "active": true,
+              "total": 235,
+              "rent_term": "10 діб",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 125,
+              "rent_term": "10 діб",
+              "operator": "lifecell"
+            },
+            {
+              "active": false,
+              "total": 305,
+              "rent_term": "20 діб",
+              "operator": "kyivstar"
+            },
+            {
+              "active": false,
+              "total": 260,
+              "rent_term": "20 діб",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 250,
+              "rent_term": "20 діб",
+              "operator": "lifecell"
+            },
+            {
+              "active": false,
+              "total": 405,
+              "rent_term": "1 міс",
+              "operator": "kyivstar"
+            },
+            {
+              "active": false,
+              "total": 360,
+              "rent_term": "1 міс",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 350,
+              "rent_term": "1 міс",
+              "operator": "lifecell"
+            }
+          ],
+          "stats": [
+            "Скорость соединения 30+ мб/сек",
+            "Безлімітний трафік",
+            "Зміна по посиланню IP / автозміна часу",
+            "Протокол Socks5, НТТР",
+            "Оператори Vodafone, Life, Kyivstar"
+          ]
+        }
+      ]
+    },
+    {
+      "geo": "США",
+      "proxy": [
+        {
+          "id": 1,
+          "status": "Приватний +",
+          "mark": false,
+          "color": "green",
+          "operators": [
+            "kyivstar",
+            "vadafone",
+            "lifecell"
+          ],
+          "rent_terms": [
+            "10 діб",
+            "20 діб",
+            "1 міс"
+          ],
+          "prices": [
+            {
+              "active": false,
+              "total": 255,
+              "rent_term": "10 діб",
+              "operator": "kyivstar"
+            },
+            {
+              "active": true,
+              "total": 235,
+              "rent_term": "10 діб",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 225,
+              "rent_term": "10 діб",
+              "operator": "lifecell"
+            },
+            {
+              "active": false,
+              "total": 405,
+              "rent_term": "20 діб",
+              "operator": "kyivstar"
+            },
+            {
+              "active": false,
+              "total": 360,
+              "rent_term": "20 діб",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 350,
+              "rent_term": "20 діб",
+              "operator": "lifecell"
+            },
+            {
+              "active": false,
+              "total": 505,
+              "rent_term": "1 міс",
+              "operator": "kyivstar"
+            },
+            {
+              "active": false,
+              "total": 460,
+              "rent_term": "1 міс",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 450,
+              "rent_term": "1 міс",
+              "operator": "lifecell"
+            }
+          ],
+          "stats": [
+            "Скорость соединения 30+ мб/сек",
+            "Безлімітний трафік",
+            "Зміна по посиланню IP / автозміна часу",
+            "Протокол Socks5, НТТР",
+            "Оператори Vodafone, Life, Kyivstar"
+          ]
+        },
+        {
+          "id": 2,
+          "status": "Приватний",
+          "mark": false,
+          "color": "primary",
+          "operators": [
+            "kyivstar",
+            "vadafone",
+            "lifecell"
+          ],
+          "rent_terms": [
+            "10 діб",
+            "20 діб",
+            "1 міс"
+          ],
+          "prices": [
+            {
+              "active": false,
+              "total": 255,
+              "rent_term": "10 діб",
+              "operator": "kyivstar"
+            },
+            {
+              "active": true,
+              "total": 205,
+              "rent_term": "10 діб",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 225,
+              "rent_term": "10 діб",
+              "operator": "lifecell"
+            },
+            {
+              "active": false,
+              "total": 405,
+              "rent_term": "20 діб",
+              "operator": "kyivstar"
+            },
+            {
+              "active": false,
+              "total": 360,
+              "rent_term": "20 діб",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 350,
+              "rent_term": "20 діб",
+              "operator": "lifecell"
+            },
+            {
+              "active": false,
+              "total": 505,
+              "rent_term": "1 міс",
+              "operator": "kyivstar"
+            },
+            {
+              "active": false,
+              "total": 460,
+              "rent_term": "1 міс",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 450,
+              "rent_term": "1 міс",
+              "operator": "lifecell"
+            }
+          ],
+          "stats": [
+            "Скорость соединения 10 мб/сек",
+            "Безлімітний трафік",
+            "Зміна по посиланню IP / автозміна часу",
+            "Протокол Socks5, НТТР",
+            "Оператори Vodafone, Life, Kyivstar"
+          ]
+        },
+        {
+          "id": 3,
+          "status": "Шаред",
+          "mark": false,
+          "color": "red",
+          "operators": [
+            "kyivstar",
+            "vadafone",
+            "lifecell"
+          ],
+          "rent_terms": [
+            "10 діб",
+            "20 діб",
+            "1 міс"
+          ],
+          "prices": [
+            {
+              "active": false,
+              "total": 255,
+              "rent_term": "10 діб",
+              "operator": "kyivstar"
+            },
+            {
+              "active": true,
+              "total": 275,
+              "rent_term": "10 діб",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 225,
+              "rent_term": "10 діб",
+              "operator": "lifecell"
+            },
+            {
+              "active": false,
+              "total": 405,
+              "rent_term": "20 діб",
+              "operator": "kyivstar"
+            },
+            {
+              "active": false,
+              "total": 360,
+              "rent_term": "20 діб",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 350,
+              "rent_term": "20 діб",
+              "operator": "lifecell"
+            },
+            {
+              "active": false,
+              "total": 505,
+              "rent_term": "1 міс",
+              "operator": "kyivstar"
+            },
+            {
+              "active": false,
+              "total": 460,
+              "rent_term": "1 міс",
+              "operator": "vadafone"
+            },
+            {
+              "active": false,
+              "total": 450,
+              "rent_term": "1 міс",
+              "operator": "lifecell"
+            }
+          ],
+          "stats": [
+            "Скорость соединения 30+ мб/сек",
+            "Безлімітний трафік",
+            "Зміна по посиланню IP / автозміна часу",
+            "Протокол Socks5, НТТР",
+            "Оператори Vodafone, Life, Kyivstar"
+          ]
+        }
+      ]
+    }
+  ],
+  "home_usage": {
+    "title": "Технологія використання",
+    "subtitle": "Ми розробили три тарифи для користування. У кожного з них є свої переваги, тому ви з легкісттю можете підібрати той, що підходить вам найбільше. Наша підтримка проконсультує з приводу ваших запитань які можуть виникнути",
+    "slider": [
+      {
+        "title": "Зайдіть у особистий кабінет",
+        "text": [
+          "Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
+          "Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
+        ],
+        "img": "src/assets/images/hero-screenshot.svg"
+      },
+      {
+        "title": "Зайдіть у особистий кабінет 2",
+        "text": [
+          "Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
+          "Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
+        ],
+        "img": "src/assets/images/hero-screenshot.svg"
+      },
+      {
+        "title": "Зайдіть у особистий кабінет 3",
+        "text": [
+          "Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту"
+        ],
+        "img": "src/assets/images/hero-screenshot.svg"
+      },
+      {
+        "title": "Зайдіть у особистий кабінет 4",
+        "text": [
+          "Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
+          "Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
+        ],
+        "img": "src/assets/images/hero-screenshot.svg"
+      },
+      {
+        "title": "Зайдіть у особистий кабінет 5",
+        "text": [
+          "Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
+          "Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
+        ],
+        "img": "src/assets/images/hero-screenshot.svg"
+      },
+      {
+        "title": "Зайдіть у особистий кабінет 6",
+        "text": [
+          "Після реєстрації вам необхідно зайти у особистий кабінет та обрати таб “Мої проксі”, де відображатимуться дані придбаного продукту",
+          "Ви маєте можливість змінити налаштування, а тажож виконати “групові дії” для обраного тарифу"
+        ],
+        "img": "src/assets/images/hero-screenshot.svg"
+      }
+    ]
+  },
+  "home_social": {
+    "title": "Слідкуйте за нашими соцмережами",
+    "subtitle": "Ми присутні на усіх можливих платформак, для зручнішої комунікації з користувачами",
+    "social": [
+      {
+        "name": "octopus",
+        "icon": "src/assets/images/social-icon/octopus.svg",
+        "link": "https://www.octopus.ua/"
+      },
+      {
+        "name": "octopus",
+        "icon": "src/assets/images/social-icon/some-01.svg",
+        "link": "https://www.octopus.ua/"
+      },
+      {
+        "name": "octopus",
+        "icon": "src/assets/images/social-icon/some-02.svg",
+        "link": "https://www.octopus.ua/"
+      },
+      {
+        "name": "octopus",
+        "icon": "src/assets/images/social-icon/some-03.svg",
+        "link": "https://www.octopus.ua/"
+      },
+      {
+        "name": "Facebook",
+        "icon": "src/assets/images/social-icon/facebook.svg",
+        "link": "https://uk-ua.facebook.com/"
+      },
+      {
+        "name": "Tiktok",
+        "icon": "src/assets/images/social-icon/tiktok.svg",
+        "link": "https://www.tiktok.com/uk-UA/"
+      },
+      {
+        "name": "Instagram",
+        "icon": "src/assets/images/social-icon/insta.svg",
+        "link": "https://www.instagram.com/"
+      },
+      {
+        "name": "Google",
+        "icon": "src/assets/images/social-icon/google.svg",
+        "link": "https://google.com/"
+      }
+    ]
+  },
+  "home_faq": {
+    "title": "Популярні запитання",
+    "faqs": [
+      {
+        "question": "Як швидко можна отримати доступ?",
+        "answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
+      },
+      {
+        "question": "Чи можна замінити тариф?",
+        "answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
+      },
+      {
+        "question": "Чи є повернення коштів, якщо продукт працює з перебоями?",
+        "answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
+      },
+      {
+        "question": "Наскільки швидко працюють проксі?",
+        "answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
+      },
+      {
+        "question": "Коли працює служба підтримки?",
+        "answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
+      },
+      {
+        "question": "Чи можна замінити дані у особистому кабінеті?",
+        "answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
+      },
+      {
+        "question": "Наскільки швидко працюють проксі?",
+        "answer": "Швидкість проксі залежить від тарифу який ви придбали, відмінності не є значними. Тариф “Standart” працює зі швидкісттю 100мб/хв, тариф “Premium” працює зі швидкісттю 150мб/хв. Тариф “Shared” працює зі швидкісттю 200 мб/хв"
+      }
+    ]
+  },
+  "home_question": {
+    "title": "Вперше придбали мобільні проксі?",
+    "subtitle": "Наша підтримка вже готова дати відповідь на усі ваші запитання та допомогти з налаштуванням",
+    "img": "src/assets/images/slider/01.svg"
+  },
+  "footer_links": {
+    "footer_telegram": "https://telegram.com",
+    "footer_privacy_links": [
+      {
+        "id": 1,
+        "name": "Політика конфіденційності",
+        "slug": "privacy-policy"
+      },
+      {
+        "id": 2,
+        "name": "Публічна оферта",
+        "slug": "privacy-policy"
+      },
+      {
+        "id": 2,
+        "name": "Правила використання",
+        "slug": "privacy-policy"
+      }
+    ],
+    "footer_menu": [
+      {
+        "id": 1,
+        "name": "Головна",
+        "slug": ""
+      },
+      {
+        "id": 2,
+        "name": "Підтримка",
+        "slug": "support"
+      },
+      {
+        "id": 3,
+        "name": "Вартість",
+        "slug": "tariffs"
+      },
+      {
+        "id": 4,
+        "name": "Переваги",
+        "slug": "advantage"
+      }
+    ]
+  }
 }

@@ -61,4 +61,12 @@
 	.above-forgot-pass {
 		margin-bottom: 8px;
 	}
+	.PasswordField:not(:last-of-type) {
+		margin-bottom: 24px;
+		padding: 0;
+	}
+	.PasswordField:last-of-type {
+		margin-bottom: 0;
+		padding: 0;
+	}
 }

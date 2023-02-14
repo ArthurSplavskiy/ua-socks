@@ -1,3 +1,4 @@
+import api from '@/api';
 import { Button } from '@/components/shared/Button';
 import { InputField } from '@/components/shared/FormComponents/InputField/InputField';
 import { useCommon } from '@/context/CommonContext';
@@ -9,7 +10,7 @@ import { FormEvent, useEffect, useState } from 'react';
 export const TelegramWidget = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { openError, setError, pageInterfaceText } = useCommon();
-	const { user } = useProfile();
+	const { user, setUser } = useProfile();
 
 	const formData = {
 		telegram: useTextInput({ isRequired: false })
@@ -21,19 +22,13 @@ export const TelegramWidget = () => {
 
 		try {
 			setIsLoading(true);
-			// const data: TBalancePostData = {
-			// 	balance: formData.balance.value || ''
-			// };
-			//const res = await api.account.setBalance(data);
-
-			// const resData = JSON.parse(res.config.data);
-			// setToken(res?.data?.accessToken);
-			//getProfileData();
-
-			// setTimeout(() => {
-			// 	setIsLoading(false);
-			// 	openThank();
-			// }, 300);
+			const data = {
+				telegram: formData.telegram.value || ''
+			};
+			if (!user) return;
+			const res = await api.account.updateProfile({ ...user, telegram: data.telegram });
+			const resData = JSON.parse(res.config.data);
+			setUser(resData);
 		} catch (error) {
 			const { msg } = getApiError(error, formData);
 			setError({ type: 'error', text: msg || 'Error !' });

@@ -1,15 +1,20 @@
+import api from '@/api';
 import { Button } from '@/components/shared/Button';
 import { InputField } from '@/components/shared/FormComponents/InputField/InputField';
 import { useCommon } from '@/context/CommonContext';
+import { useProfile } from '@/context/UserContext';
 import { getApiError, notValidForm } from '@/helpers';
 import { useTextInput } from '@/hooks/useTextInput/useTextInput';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 
 export const EmailWidget = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { openError, setError, pageInterfaceText } = useCommon();
+	const { user, setUser } = useProfile();
+	const [currentEmail, setCurrentEmail] = useState('');
 
 	const formData = {
+		current_email: useTextInput(),
 		email: useTextInput({ validators: ['email'], isRequired: true })
 	};
 
@@ -19,20 +24,16 @@ export const EmailWidget = () => {
 
 		try {
 			setIsLoading(true);
-			// const data: TBalancePostData = {
-			// 	balance: formData.balance.value || ''
-			// };
-			//const res = await api.account.setBalance(data);
-
-			// const resData = JSON.parse(res.config.data);
-			// setToken(res?.data?.accessToken);
-			//getProfileData();
-
-			setIsLoading(false);
-			// setTimeout(() => {
-			// 	setIsLoading(false);
-			// 	openThank();
-			// }, 300);
+			if (!user) return;
+			const res = await api.account.updateProfile({ ...user, email: formData.email.value });
+			const resData = JSON.parse(res.config.data);
+			formData.email.setValue('');
+			formData.email.setValue('');
+			setTimeout(() => {
+				formData.email.setErrors([]);
+				formData.email.setErrors([]);
+			}, 0);
+			setUser(resData);
 		} catch (error) {
 			const { msg } = getApiError(error, formData);
 			setError({ type: 'error', text: msg || 'Error !' });
@@ -42,21 +43,20 @@ export const EmailWidget = () => {
 		}
 	};
 
+	useEffect(() => {
+		user?.email && setCurrentEmail(user.email);
+	}, [user]);
+
 	return (
 		<form onSubmit={onSubmit} className='EmailWidget-form'>
-			<InputField
-				{...formData.email.inputProps}
-				value={formData.email.value}
-				label={'E-mail'}
-				errors={formData.email.errors}
-			/>
+			<InputField {...formData.current_email.inputProps} value={currentEmail} label={'E-mail'} />
 			<InputField
 				{...formData.email.inputProps}
 				value={formData.email.value}
 				label={pageInterfaceText?.form_email}
 				errors={formData.email.errors}
 			/>
-			<Button type='submit' color='outline'>
+			<Button type='submit' color='outline' loading={isLoading}>
 				{pageInterfaceText?.save}
 			</Button>
 		</form>
