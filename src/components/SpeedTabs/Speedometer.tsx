@@ -44,12 +44,6 @@ export const Speedometer: FC<Props> = ({ isActive, speedValue }) => {
 		}, 1100);
 	}, [isActive]);
 
-	useEffect(() => {
-		console.log('jumpStart', jumpStart);
-		console.log('jumpSpeed[speedIndex]', jumpSpeed[speedIndex]);
-		console.log('isActive', isActive);
-	}, [jumpStart, jumpSpeed, isActive, speedIndex]);
-
 	return (
 		<div
 			className={`Speedometer ${isActive && 'active' && 'active-' + speedValue} ${
