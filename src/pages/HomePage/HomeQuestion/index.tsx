@@ -1,17 +1,16 @@
 import { useCommon } from '@/context/CommonContext';
 import api from '@/api';
-import { IHomeHero } from '@/interfaces/api';
+import { IHomeQuestion } from '@/interfaces/api';
 import useRequest from '@/hooks/useRequest';
 import { Button } from '@/components/shared/Button';
 import { SectionHead } from '@/components/shared/SectionHead';
 import './HomeQuestion.scss';
-import { useInView } from 'react-intersection-observer';
 
 export const HomeQuestion = () => {
 	const { pageInterfaceText } = useCommon();
-	const { data } = useRequest<IHomeHero>({
+	const { data } = useRequest<IHomeQuestion>({
 		method: 'GET',
-		url: api.homePage.getHeroData
+		url: api.homePage.getQuestion
 	});
 
 	return (
@@ -21,7 +20,7 @@ export const HomeQuestion = () => {
 				{pageInterfaceText?.question_btn}
 			</Button>
 			<div className={`HomeQuestion-image`}>
-				<img src={'/images/hero-screenshot.svg'} alt={data?.title} />
+				<img src={'/images/banner-02.png'} alt={data?.title} />
 				{/* {data?.img} */}
 			</div>
 		</section>

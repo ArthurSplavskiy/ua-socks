@@ -1,23 +1,40 @@
-import { FormEvent, useState } from 'react';
-import { notValidForm, getApiError } from '@/helpers';
+import { FormEvent, useEffect, useState } from 'react';
+import { notValidForm, getApiError, formatter } from '@/helpers';
 import { useProfile } from '@/context/UserContext';
 import { useCommon } from '@/context/CommonContext';
 import { useTextInput } from '@/hooks/useTextInput/useTextInput';
 import api from '@/api';
-import { TBalancePostData } from '@/interfaces/shared';
+import { ISelectOption, TBalancePostData } from '@/interfaces/shared';
 import { useAccount } from '@/context/Account/AccountContextHooks';
+import useRequest from '@/hooks/useRequest';
+import { useSelect } from '@/hooks/inputHooks/useSelect';
 
 export const useContinue = () => {
 	const { openError, setError } = useCommon();
-	const {
-		state: { addToBalance }
-	} = useAccount();
 	const [isLoading, setIsLoading] = useState(false);
-	const variantPrice = ['20', '50', '100', '300', '1000'];
-
+	const [formattingOptions, setFormattingOptions] = useState<ISelectOption[]>();
+	const [notEnoughMoney, setNotEnoughMoney] = useState(false);
+	const {
+		state: { balance }
+	} = useAccount();
 	const formData = {
-		balance: useTextInput({ validators: ['numberRange'], isRequired: true })
+		time: useSelect<ISelectOption>({ value: formattingOptions?.[0].value })
 	};
+	const { data: options, isLoading: optionsIsLoading } = useRequest<ISelectOption[]>({
+		method: 'GET',
+		url: api.account.getAccessPeriod
+	});
+
+	useEffect(() => {
+		if (options?.length) {
+			setFormattingOptions(
+				options.map((option) => ({
+					label: formatter.format(Number(option.label)),
+					value: option.value
+				}))
+			);
+		}
+	}, [options]);
 
 	const onSubmit = async (event: FormEvent) => {
 		event.preventDefault();
@@ -25,21 +42,28 @@ export const useContinue = () => {
 
 		try {
 			setIsLoading(true);
-			const data: TBalancePostData = {
-				balance: formData.balance.value || ''
-			};
-			addToBalance(Number(data.balance));
+			if (!formData.time.value) {
+				if (Number(balance) < Number(formattingOptions?.[0].value)) {
+					setNotEnoughMoney(true);
+					return;
+				} else {
+					setNotEnoughMoney(false);
+				}
+			} else {
+				if (Number(balance) < Number(formData.time.value)) {
+					setNotEnoughMoney(true);
+					return;
+				} else {
+					setNotEnoughMoney(false);
+				}
+			}
+
+			console.log('balance', balance);
+			console.log('data', formattingOptions?.[0].value);
+
 			//const res = await api.account.setBalance(data);
-
 			// const resData = JSON.parse(res.config.data);
-			// setToken(res?.data?.accessToken);
-			//getProfileData();
-
 			setIsLoading(false);
-			// setTimeout(() => {
-			// 	setIsLoading(false);
-			// 	openThank();
-			// }, 300);
 		} catch (error) {
 			const { msg } = getApiError(error, formData);
 			setError({ type: 'error', text: msg || 'Error !' });
@@ -53,6 +77,8 @@ export const useContinue = () => {
 		formData,
 		onSubmit,
 		isLoading,
-		variantPrice
+		formattingOptions,
+		optionsIsLoading,
+		notEnoughMoney
 	};
 };

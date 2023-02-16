@@ -31,7 +31,7 @@ export const CheckBoxGroupe: FC<iCheckBoxGroupeProps> = ({
 					<Checkbox
 						id={`${name}-${String(id)}`}
 						key={id}
-						value={id}
+						value={name}
 						label={name}
 						onChange={onChange}
 						checked={!!isChecked}

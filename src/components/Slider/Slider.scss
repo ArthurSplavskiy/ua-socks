@@ -55,7 +55,6 @@
 	&.line-delay {
 		.swiper-pagination:after {
 			animation-play-state: paused;
-			//animation-delay: 2s;
 		}
 	}
 	.swiper-pagination {
@@ -70,12 +69,6 @@
 		@media screen and (max-width: 640px) {
 			max-width: 95%;
 		}
-		&.stop-animate {
-			&:after {
-				animation: none;
-				opacity: 0;
-			}
-		}
 		&:before {
 			content: '';
 			width: 100%;
@@ -87,53 +80,65 @@
 			transform: translate(-50%, -50%);
 			pointer-events: none;
 		}
-		&:after {
-			content: '';
-			width: 100%;
-			height: 1px;
-			background: var(--primary);
-			position: absolute;
-			top: 50%;
-			left: 0;
-			transform: translate(0, -50%);
-			z-index: 2;
-			transform-origin: 0 0;
-			pointer-events: none;
-			animation-name: paginationLine;
-			//animation-duration: 10s;
-			animation-duration: inherit;
-			animation-play-state: inherit;
-			//animation-delay: 0.1s;
-			animation-fill-mode: backwards;
-			animation-timing-function: linear;
-			animation-iteration-count: infinite;
-		}
 		&-bullet {
 			display: block;
-			width: 12px;
-			height: 12px;
-			border-radius: 100%;
-			background: var(--primary);
+			width: 100%;
+			height: 1px;
 			position: relative;
-			&:after {
-				content: '';
-				width: 24px;
-				height: 24px;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%) scale(0);
-				border: 1px solid var(--primary);
-				border-radius: 100%;
-				transition: all 0.2s;
+			&:last-child {
+				width: 12px;
 			}
-			&-active {
+			&-circle {
+				display: block;
+				width: 12px;
+				height: 12px;
+				border-radius: 100%;
 				background: var(--primary);
-				& ~ span {
+				transform: translate(0, -50%);
+				position: relative;
+				transition: all 0.5s;
+				z-index: 2;
+				&:after {
+					content: '';
+					width: 24px;
+					height: 24px;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, 0) scale(0);
+					border: 1px solid var(--primary);
+					border-radius: 100%;
+					transition: all 0.2s;
+				}
+			}
+			&:before {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 1px;
+				background: var(--primary);
+				position: relative;
+				transform-origin: 0 0;
+				transition: transform 0.5s;
+				z-index: 2;
+			}
+			&-active ~ .swiper-pagination-bullet {
+				&:before {
+					transform: scaleX(0);
 					background: var(--primary-20);
 				}
-				&:after {
-					transform: translate(-50%, -50%) scale(1);
+			}
+			&-active {
+				&:before {
+					transform: scaleX(0);
+					background: var(--primary-20);
+				}
+			}
+			&-active {
+				.swiper-pagination-bullet-circle {
+					&:after {
+						transform: translate(-50%, -50%) scale(0.95);
+					}
 				}
 			}
 		}

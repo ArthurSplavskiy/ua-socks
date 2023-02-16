@@ -78,10 +78,14 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
 					</div>
 				</div>
 				<ul className='TarifCard-stats'>
-					{stats?.map((text, idx) => (
+					{stats?.map((stat, idx) => (
 						<li key={idx}>
-							<Icon icon='done' color='green' />
-							<span>{text}</span>
+							{stat.support ? (
+								<Icon icon='done' color='green' />
+							) : (
+								<Icon icon='close' color='red' />
+							)}
+							<span>{stat.value}</span>
 						</li>
 					))}
 				</ul>

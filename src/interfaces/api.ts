@@ -7,7 +7,8 @@ import {
 	ITab,
 	ISectionHead,
 	IFaq,
-	IMenu
+	IMenu,
+	IProxyCartStats
 } from './shared';
 
 export interface IUserProfile {
@@ -125,7 +126,7 @@ export interface IProxyTarif {
 	operators: string[];
 	rent_terms: string[];
 	prices: IProxyPrices[];
-	stats: string[];
+	stats: IProxyCartStats[];
 }
 
 export interface IProxyTarifList {

@@ -1,7 +1,7 @@
 @import 'src/assets/styles/index';
 
 .AuthPopup {
-	//@extend %comingSoon;
+	@extend %comingSoon;
 	&-title {
 		max-width: 90%;
 		font-size: var(--fSize20);

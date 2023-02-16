@@ -9,6 +9,27 @@ export function AccountReducer(state: State, action: Action) {
 			};
 		}
 
+		case ActionType.SET_PROXY_LIST: {
+			return {
+				...state,
+				proxyList: action.payload
+			};
+		}
+
+		case ActionType.SELECT_PROXY: {
+			return {
+				...state,
+				selectedProxy: [...state.selectedProxy, action.payload]
+			};
+		}
+
+		case ActionType.UN_SELECT_PROXY: {
+			return {
+				...state,
+				selectedProxy: state.selectedProxy.filter((item) => item !== action.payload)
+			};
+		}
+
 		case ActionType.OPEN_ADD_BALANCE_POPUP: {
 			return {
 				...state,

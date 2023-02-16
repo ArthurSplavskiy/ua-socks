@@ -1,4 +1,6 @@
-import { useMemo, useReducer, useState } from 'react';
+import { IProxy } from '@/interfaces/shared';
+import { useEffect, useMemo, useReducer, useState } from 'react';
+import { useProfile } from '../UserContext';
 import { AccountProviderProps, ActionType } from './AccountContext.types';
 import { AccountReducer } from './AccountContextReducer';
 import { AccountStateContext } from './AccountContextStore';
@@ -6,6 +8,14 @@ import { AccountStateContext } from './AccountContextStore';
 export function AccountProvider({ children }: AccountProviderProps) {
 	const [state, dispatch] = useReducer(AccountReducer, {
 		balance: 0,
+		proxyList: [],
+		selectedProxy: [],
+
+		selectProxy: (proxyId: number) => dispatch({ type: ActionType.SELECT_PROXY, payload: proxyId }),
+		unselectProxy: (proxyId: number) =>
+			dispatch({ type: ActionType.UN_SELECT_PROXY, payload: proxyId }),
+		setProxyList: (proxyList: IProxy[]) =>
+			dispatch({ type: ActionType.SET_PROXY_LIST, payload: proxyList }),
 		addToBalance: (balance: number) => dispatch({ type: ActionType.BALANCE_ADD, payload: balance }),
 
 		isAddToBalancePopup: false,
@@ -29,6 +39,14 @@ export function AccountProvider({ children }: AccountProviderProps) {
 	const popupHide = (status: boolean) => {
 		setIsPopupHide(status);
 	};
+
+	const { user } = useProfile();
+
+	useEffect(() => {
+		if (user?.proxy.length) {
+			state.setProxyList(user.proxy);
+		}
+	}, [user?.proxy]);
 
 	const value = useMemo(
 		() => ({

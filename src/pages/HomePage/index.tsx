@@ -15,7 +15,7 @@ export default function HomePage() {
 			<HomeAdvantages />
 			<HomeSpeed />
 			<HomeTarif />
-			<HomeVideo />
+			{/* <HomeVideo /> */}
 			<HomeUsage />
 			<HomeSocial />
 			<HomeFaq />

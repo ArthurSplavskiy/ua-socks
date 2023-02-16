@@ -1,22 +1,25 @@
 import { FormEvent, useState } from 'react';
 import { notValidForm, getApiError } from '@/helpers';
-import { useProfile } from '@/context/UserContext';
 import { useCommon } from '@/context/CommonContext';
 import { useTextInput } from '@/hooks/useTextInput/useTextInput';
+import { ISelectOption } from '@/interfaces/shared';
+import { useCheckBoxGroupe } from '@/hooks/inputHooks/useCheckBoxGroupe';
+import { useSelect } from '@/hooks/inputHooks/useSelect';
+import useRequest from '@/hooks/useRequest';
 import api from '@/api';
-import { TBalancePostData } from '@/interfaces/shared';
-import { useAccount } from '@/context/Account/AccountContextHooks';
 
 export const useExport = () => {
 	const { openError, setError } = useCommon();
-	const {
-		state: { addToBalance }
-	} = useAccount();
 	const [isLoading, setIsLoading] = useState(false);
-	const variantPrice = ['20', '50', '100', '300', '1000'];
+	const { data: formats, isLoading: isLoadingFormats } = useRequest<ISelectOption[]>({
+		method: 'GET',
+		url: api.account.getExportFormats
+	});
 
 	const formData = {
-		balance: useTextInput({ validators: ['numberRange'], isRequired: true })
+		format: useTextInput({ isRequired: true }),
+		formatSelect: useSelect(),
+		settings: useCheckBoxGroupe({ isRequired: true })
 	};
 
 	const onSubmit = async (event: FormEvent) => {
@@ -25,21 +28,15 @@ export const useExport = () => {
 
 		try {
 			setIsLoading(true);
-			const data: TBalancePostData = {
-				balance: formData.balance.value || ''
+			const data = {
+				format: formData.format.value,
+				formatSelect: formData.formatSelect.value || formats?.[0].value,
+				settings: formData.settings.selectedCheckBoxes.current
 			};
-			addToBalance(Number(data.balance));
-			//const res = await api.account.setBalance(data);
-
+			console.log('exportData', data);
+			// const res = await api.account.setBalance(data);
 			// const resData = JSON.parse(res.config.data);
-			// setToken(res?.data?.accessToken);
-			//getProfileData();
-
 			setIsLoading(false);
-			// setTimeout(() => {
-			// 	setIsLoading(false);
-			// 	openThank();
-			// }, 300);
 		} catch (error) {
 			const { msg } = getApiError(error, formData);
 			setError({ type: 'error', text: msg || 'Error !' });
@@ -53,6 +50,7 @@ export const useExport = () => {
 		formData,
 		onSubmit,
 		isLoading,
-		variantPrice
+		isLoadingFormats,
+		formats
 	};
 };

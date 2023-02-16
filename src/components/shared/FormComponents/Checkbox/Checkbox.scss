@@ -48,7 +48,7 @@
 	}
 
 	&-input:checked ~ &-label:after {
-		border-color: var(--black-10);
+		border-color: var(--system-green);
 	}
 
 	&-input:checked ~ &-label,
@@ -58,6 +58,7 @@
 
 	&-input:checked ~ &-label:before {
 		//border: none;
+		border-color: var(--system-green);
 	}
 
 	&-input:disabled ~ &-label {
@@ -86,8 +87,9 @@
 		&:before {
 			width: var(--checkboxSize);
 			height: var(--checkboxSize);
-			background: var(--gray-40);
+			background: none;
 			position: absolute;
+			border: 1px solid var(--black-100);
 			top: 50%;
 			left: 0.86rem;
 			transform: translateY(-50%);

@@ -41,18 +41,29 @@ export const useSelect = <T extends tOptions>(props?: iUseSelectProps<T>) => {
 		}
 	}, [options]); // eslint-disable-line
 
-	const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
-		e.preventDefault();
+	// const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
+	// 	e.preventDefault();
 
+	// 	const selectedValue = options?.find(
+	// 		(item) => getNestedProp(item, props?.targetKeys?.value || 'value') === e.target.value
+	// 	);
+
+	// 	setValue(e.target.value);
+	// 	setSelected(selectedValue);
+	// 	checkValidity(e.target.value);
+	// 	!isDirty && setIsDirty(true);
+	// 	props?.onChangeCallback?.(e, selectedValue);
+	// };
+	const onChange = (el: any) => {
 		const selectedValue = options?.find(
-			(item) => getNestedProp(item, props?.targetKeys?.value || 'value') === e.target.value
+			(item) => getNestedProp(item, props?.targetKeys?.value || 'value') === el.value
 		);
 
-		setValue(e.target.value);
+		setValue(el.value);
 		setSelected(selectedValue);
-		checkValidity(e.target.value);
+		checkValidity(el);
 		!isDirty && setIsDirty(true);
-		props?.onChangeCallback?.(e, selectedValue);
+		props?.onChangeCallback?.(el, selectedValue);
 	};
 
 	const updateValue = (v: string) => {

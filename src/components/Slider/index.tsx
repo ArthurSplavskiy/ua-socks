@@ -55,12 +55,21 @@ export const Slider: FC<Props> = ({ slides }) => {
 				autoHeight={false}
 				simulateTouch={false}
 				autoplay={{ delay: slidesDelay, disableOnInteraction: false }}
-				pagination={{ clickable: false }}>
+				pagination={{
+					clickable: false
+				}}
+				onSwiper={(swiper) => {
+					setTimeout(() => {
+						swiper?.pagination?.bullets.forEach((b) => {
+							b.innerHTML = '<span class="swiper-pagination-bullet-circle"></span>';
+						});
+					}, 100);
+				}}>
 				{slides?.map((slideContent, index) => (
 					<SwiperSlide key={index}>
 						<div className='Slider-slide'>
 							<div className='Slider-image'>
-								<img src={`/images/slider/01.svg`} alt={slideContent.title} />
+								<img src={`/images/slider/01.png`} alt={slideContent.title} />
 								{/* {slideContent.img} */}
 							</div>
 							<div className='Slider-text'>

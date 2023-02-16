@@ -2,8 +2,8 @@ import { Button } from '@/components/shared/Button';
 import { InputField } from '@/components/shared/FormComponents/InputField/InputField';
 import { useAccount } from '@/context/Account/AccountContextHooks';
 import { useCommon } from '@/context/CommonContext';
-import '../AccountForms.scss';
 import { useReplaceIp } from './useReplaceIp';
+import '../AccountForms.scss';
 
 export const AutoReplaceIpForm = () => {
 	const { pageInterfaceText } = useCommon();
@@ -23,13 +23,7 @@ export const AutoReplaceIpForm = () => {
 							{pageInterfaceText?.cancel}
 						</Button>
 					</div>
-					<InputField
-						{...formData.balance.inputProps}
-						value={'1 - 60'}
-						rightPrefix={'хв'}
-						disabled
-						//errors={formData.balance.errors}
-					/>
+					<InputField {...formData.time.inputProps} value={'1 - 60'} rightPrefix={'хв'} disabled />
 				</form>
 			</div>
 		</div>

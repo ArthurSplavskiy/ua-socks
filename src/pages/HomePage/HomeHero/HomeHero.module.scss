@@ -70,6 +70,13 @@
 	max-width: 100%;
 	margin-top: 24px;
 	opacity: 0;
+	max-width: 1096px !important;
+	border-radius: 20px;
+	box-shadow: 0px 4px 40px rgba(95, 97, 100, 0.25);
+	@media (max-width: 1200px) {
+		border-radius: 5px;
+		max-width: 100% !important;
+	}
 	@media (max-width: 768px) {
 		margin-top: 16px;
 	}

@@ -1,19 +1,20 @@
-@import "src/assets/styles/placeholders/label";
+@import 'src/assets/styles/placeholders/label';
 
 .CheckBoxGroupe {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
 
-  .label {
-    @extend %label;
-    width: 100%;
-  }
+	.label {
+		@extend %label;
+		width: 100%;
+	}
 
-  & > .error {
-    color: var(--red-0);
-    padding-top: 0.25rem;
-    font-size: var(--fSize13);
-    text-align: left;
-  }
+	& > .error {
+		grid-column: 1 / -1;
+		color: var(--system-error);
+		padding-top: 0.25rem;
+		font-size: var(--fSize10);
+		text-align: left;
+	}
 }

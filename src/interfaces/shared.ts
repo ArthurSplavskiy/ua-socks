@@ -68,6 +68,7 @@ export interface IProxyPrices {
 }
 
 export interface ISelectOption {
+	id?: number;
 	value: string;
 	label: string;
 }
@@ -93,4 +94,9 @@ export interface IMenu {
 	id: number;
 	name: string;
 	slug: string;
+}
+
+export interface IProxyCartStats {
+	support: boolean;
+	value: string;
 }
