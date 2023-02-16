@@ -32,7 +32,7 @@ export const Speedometer: FC<Props> = ({ isActive, speedValue }) => {
 			// setJumpStart(jumpSpeed[speedIndex - 1 < 0 ? 0 : speedIndex - 1]);
 			setJumpStart(jumpSpeed[speedIndex < 0 ? 0 : speedIndex]);
 			intervalId = setInterval(() => {
-				if (i > 10) i = 0;
+				if (i > 8) i = 0;
 				setSpeedIndex(i + 1);
 				i++;
 			}, 1000);
@@ -44,10 +44,16 @@ export const Speedometer: FC<Props> = ({ isActive, speedValue }) => {
 		}, 1100);
 	}, [isActive]);
 
+	useEffect(() => {
+		console.log('jumpStart', jumpStart);
+		console.log('jumpSpeed[speedIndex]', jumpSpeed[speedIndex]);
+		console.log('isActive', isActive);
+	}, [jumpStart, jumpSpeed, isActive, speedIndex]);
+
 	return (
 		<div
 			className={`Speedometer ${isActive && 'active' && 'active-' + speedValue} ${
-				jumpStart > 0 ? 'jump' : ''
+				isActive ? 'jump' : ''
 			}`}>
 			<div className='Speedometer-panel'>
 				<SpeedometerIcon className='Speedometer-desk' />
@@ -55,8 +61,8 @@ export const Speedometer: FC<Props> = ({ isActive, speedValue }) => {
 			</div>
 			<div className='Speedometer-value'>
 				<CountUp
-					end={isActive ? jumpSpeed[speedIndex] : 0}
-					start={jumpStart}
+					end={isActive ? Number(jumpSpeed[speedIndex] ? jumpSpeed[speedIndex] : jumpSpeed[0]) : 0}
+					start={Number(jumpStart) ? Number(jumpStart) : 0}
 					duration={1}
 					decimals={2}
 				/>

@@ -49,7 +49,12 @@ export const Slider: FC<Props> = ({ slides }) => {
 		<div ref={sliderRef} className={`Slider ${slasses.join(' ')}`}>
 			<Swiper
 				modules={[Navigation, Pagination, EffectFade, Autoplay]}
-				onSlideChange={(swiper) => changeSlide(swiper)}
+				onSlideChange={(swiper) => {
+					changeSlide(swiper);
+					swiper?.pagination?.bullets.forEach((b) => {
+						b.innerHTML = '<span class="swiper-pagination-bullet-circle"></span>';
+					});
+				}}
 				effect='fade'
 				speed={0}
 				autoHeight={false}
@@ -57,13 +62,6 @@ export const Slider: FC<Props> = ({ slides }) => {
 				autoplay={{ delay: slidesDelay, disableOnInteraction: false }}
 				pagination={{
 					clickable: false
-				}}
-				onSwiper={(swiper) => {
-					setTimeout(() => {
-						swiper?.pagination?.bullets.forEach((b) => {
-							b.innerHTML = '<span class="swiper-pagination-bullet-circle"></span>';
-						});
-					}, 100);
 				}}>
 				{slides?.map((slideContent, index) => (
 					<SwiperSlide key={index}>
