@@ -67,7 +67,7 @@ export const Slider: FC<Props> = ({ slides }) => {
 					<SwiperSlide key={index}>
 						<div className='Slider-slide'>
 							<div className='Slider-image'>
-								<img src={`/images/slider/01.png`} alt={slideContent.title} />
+								<img src={`/images/banner-02.png`} alt={slideContent.title} />
 								{/* {slideContent.img} */}
 							</div>
 							<div className='Slider-text'>
