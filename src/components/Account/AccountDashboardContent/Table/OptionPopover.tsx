@@ -2,6 +2,7 @@ import { Icon } from '@/components/shared/Icon/Icon';
 import { useAccount } from '@/context/Account/AccountContextHooks';
 import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
+import { useInterfaceText } from '@/context/UserContext';
 import { FC, useEffect } from 'react';
 
 interface Props {
@@ -10,7 +11,8 @@ interface Props {
 }
 
 export const OptionPopover: FC<Props> = ({ isOpen, setIsOpen }) => {
-	const { pageInterfaceText, setNoScroll } = useCommon();
+	const { setNoScroll } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { is810 } = useDevice();
 	const {
 		state: { openContinuePopup, openReplaceIpPopup, openExportPopup }

@@ -1,8 +1,8 @@
 import { Checkbox } from '@/components/shared/FormComponents/Checkbox/Checkbox';
 import { Switcher } from '@/components/shared/FormComponents/Switcher';
 import { Icon } from '@/components/shared/Icon/Icon';
-import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
+import { useInterfaceText } from '@/context/UserContext';
 import { formatter } from '@/helpers';
 import { useClickOutside } from '@/hooks/useClickOutside';
 import { FC, useEffect, useRef, useState } from 'react';
@@ -32,7 +32,8 @@ export const TableRowItem: FC<Props> = ({
 	urlIpReplace,
 	autoContinue
 }) => {
-	const { pageInterfaceText } = useCommon();
+	//const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const [selected, setSelected] = useState(false);
 	const [autoContinueState, setAutoContinueState] = useState(autoContinue);
 	const { is810 } = useDevice();

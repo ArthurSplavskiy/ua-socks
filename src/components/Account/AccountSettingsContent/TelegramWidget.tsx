@@ -2,14 +2,15 @@ import api from '@/api';
 import { Button } from '@/components/shared/Button';
 import { InputField } from '@/components/shared/FormComponents/InputField/InputField';
 import { useCommon } from '@/context/CommonContext';
-import { useProfile } from '@/context/UserContext';
+import { useInterfaceText, useProfile } from '@/context/UserContext';
 import { getApiError, notValidForm } from '@/helpers';
 import { useTextInput } from '@/hooks/useTextInput/useTextInput';
 import { FormEvent, useEffect, useState } from 'react';
 
 export const TelegramWidget = () => {
 	const [isLoading, setIsLoading] = useState(false);
-	const { openError, setError, pageInterfaceText } = useCommon();
+	const { openError, setError } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { user, setUser } = useProfile();
 
 	const formData = {

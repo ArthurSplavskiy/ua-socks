@@ -5,6 +5,7 @@ import { useComparePasswordFields } from '../../../hooks/useTextInput/useCompare
 import api from '@/api';
 import { FormEvent, useState } from 'react';
 import { useCommon } from '@/context/CommonContext';
+import { errorsMessages } from '@/hooks/useTextInput/validators';
 
 export const useRegistration = () => {
 	const { openLogin, openError, setError } = useCommon();
@@ -12,10 +13,14 @@ export const useRegistration = () => {
 
 	const formData = {
 		email: useTextInput({ validators: ['email'], isRequired: true }),
-		password: useTextInput({ validators: ['password'], isRequired: true }),
-		confirm_password: useTextInput({
+		password: useTextInput({
 			validators: ['password'],
 			isRequired: true
+		}),
+		confirm_password: useTextInput({
+			validators: ['password'],
+			isRequired: true,
+			notEqualErrText: errorsMessages.PASSWORD_NOT_MATCH
 		})
 	};
 

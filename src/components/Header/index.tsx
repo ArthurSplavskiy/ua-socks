@@ -1,4 +1,3 @@
-import { useMenuList } from '@/api/hooks/useMenuList';
 import { Logo } from '@/assets/icons';
 import { useDevice } from '@/context/DeviceContext';
 import { AppRoutes } from '@/routes/AppRouter';
@@ -9,13 +8,10 @@ import { Icon } from '../shared/Icon/Icon';
 import { HeaderMenu } from './HeaderMenu/HeaderMenu';
 import { MenuIcon } from './HeaderMenu/MenuIcon';
 import { useCommon } from '@/context/CommonContext';
-import { useProfile } from '@/context/UserContext';
-import Cookies from 'js-cookie';
-import useRequest from '@/hooks/useRequest';
-import api from '@/api';
-import './Header.scss';
-import { IMenu } from '@/interfaces/shared';
+import { useInterfaceText, useMenu, useProfile } from '@/context/UserContext';
 import { useScrollY } from '@/hooks/useScrollY';
+import Cookies from 'js-cookie';
+import './Header.scss';
 
 interface Props {
 	type: 'account' | 'default';
@@ -26,11 +22,13 @@ export const Header: FC<Props> = ({ type = 'default' }) => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const { isTablet } = useDevice();
 	const { user } = useProfile();
-	const { pageInterfaceText, openLogin } = useCommon();
-	const { data, isLoading } = useRequest<IMenu[]>({
-		method: 'GET',
-		url: api.homePage.getMenuList
-	});
+	const { openLogin } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
+	const { data, isLoading } = useMenu();
+	// const { data, isLoading } = useRequest<IMenu[]>({
+	// 	method: 'GET',
+	// 	url: api.homePage.getMenuList
+	// });
 	//const { data } = useMenuList();
 
 	const handleClick = () => {

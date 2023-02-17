@@ -1,4 +1,4 @@
-import { useCommon } from '@/context/CommonContext';
+import { useInterfaceText } from '@/context/UserContext';
 import { ITab } from '@/interfaces/shared';
 import { FC } from 'react';
 import { Icon } from '../shared/Icon/Icon';
@@ -11,7 +11,8 @@ interface Props {
 }
 
 export const Tab: FC<Props> = ({ data, index, isActive }) => {
-	const { pageInterfaceText } = useCommon();
+	//const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	return (
 		<div className={`Tab ${index === isActive && 'active'}`}>
 			<Speedometer isActive={index === isActive} speedValue={data.speed} />
@@ -50,9 +51,11 @@ export const Tab: FC<Props> = ({ data, index, isActive }) => {
 				</div>
 				<div className='Tab-text'>
 					<h3>{data.descr_title}</h3>
-					{data.descr.map((p, idx) => (
-						<p key={idx}>{p}</p>
-					))}
+					{Array.isArray(data.descr) ? (
+						data.descr.map((p, idx) => <p key={idx}>{p}</p>)
+					) : (
+						<p>{data.descr}</p>
+					)}
 				</div>
 			</div>
 		</div>

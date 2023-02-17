@@ -1,16 +1,14 @@
-import { SectionHead } from '@/components/shared/SectionHead';
-import useRequest from '@/hooks/useRequest';
 import { FC } from 'react';
-import api from '@/api';
-import { IHomeFaqs, IHomeUsage } from '@/interfaces/api';
-import { Slider } from '@/components/Slider';
+import { SectionHead } from '@/components/shared/SectionHead';
 import { Spollers } from '@/components/shared/Spollers';
+import { useHomeFaq } from '@/context/UserContext';
 
 export const HomeFaq: FC = () => {
-	const { data } = useRequest<IHomeFaqs>({
-		method: 'GET',
-		url: api.homePage.getFaqs
-	});
+	const { data } = useHomeFaq();
+	// const { data } = useRequest<IHomeFaqs>({
+	// 	method: 'GET',
+	// 	url: api.homePage.getFaqs
+	// });
 	return (
 		<section id='faq' className='HomeFaq section-offset'>
 			<SectionHead title={data?.title} />

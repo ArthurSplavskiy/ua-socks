@@ -1,4 +1,5 @@
 import { useCommon } from '@/context/CommonContext';
+import { useInterfaceText } from '@/context/UserContext';
 import { FC } from 'react';
 import { ForgotPassword } from '../Forms/ForgotPassword';
 import { LoginForm } from '../Forms/LoginForm';
@@ -11,7 +12,6 @@ import { TemplateModal } from './TemplateModal/TemplateModal';
 
 export const PublicPopups: FC = () => {
 	const {
-		pageInterfaceText,
 		isRegistrationPopupOpen,
 		isErrorPopupOpen,
 		isLoginPopupOpen,
@@ -24,6 +24,7 @@ export const PublicPopups: FC = () => {
 		closeError,
 		error
 	} = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 
 	return (
 		<>
@@ -69,7 +70,7 @@ export const PublicPopups: FC = () => {
 					color='yellow'
 					className='TemplateModal-message'
 					title={pageInterfaceText?.error_title}
-					subTitle={error?.text}
+					//subTitle={error?.text}
 					icon={<Icon icon='info' />}
 					background={<Background particleColor='yellow' particleCount='few' color='white' />}
 				/>

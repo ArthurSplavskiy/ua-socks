@@ -3,23 +3,26 @@ import { PasswordField } from '@/components/shared/FormComponents/PasswordField/
 import { useCommon } from '@/context/CommonContext';
 import { getApiError, notValidForm } from '@/helpers';
 import { useTextInput } from '@/hooks/useTextInput/useTextInput';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import { useComparePasswordFields } from '@/hooks/useTextInput/useComparePasswordFields';
-import { useProfile } from '@/context/UserContext';
+import { useInterfaceText, useProfile } from '@/context/UserContext';
 import api from '@/api';
+import { errorsMessages } from '@/hooks/useTextInput/validators';
 
 export const PasswordWidget = () => {
 	const [isLoading, setIsLoading] = useState(false);
-	const { openError, setError, pageInterfaceText } = useCommon();
+	const { openError, setError } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { user, setUser } = useProfile();
 	const [currentPass, setCurrentPass] = useState('');
 
 	const formData = {
-		password_old: useTextInput(),
+		password_old: useTextInput({ value: currentPass || 'PasswordExample@' }),
 		password: useTextInput({ validators: ['password'], isRequired: true }),
 		confirm_password: useTextInput({
 			validators: ['password'],
-			isRequired: true
+			isRequired: true,
+			notEqualErrText: errorsMessages.PASSWORD_NOT_MATCH
 		})
 	};
 	const { password, confirm_password } = formData;
@@ -38,12 +41,8 @@ export const PasswordWidget = () => {
 			if (!user) return;
 			const res = await api.account.updateProfile({ ...user, password: data.new_pass });
 			const resData = JSON.parse(res.config.data);
-			password.setValue('');
-			confirm_password.setValue('');
-			setTimeout(() => {
-				password.setErrors([]);
-				confirm_password.setErrors([]);
-			}, 0);
+			password.reset();
+			confirm_password.reset();
 			setUser(resData);
 		} catch (error) {
 			const { msg } = getApiError(error, formData);
@@ -63,7 +62,6 @@ export const PasswordWidget = () => {
 			<PasswordField
 				{...formData.password_old.inputProps}
 				label={pageInterfaceText?.old_password}
-				autoComplete='new-password'
 				value={currentPass}
 			/>
 			<PasswordField

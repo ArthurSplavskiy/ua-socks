@@ -1,10 +1,10 @@
 import { Button } from '@/components/shared/Button';
-import { ActionType } from '@/context/Account/AccountContext.types';
 import { useAccount } from '@/context/Account/AccountContextHooks';
-import { useCommon } from '@/context/CommonContext';
+import { useInterfaceText } from '@/context/UserContext';
 
 export const BalanceWidget = () => {
-	const { pageInterfaceText } = useCommon();
+	// const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const {
 		state: { openAddToBalancePopup, balance }
 	} = useAccount();

@@ -76,15 +76,16 @@ export const numberRangeValidation = <T>(value: T) => {
 };
 
 export const errorsMessages = {
-	EMAIL: 'Please enter a valid email',
+	EMAIL: 'Введіть дійсну адресу електронної пошти', //'Please enter a valid email',
 	PASSWORD:
-		'Password must contain at least 8 characters, one uppercase letter and at least one number or special character',
-	PASSWORD_NOT_MATCH: 'Password does not match',
+		'Пароль має містити не менше 8 символів, одну велику літеру та принаймні одну цифру або спеціальний символ',
+	//'Password must contain at least 8 characters, one uppercase letter and at least one number or special character',
+	PASSWORD_NOT_MATCH: 'Пароль не збігається', // 'Password does not match',
 	NAME: 'Please enter a valid name',
 	PHONE: 'Please enter a valid phone number',
 	WEBSITE: 'Please enter a valid website address',
 	URL: 'Please enter a valid url',
-	NUMBER_RANGE: 'Please enter a valid number (0 - 5000)'
+	NUMBER_RANGE: 'Будь ласка, введіть число (0 - 5000)' //'Please enter a valid number (0 - 5000)'
 };
 
 export const inputValidators = {

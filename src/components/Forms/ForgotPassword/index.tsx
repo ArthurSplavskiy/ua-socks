@@ -1,14 +1,15 @@
 import { Button } from '@/components/shared/Button';
 import { InputField } from '@/components/shared/FormComponents/InputField/InputField';
-import { PasswordField } from '@/components/shared/FormComponents/PasswordField/PasswordField';
 import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
 import { useLogin } from '@/components/Forms/LoginForm/useLogin';
 import { Link } from 'react-router-dom';
 import { FormFooter } from '../FormFooter';
+import { useInterfaceText } from '@/context/UserContext';
 
 export const ForgotPassword = () => {
-	const { pageInterfaceText, openRegistration } = useCommon();
+	const { openRegistration } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { isMobile } = useDevice();
 	const { onSubmit, formData, isLoading } = useLogin();
 	return (

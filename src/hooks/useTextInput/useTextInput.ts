@@ -26,8 +26,8 @@ export const useTextInput = (props?: iUseTextInputProps) => {
 		prepareFiltersArr(props?.filters || [])
 	);
 
-	const emptyErr = props?.emptyErrText ? props?.emptyErrText : "This field can't be empty";
-	const notEqualErr = props?.notEqualErrText ? props?.notEqualErrText : "Doesn't match";
+	const emptyErr = props?.emptyErrText ? props?.emptyErrText : 'Це поле не може бути порожнім'; // "This field can't be empty";
+	const notEqualErr = props?.notEqualErrText ? props?.notEqualErrText : 'Не збігається'; //"Doesn't match";
 
 	useEffect(() => {
 		if (!validateOnChange) {
@@ -86,7 +86,18 @@ export const useTextInput = (props?: iUseTextInputProps) => {
 		checkValidity(val);
 	};
 
+	const [isReset, setIsReset] = useState(false);
+	const reset = () => {
+		setValue('');
+		setErrors([]);
+		setIsReset(true);
+		setTimeout(() => {
+			setIsReset(false);
+		}, 1500);
+	};
+
 	const checkValidity = (val?: string) => {
+		if (isReset) return;
 		const newVal = val === undefined ? value : val;
 		const validationErrors = validators?.map(({ error }) => error) || [];
 		const customErrors = errors.filter(
@@ -132,6 +143,7 @@ export const useTextInput = (props?: iUseTextInputProps) => {
 		setIsRequired,
 
 		isDirty,
+		setIsDirty,
 
 		checkValidity,
 		validateOnChange,
@@ -142,6 +154,8 @@ export const useTextInput = (props?: iUseTextInputProps) => {
 
 		filters,
 		setFilters,
+
+		reset,
 
 		inputProps: {
 			value,

@@ -1,16 +1,17 @@
 import { Button } from '@/components/shared/Button';
 import { InputField } from '@/components/shared/FormComponents/InputField/InputField';
-import { useCommon } from '@/context/CommonContext';
 import { useBalance } from './useBalance';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { ReactSelect } from '@/components/shared/FormComponents/ReactSelect/ReactSelect';
 import useRequest from '@/hooks/useRequest';
 import { ISelectOption } from '@/interfaces/shared';
 import api from '@/api';
+import { useInterfaceText } from '@/context/UserContext';
 import '../AccountForms.scss';
 
 export const AddToBalanceForm = () => {
-	const { pageInterfaceText } = useCommon();
+	// const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { onSubmit, formData, variantPrice } = useBalance();
 	const [selectedOption, setSelectedOption] = useState<ISelectOption>();
 	const { data: paymentMethods, isLoading } = useRequest<ISelectOption[]>({

@@ -1,13 +1,14 @@
-import { useCommon } from '@/context/CommonContext';
 import { FC } from 'react';
 import { BalanceWidget } from '../AccountDashboardContent/BalanceWidget';
 import { TelegramWidget } from './TelegramWidget';
-import './index.scss';
 import { EmailWidget } from './EmailWidget';
 import { PasswordWidget } from './PasswordWidget';
+import { useInterfaceText } from '@/context/UserContext';
+import './index.scss';
 
 export const AccountSettingsContent: FC = () => {
-	const { pageInterfaceText } = useCommon();
+	//const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	return (
 		<div className='AccountSettingsContent'>
 			<div className='AccountSettingsContent-col'>

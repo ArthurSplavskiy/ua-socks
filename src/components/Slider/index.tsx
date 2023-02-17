@@ -2,10 +2,10 @@ import { ISlide } from '@/interfaces/shared';
 import { FC, useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, EffectFade, Autoplay, Navigation } from 'swiper';
-import './Slider.scss';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
 import { useBrowserTab } from '@/api/hooks/useBrowserTab';
+import 'swiper/css/effect-fade';
+import 'swiper/css';
+import './Slider.scss';
 
 interface Props {
 	slides: ISlide[] | undefined;
@@ -67,8 +67,8 @@ export const Slider: FC<Props> = ({ slides }) => {
 					<SwiperSlide key={index}>
 						<div className='Slider-slide'>
 							<div className='Slider-image'>
-								<img src={`/images/banner-02.png`} alt={slideContent.title} />
-								{/* {slideContent.img} */}
+								<img src={slideContent.img} alt={slideContent.title} />
+								{/* {`/images/banner-02.png`} */}
 							</div>
 							<div className='Slider-text'>
 								<div>
@@ -76,11 +76,15 @@ export const Slider: FC<Props> = ({ slides }) => {
 										{index > 9 ? index + 1 : '0' + (index + 1)}
 									</span>
 									<h3 className='Slider-slide-title'>{slideContent.title}</h3>
-									{slideContent.text.map((t, idx) => (
-										<p className='Slider-slide-text' key={idx}>
-											{t}
-										</p>
-									))}
+									{Array.isArray(slideContent.text) ? (
+										slideContent.text.map((t, idx) => (
+											<p className='Slider-slide-text' key={idx}>
+												{t}
+											</p>
+										))
+									) : (
+										<p className='Slider-slide-text'>{slideContent.text}</p>
+									)}
 								</div>
 							</div>
 						</div>

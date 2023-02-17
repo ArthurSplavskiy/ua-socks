@@ -1,25 +1,25 @@
 import { Logo } from '@/assets/icons';
-import useRequest from '@/hooks/useRequest';
-import { IFooterLinks } from '@/interfaces/api';
 import { FC } from 'react';
 import { Button } from '../shared/Button';
 import { Icon } from '../shared/Icon/Icon';
 import { IncreateCopyright } from './IncreateCopyright';
-import api from '@/api';
 import { Link } from 'react-router-dom';
 import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
 import { scrollToBlock } from '@/helpers/scrollToBlock';
-import './Footer.scss';
 import { AppRoutes } from '@/routes/AppRouter';
 import Cookies from 'js-cookie';
+import { useFooterLinks, useInterfaceText } from '@/context/UserContext';
+import './Footer.scss';
 
 export const Footer: FC = () => {
-	const { data } = useRequest<IFooterLinks>({
-		method: 'GET',
-		url: api.homePage.getFooterData
-	});
-	const { pageInterfaceText, openLogin } = useCommon();
+	// const { data } = useRequest<IFooterLinks>({
+	// 	method: 'GET',
+	// 	url: api.homePage.getFooterData
+	// });
+	const { data } = useFooterLinks();
+	const { text: pageInterfaceText } = useInterfaceText();
+	const { openLogin } = useCommon();
 	const { isMobile } = useDevice();
 
 	return (

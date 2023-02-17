@@ -1,11 +1,9 @@
-import api from '@/api';
-import useRequest from '@/hooks/useRequest';
 import { IPageTextInterface } from '@/interfaces/api';
 import { IEventError } from '@/interfaces/shared';
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 type State = {
-	pageInterfaceText: IPageTextInterface | null;
+	// pageInterfaceText: IPageTextInterface | null;
 	error: IEventError | null;
 	setError: (error: IEventError | null) => void;
 	clearError: () => void;
@@ -31,7 +29,7 @@ type State = {
 type CommonProviderProps = { children: React.ReactNode };
 
 const CommonContext = createContext<State>({
-	pageInterfaceText: null,
+	// pageInterfaceText: null,
 	error: null,
 	setError: () => {},
 	clearError: () => {},
@@ -56,7 +54,7 @@ const CommonContext = createContext<State>({
 });
 
 function CommonProvider({ children }: CommonProviderProps) {
-	const [pageInterfaceText, setPageInterfaceText] = useState<IPageTextInterface | null>(null);
+	// const [pageInterfaceText, setPageInterfaceText] = useState<IPageTextInterface | null>(null);
 	const [pageError, setPageError] = useState<IEventError | null>(null);
 	const [noScroll, setNoScroll] = useState(false);
 
@@ -118,15 +116,15 @@ function CommonProvider({ children }: CommonProviderProps) {
 		setPageError(null);
 	};
 
-	const { data } = useRequest<IPageTextInterface>({
-		method: 'GET',
-		url: api.common.getPageInterfaceText
-	});
-	useEffect(() => {
-		if (data) {
-			setPageInterfaceText(data);
-		}
-	}, [data]);
+	// const { data } = useRequest<IPageTextInterface>({
+	// 	method: 'GET',
+	// 	url: api.common.getPageInterfaceText
+	// });
+	// useEffect(() => {
+	// 	if (data) {
+	// 		setPageInterfaceText(data);
+	// 	}
+	// }, [data]);
 
 	useEffect(() => {
 		if (noScroll) {
@@ -156,7 +154,7 @@ function CommonProvider({ children }: CommonProviderProps) {
 
 	const contextValue = useMemo(
 		() => ({
-			pageInterfaceText,
+			// pageInterfaceText,
 			openRegistration,
 			openThank,
 			openLogin,
@@ -180,7 +178,7 @@ function CommonProvider({ children }: CommonProviderProps) {
 			setNoScroll
 		}),
 		[
-			pageInterfaceText,
+			// pageInterfaceText,
 			openRegistration,
 			openLogin,
 			openError,

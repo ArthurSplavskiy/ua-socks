@@ -1,5 +1,6 @@
 const endpoints = {
 	//getMenuList: () => axios.get('/menu'),
+	getHomeData: import.meta.env.VITE_API_URL + '/home',
 	getMenuList: import.meta.env.VITE_API_URL + '/menu',
 	getHeroData: import.meta.env.VITE_API_URL + '/home_hero',
 	getAdvantages: import.meta.env.VITE_API_URL + '/home_advantages',

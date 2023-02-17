@@ -7,9 +7,11 @@ import { useRegistration } from '@/components/Forms/RegisterForm/useRegistration
 import { Link } from 'react-router-dom';
 import { FormFooter } from '../FormFooter';
 import '../AuthForms.scss';
+import { useInterfaceText } from '@/context/UserContext';
 
 export const RegisterForm = () => {
-	const { pageInterfaceText, openLogin } = useCommon();
+	const { openLogin } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { isMobile } = useDevice();
 	const { onSubmit, formData, isLoading } = useRegistration();
 

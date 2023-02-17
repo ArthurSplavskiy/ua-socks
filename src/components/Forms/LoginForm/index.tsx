@@ -6,9 +6,11 @@ import { useDevice } from '@/context/DeviceContext';
 import { useLogin } from '@/components/Forms/LoginForm/useLogin';
 import { Link } from 'react-router-dom';
 import { FormFooter } from '../FormFooter';
+import { useInterfaceText } from '@/context/UserContext';
 
 export const LoginForm = () => {
-	const { pageInterfaceText, openRegistration, openForgotPass } = useCommon();
+	const { openRegistration, openForgotPass } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { isMobile } = useDevice();
 	const { onSubmit, formData, isLoading } = useLogin();
 	return (

@@ -1,5 +1,5 @@
 import { Button } from '@/components/shared/Button';
-import { useCommon } from '@/context/CommonContext';
+import { useInterfaceText } from '@/context/UserContext';
 import { FC, ReactNode } from 'react';
 
 interface Props {
@@ -7,7 +7,8 @@ interface Props {
 }
 
 export const QuestionBox: FC<Props> = ({ bg }) => {
-	const { pageInterfaceText } = useCommon();
+	// const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	return (
 		<div className='QuestionBox'>
 			<div className='QuestionBox-content'>

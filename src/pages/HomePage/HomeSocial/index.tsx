@@ -1,15 +1,14 @@
-import useRequest from '@/hooks/useRequest';
 import { FC } from 'react';
-import api from '@/api';
 import { SectionHead } from '@/components/shared/SectionHead';
-import { IHomeSocial } from '@/interfaces/api';
 import { Social } from '@/components/Social';
+import { useHomeSocial } from '@/context/UserContext';
 
 export const HomeSocial: FC = () => {
-	const { data } = useRequest<IHomeSocial>({
-		method: 'GET',
-		url: api.homePage.getSocial
-	});
+	const { data } = useHomeSocial();
+	// const { data } = useRequest<IHomeSocial>({
+	// 	method: 'GET',
+	// 	url: api.homePage.getSocial
+	// });
 
 	return (
 		<section className='section-offset'>

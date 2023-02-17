@@ -1,13 +1,13 @@
 import { Icon } from '@/components/shared/Icon/Icon';
-import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
-import { useProfile } from '@/context/UserContext';
+import { useInterfaceText, useProfile } from '@/context/UserContext';
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import './index.scss';
 
 export const AccountSidebar: FC = () => {
-	const { pageInterfaceText } = useCommon();
+	// const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { isTablet } = useDevice();
 	const { logOut } = useProfile();
 

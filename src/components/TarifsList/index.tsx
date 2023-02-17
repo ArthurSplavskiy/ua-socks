@@ -1,4 +1,4 @@
-import { useCommon } from '@/context/CommonContext';
+import { useInterfaceText } from '@/context/UserContext';
 import { IProxyTarif, IProxyTarifList } from '@/interfaces/api';
 import { ISelectOption } from '@/interfaces/shared';
 import { FC, useEffect, useState } from 'react';
@@ -12,7 +12,8 @@ interface Props {
 }
 
 export const TarifsList: FC<Props> = ({ data, type }) => {
-	const { pageInterfaceText } = useCommon();
+	//const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const initGeoValue = data?.map((d) => d.geo).map((l) => ({ value: l, label: l }))[0].value;
 	const [selectedOption, setSelectedOption] = useState<ISelectOption>();
 	const [geoProxy, setGeoProxy] = useState<IProxyTarif[] | undefined>(data?.[0].proxy);

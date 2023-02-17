@@ -2,19 +2,20 @@ import api from '@/api';
 import { Button } from '@/components/shared/Button';
 import { InputField } from '@/components/shared/FormComponents/InputField/InputField';
 import { useCommon } from '@/context/CommonContext';
-import { useProfile } from '@/context/UserContext';
+import { useInterfaceText, useProfile } from '@/context/UserContext';
 import { getApiError, notValidForm } from '@/helpers';
 import { useTextInput } from '@/hooks/useTextInput/useTextInput';
 import { FormEvent, useEffect, useState } from 'react';
 
 export const EmailWidget = () => {
 	const [isLoading, setIsLoading] = useState(false);
-	const { openError, setError, pageInterfaceText } = useCommon();
+	const { openError, setError } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { user, setUser } = useProfile();
 	const [currentEmail, setCurrentEmail] = useState('');
 
 	const formData = {
-		current_email: useTextInput(),
+		current_email: useTextInput({ value: currentEmail || 'EmailExample@' }),
 		email: useTextInput({ validators: ['email'], isRequired: true })
 	};
 
@@ -27,12 +28,7 @@ export const EmailWidget = () => {
 			if (!user) return;
 			const res = await api.account.updateProfile({ ...user, email: formData.email.value });
 			const resData = JSON.parse(res.config.data);
-			formData.email.setValue('');
-			formData.email.setValue('');
-			setTimeout(() => {
-				formData.email.setErrors([]);
-				formData.email.setErrors([]);
-			}, 0);
+			formData.email.reset();
 			setUser(resData);
 		} catch (error) {
 			const { msg } = getApiError(error, formData);

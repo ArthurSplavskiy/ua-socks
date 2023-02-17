@@ -1,8 +1,8 @@
 import { Icon } from '@/components/shared/Icon/Icon';
-import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
 import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import { Popover } from './Popover';
+import { useInterfaceText } from '@/context/UserContext';
 import './index.scss';
 
 interface Props {
@@ -11,7 +11,8 @@ interface Props {
 }
 
 export const Table: FC<Props> = ({ bodyChildren, className }) => {
-	const { pageInterfaceText } = useCommon();
+	// const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { is810 } = useDevice();
 	const tableRef = useRef<HTMLTableElement | null>(null);
 	const [tableBodyHeightInit, setTableBodyHeightInit] = useState(0);

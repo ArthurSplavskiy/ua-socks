@@ -30,7 +30,7 @@ export const useSelect = <T extends tOptions>(props?: iUseSelectProps<T>) => {
 	const [options, setOptions] = useState<Array<T> | undefined>(props?.options);
 	const [errors, setErrors] = useState<string[]>([]);
 
-	const emptyErr = props?.emptyErrText ? props?.emptyErrText : "This field can't be empty";
+	const emptyErr = props?.emptyErrText ? props?.emptyErrText : 'Це поле не може бути порожнім'; // "This field can't be empty";
 
 	useEffect(() => {
 		if (!!value) {

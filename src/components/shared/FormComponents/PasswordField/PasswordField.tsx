@@ -44,7 +44,7 @@ export const PasswordField: React.FC<InterfacePasswordField> = ({
 				</button>
 			</div>
 			{errors.map((error, i) => (
-				<p key={i} className='PasswordField-error-message error'>
+				<p key={i} className={'PasswordField-error-message error'}>
 					{error}
 				</p>
 			))}

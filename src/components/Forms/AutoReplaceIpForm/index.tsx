@@ -1,12 +1,13 @@
 import { Button } from '@/components/shared/Button';
 import { InputField } from '@/components/shared/FormComponents/InputField/InputField';
 import { useAccount } from '@/context/Account/AccountContextHooks';
-import { useCommon } from '@/context/CommonContext';
 import { useReplaceIp } from './useReplaceIp';
+import { useInterfaceText } from '@/context/UserContext';
 import '../AccountForms.scss';
 
 export const AutoReplaceIpForm = () => {
-	const { pageInterfaceText } = useCommon();
+	// const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { onSubmit, formData } = useReplaceIp();
 	const {
 		state: { closeReplaceIpPopup }

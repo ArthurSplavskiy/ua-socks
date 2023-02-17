@@ -2,8 +2,8 @@ import { ITab } from '@/interfaces/shared';
 import { FC, useState } from 'react';
 import { Button } from '../shared/Button';
 import { HideElements } from './HideElements';
-import './SpeedTabs.scss';
 import { Tab } from './Tab';
+import './SpeedTabs.scss';
 
 interface Props {
 	data: ITab[];
@@ -11,7 +11,6 @@ interface Props {
 
 export const SpeedTabs: FC<Props> = ({ data }) => {
 	const [activeTab, setActiveTab] = useState(0);
-
 	return (
 		<div className='SpeedTabs'>
 			<div className='SpeedTabs-btns'>
@@ -20,7 +19,7 @@ export const SpeedTabs: FC<Props> = ({ data }) => {
 						key={idx}
 						onClick={() => setActiveTab(idx)}
 						color={activeTab === idx ? 'primary' : 'outline'}>
-						{item.name}
+						{item.title}
 					</Button>
 				))}
 			</div>

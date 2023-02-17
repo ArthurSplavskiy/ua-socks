@@ -1,3 +1,5 @@
+export type IDType = number | string;
+
 export interface IDataHooks<DataType> {
 	data: DataType;
 	isLoading: boolean;
@@ -49,6 +51,8 @@ export interface IAdvantages {
 }
 
 export interface ITab {
+	id?: IDType;
+	title?: string;
 	name: string;
 	descr_title: string;
 	descr: string[];
@@ -75,14 +79,14 @@ export interface ISelectOption {
 
 export interface ISlide {
 	title: string;
-	text: string[];
+	text: string[] | string;
 	img: string;
 }
 
 export interface ISocial {
 	name: string;
 	icon: string;
-	link: string;
+	link?: string;
 }
 
 export interface IFaq {

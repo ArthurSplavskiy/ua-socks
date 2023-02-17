@@ -1,7 +1,6 @@
 import { Button } from '@/components/shared/Button';
-import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
-import { useProfile } from '@/context/UserContext';
+import { useInterfaceText, useProfile } from '@/context/UserContext';
 import { useClickOutside } from '@/hooks/useClickOutside';
 import { useRef, useState } from 'react';
 import { BalanceWidget } from './BalanceWidget';
@@ -14,7 +13,8 @@ import './index.scss';
 export const AccountDashboardContent = () => {
 	const { isMobile } = useDevice();
 	const { user } = useProfile();
-	const { pageInterfaceText } = useCommon();
+	// const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const [optionOpen, setOptionOpen] = useState(false);
 	const groupOptionsRef = useRef<HTMLDivElement | null>(null);
 	useClickOutside(groupOptionsRef, () => setOptionOpen(false));

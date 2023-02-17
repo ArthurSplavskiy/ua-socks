@@ -1,6 +1,5 @@
 import { Button } from '@/components/shared/Button';
 import { InputField } from '@/components/shared/FormComponents/InputField/InputField';
-import { useCommon } from '@/context/CommonContext';
 import { useExport } from './useExport';
 import { ReactSelect } from '@/components/shared/FormComponents/ReactSelect/ReactSelect';
 import { CheckBoxGroupe } from '@/components/shared/FormComponents/CheckBoxGroupe/CheckBoxGroupe';
@@ -8,10 +7,12 @@ import useRequest from '@/hooks/useRequest';
 import { IExportSettings } from '@/interfaces/api';
 import api from '@/api';
 import { useDevice } from '@/context/DeviceContext';
+import { useInterfaceText } from '@/context/UserContext';
 import '../AccountForms.scss';
 
 export const ExportForm = () => {
-	const { pageInterfaceText } = useCommon();
+	// const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { isMobile } = useDevice();
 	const { onSubmit, formData, isLoadingFormats, formats } = useExport();
 

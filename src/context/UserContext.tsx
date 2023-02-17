@@ -1,12 +1,15 @@
 import api from '@/api';
-import { IUserProfile } from '@/interfaces/api';
-import { AppRoutes } from '@/routes/AppRouter';
+import useRequest from '@/hooks/useRequest';
 import Cookies from 'js-cookie';
 import jwt_decode from 'jwt-decode';
+import { AppRoutes } from '@/routes/AppRouter';
+import { IHomePageData, IUserProfile } from '@/interfaces/api';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 type State = {
 	isLoaded: boolean;
+	homepageIsLoading: boolean;
+	homePageData: IHomePageData | undefined;
 	user: IUserProfile | null;
 	token: string | null;
 	setUser: (user: IUserProfile | null) => void;
@@ -18,8 +21,10 @@ type UserProviderProps = { children: React.ReactNode };
 
 const UserContext = createContext<State>({
 	isLoaded: false,
+	homepageIsLoading: false,
 	user: null,
 	token: null,
+	homePageData: undefined,
 	setUser: () => {},
 	setToken: () => {},
 	logOut: () => {},
@@ -30,6 +35,14 @@ function UserProvider({ children }: UserProviderProps) {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [user, setUser] = useState<IUserProfile | null>(null);
 	const [token, setTokenData] = useState<string | null>(null);
+
+	// home sections data
+	const { data: homepageData, isLoading: homepageIsLoading } = useRequest<IHomePageData>({
+		method: 'GET',
+		url: api.homePage.getHomeData
+	});
+	const [homePageData, setHomePageData] = useState<IHomePageData | undefined>(undefined);
+	// ===
 
 	const setToken = useCallback((tokenData: string | null) => {
 		setTokenData(tokenData);
@@ -72,6 +85,10 @@ function UserProvider({ children }: UserProviderProps) {
 		getProfileData();
 	}, [setToken]);
 
+	useEffect(() => {
+		setHomePageData(homepageData);
+	}, [homepageData]);
+
 	const contextValue = useMemo(
 		() => ({
 			isLoaded,
@@ -80,9 +97,11 @@ function UserProvider({ children }: UserProviderProps) {
 			setUser,
 			setToken,
 			logOut,
-			getProfileData
+			getProfileData,
+			homePageData,
+			homepageIsLoading
 		}),
-		[isLoaded, user, token, setToken, logOut, getProfileData]
+		[isLoaded, user, token, setToken, logOut, getProfileData, homePageData, homepageIsLoading]
 	);
 
 	return <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>;
@@ -98,4 +117,68 @@ function useProfile() {
 	return context;
 }
 
-export { UserProvider, useProfile };
+function useInterfaceText() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { text: homePageData?.interface, isLoading: homepageIsLoading };
+}
+function useMenu() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.menu, isLoading: homepageIsLoading };
+}
+function useHomeHero() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.home_hero, isLoading: homepageIsLoading };
+}
+function useHomeAdvantages() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.home_advantages, isLoading: homepageIsLoading };
+}
+function useHomeSpeed() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.home_speed, isLoading: homepageIsLoading };
+}
+function useHomeTarifs() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.home_tarifs, isLoading: homepageIsLoading };
+}
+function useHomeUsage() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.home_usage, isLoading: homepageIsLoading };
+}
+function useHomeSocial() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.home_social, isLoading: homepageIsLoading };
+}
+function useHomeFaq() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.home_faq, isLoading: homepageIsLoading };
+}
+function useHomeQuestion() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.home_question, isLoading: homepageIsLoading };
+}
+function useFooterLinks() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.footer_links, isLoading: homepageIsLoading };
+}
+function useProxyTarifs() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.proxy_tarifs, isLoading: homepageIsLoading };
+}
+
+export {
+	UserProvider,
+	useProfile,
+	useMenu,
+	useHomeHero,
+	useInterfaceText,
+	useHomeAdvantages,
+	useHomeSpeed,
+	useHomeTarifs,
+	useHomeUsage,
+	useHomeSocial,
+	useHomeQuestion,
+	useHomeFaq,
+	useFooterLinks,
+	useProxyTarifs
+};

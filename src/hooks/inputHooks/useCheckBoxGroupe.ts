@@ -11,7 +11,7 @@ export const useCheckBoxGroupe = (props?: tUseCheckBoxGroupe) => {
 	const [errors, setErrors] = useState<string[]>([]);
 	const [isDirty, setIsDirty] = useState(false);
 	const initValue = props?.initValue || [];
-	const emptyErr = props?.emptyErrText ? props?.emptyErrText : "This field can't be empty";
+	const emptyErr = props?.emptyErrText ? props?.emptyErrText : 'Це поле не може бути порожнім'; // This field can't be empty
 
 	const checkBoxGroupeOnChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { value, checked } = e.target;

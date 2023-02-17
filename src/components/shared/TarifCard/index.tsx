@@ -1,5 +1,5 @@
 import { Mark } from '@/assets/icons';
-import { useCommon } from '@/context/CommonContext';
+import { useInterfaceText } from '@/context/UserContext';
 import { IProxyTarif } from '@/interfaces/api';
 import { ISelectOption } from '@/interfaces/shared';
 import { DetailedHTMLProps, FC, HTMLAttributes, useEffect, useState } from 'react';
@@ -24,7 +24,8 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
 	operators,
 	className
 }) => {
-	const { pageInterfaceText } = useCommon();
+	// const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const [price, setPrice] = useState(prices?.find((p) => p.active)?.total);
 	const [rentTerm, setRentTerm] = useState<ISelectOption>();
 	const [operator, setOperator] = useState<ISelectOption>();

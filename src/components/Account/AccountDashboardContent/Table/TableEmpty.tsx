@@ -1,8 +1,9 @@
 import { Button } from '@/components/shared/Button';
-import { useCommon } from '@/context/CommonContext';
+import { useInterfaceText } from '@/context/UserContext';
 
 export const TableEmpty = () => {
-	const { pageInterfaceText } = useCommon();
+	//const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 
 	return (
 		<tr>

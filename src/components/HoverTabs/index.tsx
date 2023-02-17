@@ -34,7 +34,8 @@ export const HoverTabs: FC<Props> = ({ data }) => {
 						activeId={activeIndex}
 						title={item.title}
 						text={item.text}
-						mobileImage={`/images/advantages/0${idx + 1}.svg`}
+						//mobileImage={`/images/advantages/0${idx + 1}.svg`}
+						mobileImage={item.img}
 						onMouseOver={mouseOverHandler}
 						onMouseLeave={mouseLeaveHandler}
 					/>
@@ -46,9 +47,9 @@ export const HoverTabs: FC<Props> = ({ data }) => {
 						key={item.img}
 						data-id={item.id}
 						activeId={activeIndex}
-						image={`/images/advantages/0${idx + 1}.svg`}
+						//image={`/images/advantages/0${idx + 1}.svg`}
+						image={item.img}
 					/>
-					//image={item.img}
 				))}
 			</div>
 		</div>

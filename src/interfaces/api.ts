@@ -8,8 +8,36 @@ import {
 	ISectionHead,
 	IFaq,
 	IMenu,
-	IProxyCartStats
+	IProxyCartStats,
+	ISelectOption
 } from './shared';
+
+export interface IHomePageData {
+	access_period: ISelectOption[];
+	export_formats: ISelectOption[];
+	export_setting: IExportSettings[];
+	footer_links: IFooterLinks;
+	home_advantages: IHomeAdvantages;
+	home_faq: IHomeFaqs;
+	home_hero: IHomeHero;
+	home_question: IHomeQuestion;
+	home_social: IHomeSocial;
+	home_speed: IHomeSpeed;
+	home_tarifs: IHomeTarifs;
+	home_usage: IHomeUsage;
+	interface: IPageTextInterface;
+	menu: IMenu[];
+	payment_methods: ISelectOption[];
+	profile: IUserProfile;
+	proxy_tarifs: IProxyTarifList[];
+	users: IUser[];
+}
+
+export interface IUser {
+	id: number;
+	email: string;
+	password: string;
+}
 
 export interface IUserProfile {
 	userId: number;

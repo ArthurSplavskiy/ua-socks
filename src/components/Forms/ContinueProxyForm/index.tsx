@@ -1,12 +1,13 @@
 import { Button } from '@/components/shared/Button';
-import { useCommon } from '@/context/CommonContext';
 import { useContinue } from './useContinue';
 import { ReactSelect } from '@/components/shared/FormComponents/ReactSelect/ReactSelect';
 import { useDevice } from '@/context/DeviceContext';
 import { useAccount } from '@/context/Account/AccountContextHooks';
+import { useInterfaceText } from '@/context/UserContext';
 
 export const ContinueForm = () => {
-	const { pageInterfaceText } = useCommon();
+	// const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const { onSubmit, formData, optionsIsLoading, formattingOptions, notEnoughMoney } = useContinue();
 	const { isMobile } = useDevice();
 	const {

@@ -9,9 +9,11 @@ import { AccountPopupsBg } from '../shared/Background/AccountPopupsBg';
 import { AutoReplaceIpForm } from '../Forms/AutoReplaceIpForm';
 import { ExportForm } from '../Forms/ExportProxyForm';
 import { ContinueForm } from '../Forms/ContinueProxyForm';
+import { useInterfaceText } from '@/context/UserContext';
 
 export const PrivatePopups: FC = () => {
-	const { pageInterfaceText, isThankPopupOpen, closeThank } = useCommon();
+	const { isThankPopupOpen, closeThank } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const {
 		state: {
 			isAddToBalancePopup,

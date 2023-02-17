@@ -1,4 +1,4 @@
-import { useCommon } from '@/context/CommonContext';
+import { useInterfaceText } from '@/context/UserContext';
 import Cookies from 'js-cookie';
 import { FC, ReactNode, useEffect, useState } from 'react';
 import { Button } from '../shared/Button';
@@ -9,7 +9,8 @@ interface Props {
 }
 
 export const CookieBanner: FC<Props> = ({ bg }) => {
-	const { pageInterfaceText } = useCommon();
+	//const { pageInterfaceText } = useCommon();
+	const { text: pageInterfaceText } = useInterfaceText();
 	const [isOpen, setIsOpen] = useState(true);
 	const [noRender, setIsNoRender] = useState(false);
 
