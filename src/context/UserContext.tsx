@@ -157,6 +157,7 @@ function useHomeQuestion() {
 	const { homePageData, homepageIsLoading } = useContext(UserContext);
 	return { data: homePageData?.home_question, isLoading: homepageIsLoading };
 }
+
 function useFooterLinks() {
 	const { homePageData, homepageIsLoading } = useContext(UserContext);
 	return { data: homePageData?.footer_links, isLoading: homepageIsLoading };
@@ -164,6 +165,10 @@ function useFooterLinks() {
 function useProxyTarifs() {
 	const { homePageData, homepageIsLoading } = useContext(UserContext);
 	return { data: homePageData?.proxy_tarifs, isLoading: homepageIsLoading };
+}
+function useSupportLink() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.support_link, isLoading: homepageIsLoading };
 }
 
 export {
@@ -180,5 +185,6 @@ export {
 	useHomeQuestion,
 	useHomeFaq,
 	useFooterLinks,
-	useProxyTarifs
+	useProxyTarifs,
+	useSupportLink
 };

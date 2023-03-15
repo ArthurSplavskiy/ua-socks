@@ -9,7 +9,7 @@ import { useDevice } from '@/context/DeviceContext';
 import { scrollToBlock } from '@/helpers/scrollToBlock';
 import { AppRoutes } from '@/routes/AppRouter';
 import Cookies from 'js-cookie';
-import { useFooterLinks, useInterfaceText } from '@/context/UserContext';
+import { useFooterLinks, useInterfaceText, useSupportLink } from '@/context/UserContext';
 import './Footer.scss';
 
 export const Footer: FC = () => {
@@ -21,6 +21,7 @@ export const Footer: FC = () => {
 	const { text: pageInterfaceText } = useInterfaceText();
 	const { openLogin } = useCommon();
 	const { isMobile } = useDevice();
+	const { data: supportLink } = useSupportLink();
 
 	return (
 		<footer className='Footer'>
@@ -51,7 +52,7 @@ export const Footer: FC = () => {
 					</div>
 				</div>
 				<div className='Footer-bottom'>
-					<a className='Footer-telegram' href='http://telegram.com' target='_blank'>
+					<a className='Footer-telegram' href={supportLink} target='_blank'>
 						<span>
 							<Icon icon='telegram-outline' color='white' size='8' />
 						</span>

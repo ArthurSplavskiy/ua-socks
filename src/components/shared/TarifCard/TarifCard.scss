@@ -128,8 +128,7 @@ $mobilePadding: 24px;
 		span {
 			display: inline-flex;
 			flex-direction: column;
-			&:after {
-				content: '';
+			span {
 				margin-top: 5px;
 				height: 1px;
 			}

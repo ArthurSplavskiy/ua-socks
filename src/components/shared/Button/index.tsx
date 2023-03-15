@@ -1,7 +1,8 @@
 import { Icon } from '../Icon/Icon';
 import React, { DetailedHTMLProps, FC } from 'react';
-import './Button.scss';
 import { Link } from 'react-router-dom';
+import './Button.scss';
+import { useSupportLink } from '@/context/UserContext';
 
 interface IButtonProps
 	extends DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
@@ -34,6 +35,21 @@ export const Button: FC<IButtonProps> = ({
 	...props
 }) => {
 	const loadingClassName = loading ? 'loading' : '';
+	const { data: supportLink } = useSupportLink();
+
+	if (icon === 'telegram') {
+		return (
+			<a href={supportLink} target='_blank'>
+				<button
+					className={`Button ${size} ${color} ${loadingClassName} ${width} ${className} ${hidePadding} ${btnType} ${textAlign} ${icon}`}
+					{...props}>
+					{btnType === 'iconLeft' && icon === 'telegram' && <Icon icon='telegram-outline' />}
+					{children}
+				</button>
+			</a>
+		);
+	}
+
 	return (
 		<>
 			{btnLink ? (

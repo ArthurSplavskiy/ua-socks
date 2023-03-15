@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import PageLayout from '@/layouts/PageLayout';
 import ErrorPage from '@/pages/ErrorsPage';
 import HomePage from '@/pages/HomePage';
@@ -8,12 +8,38 @@ import { AccountBuy } from '@/pages/AccountPage/AccountBuy';
 import { AccountSettings } from '@/pages/AccountPage/AccountSettings';
 import { AccountSupport } from '@/pages/AccountPage/AccountSupport';
 import PrivacyPage from '@/pages/PrivacyPage';
+import { IMenu } from '@/interfaces/shared';
 
 export enum AppRoutes {
 	HOME = '/',
 	ACCOUNT_DASHBOARD = '/account/dashboard',
 	PRIVACY_POLICY = '/privacy-policy'
 }
+
+const createStaticRoutes = async (): Promise<RouteObject[]> => {
+	let routes: RouteObject[] = [];
+	let apiRoutes: string[] = [];
+	await fetch(`${import.meta.env.VITE_API_URL}/home`)
+		.then((response) => response.json())
+		.then(
+			(json) => (apiRoutes = json.footer_links.footer_privacy_links.map((el: IMenu) => el.slug))
+		);
+
+	apiRoutes.forEach((slug: string) => {
+		routes.push({
+			path: `/${slug}`,
+			element: <PageLayout />,
+			errorElement: <ErrorPage />,
+			children: [
+				{
+					path: `/${slug}`,
+					element: <PrivacyPage slug={slug} />
+				}
+			]
+		});
+	});
+	return routes;
+};
 
 const AppRouter = createBrowserRouter([
 	{
@@ -50,17 +76,7 @@ const AppRouter = createBrowserRouter([
 			}
 		]
 	},
-	{
-		path: '/privacy-policy',
-		element: <PageLayout />,
-		errorElement: <ErrorPage />,
-		children: [
-			{
-				path: '/privacy-policy',
-				element: <PrivacyPage />
-			}
-		]
-	}
+	...(await createStaticRoutes())
 ]);
 
 export default AppRouter;

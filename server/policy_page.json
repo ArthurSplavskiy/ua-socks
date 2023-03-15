@@ -1,0 +1,15 @@
+{
+	"page_title": "Політика конфіденційності",
+	"page_content": [
+		{
+			"subtitle": "subtitle",
+			"subtitle_number": 1.1,
+			"text": ["paragraph1", "paragraph2", "paragrap3"]
+		},
+		{
+			"subtitle": "subtitle2",
+			"subtitle_number": 1.2,
+			"text": "paragraph1"
+		}
+	]
+}

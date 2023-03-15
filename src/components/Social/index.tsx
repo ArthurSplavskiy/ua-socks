@@ -48,7 +48,7 @@ export const Social: FC<Props> = ({ data }) => {
 						target='_blank'
 						className={`Social-icon ${inView && 'fadeIn'}`}>
 						<img src={data?.[0]?.icon} alt={data?.[0]?.name} />
-						{`/images/social-icon/octopus.png`}
+						{/* {`/images/social-icon/octopus.png`} */}
 						<div className='Social-icon-name'>{data?.[0]?.name}</div>
 					</a>
 					<SocialLine className={`Social-line ${inView && 'draw'}`} index={1} />

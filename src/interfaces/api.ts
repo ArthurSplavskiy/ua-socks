@@ -31,6 +31,12 @@ export interface IHomePageData {
 	profile: IUserProfile;
 	proxy_tarifs: IProxyTarifList[];
 	users: IUser[];
+	support_link: string;
+}
+
+export interface IPolicyPageData {
+	page_title: string;
+	text: string;
 }
 
 export interface IUser {
@@ -150,7 +156,7 @@ export interface IProxyTarif {
 	id: number;
 	status: string;
 	mark: boolean;
-	color: 'primary' | 'green' | 'red';
+	color?: 'primary' | 'green' | 'red' | null;
 	operators: string[];
 	rent_terms: string[];
 	prices: IProxyPrices[];

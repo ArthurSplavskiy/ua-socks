@@ -46,9 +46,9 @@ export const Speedometer: FC<Props> = ({ isActive, speedValue }) => {
 
 	return (
 		<div
-			className={`Speedometer ${isActive && 'active' && 'active-' + speedValue} ${
-				isActive ? 'jump' : ''
-			}`}>
+			className={`Speedometer ${isActive && 'active' && speedValue < 50 && 'active-40'} ${
+				isActive && 'active' && speedValue < 70 && 'active-60'
+			} ${isActive && 'active' && speedValue < 100 && 'active-90'} ${isActive ? 'jump' : ''}`}>
 			<div className='Speedometer-panel'>
 				<SpeedometerIcon className='Speedometer-desk' />
 				<SpeedometerArrow className='Speedometer-arrow' />

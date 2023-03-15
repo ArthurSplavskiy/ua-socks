@@ -6,21 +6,25 @@ import { useBrowserTab } from '@/api/hooks/useBrowserTab';
 import 'swiper/css/effect-fade';
 import 'swiper/css';
 import './Slider.scss';
+import { Icon } from '../shared/Icon/Icon';
 
 interface Props {
 	slides: ISlide[] | undefined;
 }
 
 export const Slider: FC<Props> = ({ slides }) => {
-	const tabHasFocus = useBrowserTab();
+	//const tabHasFocus = useBrowserTab();
 	const [s, sS] = useState<any>();
 	const [slasses, setClasses] = useState(['']);
 	const sliderRef = useRef<HTMLDivElement>(null);
 	const slidesSlide = slides?.length ? slides.length - 1 : 5;
-	const slidesDelay = 2000;
+	const slidesDelay = 4000;
+	const prevBtn = useRef<HTMLButtonElement>(null);
+	const nextBtn = useRef<HTMLButtonElement>(null);
+	const paginationRef = useRef<HTMLDivElement>(null);
 
 	const changeSlide = (swiper: any) => {
-		sS(swiper);
+		// sS(swiper);
 		if (slidesSlide === swiper.activeIndex) {
 			setClasses((prev) => [...prev, 'line-delay']);
 		} else {
@@ -32,18 +36,18 @@ export const Slider: FC<Props> = ({ slides }) => {
 		const slidesCount = slides?.length || 1;
 		const animDuration = slidesCount * slidesDelay - slidesDelay;
 		const pagination = document.querySelector('.swiper-pagination') as HTMLElement;
-		pagination.style.animationDuration = animDuration + 20 + 'ms';
+		if (pagination) pagination.style.animationDuration = animDuration + 20 + 'ms';
 	}, [slides]);
 
-	useEffect(() => {
-		const pagination = document.querySelector('.swiper-pagination') as HTMLElement;
-		if (!tabHasFocus) {
-			s?.slideTo(0);
-			pagination.classList.add('stop-animate');
-		} else {
-			pagination.classList.remove('stop-animate');
-		}
-	}, [tabHasFocus]);
+	// useEffect(() => {
+	// 	const pagination = document.querySelector('.swiper-pagination') as HTMLElement;
+	// 	if (!tabHasFocus) {
+	// 		s?.slideTo(0);
+	// 		pagination && pagination.classList.add('stop-animate');
+	// 	} else {
+	// 		pagination && pagination.classList.remove('stop-animate');
+	// 	}
+	// }, [tabHasFocus]);
 
 	return (
 		<div ref={sliderRef} className={`Slider ${slasses.join(' ')}`}>
@@ -61,7 +65,17 @@ export const Slider: FC<Props> = ({ slides }) => {
 				simulateTouch={false}
 				autoplay={{ delay: slidesDelay, disableOnInteraction: false }}
 				pagination={{
-					clickable: false
+					el: paginationRef.current,
+					clickable: true
+				}}
+				navigation={{
+					prevEl: prevBtn.current,
+					nextEl: nextBtn.current
+				}}
+				onBeforeInit={(swiper: any): void => {
+					swiper.params.navigation.prevEl = prevBtn.current;
+					swiper.params.navigation.nextEl = nextBtn.current;
+					swiper.params.pagination.el = paginationRef.current;
 				}}>
 				{slides?.map((slideContent, index) => (
 					<SwiperSlide key={index}>
@@ -91,6 +105,15 @@ export const Slider: FC<Props> = ({ slides }) => {
 					</SwiperSlide>
 				))}
 			</Swiper>
+			<div className='Slider-controls'>
+				<button className={'Slider-prev'} ref={prevBtn}>
+					<Icon icon='arrow-left' color='primary' />
+				</button>
+				<div className='Slider-pagination' ref={paginationRef}></div>
+				<button className={'Slider-next'} ref={nextBtn}>
+					<Icon icon='arrow-rigth' color='primary' />
+				</button>
+			</div>
 		</div>
 	);
 };

@@ -41,19 +41,25 @@ export const TarifsList: FC<Props> = ({ data, type }) => {
 			<div className='TarifsList-cards'>
 				{geoProxy?.length ? (
 					<>
-						{geoProxy.map((card) => (
-							<TarifCard
-								dataId={card.id}
-								key={card.id}
-								status={card.status}
-								mark={card.mark}
-								color={card.color}
-								prices={card.prices}
-								stats={card.stats}
-								rent_terms={card.rent_terms}
-								operators={card.operators}
-							/>
-						))}
+						{geoProxy.map((card, index) => {
+							const idx = index + 1;
+							const greenColor = idx === 1 || idx === 4 || idx === 7;
+							const primaryColor = idx === 2 || idx === 5 || idx === 8;
+							const redColor = idx === 3 || idx === 6 || idx === 9;
+							return (
+								<TarifCard
+									dataId={card.id}
+									key={card.id}
+									status={card.status}
+									mark={card.mark}
+									color={greenColor ? 'green' : redColor ? 'red' : 'primary'}
+									prices={card.prices}
+									stats={card.stats}
+									rent_terms={card.rent_terms}
+									operators={card.operators}
+								/>
+							);
+						})}
 					</>
 				) : (
 					<>
