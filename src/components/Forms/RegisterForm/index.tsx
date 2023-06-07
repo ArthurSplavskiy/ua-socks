@@ -18,7 +18,7 @@ export const RegisterForm = () => {
 
 	return (
 		<div className='AuthPopup'>
-			<div className='AuthPopup-plug'>
+			{/* <div className='AuthPopup-plug'>
 				<p>
 					Особистий кабінет у розробці. А поки - купуй проксі напряму у Telegram-сапорта{' '}
 					<a href={supportLink} target='_blank'>
@@ -26,7 +26,7 @@ export const RegisterForm = () => {
 					</a>
 					!
 				</p>
-			</div>
+			</div> */}
 			<h3 className='AuthPopup-title'>{pageInterfaceText?.registration_title}</h3>
 			<form className='AuthPopup-form' onSubmit={onSubmit}>
 				<InputField

@@ -39,7 +39,7 @@ function UserProvider({ children }: UserProviderProps) {
 	// home sections data
 	const { data: homepageData, isLoading: homepageIsLoading } = useRequest<IHomePageData>({
 		method: 'GET',
-		url: api.homePage.getHomeData
+		url: api.homePage.getHomeData('en')
 	});
 	const [homePageData, setHomePageData] = useState<IHomePageData | undefined>(undefined);
 	// ===

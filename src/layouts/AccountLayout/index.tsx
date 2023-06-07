@@ -12,7 +12,7 @@ import './AccountLayout.scss';
 export async function accountLayoutLoader() {
 	const token = Cookies.get('auth-token');
 	if (!token) {
-		return redirect(AppRoutes.HOME);
+		// return redirect(AppRoutes.HOME);
 	}
 	return null;
 }
