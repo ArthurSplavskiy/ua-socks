@@ -769,5 +769,10 @@
 			}
 		]
 	},
-	"support_link": "link"
+	"support_link": "link",
+	"og_content": {
+		"title": "UA socks",
+		"description": "decr",
+		"image": "img.png"
+	}
 }

@@ -9,7 +9,8 @@ import {
 	IFaq,
 	IMenu,
 	IProxyCartStats,
-	ISelectOption
+	ISelectOption,
+	IOgContent
 } from './shared';
 
 export interface IHomePageData {
@@ -32,6 +33,7 @@ export interface IHomePageData {
 	proxy_tarifs: IProxyTarifList[];
 	users: IUser[];
 	support_link: string;
+	og_content: IOgContent;
 }
 
 export interface IPolicyPageData {

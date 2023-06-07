@@ -104,3 +104,9 @@ export interface IProxyCartStats {
 	support: boolean;
 	value: string;
 }
+
+export interface IOgContent {
+	title: string;
+	description: string;
+	image: string;
+}

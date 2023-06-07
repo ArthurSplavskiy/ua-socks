@@ -171,6 +171,11 @@ function useSupportLink() {
 	return { data: homePageData?.support_link, isLoading: homepageIsLoading };
 }
 
+function useOgContent() {
+	const { homePageData, homepageIsLoading } = useContext(UserContext);
+	return { data: homePageData?.og_content, isLoading: homepageIsLoading };
+}
+
 export {
 	UserProvider,
 	useProfile,
@@ -186,5 +191,6 @@ export {
 	useHomeFaq,
 	useFooterLinks,
 	useProxyTarifs,
-	useSupportLink
+	useSupportLink,
+	useOgContent
 };
