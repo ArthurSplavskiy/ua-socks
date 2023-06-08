@@ -26,7 +26,7 @@ export const EmailWidget = () => {
 		try {
 			setIsLoading(true);
 			if (!user) return;
-			const res = await api.account.updateProfile({ ...user, email: formData.email.value });
+			const res = await api.account.updateProfile({ ...user, email: formData.email.value }, 'en');
 			const resData = JSON.parse(res.config.data);
 			formData.email.reset();
 			setUser(resData);

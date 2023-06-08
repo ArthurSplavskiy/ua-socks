@@ -22,7 +22,7 @@ export const useContinue = () => {
 	};
 	const { data: options, isLoading: optionsIsLoading } = useRequest<ISelectOption[]>({
 		method: 'GET',
-		url: api.account.getAccessPeriod
+		url: api.account.getAccessPeriod('en')
 	});
 
 	useEffect(() => {

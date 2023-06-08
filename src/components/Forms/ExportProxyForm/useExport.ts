@@ -13,7 +13,7 @@ export const useExport = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { data: formats, isLoading: isLoadingFormats } = useRequest<ISelectOption[]>({
 		method: 'GET',
-		url: api.account.getExportFormats
+		url: api.account.getExportFormats('en')
 	});
 
 	const formData = {

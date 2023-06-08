@@ -39,7 +39,7 @@ export const PasswordWidget = () => {
 				new_pass: formData.confirm_password.value || ''
 			};
 			if (!user) return;
-			const res = await api.account.updateProfile({ ...user, password: data.new_pass });
+			const res = await api.account.updateProfile({ ...user, password: data.new_pass }, 'en');
 			const resData = JSON.parse(res.config.data);
 			password.reset();
 			confirm_password.reset();

@@ -27,7 +27,7 @@ export const TelegramWidget = () => {
 				telegram: formData.telegram.value || ''
 			};
 			if (!user) return;
-			const res = await api.account.updateProfile({ ...user, telegram: data.telegram });
+			const res = await api.account.updateProfile({ ...user, telegram: data.telegram }, 'en');
 			const resData = JSON.parse(res.config.data);
 			setUser(resData);
 		} catch (error) {
