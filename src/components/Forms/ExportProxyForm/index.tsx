@@ -18,7 +18,7 @@ export const ExportForm = () => {
 
 	const { data: checkBoxList } = useRequest<IExportSettings[]>({
 		method: 'GET',
-		url: api.account.getExportSetting('en')
+		url: api.account.getExportSetting('uk')
 	});
 
 	return (

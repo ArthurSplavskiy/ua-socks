@@ -16,7 +16,7 @@ export const AddToBalanceForm = () => {
 	const [selectedOption, setSelectedOption] = useState<ISelectOption>();
 	const { data: paymentMethods, isLoading } = useRequest<ISelectOption[]>({
 		method: 'GET',
-		url: api.account.getPaymentMethods('en')
+		url: api.account.getPaymentMethods('uk')
 	});
 
 	const VarriantPrices = () => {
