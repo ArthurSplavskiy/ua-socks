@@ -41,7 +41,7 @@ export type tIcon =
 	| 'upload'
 	| 'wallet';
 
-type tIconSize = '20' | '8';
+type tIconSize = '28' | '20' | '8';
 type tColor = 'primary' | 'black' | 'white' | 'red' | 'green';
 
 interface iProps {

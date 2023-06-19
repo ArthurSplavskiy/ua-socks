@@ -64,7 +64,7 @@ export const AccountSidebar: FC = () => {
 						</NavLink>
 					</li>
 					{isTablet && (
-						<button className={'Sidebar-exit'} onClick={logOut}>
+						<button className={'Sidebar-exit'} onClick={() => logOut()}>
 							<span>
 								<Icon icon='exit' />
 							</span>
@@ -74,7 +74,7 @@ export const AccountSidebar: FC = () => {
 				</ul>
 			</nav>
 			{!isTablet && (
-				<button className={'Sidebar-exit'} onClick={logOut}>
+				<button className={'Sidebar-exit'} onClick={() => logOut()}>
 					<span>
 						<Icon icon='exit' />
 					</span>

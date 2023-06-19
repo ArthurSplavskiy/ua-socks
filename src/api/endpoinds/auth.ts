@@ -1,12 +1,17 @@
-import { TLoginPostData, TRegistrationPostData } from '@/interfaces/shared';
+import { TLoginPostData, TLogoutPostData, TRegistrationPostData } from '@/interfaces/shared';
+import { APIResponse } from '../interfaces';
 import axios from '../axios';
 
 const endpoints = {
-	registration: (data: Partial<TRegistrationPostData>) => axios.post('/register', data),
-	login: (data: TLoginPostData) => axios.post('/login', data),
-	forgotPassword: (data: any) => axios.post('/v1/auth/forgot/password', data),
-	updateProfile: (data: any) => axios.patch('/v1/auth/me', data),
-	getProfile: () => axios.get('/profile')
+  registration: (data: Partial<TRegistrationPostData>, lang: string) =>
+    axios.post<APIResponse>(`${lang}/register`, data),
+  login: (data: TLoginPostData, lang: string) => axios.post(`${lang}/login`, data),
+  logout: (data: TLogoutPostData, lang: string) => axios.post(`${lang}/logout`, data),
+  refresh: (lang: string) => axios.put(`${lang}/refresh`),
+  forgotPassword: (data: any, lang: string) => axios.post(`${lang}/forgot-password`, data),
+
+  updateProfile: (data: any) => axios.patch('/v1/auth/me', data),
+  getProfile: (lang: string) => axios.get(`${lang}/settings`)
 };
 
 export default endpoints;
