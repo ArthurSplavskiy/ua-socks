@@ -1,6 +1,6 @@
-import { IPageTextInterface } from '@/interfaces/api';
 import { IEventError } from '@/interfaces/shared';
 import React, { createContext, useContext, useEffect, useMemo, useState, useCallback } from 'react';
+import { usePublicPopups } from '@/components/PopupSystem/state/PublicPopups';
 
 type State = {
   // pageInterfaceText: IPageTextInterface | null;
@@ -43,6 +43,7 @@ const CommonContext = createContext<State>({
 
 function CommonProvider({ children }: CommonProviderProps) {
   // const [pageInterfaceText, setPageInterfaceText] = useState<IPageTextInterface | null>(null);
+  const { setConfirmEmailSendedMessagePopup } = usePublicPopups((state) => state);
   const [pageError, setPageError] = useState<IEventError | null>(null);
   const [noScroll, setNoScroll] = useState(false);
 
@@ -108,10 +109,22 @@ function CommonProvider({ children }: CommonProviderProps) {
     }
   }, [noScroll]);
 
+  const clickOnLoginLink = (e: React.MouseEvent<HTMLElement, MouseEvent> | any) => {
+    const anchor = e.target as HTMLElement;
+    if (anchor.getAttribute('href') === '#login') {
+      setConfirmEmailSendedMessagePopup({ isOpen: false });
+      openLogin();
+    }
+  };
+
   useEffect(() => {
     if (window.location.href.indexOf('#login') !== -1) {
       openLogin();
     }
+    addEventListener('click', (e) => clickOnLoginLink(e));
+    return () => {
+      removeEventListener('click', (e) => clickOnLoginLink(e));
+    };
   }, []);
 
   // const loadPageInterfaceText = useCallback(async () => {

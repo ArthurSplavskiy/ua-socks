@@ -14,7 +14,7 @@ export interface ISectionHead {
 export type TRegistrationPostData = {
   email: string;
   password: string;
-  confirm_password: string;
+  password_confirmation: string;
 };
 
 export type TLoginPostData = {

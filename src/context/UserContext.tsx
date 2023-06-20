@@ -53,7 +53,8 @@ function UserProvider({ children }: UserProviderProps) {
   //   }
   // }, []);
 
-  const logOut = useCallback(async ({ openLogin }: { openLogin?: boolean }) => {
+  const logOut = useCallback(async (props: any) => {
+		const openLogin = props?.openLogin;
     const res = await api.auth.logout(
       {
         name: null,

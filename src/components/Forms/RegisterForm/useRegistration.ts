@@ -5,12 +5,10 @@ import { useComparePasswordFields } from '@/hooks/useTextInput/useComparePasswor
 import { FormEvent, useState } from 'react';
 import { errorsMessages } from '@/hooks/useTextInput/validators';
 import { usePublicPopups } from '@/components/PopupSystem/state/PublicPopups';
-import { useCommon } from '@/context/CommonContext';
 import api from '@/api';
 
 export const useRegistration = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { openLogin } = useCommon();
   const { setConfirmEmailSendedMessagePopup } = usePublicPopups((state) => state);
 
   const formData = {
@@ -36,17 +34,23 @@ export const useRegistration = () => {
       setIsLoading(true);
       const data: Partial<TRegistrationPostData> = {
         email: formData.email.value || '',
-        password: formData.password.value || ''
+        password: formData.password.value || '',
+        password_confirmation: formData.confirm_password.value || ''
       };
       const res = await api.auth.registration(data, 'uk');
+      await api.auth.verifyEmail(data.email || '', 'uk');
+
       setIsLoading(false);
 
-      setConfirmEmailSendedMessagePopup({ isOpen: true, message: res.data.message });
+      setConfirmEmailSendedMessagePopup({
+        isOpen: true,
+        message: res.data.message.replace(`/uk/resending-verify/${data.email}`, '#login')
+      });
 
-      setTimeout(() => {
-        setConfirmEmailSendedMessagePopup({ isOpen: false });
-        openLogin();
-      }, 3000);
+      // setTimeout(() => {
+      //   setConfirmEmailSendedMessagePopup({ isOpen: false });
+      //   openLogin();
+      // }, 3000);
     } catch (error) {
       getApiError(error, formData);
     } finally {

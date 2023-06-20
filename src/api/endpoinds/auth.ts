@@ -5,6 +5,8 @@ import axios from '../axios';
 const endpoints = {
   registration: (data: Partial<TRegistrationPostData>, lang: string) =>
     axios.post<APIResponse>(`${lang}/register`, data),
+	verifyEmail: (email: string, lang: string) =>
+	axios.post<APIResponse>(`${lang}/resending-verify`, { email }),
   login: (data: TLoginPostData, lang: string) => axios.post(`${lang}/login`, data),
   logout: (data: TLogoutPostData, lang: string) => axios.post(`${lang}/logout`, data),
   refresh: (lang: string) => axios.put(`${lang}/refresh`),
