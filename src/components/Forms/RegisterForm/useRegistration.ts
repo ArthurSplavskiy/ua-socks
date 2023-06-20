@@ -44,7 +44,7 @@ export const useRegistration = () => {
 
       setConfirmEmailSendedMessagePopup({
         isOpen: true,
-        message: res.data.message.replace(`/uk/resending-verify/${data.email}`, '#login')
+        message: res.data.message.replace(`/uk/resending-verify/${data.email}`, '/login')
       });
 
       // setTimeout(() => {

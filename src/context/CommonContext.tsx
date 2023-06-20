@@ -111,14 +111,14 @@ function CommonProvider({ children }: CommonProviderProps) {
 
   const clickOnLoginLink = (e: React.MouseEvent<HTMLElement, MouseEvent> | any) => {
     const anchor = e.target as HTMLElement;
-    if (anchor.getAttribute('href') === '#login') {
+    if (anchor.getAttribute('href') === '/login') {
       setConfirmEmailSendedMessagePopup({ isOpen: false });
       openLogin();
     }
   };
 
   useEffect(() => {
-    if (window.location.href.indexOf('#login') !== -1) {
+    if (window.location.href.indexOf('/login') !== -1) {
       openLogin();
     }
     addEventListener('click', (e) => clickOnLoginLink(e));
