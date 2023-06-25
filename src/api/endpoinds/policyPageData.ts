@@ -1,5 +1,5 @@
 const endpoints = {
-	getPolicyData: import.meta.env.VITE_API_URL + '/policy'
+	getPolicyData: (lang: string) => import.meta.env.VITE_API_URL + `/${lang}/policy`
 };
 
 export default endpoints;

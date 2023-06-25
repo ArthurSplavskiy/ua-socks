@@ -2,8 +2,8 @@ import { useEffect, FC, ReactElement, useState } from 'react';
 import { Portal } from '../Portal/Portal';
 import { useModal } from './useModal';
 import { iModalPopUpProps } from './ModalPopup.interface';
-import './ModalPopup.scss';
 import { Icon } from '@/components/shared/Icon/Icon';
+import './ModalPopup.scss';
 
 /**
  * Modal pop up component for most of content

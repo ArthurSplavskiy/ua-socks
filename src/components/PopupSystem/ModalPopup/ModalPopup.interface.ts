@@ -6,7 +6,7 @@ export interface iModalPopUpProps {
 	show: boolean;
 	hide?: boolean;
 	persistOnScreen?: boolean;
-	onClose?: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+	onClose?: ((e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | any;
 	onAnimationHideStart?: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 	showCloseButton?: boolean;
 	size?: 'sm' | 'md' | 'lg' | 'xlg' | 'w-528';

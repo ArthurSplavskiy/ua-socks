@@ -1,8 +1,6 @@
-import axios from '../axios';
-
 const endpoints = {
 	//getPageInterfaceText: () => axios.get('/interface')
-	getPageInterfaceText: import.meta.env.VITE_API_URL + '/interface'
+	getPageInterfaceText: (lang: string) => import.meta.env.VITE_API_URL + `/${lang}/interface`
 };
 
 export default endpoints;

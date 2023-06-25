@@ -9,17 +9,17 @@ import { HomeUsage } from './HomeUsage';
 import { HomeVideo } from './HomeVideo';
 
 export default function HomePage() {
-	return (
-		<>
-			<HomeHero />
-			<HomeAdvantages />
-			<HomeSpeed />
-			<HomeTarif />
-			{/* <HomeVideo /> */}
-			<HomeUsage />
-			<HomeSocial />
-			<HomeFaq />
-			<HomeQuestion />
-		</>
-	);
+  return (
+    <>
+      <HomeHero />
+      <HomeAdvantages />
+      <HomeSpeed />
+      <HomeTarif />
+      <HomeVideo />
+      <HomeUsage />
+      <HomeSocial />
+      <HomeFaq />
+      <HomeQuestion />
+    </>
+  );
 }
