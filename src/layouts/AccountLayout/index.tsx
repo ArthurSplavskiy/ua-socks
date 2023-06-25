@@ -4,7 +4,7 @@ import { PrivatePopups } from '@/components/PopupSystem/privatePopups';
 import { Background } from '@/components/shared/Background';
 import { AccountProvider } from '@/context/Account/AccountContextProvider';
 import { AppRoutes } from '@/routes/AppRouter';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Outlet, redirect } from 'react-router-dom';
 import './AccountLayout.scss';
 
