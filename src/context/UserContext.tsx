@@ -54,7 +54,7 @@ function UserProvider({ children }: UserProviderProps) {
   // }, []);
 
   const logOut = useCallback(async (props: any) => {
-		const openLogin = props?.openLogin;
+    const openLogin = props?.openLogin;
     const res = await api.auth.logout(
       {
         name: null,
@@ -78,10 +78,11 @@ function UserProvider({ children }: UserProviderProps) {
   }, []);
   const getProfileData = useCallback(async () => {
     try {
-      if (authToken) {
+      if (localStorage.getItem('auth-token')) {
         const { data } = await api.auth.getProfile('uk');
         // const { email } = jwt_decode(tokenData) as any;
         // console.log('tokenData', jwt_decode(tokenData));
+
         setUser({
           ...data,
           email: userEmail,
@@ -96,7 +97,7 @@ function UserProvider({ children }: UserProviderProps) {
   }, [authToken, setAuthToken]);
 
   useEffect(() => {
-    if (authToken) {
+    if (localStorage.getItem('auth-token')) {
       getProfileData();
     }
   }, [authToken]);
