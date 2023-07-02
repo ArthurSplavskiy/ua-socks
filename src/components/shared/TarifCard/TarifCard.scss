@@ -3,215 +3,216 @@ $mobilePadding: 24px;
 @import '../../../assets/styles/placeholders/_skeleton';
 
 .content-loading .TarifCard {
-	opacity: 0;
+  opacity: 0;
 }
 .TarifCard {
-	border-radius: 20px;
-	background: var(--white);
-	box-shadow: 0px 4px 70px rgba(122, 136, 152, 0.6);
-	position: relative;
-	padding: $padding;
-	@media screen and (max-width: 480px) {
-		padding: $mobilePadding;
-	}
-	&:hover {
-		.TarifCard-wave {
-			background-position: 200px 20px;
-		}
-	}
-	&:after {
-		content: '';
-		position: absolute;
-		inset: 0 0 0 0;
-		border-radius: 20px;
-		z-index: -1;
-	}
-	&.loading {
-		min-height: 636px;
-		&:after {
-			@include skeleton;
-			z-index: 4;
-		}
-	}
-	&.animate {
-		//animation: cardAnimate 1.4s ease-out forwards;
-		// &:after {
-		// 	@include skeleton;
-		// 	z-index: 4;
-		// }
-	}
-	&.delay-0 {
-		animation-delay: 0.1s;
-	}
-	&.delay-1 {
-		animation-delay: 0.2s;
-	}
-	&.delay-2 {
-		animation-delay: 0.3s;
-	}
-	&.delay-3 {
-		animation-delay: 0.4s;
-	}
-	&.primary {
-		.TarifCard-wave {
-			background-image: url('../../../assets/images/wave-primary.svg');
-		}
-		.TarifCard-status span {
-			color: var(--primary);
-			&:after {
-				background: var(--primary);
-			}
-		}
-		.TarifCard-price span:first-child {
-			color: var(--primary);
-		}
-	}
-	&.green {
-		.TarifCard-wave {
-			background-image: url('../../../assets/images/wave-green.svg');
-		}
-		.TarifCard-status span {
-			color: var(--system-aqua);
-			&:after {
-				background: var(--system-aqua);
-			}
-		}
-		.TarifCard-price span:first-child {
-			color: var(--system-aqua);
-		}
-	}
-	&.red {
-		.TarifCard-wave {
-			background-image: url('../../../assets/images/wave-red.svg');
-			opacity: 0.2;
-		}
-		.TarifCard-status span {
-			color: var(--system-red);
-			&:after {
-				background: var(--system-red);
-			}
-		}
-		.TarifCard-price span:first-child {
-			color: var(--system-red);
-		}
-	}
-	&-content {
-		display: grid;
-		grid-template-columns: 1fr;
-		// position: relative;
-		// z-index: 2;
-		gap: 32px;
-		@media screen and (max-width: 728px) {
-			gap: 16px;
-		}
-		&-head {
-			display: grid;
-			grid-template-columns: 1fr;
-			gap: 32px;
-			@media screen and (max-width: 728px) {
-				gap: 16px;
-			}
-		}
-	}
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0px 4px 70px rgba(122, 136, 152, 0.6);
+  position: relative;
+  padding: $padding;
+  @media screen and (max-width: 480px) {
+    padding: $mobilePadding;
+  }
+  &:hover {
+    .TarifCard-wave {
+      background-position: 200px 20px;
+    }
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    inset: 0 0 0 0;
+    border-radius: 20px;
+    z-index: -1;
+  }
+  &.loading {
+    min-height: 636px;
+    &:after {
+      @include skeleton;
+      z-index: 4;
+    }
+  }
+  &.animate {
+    //animation: cardAnimate 1.4s ease-out forwards;
+    // &:after {
+    // 	@include skeleton;
+    // 	z-index: 4;
+    // }
+  }
+  &.delay-0 {
+    animation-delay: 0.1s;
+  }
+  &.delay-1 {
+    animation-delay: 0.2s;
+  }
+  &.delay-2 {
+    animation-delay: 0.3s;
+  }
+  &.delay-3 {
+    animation-delay: 0.4s;
+  }
+  &.primary {
+    .TarifCard-wave {
+      background-image: url('../../../assets/images/wave-primary.svg');
+    }
+    .TarifCard-status span {
+      color: var(--primary);
+      &:after {
+        background: var(--primary);
+      }
+    }
+    .TarifCard-price span:first-child {
+      color: var(--primary);
+    }
+  }
+  &.green {
+    .TarifCard-wave {
+      background-image: url('../../../assets/images/wave-green.svg');
+    }
+    .TarifCard-status span {
+      color: var(--system-aqua);
+      &:after {
+        background: var(--system-aqua);
+      }
+    }
+    .TarifCard-price span:first-child {
+      color: var(--system-aqua);
+    }
+  }
+  &.red {
+    .TarifCard-wave {
+      background-image: url('../../../assets/images/wave-red.svg');
+      opacity: 0.2;
+    }
+    .TarifCard-status span {
+      color: var(--system-red);
+      &:after {
+        background: var(--system-red);
+      }
+    }
+    .TarifCard-price span:first-child {
+      color: var(--system-red);
+    }
+  }
+  &-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    // position: relative;
+    // z-index: 2;
+    gap: 32px;
+    @media screen and (max-width: 728px) {
+      gap: 16px;
+    }
+    &-head {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      @media screen and (max-width: 728px) {
+        gap: 16px;
+      }
+    }
+  }
 
-	&-mark {
-		position: absolute;
-		top: 0;
-		right: 16px;
-	}
-	&-status {
-		font-size: var(--fSize16);
-		line-height: 100%;
-		@media screen and (max-width: 480px) {
-			font-size: var(--fSize14);
-		}
-		span {
-			display: inline-flex;
-			flex-direction: column;
-			span {
-				margin-top: 5px;
-				height: 1px;
-			}
-		}
-	}
-	&-price {
-		display: flex;
-		span {
-			font-weight: 700;
-			line-height: 120%;
-			&:first-child {
-				align-self: baseline;
-				font-size: var(--fSize32);
-				margin-right: 8px;
-				@media screen and (max-width: 480px) {
-					font-size: var(--fSize18);
-				}
-			}
-			&:last-child {
-				font-size: var(--fSize56);
-				@media screen and (max-width: 480px) {
-					font-size: var(--fSize32);
-				}
-			}
-		}
-	}
-	&-stats {
-		font-weight: 400;
-		font-size: var(--fSize14);
-		line-height: var(--fSize24);
-		li {
-			display: grid;
-			grid-template-columns: 20px 1fr;
-			align-items: center;
-			gap: 8px;
-			&:not(:last-child) {
-				margin-bottom: 16px;
-			}
-		}
-	}
-	&-btn {
-		display: flex;
-		justify-content: center;
-	}
-	&-selects {
-		margin-top: auto;
-		z-index: 3;
-	}
-	&-wave {
-		position: absolute;
-		// bottom: -($padding);
-		// left: -($padding);
-		bottom: 0;
-		left: 0;
-		right: 0;
-		width: 100%;
-		//width: calc(100% + 64px);
-		height: 92px;
-		transition: var(--transition);
-		background-repeat: repeat-x;
-		pointer-events: none;
-		border-bottom-left-radius: 20px;
-		border-bottom-right-radius: 20px;
-		z-index: 2;
-		// @media screen and (max-width: 480px) {
-		// 	bottom: -($mobilePadding);
-		// 	left: -($mobilePadding);
-		// 	width: calc(100% + 48px);
-		// }
-	}
+  &-mark {
+    position: absolute;
+    top: 0;
+    right: 16px;
+  }
+  &-status {
+    font-size: var(--fSize16);
+    line-height: 100%;
+    @media screen and (max-width: 480px) {
+      font-size: var(--fSize14);
+    }
+    span {
+      display: inline-flex;
+      flex-direction: column;
+      span {
+        margin-top: 5px;
+        height: 1px;
+      }
+    }
+  }
+  &-price {
+    display: flex;
+    span {
+      font-weight: 700;
+      line-height: 120%;
+      &:first-child {
+        align-self: baseline;
+        font-size: var(--fSize32);
+        margin-right: 8px;
+        @media screen and (max-width: 480px) {
+          font-size: var(--fSize18);
+        }
+      }
+      &:last-child {
+        font-size: var(--fSize56);
+        @media screen and (max-width: 480px) {
+          font-size: var(--fSize32);
+        }
+      }
+    }
+  }
+  &-stats {
+    font-weight: 400;
+    font-size: var(--fSize14);
+    line-height: var(--fSize24);
+    li {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      align-items: center;
+      gap: 8px;
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+  &-btn {
+    display: flex;
+    justify-content: center;
+    z-index: 3;
+  }
+  &-selects {
+    margin-top: auto;
+    z-index: 4;
+  }
+  &-wave {
+    position: absolute;
+    // bottom: -($padding);
+    // left: -($padding);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    //width: calc(100% + 64px);
+    height: 92px;
+    transition: var(--transition);
+    background-repeat: repeat-x;
+    pointer-events: none;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 2;
+    // @media screen and (max-width: 480px) {
+    // 	bottom: -($mobilePadding);
+    // 	left: -($mobilePadding);
+    // 	width: calc(100% + 48px);
+    // }
+  }
 }
 
 @keyframes cardAnimate {
-	0% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-	50% {
-		opacity: 0;
-		transform: translateY(40px);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
