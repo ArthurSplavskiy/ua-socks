@@ -1,5 +1,5 @@
 import { IProxy } from '@/interfaces/shared';
-import { useEffect, useMemo, useReducer, useState } from 'react';
+import { useMemo, useReducer, useState } from 'react';
 import { useProfile } from '../UserContext';
 import { AccountProviderProps, ActionType } from './AccountContext.types';
 import { AccountReducer } from './AccountContextReducer';
@@ -9,17 +9,17 @@ export function AccountProvider({ children }: AccountProviderProps) {
   const [state, dispatch] = useReducer(AccountReducer, {
     balance: 0,
     proxyList: [
-      {
-        id: 10,
-        name: 'test',
-        logo: '',
-        country: 'uk',
-        validity: 10,
-        socks: 'socks',
-        http: 'http',
-        url_ip_replace: '31422',
-        auto_continue: false
-      }
+      // {
+      //   id: 10,
+      //   name: 'test',
+      //   logo: '',
+      //   country: 'uk',
+      //   validity: 10,
+      //   socks: 'socks',
+      //   http: 'http',
+      //   url_ip_replace: '31422',
+      //   auto_continue: false
+      // }
     ],
     selectedProxy: [],
 

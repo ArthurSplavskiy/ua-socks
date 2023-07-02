@@ -37,6 +37,7 @@ axiosInstance.interceptors.response.use(
         //     }
         //   }
         // );
+        console.log('HERE');
         const res = await api.auth.refreshLogin(
           {
             email: JSON.parse(localStorage.getItem('user-email') || ''),

@@ -76,7 +76,7 @@ export const AccountDashboardContent = () => {
         )}
       </div>
       <div className='AccountDashboardContent-body'>
-        <Table bodyChildren={state.proxyList ? renderTableBody() : <TableEmpty />} />
+        <Table bodyChildren={state.proxyList.length ? renderTableBody() : <TableEmpty />} />
       </div>
     </div>
   );

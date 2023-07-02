@@ -15,7 +15,16 @@ const endpoints = {
   updateEmail: (lang: string, payload: IUpdateAccountEmail) =>
     axios.put(`/${lang}/reset-email`, payload),
   updatePwd: (lang: string, payload: IUpdateAccountPwd) =>
-    axios.put(`/${lang}/reset-password`, payload)
+    axios.put(`/${lang}/reset-password`, payload),
+
+  getRegionTariffs: async (lang: string, regionId: number = 1) => {
+    const res = await axios.get(`/${lang}/list-packages?region_id=${regionId}`);
+    return res.data;
+  },
+  getSupportData: async (lang: string) => {
+    const res = await axios.get(`/${lang}/support`);
+    return res.data;
+  }
 };
 
 export default endpoints;

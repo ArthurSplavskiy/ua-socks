@@ -7,6 +7,8 @@ import { AppRoutes } from '@/routes/AppRouter';
 import { FC, useEffect } from 'react';
 import { Outlet, redirect } from 'react-router-dom';
 import './AccountLayout.scss';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 export async function accountLayoutLoader() {
   if (!localStorage.getItem('auth-token')) {
@@ -15,19 +17,24 @@ export async function accountLayoutLoader() {
   return null;
 }
 
+const queryClient = new QueryClient();
+
 const AccountLayout: FC = () => {
   return (
-    <AccountProvider>
-      <div className='AccountLayout'>
-        <Header type='account' />
-        <div className='AccountLayout-main'>
-          <AccountSidebar />
-          <Outlet />
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={true} />
+      <AccountProvider>
+        <div className='AccountLayout'>
+          <Header type='account' />
+          <div className='AccountLayout-main'>
+            <AccountSidebar />
+            <Outlet />
+          </div>
+          <Background color='white' />
+          <PrivatePopups />
         </div>
-        <Background color='white' />
-        <PrivatePopups />
-      </div>
-    </AccountProvider>
+      </AccountProvider>
+    </QueryClientProvider>
   );
 };
 

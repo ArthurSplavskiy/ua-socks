@@ -174,6 +174,8 @@ export interface IProxyTarif {
 
 export interface IProxyTarifList {
   geo: string;
+  regionId: number;
+  isExistTariffs: boolean;
   proxy: IProxyTarif[];
 }
 

@@ -8,13 +8,13 @@ import { CommonProvider } from './context/CommonContext';
 import './assets/styles/index.scss';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-	<React.StrictMode>
-		<CommonProvider>
-			<UserProvider>
-				<DeviceProvider>
-					<RouterProvider router={AppRouter} />
-				</DeviceProvider>
-			</UserProvider>
-		</CommonProvider>
-	</React.StrictMode>
+  <React.StrictMode>
+    <CommonProvider>
+      <UserProvider>
+        <DeviceProvider>
+          <RouterProvider router={AppRouter} />
+        </DeviceProvider>
+      </UserProvider>
+    </CommonProvider>
+  </React.StrictMode>
 );
