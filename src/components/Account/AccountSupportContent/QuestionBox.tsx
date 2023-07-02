@@ -25,8 +25,6 @@ interface ISupportData {
 }
 
 export const QuestionBox: FC<Props> = ({ bg }) => {
-  // const { pageInterfaceText } = useCommon();
-  // const { text: pageInterfaceText } = useInterfaceText();
   const { data, isLoading } = useQuery<ISupportData[]>(['account.support'], () =>
     api.account.getSupportData('uk')
   );
