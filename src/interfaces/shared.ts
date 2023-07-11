@@ -31,16 +31,33 @@ export type TBalancePostData = {
   balance: string;
 };
 
+export interface IProxyTag {
+  key: string;
+  value: string;
+}
 export interface IProxy {
-  id: number;
-  name: string;
-  logo: string;
-  country: string;
-  validity: number;
-  socks: string;
-  http: string;
-  url_ip_replace: string;
-  auto_continue: boolean;
+  id?: string;
+  username: string;
+  password: string;
+  readLimit: number;
+  writeLimit: number;
+  connectionLimit: number;
+  changeIpUid: string;
+  expiresAt?: null | string;
+  tags: IProxyTag[];
+  os: string;
+  currentIp?: null | string;
+  changeIpDelaySec?: number;
+  agentId: string;
+
+  // name: string;
+  // logo: string;
+  // country: string;
+  // validity: number;
+  // socks: string;
+  // http: string;
+  // url_ip_replace: string;
+  // auto_continue: boolean;
 }
 
 export interface IEventError {

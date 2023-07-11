@@ -12,8 +12,11 @@ interface IPublicPopups {
   successMessagePopup: IPopup;
   setSuccessMessagePopup: (options: IPopup) => void;
 
-	errorMessagePopup: IPopup;
+  errorMessagePopup: IPopup;
   setErrorMessagePopup: (options: IPopup) => void;
+
+  addToBalancePopup: IPopup;
+  setAddToBalancePopup: (options: IPopup) => void;
 }
 
 export const usePrivatePopups = create<IPublicPopups>()((set) => ({
@@ -35,10 +38,17 @@ export const usePrivatePopups = create<IPublicPopups>()((set) => ({
       successMessagePopup: { ...state.successMessagePopup, ...options }
     })),
 
-	// 3
-	errorMessagePopup: {
+  // 3
+  errorMessagePopup: {
     isOpen: false
   },
   setErrorMessagePopup: (options) =>
     set((state) => ({ errorMessagePopup: { ...state.errorMessagePopup, ...options } })),
+
+  // 4
+  addToBalancePopup: {
+    isOpen: false
+  },
+  setAddToBalancePopup: (options) =>
+    set((state) => ({ addToBalancePopup: { ...state.addToBalancePopup, ...options } }))
 }));

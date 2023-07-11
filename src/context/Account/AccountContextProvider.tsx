@@ -1,5 +1,5 @@
 import { IProxy } from '@/interfaces/shared';
-import { useMemo, useReducer, useState } from 'react';
+import { useCallback, useMemo, useReducer, useState } from 'react';
 import { useProfile } from '../UserContext';
 import { AccountProviderProps, ActionType } from './AccountContext.types';
 import { AccountReducer } from './AccountContextReducer';
@@ -48,11 +48,11 @@ export function AccountProvider({ children }: AccountProviderProps) {
   });
 
   const [isPopupHide, setIsPopupHide] = useState(false);
-  const popupHide = (status: boolean) => {
+  const popupHide = useCallback((status: boolean) => {
     setIsPopupHide(status);
-  };
+  }, []);
 
-  const { user } = useProfile();
+  //const { user } = useProfile();
 
   // useEffect(() => {
   // 	if (user?.proxy.length) {

@@ -20,12 +20,14 @@ export const PublicPopups: FC = () => {
     closeLogin,
     closeForgotPass,
     isPopupHide,
-    popupHide,
-    error
+    popupHide
   } = useCommon();
   const { text: pageInterfaceText } = useInterfaceText();
 
   const {
+    successMessagePopup,
+    setSuccessMessagePopup,
+
     newPassSendedMessagePopup,
     setNewPassSendedMessagePopup,
 
@@ -33,11 +35,31 @@ export const PublicPopups: FC = () => {
     setErrorMessagePopup,
 
     confirmEmailSendedMessagePopup,
-    setConfirmEmailSendedMessagePopup,
+    setConfirmEmailSendedMessagePopup
   } = usePublicPopups((state) => state);
 
   return (
     <>
+      {/* successMessagePopup  */}
+      <ModalPopup
+        show={successMessagePopup.isOpen}
+        hide={isPopupHide}
+        withBackdrop={false}
+        onClose={() => {
+          setSuccessMessagePopup({ isOpen: false });
+        }}
+        onAnimationHideStart={() => popupHide()}>
+        <TemplateModal
+          type='message'
+          background={<FormsBg />}
+          icon={<Icon icon='circle-ok' color='green' size='28' />}>
+          <div
+            className='AuthPopup-response-message'
+            dangerouslySetInnerHTML={{ __html: successMessagePopup.message || '' }}
+          />
+        </TemplateModal>
+      </ModalPopup>
+
       {/* Registration popup */}
       <ModalPopup
         show={isRegistrationPopupOpen}

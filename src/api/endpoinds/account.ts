@@ -1,5 +1,10 @@
 import { IUserProfile } from '@/interfaces/api';
-import { TBalancePostData, IUpdateAccountEmail, IUpdateAccountPwd } from '@/interfaces/shared';
+import {
+  TBalancePostData,
+  IUpdateAccountEmail,
+  IUpdateAccountPwd,
+  IProxy
+} from '@/interfaces/shared';
 import axios from '../axios';
 
 const endpoints = {
@@ -24,6 +29,14 @@ const endpoints = {
   getSupportData: async (lang: string) => {
     const res = await axios.get(`/${lang}/support`);
     return res.data;
+  },
+  getProxyList: async (lang: string) => {
+    const res = await axios.get(`/${lang}/list-proxy`);
+    return res.data;
+  },
+  buyPackage: async (lang: string, proxy: IProxy) => {
+    const res = axios.post(`/${lang}/buy-package`, proxy);
+    return res;
   }
 };
 
