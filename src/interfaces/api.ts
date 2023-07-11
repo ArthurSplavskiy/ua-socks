@@ -48,7 +48,7 @@ export interface IUser {
 }
 
 export interface IUserProfile {
-  id: number;
+  id: string;
   name: string | null;
   email: string;
   nickname_telegram: string;

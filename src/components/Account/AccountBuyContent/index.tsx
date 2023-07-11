@@ -54,14 +54,14 @@ export const AccountBuyContent: FC = () => {
 
   return (
     <>
-      {proxyList.length && (
+      {proxyList.length ? (
         <TarifsList
           data={proxyList}
           regionsSelect={data?.regions}
           setRegionId={setRegionId}
           type={'account'}
         />
-      )}
+      ) : null}
     </>
   );
 };

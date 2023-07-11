@@ -6,6 +6,9 @@ interface IPopup {
 }
 
 interface IPublicPopups {
+  successMessagePopup: IPopup;
+  setSuccessMessagePopup: (options: IPopup) => void;
+
   newPassSendedMessagePopup: IPopup;
   setNewPassSendedMessagePopup: (options: IPopup) => void;
 
@@ -40,5 +43,14 @@ export const usePublicPopups = create<IPublicPopups>()((set) => ({
   setConfirmEmailSendedMessagePopup: (options) =>
     set((state) => ({
       confirmEmailSendedMessagePopup: { ...state.confirmEmailSendedMessagePopup, ...options }
+    })),
+
+  // 4
+  successMessagePopup: {
+    isOpen: false
+  },
+  setSuccessMessagePopup: (options) =>
+    set((state) => ({
+      successMessagePopup: { ...state.successMessagePopup, ...options }
     }))
 }));

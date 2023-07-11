@@ -17,8 +17,6 @@ export const PrivatePopups: FC = () => {
   const { text: pageInterfaceText } = useInterfaceText();
   const {
     state: {
-      isAddToBalancePopup,
-      closeAddToBalancePopup,
       isReplaceIpPopup,
       closeReplaceIpPopup,
       isExportPopup,
@@ -34,11 +32,14 @@ export const PrivatePopups: FC = () => {
     successLoginMessagePopup,
     setSuccessLoginMessagePopup,
 
-		errorMessagePopup,
+    errorMessagePopup,
     setErrorMessagePopup,
-		
+
     successMessagePopup,
-    setSuccessMessagePopup
+    setSuccessMessagePopup,
+
+    addToBalancePopup,
+    setAddToBalancePopup
   } = usePrivatePopups((state) => state);
 
   return (
@@ -61,11 +62,12 @@ export const PrivatePopups: FC = () => {
 
       {/* Add Balance popup */}
       <ModalPopup
-        show={isAddToBalancePopup}
+        show={addToBalancePopup.isOpen}
         hide={isPopupHide}
         withBackdrop={false}
         onClose={() => {
-          closeAddToBalancePopup();
+          setAddToBalancePopup({ isOpen: false });
+          // closeAddToBalancePopup();
           popupHide(false);
         }}
         onAnimationHideStart={() => popupHide(true)}>
@@ -81,7 +83,7 @@ export const PrivatePopups: FC = () => {
         withBackdrop={false}
         onClose={() => {
           closeReplaceIpPopup();
-          popupHide(false);
+          //popupHide(false);
         }}
         onAnimationHideStart={() => popupHide(true)}>
         <TemplateModal background={<AccountPopupsBg />}>
@@ -139,7 +141,7 @@ export const PrivatePopups: FC = () => {
         </TemplateModal>
       </ModalPopup>
 
-			{/* Error popup */}
+      {/* Error popup */}
       <ModalPopup
         show={errorMessagePopup.isOpen}
         withBackdrop={false}
