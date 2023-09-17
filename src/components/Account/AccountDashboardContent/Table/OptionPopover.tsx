@@ -1,101 +1,130 @@
+import { usePrivatePopups } from '@/components/PopupSystem/state/PrivatePopups';
 import { Icon } from '@/components/shared/Icon/Icon';
-import { useAccount } from '@/context/Account/AccountContextHooks';
 import { useCommon } from '@/context/CommonContext';
 import { useDevice } from '@/context/DeviceContext';
-import { useInterfaceText } from '@/context/UserContext';
-import { FC, useEffect } from 'react';
+import { useInterfaceText, useProfile } from '@/context/UserContext';
+import { FC, memo, useEffect } from 'react';
 
 interface Props {
-	isOpen?: boolean;
-	setIsOpen?: (open: boolean) => void;
+  withoutExport?: boolean;
+  proxyId?: number;
+  isOpen?: boolean;
+  setIsOpen?: (open: boolean) => void;
 }
 
-export const OptionPopover: FC<Props> = ({ isOpen, setIsOpen }) => {
-	const { setNoScroll } = useCommon();
-	const { text: pageInterfaceText } = useInterfaceText();
-	const { is810 } = useDevice();
-	const {
-		state: { openContinuePopup, openReplaceIpPopup, openExportPopup }
-	} = useAccount();
+export const OptionPopover: FC<Props> = memo(({ isOpen, setIsOpen, proxyId, withoutExport }) => {
+  const { setNoScroll } = useCommon();
+  const { text: pageInterfaceText } = useInterfaceText();
+  const { is810 } = useDevice();
+  const { user, setUser } = useProfile();
+  // const {
+  //   state: { openContinuePopup, openReplaceIpPopup, openExportPopup }
+  // } = useAccount();
 
-	useEffect(() => {
-		if (isOpen && is810) {
-			setNoScroll(true);
-		} else {
-			setNoScroll(false);
-		}
-	}, [isOpen]);
+  const { setExportProxyPopup, setContinueProxyPopup } = usePrivatePopups((state) => state);
 
-	if (is810) {
-		return (
-			<div
-				className={`ProxyItem-option-backdrop ${isOpen ? 'active' : ''}`}
-				onClick={() => setIsOpen?.(false)}>
-				<div
-					className={`ProxyItem-option-popover ${isOpen ? 'active' : ''}`}
-					//onClick={(e) => e.stopPropagation()}
-				>
-					<button
-						onClick={() => {
-							openContinuePopup();
-							setIsOpen?.(false);
-						}}>
-						<Icon icon='wallet' />
-						{pageInterfaceText?.acc_continue}
-					</button>
-					<button
-						onClick={() => {
-							openReplaceIpPopup();
-							setIsOpen?.(false);
-						}}>
-						<Icon icon='setting' />
-						{pageInterfaceText?.acc_exchange}
-					</button>
-					<button
-						onClick={() => {
-							openExportPopup();
-							setIsOpen?.(false);
-						}}>
-						<Icon icon='document' />
-						{pageInterfaceText?.acc_export}
-					</button>
-					<button onClick={() => setIsOpen?.(false)}>
-						<Icon icon='close' />
-						{pageInterfaceText?.close}
-					</button>
-				</div>
-			</div>
-		);
-	}
+  useEffect(() => {
+    if (isOpen && is810) {
+      setNoScroll(true);
+    } else {
+      setNoScroll(false);
+    }
+  }, [isOpen]);
 
-	return (
-		<>
-			<div className={`ProxyItem-option-popover ${isOpen ? 'active' : ''}`}>
-				<button
-					onClick={() => {
-						openContinuePopup();
-						setIsOpen?.(false);
-					}}>
-					<Icon icon='wallet' />
-					{pageInterfaceText?.acc_continue}
-				</button>
-				<button
-					onClick={() => {
-						openReplaceIpPopup();
-						setIsOpen?.(false);
-					}}>
-					<Icon icon='setting' />
-					{pageInterfaceText?.acc_exchange}
-				</button>
-				<button
-					onClick={() => {
-						openExportPopup();
-						setIsOpen?.(false);
-					}}>
-					<Icon icon='document' />
-					{pageInterfaceText?.acc_export}
-				</button>
-			</div>
-		</>
-	);
-};
+  useEffect(() => {
+    if (proxyId) {
+      setUser({
+        ...user,
+        select_single_contracts: [proxyId],
+        select_export_contracts: [proxyId]
+      });
+    } else {
+      setUser({
+        ...user,
+        select_single_contracts: user?.select_single_contracts?.filter((c) => c !== proxyId) || [],
+        select_export_contracts: user?.select_export_contracts?.filter((c) => c !== proxyId) || []
+      });
+    }
+  }, [isOpen, proxyId]);
+
+  if (is810) {
+    return (
+      <div
+        className={`ProxyItem-option-backdrop ${isOpen ? 'active' : ''}`}
+        onClick={() => setIsOpen?.(false)}>
+        <div
+          className={`ProxyItem-option-popover ${isOpen ? 'active' : ''}`}
+          //onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={() => {
+              //openContinuePopup();
+              setContinueProxyPopup({ isOpen: true });
+              setIsOpen?.(false);
+            }}>
+            <Icon icon='wallet' />
+            {pageInterfaceText?.acc_continue}
+          </button>
+          {/* <button
+            onClick={() => {
+              openReplaceIpPopup();
+              setIsOpen?.(false);
+            }}>
+            <Icon icon='setting' />
+            {pageInterfaceText?.acc_exchange}
+          </button> */}
+          {withoutExport ? null : (
+            <button
+              onClick={() => {
+                // openExportPopup();
+                setExportProxyPopup({ isOpen: true });
+                setIsOpen?.(false);
+              }}>
+              <Icon icon='document' />
+              {pageInterfaceText?.acc_export}
+            </button>
+          )}
+          <button onClick={() => setIsOpen?.(false)}>
+            <Icon icon='close' />
+            {pageInterfaceText?.close}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div className={`ProxyItem-option-popover ${isOpen ? 'active' : ''}`}>
+        <button
+          onClick={() => {
+            //openContinuePopup();
+            setContinueProxyPopup({ isOpen: true });
+            setIsOpen?.(false);
+          }}>
+          <Icon icon='wallet' />
+          {pageInterfaceText?.acc_continue}
+        </button>
+        {/* <button
+          onClick={() => {
+            openReplaceIpPopup();
+            setIsOpen?.(false);
+          }}>
+          <Icon icon='setting' />
+          {pageInterfaceText?.acc_exchange}
+        </button> */}
+        {withoutExport ? null : (
+          <button
+            onClick={() => {
+              // openExportPopup();
+              setExportProxyPopup({ isOpen: true });
+              setIsOpen?.(false);
+            }}>
+            <Icon icon='document' />
+            {pageInterfaceText?.acc_export}
+          </button>
+        )}
+      </div>
+    </>
+  );
+});

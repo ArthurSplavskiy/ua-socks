@@ -12,9 +12,8 @@ export const AccountBuyContent: FC = () => {
   // });
 
   const [regionId, setRegionId] = useState(1);
-  const { data, isLoading } = useQuery<IRegionTariffs | undefined>(
-    ['account.tariffs', regionId],
-    () => api.account.getRegionTariffs('uk', regionId)
+  const { data } = useQuery<IRegionTariffs | undefined>(['account.tariffs', regionId], () =>
+    api.account.getRegionTariffs('uk', regionId)
   );
 
   const proxyList: IProxyTarifList[] = useMemo(() => {
@@ -23,10 +22,11 @@ export const AccountBuyContent: FC = () => {
     const normalizeData = data.region_data.map((item) => {
       const proxyList = item.tariffs.map((tariff) => {
         const pricesList = tariff.packages.map((price) => ({
-          active: !!price.package_status,
-          total: +price.price,
+          active: !!tariff.tariff_status,
+          total: +price.package_price,
           rent_term: String(price.package_term),
-          operator: price.package_operator_name
+          operator: price.package_operator_name,
+          package_id: price.package_id
         }));
 
         return {

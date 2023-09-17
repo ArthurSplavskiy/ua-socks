@@ -9,7 +9,7 @@ import { Outlet, redirect } from 'react-router-dom';
 import './AccountLayout.scss';
 
 export async function accountLayoutLoader() {
-  if (!localStorage.getItem('auth-token')) {
+  if (!!localStorage.getItem('auth-token') === false) {
     return redirect(AppRoutes.HOME);
   }
   return null;

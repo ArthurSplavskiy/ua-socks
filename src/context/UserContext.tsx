@@ -12,7 +12,7 @@ type State = {
   homepageIsLoading: boolean;
   homePageData: IHomePageData | undefined;
   user: IUserProfile | null;
-  setUser: (user: IUserProfile | null) => void;
+  setUser: (...args: any[]) => void;
   logOut: (opt?: ILogoutOptions) => void;
   getProfileData: () => void;
 };
@@ -78,7 +78,7 @@ function UserProvider({ children }: UserProviderProps) {
   }, []);
   const getProfileData = useCallback(async () => {
     try {
-      if (localStorage.getItem('auth-token')) {
+      if (!!localStorage.getItem('auth-token') === true) {
         const { data } = await api.auth.getProfile('uk');
         // const { email } = jwt_decode(tokenData) as any;
         // console.log('tokenData', jwt_decode(tokenData));
@@ -86,7 +86,9 @@ function UserProvider({ children }: UserProviderProps) {
         setUser({
           ...data,
           email: userEmail,
-          password: userPWD
+          password: userPWD,
+          select_contracts: [],
+          select_export_contracts: []
         });
       }
     } catch {
@@ -97,7 +99,7 @@ function UserProvider({ children }: UserProviderProps) {
   }, [authToken, setAuthToken]);
 
   useEffect(() => {
-    if (localStorage.getItem('auth-token')) {
+    if (!!localStorage.getItem('auth-token') === true) {
       getProfileData();
     }
   }, [authToken]);

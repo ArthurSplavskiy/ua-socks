@@ -16,7 +16,7 @@ export const PasswordWidget = () => {
   const { user, setUser } = useProfile();
   const [currentPass, setCurrentPass] = useState('');
   const [, setUserPWD] = useLocalStorage('acc-id', '');
-  const setSuccessMessagePopup = usePrivatePopups((state) => state.setSuccessMessagePopup);
+  const { setSuccessMessagePopup, setErrorMessagePopup } = usePrivatePopups((state) => state);
 
   const formData = {
     password_old: useTextInput({ value: currentPass || 'PasswordExample@' }),
@@ -43,6 +43,7 @@ export const PasswordWidget = () => {
       if (!user) return;
       const res = await api.account.updatePwd('uk', {
         email: user.email,
+        // @ts-ignore
         old_password: user.password,
         password: data.new_pass,
         password_confirmation: data.new_pass
@@ -55,12 +56,18 @@ export const PasswordWidget = () => {
       setUser(resData);
     } catch (error) {
       getApiError(error, formData);
+      setErrorMessagePopup({
+        isOpen: true,
+        // @ts-ignore
+        message: error?.response?.data?.message || error?.message
+      });
     } finally {
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
+    // @ts-ignore
     user?.password && setCurrentPass(user.password);
   }, [user]);
 

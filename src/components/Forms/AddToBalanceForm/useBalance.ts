@@ -1,15 +1,25 @@
 import { FormEvent, useState } from 'react';
 import { notValidForm, getApiError } from '@/helpers';
 import { useTextInput } from '@/hooks/useTextInput/useTextInput';
-import { TBalancePostData } from '@/interfaces/shared';
+import { IPayment, ISelectOption } from '@/interfaces/shared';
 import { useAccount } from '@/context/Account/AccountContextHooks';
+import api from '@/api';
+import { usePrivatePopups } from '@/components/PopupSystem/state/PrivatePopups';
 
-export const useBalance = () => {
+interface Props {
+  payment?: ISelectOption;
+}
+
+export const useBalance = ({ payment }: Props) => {
   const {
     state: { addToBalance }
   } = useAccount();
   const [isLoading, setIsLoading] = useState(false);
+  const { setSuccessMessagePopup, setErrorMessagePopup } = usePrivatePopups((state) => state);
   const variantPrice = ['20', '50', '100', '300', '1000'];
+  const [liqpayResponse, setLiqpayResponse] = useState<{ data: string; signature: string } | null>(
+    null
+  );
 
   const formData = {
     balance: useTextInput({ validators: ['numberRange'], isRequired: true })
@@ -21,23 +31,57 @@ export const useBalance = () => {
 
     try {
       setIsLoading(true);
-      const data: TBalancePostData = {
-        balance: formData.balance.value || ''
+      const data: IPayment = {
+        currency: 'USD',
+        amount: +formData.balance.value || 0,
+        // @ts-ignore
+        payment_gateway: payment?.value || 'liqpay'
       };
-      addToBalance(Number(data.balance));
+      // @ts-ignore
+      //addToBalance(Number(data.balance));
       //const res = await api.account.setBalance(data);
 
       // const resData = JSON.parse(res.config.data);
       // setToken(res?.data?.accessToken);
       //getProfileData();
+      //console.log('data', data);
 
-      setIsLoading(false);
+      const res = await api.account.pay('uk', data);
+      console.log('payment res', res);
+
+      if (res?.error?.response?.errors?.amount?.[0]) {
+        formData?.['balance']?.setErrors(res?.error?.response?.errors?.amount as string[]);
+        return;
+      }
+
+      if (data.payment_gateway === 'capitalist' || data.payment_gateway === 'whitepay') {
+        window.location.href = res?.payment_url;
+        console.log('res?.data.payment_url', res.payment_url);
+      } else {
+        setLiqpayResponse(res);
+      }
+
+      //setSuccessMessagePopup({ isOpen: true, message: res.message || 'Успіх' });
+      if (res?.message) {
+        console.log('here');
+        setErrorMessagePopup({
+          isOpen: true,
+          message: res.message
+        });
+      }
+
+      //setIsLoading(false);
       // setTimeout(() => {
       // 	setIsLoading(false);
       // 	openThank();
       // }, 300);
     } catch (error) {
-      getApiError(error, formData);
+      //getApiError(error, formData);
+      setErrorMessagePopup({
+        isOpen: true,
+        // @ts-ignore
+        message: error?.response?.data?.message || error?.message
+      });
     } finally {
       setIsLoading(false);
     }
@@ -47,6 +91,7 @@ export const useBalance = () => {
     formData,
     onSubmit,
     isLoading,
-    variantPrice
+    variantPrice,
+    liqpayResponse
   };
 };

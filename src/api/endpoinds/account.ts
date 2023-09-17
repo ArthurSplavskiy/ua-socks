@@ -3,7 +3,8 @@ import {
   TBalancePostData,
   IUpdateAccountEmail,
   IUpdateAccountPwd,
-  IProxy
+  IProxy,
+  IPayment
 } from '@/interfaces/shared';
 import axios from '../axios';
 
@@ -34,9 +35,29 @@ const endpoints = {
     const res = await axios.get(`/${lang}/list-proxy`);
     return res.data;
   },
-  buyPackage: async (lang: string, proxy: IProxy) => {
-    const res = axios.post(`/${lang}/buy-package`, proxy);
+  buyPackage: async (lang: string, packageIds: { package_id: number[] }) => {
+    const res = await axios.post(`/${lang}/buy-packages`, packageIds);
     return res;
+  },
+  renewalProxy: async (lang: string, data: { contract_id: number[]; renewal: 0 | 1 }) => {
+    const res = await axios.put(`/${lang}/renewal-proxy`, data);
+    return res;
+  },
+  buyRenewalProxy: async (lang: string, data: { contract_id: number[]; term: number }) => {
+    const res = await axios.put(`/${lang}/buy-renewal-proxy`, data);
+    return res;
+  },
+  exportProxy: async (lang: string, contract_id: number) => {
+    const res = await axios.get(`/${lang}/export-proxy/${contract_id}`);
+    return res;
+  },
+  pay: async (lang: string, payment: IPayment) => {
+    const res = await axios.post(`/${lang}/initiate-payment`, payment);
+    return res.data;
+  },
+  getGateways: async (lang: string) => {
+    const res = await axios.get(`/${lang}/gateways`);
+    return res.data;
   }
 };
 

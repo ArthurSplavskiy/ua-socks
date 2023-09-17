@@ -12,7 +12,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import { usePrivatePopups } from '@/components/PopupSystem/state/PrivatePopups';
 import { useCommon } from '@/context/CommonContext';
 import { usePublicPopups } from '@/components/PopupSystem/state/PublicPopups';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface Props extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   //fadeUp?: boolean;
@@ -31,33 +31,48 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
   className
 }) => {
   // const { pageInterfaceText } = useCommon();
-  const { user } = useProfile();
+  const { user, setUser } = useProfile();
   const { text: pageInterfaceText } = useInterfaceText();
   const [price, setPrice] = useState(prices?.find((p) => p.active)?.total);
   const [rentTerm, setRentTerm] = useState<ISelectOption>();
   const [operator, setOperator] = useState<ISelectOption>();
   const [animate, setIsAnimate] = useState(false);
-  const setSuccessMessagePopup = usePrivatePopups((state) => state.setSuccessMessagePopup);
+  const { setSuccessMessagePopup, setErrorMessagePopup } = usePrivatePopups((state) => state);
   const location = useLocation();
-  const { setSuccessMessagePopup: setPublicPopup } = usePublicPopups((state) => state);
+  const navigate = useNavigate();
+  const {
+    setSuccessMessagePopup: setPublicPopup,
+    setErrorMessagePopup: setPublicErrorMessagePopup
+  } = usePublicPopups((state) => state);
   const { openLogin } = useCommon();
+  const { getProfileData } = useProfile();
 
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (proxy: IProxy) => api.account.buyPackage('uk', proxy),
-    onSuccess: () => {
-      queryClient.invalidateQueries('account.proxyList');
+    mutationFn: (packageIds: { package_id: number[] }) => api.account.buyPackage('uk', packageIds),
+    onError: (error) => {
+      console.log('errror', error);
       if (location.pathname === '/') {
-        setPublicPopup({ isOpen: true, message: 'Успішно' });
-        setTimeout(() => {
-          setPublicPopup({ isOpen: false });
-        }, 2000);
+        // @ts-ignore
+        setPublicErrorMessagePopup({ isOpen: true, message: error?.message });
       } else {
-        setSuccessMessagePopup({ isOpen: true, message: 'Успішно' });
-        setTimeout(() => {
-          setSuccessMessagePopup({ isOpen: false });
-        }, 2000);
+        // @ts-ignore
+        setErrorMessagePopup({ isOpen: true, message: error?.message });
+      }
+    },
+    onSuccess: (data) => {
+      setUser((prev: any) => ({
+        ...prev,
+        // @ts-ignore
+        wallet_balance: data?.data?.wallet_balance || user?.wallet_balance || 0
+      }));
+      queryClient.invalidateQueries('account.proxyList');
+      getProfileData();
+      if (location.pathname === '/') {
+        setPublicPopup({ isOpen: true, message: data?.data?.message || 'Успішно' });
+      } else {
+        setSuccessMessagePopup({ isOpen: true, message: data?.data?.message || 'Успішно' });
       }
     }
   });
@@ -95,6 +110,10 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
       setOperator({ value: activeProxy?.operator || '', label: activeProxy?.operator || '' });
     }
   }, []);
+
+  const activePackage = prices?.find(
+    (p) => p.rent_term === rentTerm?.value && p.operator === operator?.value && price === p.total
+  );
 
   return (
     <div className={`${className} TarifCard ${color} ${animate && 'animate'} delay-${dataId}`}>
@@ -157,36 +176,16 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
             color={color}
             disabled={!price}
             onClick={() => {
-              if (!localStorage.getItem('auth-token')) {
+              if (!!localStorage.getItem('auth-token') === false) {
                 openLogin();
                 return;
               }
-
-              mutation.mutate({
-                username: user?.email || '',
-                password: user?.password || '',
-                readLimit: 1000,
-                writeLimit: 10000,
-                connectionLimit: 10000,
-                changeIpUid: 'Lb5HzfRKQJ', // ЗВІДКИ
-                // expiresAt: null,
-                tags: [
-                  {
-                    key: 'userId',
-                    value: user?.id || ''
-                  },
-                  {
-                    key: 'proxy_group',
-                    value: operator?.value?.toLowerCase() || ''
-                  }
-                  // {
-                  //   key: 'orderId',
-                  //   value: '2' // ЗВІДКИ
-                  // }
-                ],
-                agentId: '78e55e84-6aea-42a9-ac7c-df7a3c915094',
-                os: 'Default'
-              });
+              if (location.pathname === '/') {
+                navigate('/account/buy');
+              }
+              // @ts-ignore
+              //console.log('activePackage?.package_id', activePackage?.package_id);
+              mutation.mutate({ package_id: [activePackage?.package_id] });
             }}>
             {pageInterfaceText?.buy_btn}
           </Button>

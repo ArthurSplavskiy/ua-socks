@@ -26,6 +26,7 @@ export const Header: FC<Props> = ({ type = 'default' }) => {
   const { data, isLoading } = useMenu();
   const [userEmail] = useLocalStorage('user-email', '');
   const [authToken] = useLocalStorage('auth-token', '');
+  const { user } = useProfile();
   // const { data, isLoading } = useRequest<IMenu[]>({
   // 	method: 'GET',
   // 	url: api.homePage.getMenuList
@@ -85,9 +86,9 @@ export const Header: FC<Props> = ({ type = 'default' }) => {
             <Link to={AppRoutes.HOME}>
               <Logo type={isTablet ? 'mobile' : 'desktop'} />
             </Link>
-            {type === 'account' && (
+            {type === 'account' && user?.id && (
               <div className={`Header-userId`}>
-                ID:&nbsp;<span>12345</span>
+                ID:&nbsp;<span>{user.id}</span>
               </div>
             )}
           </div>

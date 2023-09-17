@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo, useEffect } from 'react';
 import { useAccount } from '@/context/Account/AccountContextHooks';
 import { AddToBalanceForm } from '../Forms/AddToBalanceForm';
 import { Background } from '../shared/Background';
@@ -13,17 +13,10 @@ import { usePrivatePopups } from '@/components/PopupSystem/state/PrivatePopups';
 import { FormsBg } from '../shared/Background/FormsBg';
 import { Icon } from '../shared/Icon/Icon';
 
-export const PrivatePopups: FC = () => {
+export const PrivatePopups: FC = memo(() => {
   const { text: pageInterfaceText } = useInterfaceText();
   const {
-    state: {
-      isReplaceIpPopup,
-      closeReplaceIpPopup,
-      isExportPopup,
-      closeExportPopup,
-      isContinuePopup,
-      closeContinuePopup
-    },
+    state: { isReplaceIpPopup, closeReplaceIpPopup },
     isPopupHide,
     popupHide
   } = useAccount();
@@ -39,8 +32,34 @@ export const PrivatePopups: FC = () => {
     setSuccessMessagePopup,
 
     addToBalancePopup,
-    setAddToBalancePopup
+    setAddToBalancePopup,
+
+    exportProxyPopup,
+    setExportProxyPopup,
+
+    continueProxyPopup,
+    setContinueProxyPopup
   } = usePrivatePopups((state) => state);
+
+  useEffect(() => {
+    // @ts-ignore
+    let id = null;
+    if (successMessagePopup.isOpen) {
+      id = setTimeout(() => {
+        setSuccessMessagePopup({ isOpen: false });
+      }, 2000);
+    } else {
+      if (id) {
+        clearTimeout(id);
+      }
+    }
+    return () => {
+      // @ts-ignore
+      if (id) {
+        clearTimeout(id);
+      }
+    };
+  }, [successMessagePopup]);
 
   return (
     <>
@@ -69,8 +88,7 @@ export const PrivatePopups: FC = () => {
           setAddToBalancePopup({ isOpen: false });
           // closeAddToBalancePopup();
           popupHide(false);
-        }}
-        onAnimationHideStart={() => popupHide(true)}>
+        }}>
         <TemplateModal background={<AccountPopupsBg />}>
           <AddToBalanceForm />
         </TemplateModal>
@@ -84,8 +102,7 @@ export const PrivatePopups: FC = () => {
         onClose={() => {
           closeReplaceIpPopup();
           //popupHide(false);
-        }}
-        onAnimationHideStart={() => popupHide(true)}>
+        }}>
         <TemplateModal background={<AccountPopupsBg />}>
           <AutoReplaceIpForm />
         </TemplateModal>
@@ -93,14 +110,14 @@ export const PrivatePopups: FC = () => {
 
       {/* Proxy export popup */}
       <ModalPopup
-        show={isExportPopup}
+        show={exportProxyPopup.isOpen}
         hide={isPopupHide}
         withBackdrop={false}
         onClose={() => {
-          closeExportPopup();
-          popupHide(false);
+          setExportProxyPopup({ isOpen: false });
         }}
-        onAnimationHideStart={() => popupHide(true)}>
+        //onAnimationHideStart={() => popupHide(true)}
+      >
         <TemplateModal background={<AccountPopupsBg />}>
           <ExportForm />
         </TemplateModal>
@@ -108,14 +125,15 @@ export const PrivatePopups: FC = () => {
 
       {/* Proxy continue popup */}
       <ModalPopup
-        show={isContinuePopup}
+        width='410px'
+        show={continueProxyPopup.isOpen}
         hide={isPopupHide}
         withBackdrop={false}
         onClose={() => {
-          closeContinuePopup();
-          popupHide(false);
+          setContinueProxyPopup({ isOpen: false });
         }}
-        onAnimationHideStart={() => popupHide(true)}>
+        //onAnimationHideStart={() => popupHide(true)}
+      >
         <TemplateModal background={<AccountPopupsBg />}>
           <ContinueForm />
         </TemplateModal>
@@ -128,8 +146,7 @@ export const PrivatePopups: FC = () => {
         withBackdrop={false}
         onClose={() => {
           setSuccessMessagePopup({ isOpen: false });
-        }}
-        onAnimationHideStart={() => popupHide(true)}>
+        }}>
         <TemplateModal
           type='message'
           background={<FormsBg />}
@@ -163,4 +180,4 @@ export const PrivatePopups: FC = () => {
       </ModalPopup>
     </>
   );
-};
+});

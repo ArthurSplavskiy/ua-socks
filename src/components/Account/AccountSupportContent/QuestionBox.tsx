@@ -25,7 +25,7 @@ interface ISupportData {
 }
 
 export const QuestionBox: FC<Props> = ({ bg }) => {
-  const { data, isLoading } = useQuery<ISupportData[]>(['account.support'], () =>
+  const { data, isLoading } = useQuery<ISupportData>(['account.support'], () =>
     api.account.getSupportData('uk')
   );
   console.log(data);
@@ -36,12 +36,12 @@ export const QuestionBox: FC<Props> = ({ bg }) => {
           <Loader />
         ) : (
           <>
-            <h3>{data?.[0].title_ua}</h3>
+            <h3>{data?.title_ua}</h3>
             {/* {pageInterfaceText?.support_info} */}
-            <p>{data?.[0].sub_title_ua}</p>
+            <p>{data?.sub_title_ua}</p>
             {/* {pageInterfaceText?.support_feedback} */}
             <Button icon='telegram' btnType='iconLeft'>
-              {data?.[0].btn_name}
+              {data?.btn_name}
               {/* {pageInterfaceText?.question_btn} */}
             </Button>
           </>

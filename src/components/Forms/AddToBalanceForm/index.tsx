@@ -1,25 +1,40 @@
 import { Button } from '@/components/shared/Button';
 import { InputField } from '@/components/shared/FormComponents/InputField/InputField';
 import { useBalance } from './useBalance';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ReactSelect } from '@/components/shared/FormComponents/ReactSelect/ReactSelect';
-import useRequest from '@/hooks/useRequest';
-import { ISelectOption } from '@/interfaces/shared';
-import api from '@/api';
+import { IGateways, ISelectOption } from '@/interfaces/shared';
 import { useInterfaceText } from '@/context/UserContext';
 import '../AccountForms.scss';
+import { useQuery } from 'react-query';
+import api from '@/api';
+import { LiqpayWidget } from '@/components/Liqpay';
 
 export const AddToBalanceForm = () => {
   // const { pageInterfaceText } = useCommon();
   const { text: pageInterfaceText } = useInterfaceText();
-  const { onSubmit, formData, variantPrice } = useBalance();
+
+  const { data: gateways } = useQuery<IGateways | undefined>('account.gateways', () =>
+    api.account.getGateways('uk')
+  );
+
   const [selectedOption, setSelectedOption] = useState<ISelectOption>();
+  const { onSubmit, formData, variantPrice, liqpayResponse } = useBalance({
+    payment: selectedOption
+  });
   // const { data: paymentMethods, isLoading } = useRequest<ISelectOption[]>({
   // 	method: 'GET',
   // 	url: api.account.getPaymentMethods('uk')
   // });
-  const isLoading = true;
-  const paymentMethods: any = null;
+  const [paymentMethods, setPaymentMethods] = useState<ISelectOption[]>([]);
+
+  useEffect(() => {
+    if (gateways?.gateways) {
+      setPaymentMethods(
+        gateways.gateways.map((item, idx) => ({ id: idx, label: item, value: item }))
+      );
+    }
+  }, [gateways]);
 
   const VarriantPrices = () => {
     return (
@@ -48,7 +63,14 @@ export const AddToBalanceForm = () => {
       <form className='BalancePopup-form' onSubmit={onSubmit}>
         <InputField
           {...formData.balance.inputProps}
-          type='number'
+          onChange={(e) => {
+            const str = new RegExp(/^[0-9]*$/gm);
+            if (e.target.value === 'e' || e.target.value === '.' || !str.test(e.target.value)) {
+              return;
+            }
+            formData.balance.inputProps.onChange(e);
+          }}
+          type='string'
           prefix='$'
           value={formData.balance.value}
           placeholder={pageInterfaceText?.acc_payment_input_text}
@@ -56,7 +78,7 @@ export const AddToBalanceForm = () => {
           errors={formData.balance.errors}
           buttonsVariantGroup={<VarriantPrices />}
         />
-        {!isLoading && (
+        {paymentMethods.length && (
           <ReactSelect
             type='usual'
             label={pageInterfaceText?.acc_payment_type}
@@ -68,6 +90,7 @@ export const AddToBalanceForm = () => {
 
         <Button type='submit'>{pageInterfaceText?.acc_payment_btn_text}</Button>
       </form>
+      <LiqpayWidget data={liqpayResponse?.data} signature={liqpayResponse?.signature} />
     </div>
   );
 };

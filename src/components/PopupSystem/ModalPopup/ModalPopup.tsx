@@ -11,83 +11,86 @@ import './ModalPopup.scss';
  * @returns @returns @returns{React.ReactElement} React.ReactElement
  */
 export const ModalPopup: FC<iModalPopUpProps> = ({
-	children,
-	onClose,
-	show,
-	hide,
-	className = '',
-	containerClass = '',
-	persistOnScreen,
-	showCloseButton = true,
-	size,
-	withoutPaddings,
-	type = 'content',
-	onAnimationHideStart,
-	withBackdrop
+  children,
+  onClose,
+  show,
+  hide,
+  className = '',
+  containerClass = '',
+  persistOnScreen,
+  showCloseButton = true,
+  size,
+  withoutPaddings,
+  type = 'content',
+  onAnimationHideStart,
+  withBackdrop,
+  width
 }): ReactElement | null => {
-	const { modalContent, handleClose, handleKeyPress, closeFocusInModal, setPersist } = useModal({
-		show,
-		onClose,
-		onAnimationHideStart,
-		persistOnScreen
-	});
+  const { modalContent, handleClose, handleKeyPress, closeFocusInModal, setPersist } = useModal({
+    show,
+    onClose,
+    onAnimationHideStart,
+    persistOnScreen
+  });
 
-	useEffect(() => {
-		if (show) {
-			document.addEventListener('keydown', handleKeyPress);
-		} else {
-			document.removeEventListener('keydown', handleKeyPress);
-		}
-	}, [show]);
+  useEffect(() => {
+    if (show) {
+      document.addEventListener('keydown', handleKeyPress);
+    } else {
+      document.removeEventListener('keydown', handleKeyPress);
+    }
+  }, [show]);
 
-	useEffect(() => setPersist(!!persistOnScreen), [persistOnScreen]);
+  useEffect(() => setPersist(!!persistOnScreen), [persistOnScreen]);
 
-	if (!show) return null;
+  if (!show) return null;
 
-	return (
-		<Portal>
-			<div
-				className={`Portal ModalPopUp-portal portal ${className} ${
-					show ? 'ModalPopUp-portal-active' : ''
-				} ${hide ? 'ModalPopUp-portal-hide' : ''}`}>
-				<div tabIndex={0} onKeyDown={handleKeyPress} />
-				{/* onFocus={closeFocusInModal} */}
-				<div
-					className='ModalPopUp-backdrop backdrop'
-					role='dialog'
-					aria-modal='true'
-					onClick={handleClose}
-					data-testid='ModalPopUp-wrapper'
-				/>
-				{withBackdrop && (
-					<div
-						className='ModalPopUp-backdrop backdrop'
-						role='dialog'
-						aria-modal='true'
-						onClick={handleClose}
-						data-testid='ModalPopUp-wrapper'
-					/>
-				)}
+  return (
+    <Portal>
+      <div
+        className={`Portal ModalPopUp-portal portal ${className} ${
+          show ? 'ModalPopUp-portal-active' : ''
+        } ${hide ? 'ModalPopUp-portal-hide' : ''}`}>
+        <div tabIndex={0} onKeyDown={handleKeyPress} />
+        {/* onFocus={closeFocusInModal} */}
+        <div
+          className='ModalPopUp-backdrop backdrop'
+          role='dialog'
+          aria-modal='true'
+          onClick={handleClose}
+          data-testid='ModalPopUp-wrapper'
+        />
+        {withBackdrop && (
+          <div
+            className='ModalPopUp-backdrop backdrop'
+            role='dialog'
+            aria-modal='true'
+            onClick={handleClose}
+            data-testid='ModalPopUp-wrapper'
+          />
+        )}
 
-				<div className={`ModalPopUp-container container ${size} ${type} ${containerClass}`}>
-					{showCloseButton && (
-						<button
-							aria-label='Close modal pop up'
-							className='ModalPopUp-close'
-							onClick={handleClose}
-							data-testid='modal-close-btn'>
-							<Icon icon='close' />
-						</button>
-					)}
-					<div
-						tabIndex={0}
-						ref={modalContent}
-						className={`ModalPopUp-content content  ${withoutPaddings ? 'withoutPaddings' : ''}`}>
-						{children}
-					</div>
-				</div>
-				{/* <div tabIndex={0} onFocus={closeFocusInModal} /> */}
-			</div>
-		</Portal>
-	);
+        <div
+          className={`ModalPopUp-container container ${size} ${type} ${containerClass}`}
+          style={{ width }}>
+          {showCloseButton && (
+            <button
+              aria-label='Close modal pop up'
+              className='ModalPopUp-close'
+              onClick={handleClose}
+              data-testid='modal-close-btn'>
+              <Icon icon='close' />
+            </button>
+          )}
+          <div
+            tabIndex={0}
+            ref={modalContent}
+            className={`ModalPopUp-content content  ${withoutPaddings ? 'withoutPaddings' : ''}`}>
+            {children}
+          </div>
+        </div>
+        {/* <div tabIndex={0} onFocus={closeFocusInModal} /> */}
+      </div>
+    </Portal>
+  );
 };
