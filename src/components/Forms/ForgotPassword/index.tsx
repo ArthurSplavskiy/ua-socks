@@ -66,7 +66,7 @@ export const ForgotPassword = () => {
         <InputField
           {...formData.email.inputProps}
           value={formData.email.value}
-          label={pageInterfaceText?.form_email}
+          label={'E-mail' || pageInterfaceText?.form_email}
           errors={formData.email.errors}
         />
 

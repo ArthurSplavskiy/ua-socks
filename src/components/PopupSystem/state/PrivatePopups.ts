@@ -17,6 +17,12 @@ interface IPublicPopups {
 
   addToBalancePopup: IPopup;
   setAddToBalancePopup: (options: IPopup) => void;
+
+  exportProxyPopup: IPopup;
+  setExportProxyPopup: (options: IPopup) => void;
+
+  continueProxyPopup: IPopup;
+  setContinueProxyPopup: (options: IPopup) => void;
 }
 
 export const usePrivatePopups = create<IPublicPopups>()((set) => ({
@@ -50,5 +56,17 @@ export const usePrivatePopups = create<IPublicPopups>()((set) => ({
     isOpen: false
   },
   setAddToBalancePopup: (options) =>
-    set((state) => ({ addToBalancePopup: { ...state.addToBalancePopup, ...options } }))
+    set((state) => ({ addToBalancePopup: { ...state.addToBalancePopup, ...options } })),
+
+  exportProxyPopup: {
+    isOpen: false
+  },
+  setExportProxyPopup: (options) =>
+    set((state) => ({ exportProxyPopup: { ...state.exportProxyPopup, ...options } })),
+
+  continueProxyPopup: {
+    isOpen: false
+  },
+  setContinueProxyPopup: (options) =>
+    set((state) => ({ continueProxyPopup: { ...state.continueProxyPopup, ...options } }))
 }));

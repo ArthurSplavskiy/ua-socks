@@ -22,7 +22,7 @@ const createStaticRoutes = async (): Promise<RouteObject[]> => {
   await fetch(`${import.meta.env.VITE_API_URL}/uk/home`)
     .then((response) => response.json())
     .then(
-      (json) => (apiRoutes = json.footer_links.footer_privacy_links.map((el: IMenu) => el.slug))
+      (json) => (apiRoutes = json?.footer_links?.footer_privacy_links.map((el: IMenu) => el.slug))
     );
 
   apiRoutes.forEach((slug: string) => {
@@ -79,8 +79,8 @@ const AppRouter = createBrowserRouter([
         element: <AccountSupport />
       }
     ]
-  }
-  // ...(await createStaticRoutes())
+  },
+  ...(await createStaticRoutes())
 ]);
 
 export default AppRouter;

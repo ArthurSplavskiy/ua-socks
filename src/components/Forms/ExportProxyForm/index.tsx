@@ -1,31 +1,25 @@
 import { Button } from '@/components/shared/Button';
-import { InputField } from '@/components/shared/FormComponents/InputField/InputField';
 import { useExport } from './useExport';
-import { ReactSelect } from '@/components/shared/FormComponents/ReactSelect/ReactSelect';
-import { CheckBoxGroupe } from '@/components/shared/FormComponents/CheckBoxGroupe/CheckBoxGroupe';
-import useRequest from '@/hooks/useRequest';
-import { IExportSettings } from '@/interfaces/api';
-import api from '@/api';
 import { useDevice } from '@/context/DeviceContext';
 import { useInterfaceText } from '@/context/UserContext';
 import '../AccountForms.scss';
 
 export const ExportForm = () => {
-	// const { pageInterfaceText } = useCommon();
-	const { text: pageInterfaceText } = useInterfaceText();
-	const { isMobile } = useDevice();
-	const { onSubmit, formData, isLoadingFormats, formats } = useExport();
+  // const { pageInterfaceText } = useCommon();
+  const { text: pageInterfaceText } = useInterfaceText();
+  const { isMobile } = useDevice();
+  const { onSubmit, formData } = useExport();
 
-	const { data: checkBoxList } = useRequest<IExportSettings[]>({
-		method: 'GET',
-		url: api.account.getExportSetting('uk')
-	});
+  // const { data: checkBoxList } = useRequest<IExportSettings[]>({
+  // 	method: 'GET',
+  // 	url: api.account.getExportSetting('uk')
+  // });
 
-	return (
-		<div className='AccountPopup ExportPopup'>
-			<h3 className='AccountPopup-title'>{pageInterfaceText?.acc_export_proxy}</h3>
-			<form className='ExportPopup-form' onSubmit={onSubmit}>
-				<fieldset className='ExportPopup-form-field'>
+  return (
+    <div className='AccountPopup ExportPopup'>
+      <h3 className='AccountPopup-title'>{pageInterfaceText?.acc_export_proxy}</h3>
+      <form className='ExportPopup-form' onSubmit={onSubmit}>
+        {/* <fieldset className='ExportPopup-form-field'>
 					<InputField
 						{...formData.format.inputProps}
 						value={formData.format.value}
@@ -63,9 +57,9 @@ export const ExportForm = () => {
 							options={formData.formatSelect.inputProps.options}
 						/>
 					)}
-				</fieldset>
-				<Button type='submit'>{pageInterfaceText?.acc_export_btn}</Button>
-			</form>
-		</div>
-	);
+				</fieldset> */}
+        <Button type='submit'>{pageInterfaceText?.acc_export_btn}</Button>
+      </form>
+    </div>
+  );
 };

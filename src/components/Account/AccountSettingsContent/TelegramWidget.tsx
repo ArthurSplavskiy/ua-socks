@@ -12,7 +12,7 @@ export const TelegramWidget = () => {
   const { text: pageInterfaceText } = useInterfaceText();
   const { user, setUser } = useProfile();
   const [nickname, setNickname] = useState('');
-  const setSuccessMessagePopup = usePrivatePopups((state) => state.setSuccessMessagePopup);
+  const { setSuccessMessagePopup, setErrorMessagePopup } = usePrivatePopups((state) => state);
 
   const formData = {
     telegram: useTextInput({ value: nickname, isRequired: false })
@@ -34,6 +34,11 @@ export const TelegramWidget = () => {
       setUser(resData);
     } catch (error) {
       getApiError(error, formData);
+      setErrorMessagePopup({
+        isOpen: true,
+        // @ts-ignore
+        message: error?.response?.data?.message || error?.message
+      });
     } finally {
       setIsLoading(false);
     }

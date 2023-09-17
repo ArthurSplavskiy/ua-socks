@@ -1,6 +1,6 @@
 import { useCommon } from '@/context/CommonContext';
 import { useInterfaceText } from '@/context/UserContext';
-import { FC } from 'react';
+import { FC, memo, useEffect } from 'react';
 import { ForgotPassword } from '../Forms/ForgotPassword';
 import { LoginForm } from '../Forms/LoginForm';
 import { RegisterForm } from '../Forms/RegisterForm';
@@ -11,7 +11,7 @@ import { ModalPopup } from './ModalPopup/ModalPopup';
 import { TemplateModal } from './TemplateModal/TemplateModal';
 import { usePublicPopups } from '@/components/PopupSystem/state/PublicPopups';
 
-export const PublicPopups: FC = () => {
+export const PublicPopups: FC = memo(() => {
   const {
     isRegistrationPopupOpen,
     isLoginPopupOpen,
@@ -38,6 +38,26 @@ export const PublicPopups: FC = () => {
     setConfirmEmailSendedMessagePopup
   } = usePublicPopups((state) => state);
 
+  useEffect(() => {
+    // @ts-ignore
+    let id = null;
+    if (successMessagePopup.isOpen) {
+      id = setTimeout(() => {
+        setSuccessMessagePopup({ isOpen: false });
+      }, 2000);
+    } else {
+      if (id) {
+        clearTimeout(id);
+      }
+    }
+    return () => {
+      // @ts-ignore
+      if (id) {
+        clearTimeout(id);
+      }
+    };
+  }, [successMessagePopup]);
+
   return (
     <>
       {/* successMessagePopup  */}
@@ -47,8 +67,7 @@ export const PublicPopups: FC = () => {
         withBackdrop={false}
         onClose={() => {
           setSuccessMessagePopup({ isOpen: false });
-        }}
-        onAnimationHideStart={() => popupHide()}>
+        }}>
         <TemplateModal
           type='message'
           background={<FormsBg />}
@@ -65,8 +84,7 @@ export const PublicPopups: FC = () => {
         show={isRegistrationPopupOpen}
         hide={isPopupHide}
         withBackdrop={false}
-        onClose={closeRegistration}
-        onAnimationHideStart={popupHide}>
+        onClose={closeRegistration}>
         <TemplateModal background={<FormsBg />}>
           <RegisterForm />
         </TemplateModal>
@@ -77,8 +95,7 @@ export const PublicPopups: FC = () => {
         show={isLoginPopupOpen}
         hide={isPopupHide}
         withBackdrop={false}
-        onClose={closeLogin}
-        onAnimationHideStart={popupHide}>
+        onClose={closeLogin}>
         <TemplateModal background={<FormsBg />}>
           <LoginForm />
         </TemplateModal>
@@ -89,8 +106,7 @@ export const PublicPopups: FC = () => {
         show={isForgotPassPopupOpen}
         hide={isPopupHide}
         withBackdrop={false}
-        onClose={closeForgotPass}
-        onAnimationHideStart={popupHide}>
+        onClose={closeForgotPass}>
         <TemplateModal background={<FormsBg />}>
           <ForgotPassword />
         </TemplateModal>
@@ -103,8 +119,7 @@ export const PublicPopups: FC = () => {
         withBackdrop={false}
         onClose={() => {
           setConfirmEmailSendedMessagePopup({ isOpen: false });
-        }}
-        onAnimationHideStart={popupHide}>
+        }}>
         <TemplateModal
           type='message'
           background={<FormsBg />}
@@ -123,8 +138,7 @@ export const PublicPopups: FC = () => {
         withBackdrop={false}
         onClose={() => {
           setNewPassSendedMessagePopup({ isOpen: false });
-        }}
-        onAnimationHideStart={popupHide}>
+        }}>
         <TemplateModal
           type='message'
           background={<FormsBg />}
@@ -158,4 +172,4 @@ export const PublicPopups: FC = () => {
       </ModalPopup>
     </>
   );
-};
+});

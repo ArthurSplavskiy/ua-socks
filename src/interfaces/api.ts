@@ -54,8 +54,11 @@ export interface IUserProfile {
   nickname_telegram: string;
 
   // not et
-  password: string;
-  balance: number;
+  //password: string;
+  select_contracts: number[];
+  select_export_contracts: number[];
+  select_single_contracts: number[];
+  wallet_balance: string;
   proxy: IProxy[];
 
   email_verified_at: string;

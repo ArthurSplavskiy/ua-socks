@@ -12,7 +12,7 @@ export const EmailWidget = () => {
   const { text: pageInterfaceText } = useInterfaceText();
   const { user, setUser, logOut } = useProfile();
   const [currentEmail, setCurrentEmail] = useState('');
-  const setSuccessMessagePopup = usePrivatePopups((state) => state.setSuccessMessagePopup);
+  const { setSuccessMessagePopup, setErrorMessagePopup } = usePrivatePopups((state) => state);
 
   const formData = {
     current_email: useTextInput({ value: currentEmail || 'EmailExample@' }),
@@ -27,6 +27,7 @@ export const EmailWidget = () => {
       setIsLoading(true);
       if (!user) return;
       const res = await api.account.updateEmail('uk', {
+        // @ts-ignore
         password: user.password,
         email: formData.email.value,
         old_email: user.email
@@ -34,13 +35,15 @@ export const EmailWidget = () => {
       setSuccessMessagePopup({ isOpen: true, message: res.data.message });
       const resData = JSON.parse(res.config.data);
       formData.email.reset();
-      setUser(resData);
-      setTimeout(() => {
-        setSuccessMessagePopup({ isOpen: false });
-        logOut({ openLogin: true });
-      }, 2000);
+      // @ts-ignore
+      setUser((prev) => ({ ...prev, email: resData?.email }));
     } catch (error) {
       getApiError(error, formData);
+      setErrorMessagePopup({
+        isOpen: true,
+        // @ts-ignore
+        message: error?.response?.data?.message || error?.message
+      });
     } finally {
       setIsLoading(false);
     }

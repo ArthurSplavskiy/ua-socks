@@ -2,15 +2,18 @@ import { Checkbox } from '@/components/shared/FormComponents/Checkbox/Checkbox';
 import { Switcher } from '@/components/shared/FormComponents/Switcher';
 import { Icon } from '@/components/shared/Icon/Icon';
 import { useDevice } from '@/context/DeviceContext';
-import { useInterfaceText } from '@/context/UserContext';
+import { useInterfaceText, useProfile } from '@/context/UserContext';
 import { formatter } from '@/helpers';
 import { useClickOutside } from '@/hooks/useClickOutside';
-import { FC, useRef, useState } from 'react';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { OptionPopover } from './OptionPopover';
 import { Popover } from './Popover';
+import api from '@/api';
+import { usePrivatePopups } from '@/components/PopupSystem/state/PrivatePopups';
+import { useQueryClient } from 'react-query';
 
 interface Props {
-  proxyID?: string;
+  proxyID?: number;
   id: number;
   logo: string;
   name: string;
@@ -39,6 +42,7 @@ export const TableRowItem: FC<Props> = ({
   const [selected, setSelected] = useState(false);
   const [autoContinueState, setAutoContinueState] = useState(autoContinue);
   const { is810 } = useDevice();
+  const { setUser } = useProfile();
 
   const proxyItemHeadRef = useRef<HTMLDivElement>(null);
   const proxyItemBodyRef = useRef<HTMLDivElement>(null);
@@ -50,6 +54,8 @@ export const TableRowItem: FC<Props> = ({
       setProxyItemHeight(proxyItemBodyRef.current?.scrollHeight || 0);
     }
   };
+
+  const { setSuccessMessagePopup, setErrorMessagePopup } = usePrivatePopups((state) => state);
 
   const optionsRef = useRef<HTMLDivElement | null>(null);
   const [optionOpen, setOptionOpen] = useState(false);
@@ -74,6 +80,39 @@ export const TableRowItem: FC<Props> = ({
     }, 1500);
   };
 
+  const queryClient = useQueryClient();
+  const { getProfileData } = useProfile();
+
+  const handleAutoSwitch = useCallback(async (e: React.ChangeEvent) => {
+    try {
+      const res = await api.account.renewalProxy('uk', {
+        contract_id: [id],
+        // @ts-ignore
+        renewal: e.target.checked ? 1 : 0
+      });
+      // @ts-ignore
+      if (res?.data.status) {
+        queryClient.invalidateQueries('account.proxyList');
+        getProfileData();
+        setSuccessMessagePopup({
+          isOpen: true,
+          // @ts-ignore
+          message: res?.data?.['0']?.message || 'Успішно'
+        });
+        // setTimeout(() => {
+        //   setSuccessMessagePopup({ isOpen: false });
+        // }, 2000);
+      } else {
+        setErrorMessagePopup({
+          isOpen: true,
+          // @ts-ignore
+          message: res?.data?.message || 'Something went wrong'
+        });
+      }
+      setAutoContinueState((prev) => !prev);
+    } catch (e) {}
+  }, []);
+
   // useEffect(() => {
   //   if (proxyItemBodyRef.current) {
   //     if (id === 1) {
@@ -81,6 +120,32 @@ export const TableRowItem: FC<Props> = ({
   //     }
   //   }
   // }, []);
+  const selectProxy = useCallback((e: React.ChangeEvent) => {
+    // @ts-ignore
+    setSelected(e.target.checked);
+    setUser((prev: any) => {
+      // @ts-ignore
+      if (e.target.checked) {
+        if (!prev?.select_contracts?.length) {
+          return { ...prev, select_contracts: [id] };
+        }
+        const exist = prev.select_contracts.some((item: number) => item === id);
+        if (exist) {
+          return {
+            ...prev,
+            select_contracts: prev.select_contracts.filter((item: number) => item !== id)
+          };
+        }
+
+        return { ...prev, select_contracts: [...(prev?.select_contracts || []), id] };
+      } else {
+        return {
+          ...prev,
+          select_contracts: prev.select_contracts.filter((item: number) => item !== id)
+        };
+      }
+    });
+  }, []);
 
   return (
     <tr className={`ProxyItem ${selected ? 'selected' : ''}`}>
@@ -88,7 +153,7 @@ export const TableRowItem: FC<Props> = ({
         <div className={`ProxyItem-id`}>
           <Checkbox
             checked={selected}
-            onChange={() => setSelected((prev) => !prev)}
+            onChange={selectProxy}
             label={`checker-${id}`}
             showTitle={false}
             color={'green'}
@@ -108,7 +173,7 @@ export const TableRowItem: FC<Props> = ({
             <div className='ProxyItem-title' onClick={proxyItemClickHandler}>
               <img className='ProxyItem-title-logo' src={logo} alt={name} />
               {name}
-              <Icon icon='arrow-down' />
+              {socks && http && <Icon icon='arrow-down' />}
             </div>
           )}
           <div
@@ -155,7 +220,14 @@ export const TableRowItem: FC<Props> = ({
           {is810 ? (
             <span className='ProxyItem-mobile-title'>{pageInterfaceText?.acc_validity}</span>
           ) : null}
-          <span className='ProxyItem-day-label-tag'>{formatter.format(validity)}</span>
+          <span className='ProxyItem-day-label-tag'>
+            {validity < 1 ? 'минув' : formatter.format(validity)}
+            {/* {validity < 1
+              ? validity === 0
+                ? 'закінчився'
+                : `закінчився ${formatter.format(Math.abs(validity))} тому`
+              : formatter.format(validity)} */}
+          </span>
           {is810 ? null : <Popover text={pageInterfaceText?.acc_days_info} />}
         </div>
       </td>
@@ -167,7 +239,7 @@ export const TableRowItem: FC<Props> = ({
           <Switcher
             label={`switcher-${id}`}
             checked={autoContinueState}
-            onChange={() => setAutoContinueState((prev) => !prev)}
+            onChange={handleAutoSwitch}
           />
         </div>
       </td>
@@ -178,7 +250,11 @@ export const TableRowItem: FC<Props> = ({
             <span></span>
             <span></span>
           </button>
-          <OptionPopover isOpen={optionOpen} setIsOpen={setOptionOpen} />
+          <OptionPopover
+            isOpen={optionOpen}
+            setIsOpen={setOptionOpen}
+            proxyId={optionOpen ? id : undefined}
+          />
         </div>
       </td>
     </tr>

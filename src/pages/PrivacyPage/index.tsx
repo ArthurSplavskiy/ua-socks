@@ -5,19 +5,19 @@ import ReactHtmlParser from 'react-html-parser';
 import './index.scss';
 
 interface Props {
-	slug: string;
+  slug: string;
 }
 
 export default function PrivacyPage({ slug }: Props) {
-	const { data, isLoading } = useRequest<IPolicyPageData>({
-		method: 'GET',
-		url: import.meta.env.VITE_API_URL + `/${slug}` //api.policy.getPolicyData
-	});
+  const { data, isLoading } = useRequest<IPolicyPageData>({
+    method: 'GET',
+    url: import.meta.env.VITE_API_URL + `/uk/${slug}` //api.policy.getPolicyData
+  });
 
-	return (
-		<div className='PrivacyPage'>
-			<h1>{data?.page_title}</h1>
-			{data?.text && ReactHtmlParser(data.text)}
-		</div>
-	);
+  return (
+    <div className='PrivacyPage'>
+      <h1>{data?.page_title}</h1>
+      {data?.text && ReactHtmlParser(data.text)}
+    </div>
+  );
 }

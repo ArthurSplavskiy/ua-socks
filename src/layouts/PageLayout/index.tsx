@@ -10,20 +10,20 @@ import { Outlet, ScrollRestoration } from 'react-router-dom';
 import './PageLayout.scss';
 
 const PageLayout: FC = () => {
-	return (
-		<div className='PageLayout'>
-			<CustomHead />
-			<ScrollRestoration />
-			<Header type='default' />
-			<div className='PageLayout-main page-offset'>
-				<Outlet />
-			</div>
-			<Background color='grey' />
-			<PublicPopups />
-			<CookieBanner bg={<CookieBannerBg />} />
-			<Footer />
-		</div>
-	);
+  return (
+    <div className='PageLayout'>
+      <CustomHead />
+      <ScrollRestoration />
+      <Header type='default' />
+      <div className='PageLayout-main page-offset'>
+        <Outlet />
+      </div>
+      <Background color='grey' />
+      <PublicPopups />
+      <CookieBanner bg={<CookieBannerBg />} />
+      <Footer />
+    </div>
+  );
 };
 
 export default PageLayout;

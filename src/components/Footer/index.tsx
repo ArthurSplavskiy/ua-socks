@@ -74,6 +74,11 @@ export const Footer: FC = () => {
         </div>
         <div className='Footer-copyright'>
           <div>©UAsocks</div>
+          <div className='Footer-payments'>
+            <img src='/visa.svg' alt='visa' />
+            <img src='/liqpay.svg' alt='liqpay' />
+            <img src='/mastercard.svg' alt='mastercard' />
+          </div>
           <IncreateCopyright />
         </div>
       </div>

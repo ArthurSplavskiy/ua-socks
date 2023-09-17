@@ -36,28 +36,27 @@ export interface IProxyTag {
   value: string;
 }
 export interface IProxy {
-  id?: string;
-  username: string;
-  password: string;
-  readLimit: number;
-  writeLimit: number;
-  connectionLimit: number;
-  changeIpUid: string;
-  expiresAt?: null | string;
-  tags: IProxyTag[];
-  os: string;
-  currentIp?: null | string;
-  changeIpDelaySec?: number;
-  agentId: string;
-
-  // name: string;
-  // logo: string;
-  // country: string;
-  // validity: number;
-  // socks: string;
-  // http: string;
-  // url_ip_replace: string;
-  // auto_continue: boolean;
+  contract_id: number;
+  status: number;
+  renewal: number;
+  expires_at: string;
+  region_id: number;
+  region_name: string;
+  tariff_id: number;
+  operator_id: number;
+  operator_name: string;
+  operator_logo: string;
+  proxy: {
+    username: string;
+    password: string;
+    readLimit: number;
+    writeLimit: number;
+    connectionLimit: number;
+    changeIpUid: string;
+    changeIpDelaySec?: number;
+    expiresAt?: null | string;
+    os: string;
+  };
 }
 
 export interface IEventError {
@@ -91,6 +90,7 @@ export interface IProxyPrices {
   total: number;
   rent_term: string;
   operator: string;
+  package_id: number;
 }
 
 export interface ISelectOption {
@@ -144,4 +144,15 @@ export interface IUpdateAccountPwd {
   old_password: string;
   password: string;
   password_confirmation: string;
+}
+
+export interface IPayment {
+  currency: 'USD';
+  amount: number;
+  payment_gateway: 'liqpay' | 'capitalist' | 'whitepay';
+}
+
+export interface IGateways {
+  gateways: string[];
+  wallet_balance: string;
 }
