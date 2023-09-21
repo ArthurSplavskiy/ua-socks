@@ -52,13 +52,20 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
   const mutation = useMutation({
     mutationFn: (packageIds: { package_id: number[] }) => api.account.buyPackage('uk', packageIds),
     onError: (error) => {
-      console.log('errror', error);
       if (location.pathname === '/') {
         // @ts-ignore
-        setPublicErrorMessagePopup({ isOpen: true, message: error?.message });
+        setPublicErrorMessagePopup({
+          isOpen: true,
+          // @ts-ignore
+          message: error?.response?.data?.message || error?.message
+        });
       } else {
         // @ts-ignore
-        setErrorMessagePopup({ isOpen: true, message: error?.message });
+        setErrorMessagePopup({
+          isOpen: true,
+          // @ts-ignore
+          message: error?.response?.data?.message || error?.message
+        });
       }
     },
     onSuccess: (data) => {
@@ -114,6 +121,8 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
   const activePackage = prices?.find(
     (p) => p.rent_term === rentTerm?.value && p.operator === operator?.value && price === p.total
   );
+
+  console.log('mark', mark);
 
   return (
     <div className={`${className} TarifCard ${color} ${animate && 'animate'} delay-${dataId}`}>

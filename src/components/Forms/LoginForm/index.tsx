@@ -9,7 +9,7 @@ import { FormFooter } from '../FormFooter';
 import { useInterfaceText, useSupportLink } from '@/context/UserContext';
 
 export const LoginForm = () => {
-  const { openRegistration, openForgotPass } = useCommon();
+  const { openRegistration, openForgotPass, closeLogin } = useCommon();
   const { text: pageInterfaceText } = useInterfaceText();
   const { isMobile } = useDevice();
   const { onSubmit, formData, isLoading } = useLogin();
@@ -47,9 +47,14 @@ export const LoginForm = () => {
 
         {isMobile && (
           <div className='FormFooter-policy'>
-            Натиснавши на кнопку, ви даєте згоду на обробку персональних даних та погоджуєтеся з
-            <Link to='/'>політикою конфіденційності</Link> та{' '}
-            <Link to='/'>угодою публічної оферти</Link>
+            Натиснувши на кнопку, ви даєте згоду на обробку персональних даних, погоджуєтеся з
+            <Link to='/privacy-policy' onClick={() => closeLogin()}>
+              політикою конфіденційності
+            </Link>{' '}
+            та{' '}
+            <Link to='/oferta' onClick={() => closeLogin()}>
+              угодою публічної оферти
+            </Link>
           </div>
         )}
 
@@ -70,6 +75,7 @@ export const LoginForm = () => {
           leftText={pageInterfaceText?.no_have_acc}
           rightText={pageInterfaceText?.registration_link}
           linkCallback={openRegistration}
+          close={closeLogin}
         />
       )}
     </div>

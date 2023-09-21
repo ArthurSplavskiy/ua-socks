@@ -31,7 +31,11 @@ export const TelegramWidget = () => {
       const res = await api.account.updateTelegram('uk', data.telegram);
       setSuccessMessagePopup({ isOpen: true, message: res.data.message });
       const resData = JSON.parse(res.config.data);
-      setUser(resData);
+      // @ts-ignore
+      setUser((prev) => ({
+        ...prev,
+        nickname_telegram: resData?.nickname_telegram || prev.nickname_telegram
+      }));
     } catch (error) {
       getApiError(error, formData);
       setErrorMessagePopup({

@@ -1,6 +1,7 @@
 import { IEventError } from '@/interfaces/shared';
 import React, { createContext, useContext, useEffect, useMemo, useState, useCallback } from 'react';
 import { usePublicPopups } from '@/components/PopupSystem/state/PublicPopups';
+import { useLocation } from 'react-router-dom';
 
 type State = {
   // pageInterfaceText: IPageTextInterface | null;
@@ -144,6 +145,12 @@ function CommonProvider({ children }: CommonProviderProps) {
   // useEffect(() => {
   // 	loadPageInterfaceText();
   // }, []);
+
+  useEffect(() => {
+    if (location.hash === '#login') {
+      openLogin();
+    }
+  }, []);
 
   const contextValue = useMemo(
     () => ({

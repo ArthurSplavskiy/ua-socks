@@ -13,11 +13,10 @@ import axios from 'axios';
 import api from '@/api';
 
 export const ForgotPassword = () => {
-  const { openRegistration } = useCommon();
   const { text: pageInterfaceText } = useInterfaceText();
   const { isMobile } = useDevice();
 
-  const { setError, closeForgotPass, openLogin } = useCommon();
+  const { setError, closeForgotPass, openLogin, openRegistration } = useCommon();
   const [isLoading, setIsLoading] = useState(false);
   // const [, setUserPWD] = useLocalStorage('acc-id', '');
   // const [, setUserEmail] = useLocalStorage('user-email', '');
@@ -73,8 +72,13 @@ export const ForgotPassword = () => {
         {isMobile && (
           <div className='FormFooter-policy'>
             Натиснавши на кнопку, ви даєте згоду на обробку персональних даних та погоджуєтеся з
-            <Link to='/'>політикою конфіденційності</Link> та{' '}
-            <Link to='/'>угодою публічної оферти</Link>
+            <Link to='/privacy-policy' onClick={() => closeForgotPass()}>
+              політикою конфіденційності
+            </Link>{' '}
+            та{' '}
+            <Link to='/oferta' onClick={() => closeForgotPass()}>
+              угодою публічної оферти
+            </Link>
           </div>
         )}
 
@@ -95,6 +99,7 @@ export const ForgotPassword = () => {
           leftText={pageInterfaceText?.no_have_acc}
           rightText={pageInterfaceText?.registration_link}
           linkCallback={openRegistration}
+          close={closeForgotPass}
         />
       )}
     </div>

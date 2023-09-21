@@ -10,7 +10,7 @@ import { useInterfaceText, useSupportLink } from '@/context/UserContext';
 import '../AuthForms.scss';
 
 export const RegisterForm = () => {
-  const { openLogin } = useCommon();
+  const { openLogin, closeRegistration } = useCommon();
   const { text: pageInterfaceText } = useInterfaceText();
   const { isMobile } = useDevice();
   const { onSubmit, formData, isLoading } = useRegistration();
@@ -52,9 +52,14 @@ export const RegisterForm = () => {
 
         {isMobile && (
           <div className='FormFooter-policy'>
-            Натиснавши на кнопку, ви даєте згоду на обробку персональних даних та погоджуєтеся з
-            <Link to='/'>політикою конфіденційності</Link> та{' '}
-            <Link to='/'>угодою публічної оферти</Link>
+            Натиснувши на кнопку, ви даєте згоду на обробку персональних даних, погоджуєтеся з
+            <Link to='/privacy-policy' onClick={closeRegistration}>
+              політикою конфіденційності
+            </Link>{' '}
+            та{' '}
+            <Link to='/oferta' onClick={closeRegistration}>
+              угодою публічної оферти
+            </Link>
           </div>
         )}
 
@@ -79,6 +84,7 @@ export const RegisterForm = () => {
           leftText={pageInterfaceText?.register_text1}
           rightText={pageInterfaceText?.register_text2}
           linkCallback={openLogin}
+          close={closeRegistration}
         />
       )}
     </div>
