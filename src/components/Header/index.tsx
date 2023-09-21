@@ -12,6 +12,7 @@ import { useInterfaceText, useMenu, useProfile } from '@/context/UserContext';
 import { useScrollY } from '@/hooks/useScrollY';
 import { useLocalStorage } from 'usehooks-ts';
 import './Header.scss';
+import { Popover } from '../Account/AccountDashboardContent/Table/Popover';
 
 interface Props {
   type: 'account' | 'default';

@@ -53,7 +53,8 @@ export const PasswordWidget = () => {
       const resData = JSON.parse(res.config.data);
       password.reset();
       confirm_password.reset();
-      setUser(resData);
+      // @ts-ignore
+      setUser((prev) => ({ ...prev, password: resData?.password || prev.password }));
     } catch (error) {
       getApiError(error, formData);
       setErrorMessagePopup({

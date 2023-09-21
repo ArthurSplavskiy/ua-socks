@@ -1,80 +1,90 @@
 .TarifsList {
-	&-account {
-		.TarifCard {
-			padding: 24px;
-		}
-		.ReactSelect.geo .ReactSelect-select__control,
-		.ReactSelect.geo .ReactSelect-select__menu {
-			background: var(--white);
-		}
-		.TarifsList-select .ReactSelect-group {
-			grid-column: 1;
-		}
-		.TarifsList-select {
-			margin-bottom: 14px;
-		}
-		.TarifCard-content-head {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			flex-direction: row-reverse;
-			flex-wrap: wrap;
-		}
-		.TarifCard-stats li:not(:last-child) {
-			margin-bottom: 8px;
-		}
-		.TarifCard-price span:first-child {
-			font-size: 24px;
-		}
-		.TarifCard-price span:last-child {
-			font-size: 32px;
-		}
-		.TarifCard-mark {
-			display: none;
-		}
-		.TarifsList-cards {
-			align-items: inherit;
-			@media screen and (max-width: 1300px) {
-				grid-template-columns: 1fr;
-			}
-			@media screen and (max-width: 1024px) {
-				padding-bottom: 80px;
-			}
-		}
-	}
-	&-select {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 24px;
-		position: relative;
-		z-index: 2;
-		margin-bottom: 32px;
-		@media screen and (max-width: 992px) {
-			grid-template-columns: 1fr;
-		}
-		.ReactSelect-group {
-			grid-column: 2 / 2;
-			@media screen and (max-width: 992px) {
-				grid-column: 1 / -1;
-			}
-		}
-	}
-	&-cards {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		align-items: baseline;
-		gap: 24px;
-		position: relative;
-		z-index: 1;
-		@media screen and (max-width: 1200px) {
-			grid-template-columns: repeat(2, 1fr);
-		}
-		@media screen and (max-width: 992px) {
-			grid-template-columns: 1fr;
-		}
-		.TarifCard,
-		.TarifCard-content {
-			height: 100%;
-		}
-	}
+  &-account {
+    .TarifCard {
+      padding: 24px;
+      overflow: hidden;
+    }
+    .ReactSelect.geo .ReactSelect-select__control,
+    .ReactSelect.geo .ReactSelect-select__menu {
+      background: var(--white);
+    }
+    .TarifsList-select .ReactSelect-group {
+      grid-column: 1;
+    }
+    .TarifsList-select {
+      margin-bottom: 14px;
+    }
+    .TarifsList-selects,
+    .TarifCard-btn {
+      margin-top: auto;
+    }
+    .TarifCard-content {
+      grid-template-rows: 40px 1fr 124px 48px;
+    }
+    .TarifCard-content-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      flex-wrap: wrap;
+      margin-bottom: auto;
+    }
+    .TarifCard-stats li:not(:last-child) {
+      margin-bottom: 8px;
+    }
+    .TarifCard-price span:first-child {
+      font-size: 24px;
+    }
+    .TarifCard-price span:last-child {
+      font-size: 32px;
+    }
+    .TarifCard-mark {
+      //display: none;
+      top: -17px;
+    }
+    .TarifsList-cards {
+      align-items: inherit;
+      @media screen and (max-width: 1300px) {
+        grid-template-columns: 1fr;
+      }
+      @media screen and (max-width: 1024px) {
+        padding-bottom: 80px;
+      }
+    }
+  }
+  &-select {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 32px;
+    @media screen and (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+    .ReactSelect-group {
+      grid-column: 2 / 2;
+      @media screen and (max-width: 992px) {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+  &-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: baseline;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+    @media screen and (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
+    .TarifCard,
+    .TarifCard-content {
+      height: 100%;
+    }
+  }
 }

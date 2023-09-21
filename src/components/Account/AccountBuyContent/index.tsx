@@ -20,7 +20,7 @@ export const AccountBuyContent: FC = () => {
     if (!data) return [];
 
     const normalizeData = data.region_data.map((item) => {
-      const proxyList = item.tariffs.map((tariff) => {
+      const proxyList = item.tariffs.map((tariff, idx) => {
         const pricesList = tariff.packages.map((price) => ({
           active: !!tariff.tariff_status,
           total: +price.package_price,
@@ -29,22 +29,29 @@ export const AccountBuyContent: FC = () => {
           package_id: price.package_id
         }));
 
+        const attributes = tariff.attributes.map((attribute) => ({
+          // @ts-ignore
+          support: attribute?.support,
+          // @ts-ignore
+          value: attribute?.name
+        }));
+
         return {
           id: tariff.tariff_id,
           status: tariff.tariff_name,
-          mark: false,
-          // color: 'primary',
+          mark: idx === 0 ? true : false,
+          //color: 'primary',
           operators: Object.values(item.operators[0]) as string[],
           rent_terms: Object.keys(item.terms[0]) as string[],
           prices: pricesList,
-          stats: []
+          stats: attributes
         };
       });
 
       return {
         geo: item.region_name,
         regionId: item.region_id,
-        proxy: proxyList,
+        proxy: [proxyList?.[2], proxyList?.[0], proxyList?.[1]],
         isExistTariffs: !!item.tariffs.length
       };
     });

@@ -2,18 +2,18 @@ import { Button } from '@/components/shared/Button';
 import { useDevice } from '@/context/DeviceContext';
 import { useInterfaceText, useProfile } from '@/context/UserContext';
 import { useClickOutside } from '@/hooks/useClickOutside';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { BalanceWidget } from './BalanceWidget';
 import { Table } from './Table';
 import { OptionPopover } from './Table/OptionPopover';
 import { TableEmpty } from './Table/TableEmpty';
 import { TableRowItem } from './Table/TableRowItem';
-import { useAccount } from '@/context/Account/AccountContextHooks';
 import './index.scss';
 import { useQuery } from 'react-query';
 import api from '@/api';
 import { IProxy } from '@/interfaces/shared';
 import { calcValidity } from './utils';
+import { Loader } from '@/components/shared/Loader';
 
 export const AccountDashboardContent = () => {
   const { isMobile } = useDevice();
@@ -39,8 +39,9 @@ export const AccountDashboardContent = () => {
         }
       }
 
-      return items.map((proxy) => (
+      return items.map((proxy, idx) => (
         <TableRowItem
+          idx={idx + 1}
           key={proxy.contract_id}
           proxyID={proxy.contract_id}
           id={proxy.contract_id}
@@ -48,9 +49,24 @@ export const AccountDashboardContent = () => {
           logo={proxy.operator_logo} // proxy.logo
           country={proxy.region_name} // proxy.country
           validity={calcValidity(proxy.expires_at)} // proxy.validity
-          socks={''} // proxy.socks
-          http={''} // proxy.http
-          urlIpReplace={''} // proxy.url_ip_replace
+          // @ts-ignore
+          socks={
+            // @ts-ignore
+            proxy?.proxy?.socks?.type
+              ? // @ts-ignore
+                `type: ${proxy?.proxy?.socks?.type}, port: ${proxy?.proxy?.socks?.port}`
+              : null
+          } // proxy.socks
+          // @ts-ignore
+          http={
+            // @ts-ignore
+            proxy?.proxy?.http?.type
+              ? // @ts-ignore
+                `type: ${proxy?.proxy?.http?.type}, port: ${proxy?.proxy?.http?.port}`
+              : null
+          } // proxy.http
+          // @ts-ignore
+          urlIpReplace={proxy?.proxy?.reboot} // proxy.url_ip_replace
           autoContinue={!!proxy.renewal} // proxy.auto_continue
         />
       ));
@@ -105,8 +121,20 @@ export const AccountDashboardContent = () => {
           </div>
         )}
       </div>
-      <div className='AccountDashboardContent-body'>
-        <Table bodyChildren={data?.['0']?.contract_id ? renderTableBody() : <TableEmpty />} />
+      <div
+        className='AccountDashboardContent-body'
+        style={{ height: data === undefined ? '400px' : '', position: 'relative' }}>
+        <Table
+          bodyChildren={
+            data === undefined ? (
+              <Loader />
+            ) : Object.values(data)?.length === 0 ? (
+              <TableEmpty />
+            ) : (
+              renderTableBody()
+            )
+          }
+        />
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ import { usePrivatePopups } from '@/components/PopupSystem/state/PrivatePopups';
 import { useQueryClient } from 'react-query';
 
 interface Props {
+  idx: number;
   proxyID?: number;
   id: number;
   logo: string;
@@ -26,6 +27,7 @@ interface Props {
 }
 
 export const TableRowItem: FC<Props> = ({
+  idx,
   proxyID,
   id,
   logo,
@@ -159,10 +161,10 @@ export const TableRowItem: FC<Props> = ({
             color={'green'}
           />
           {is810 ? '№' : null}
-          {id}
+          {idx}
         </div>
       </td>
-      <td>
+      <td style={{ justifyContent: 'flex-start', paddingLeft: '20px' }}>
         <div
           ref={proxyItemHeadRef}
           className={`ProxyItem-spoller ${!!proxyItemHeight && 'active'}`}>
@@ -173,7 +175,7 @@ export const TableRowItem: FC<Props> = ({
             <div className='ProxyItem-title' onClick={proxyItemClickHandler}>
               <img className='ProxyItem-title-logo' src={logo} alt={name} />
               {name}
-              {socks && http && <Icon icon='arrow-down' />}
+              {socks && http ? <Icon icon='arrow-down' /> : null}
             </div>
           )}
           <div

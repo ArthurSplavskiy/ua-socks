@@ -36,7 +36,7 @@ export const EmailWidget = () => {
       const resData = JSON.parse(res.config.data);
       formData.email.reset();
       // @ts-ignore
-      setUser((prev) => ({ ...prev, email: resData?.email }));
+      setUser((prev) => ({ ...prev, email: resData?.email || prev.email }));
     } catch (error) {
       getApiError(error, formData);
       setErrorMessagePopup({
