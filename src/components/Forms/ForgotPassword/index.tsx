@@ -71,7 +71,7 @@ export const ForgotPassword = () => {
 
         {isMobile && (
           <div className='FormFooter-policy'>
-            Натиснавши на кнопку, ви даєте згоду на обробку персональних даних та погоджуєтеся з
+            Натиснувши на кнопку, ви даєте згоду на обробку персональних даних, погоджуєтеся з
             <Link to='/privacy-policy' onClick={() => closeForgotPass()}>
               політикою конфіденційності
             </Link>{' '}
@@ -79,6 +79,7 @@ export const ForgotPassword = () => {
             <Link to='/oferta' onClick={() => closeForgotPass()}>
               угодою публічної оферти
             </Link>
+            .
           </div>
         )}
 
