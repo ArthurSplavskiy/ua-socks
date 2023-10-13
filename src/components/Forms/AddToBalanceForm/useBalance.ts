@@ -1,8 +1,7 @@
 import { FormEvent, useState } from 'react';
-import { notValidForm, getApiError } from '@/helpers';
+import { notValidForm } from '@/helpers';
 import { useTextInput } from '@/hooks/useTextInput/useTextInput';
 import { IPayment, ISelectOption } from '@/interfaces/shared';
-import { useAccount } from '@/context/Account/AccountContextHooks';
 import api from '@/api';
 import { usePrivatePopups } from '@/components/PopupSystem/state/PrivatePopups';
 
@@ -11,9 +10,6 @@ interface Props {
 }
 
 export const useBalance = ({ payment }: Props) => {
-  const {
-    state: { addToBalance }
-  } = useAccount();
   const [isLoading, setIsLoading] = useState(false);
   const { setSuccessMessagePopup, setErrorMessagePopup } = usePrivatePopups((state) => state);
   const variantPrice = ['20', '50', '100', '300', '1000'];
@@ -35,7 +31,7 @@ export const useBalance = ({ payment }: Props) => {
         currency: 'USD',
         amount: +formData.balance.value || 0,
         // @ts-ignore
-        payment_gateway: payment?.value || 'liqpay'
+        payment_gateway: payment?.value || payment
       };
       // @ts-ignore
       //addToBalance(Number(data.balance));

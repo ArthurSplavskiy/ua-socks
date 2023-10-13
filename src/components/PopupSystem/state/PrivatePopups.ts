@@ -23,6 +23,9 @@ interface IPublicPopups {
 
   continueProxyPopup: IPopup;
   setContinueProxyPopup: (options: IPopup) => void;
+
+  autoreplaceProxyPopup: IPopup;
+  setAutoreplaceProxyPopup: (options: IPopup) => void;
 }
 
 export const usePrivatePopups = create<IPublicPopups>()((set) => ({
@@ -68,5 +71,11 @@ export const usePrivatePopups = create<IPublicPopups>()((set) => ({
     isOpen: false
   },
   setContinueProxyPopup: (options) =>
-    set((state) => ({ continueProxyPopup: { ...state.continueProxyPopup, ...options } }))
+    set((state) => ({ continueProxyPopup: { ...state.continueProxyPopup, ...options } })),
+
+  autoreplaceProxyPopup: {
+    isOpen: false
+  },
+  setAutoreplaceProxyPopup: (options) =>
+    set((state) => ({ autoreplaceProxyPopup: { ...state.autoreplaceProxyPopup, ...options } }))
 }));

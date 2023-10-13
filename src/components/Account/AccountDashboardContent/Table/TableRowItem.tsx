@@ -44,7 +44,7 @@ export const TableRowItem: FC<Props> = ({
   const [selected, setSelected] = useState(false);
   const [autoContinueState, setAutoContinueState] = useState(autoContinue);
   const { is810 } = useDevice();
-  const { setUser } = useProfile();
+  const { user, setUser } = useProfile();
 
   const proxyItemHeadRef = useRef<HTMLDivElement>(null);
   const proxyItemBodyRef = useRef<HTMLDivElement>(null);
@@ -64,9 +64,18 @@ export const TableRowItem: FC<Props> = ({
   useClickOutside(optionsRef, () => setOptionOpen(false));
 
   const spanHttpRef = useRef<HTMLSpanElement | null>(null);
-  const spanIpRef = useRef<HTMLSpanElement | null>(null);
+  const spanSocksRef = useRef<HTMLSpanElement | null>(null);
+  const spanIpRef = useRef<HTMLAnchorElement | null>(null);
   const handleCopiedHTTP = (e: React.MouseEvent<HTMLButtonElement>) => {
     spanHttpRef.current && navigator.clipboard.writeText(spanHttpRef.current.textContent || '');
+    const el = e.currentTarget;
+    el.classList.add('copied');
+    setTimeout(() => {
+      el.classList.remove('copied');
+    }, 1500);
+  };
+  const handleCopiedSocks = (e: React.MouseEvent<HTMLButtonElement>) => {
+    spanSocksRef.current && navigator.clipboard.writeText(spanSocksRef.current.textContent || '');
     const el = e.currentTarget;
     el.classList.add('copied');
     setTimeout(() => {
@@ -184,9 +193,13 @@ export const TableRowItem: FC<Props> = ({
             style={{ height: proxyItemHeight + 'px' }}>
             {socks && (
               <>
-                <div className='ProxyItem-body-title'>Socks:</div>
+                <div className='ProxyItem-body-title'>socks5:</div>
                 <div className='ProxyItem-body-text'>
-                  <span>{socks}</span>
+                  <span ref={spanSocksRef}>{socks}</span>
+                  <button onClick={handleCopiedSocks}>
+                    <img src='/images/copy.svg' alt='copy' />
+                    <span>{pageInterfaceText?.copied}</span>
+                  </button>
                 </div>
               </>
             )}
@@ -206,7 +219,9 @@ export const TableRowItem: FC<Props> = ({
               <>
                 <div className='ProxyItem-body-title'>{pageInterfaceText?.acc_exchange}</div>
                 <div className='ProxyItem-body-text'>
-                  <span ref={spanIpRef}>{urlIpReplace}</span>
+                  <a href={urlIpReplace} target='_blank' ref={spanIpRef}>
+                    {urlIpReplace}
+                  </a>
                   <button onClick={handleCopiedIP}>
                     <img src='/images/copy.svg' alt='copy' />
                     <span>{pageInterfaceText?.copied}</span>
@@ -247,7 +262,10 @@ export const TableRowItem: FC<Props> = ({
       </td>
       <td className='text-center'>
         <div ref={optionsRef} className='ProxyItem-option'>
-          <button className='ProxyItem-option-btn' onClick={() => setOptionOpen((prev) => !prev)}>
+          <button
+            className='ProxyItem-option-btn'
+            onClick={() => setOptionOpen((prev) => !prev)}
+            disabled={user?.select_contracts ? user?.select_contracts?.length > 1 : false}>
             <span></span>
             <span></span>
             <span></span>

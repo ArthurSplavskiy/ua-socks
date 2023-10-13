@@ -77,6 +77,14 @@ export const numberRangeValidation = <T>(value: T) => {
   return str.test(value);
 };
 
+export const minuteRangeValidation = <T>(value: T) => {
+  if (value === '') return true;
+  if (typeof value !== 'string') return false;
+  if (Number(value) < 1 || Number(value) > 60) return false;
+  const str = new RegExp(/^[0-9]*$/gm);
+  return str.test(value);
+};
+
 export const errorsMessages = {
   EMAIL: 'Введіть дійсну адресу електронної пошти', //'Please enter a valid email',
   PASSWORD: 'Пароль має містити не менше 8 символів',
@@ -87,7 +95,8 @@ export const errorsMessages = {
   PHONE: 'Please enter a valid phone number',
   WEBSITE: 'Please enter a valid website address',
   URL: 'Please enter a valid url',
-  NUMBER_RANGE: 'Будь ласка, введіть число (0 - 5000)' //'Please enter a valid number (0 - 5000)'
+  NUMBER_RANGE: 'Будь ласка, введіть число (0 - 5000)', //'Please enter a valid number (0 - 5000)'
+  MINUTE_RANGE: '1 - 60' //'Please enter a valid number (0 - 5000)'
 };
 
 export const inputValidators = {
@@ -97,5 +106,6 @@ export const inputValidators = {
   phone: { checkFn: phoneValidation, error: errorsMessages.PHONE },
   website: { checkFn: urlValidation, error: errorsMessages.WEBSITE },
   url: { checkFn: urlValidation, error: errorsMessages.URL },
-  numberRange: { checkFn: numberRangeValidation, error: errorsMessages.NUMBER_RANGE }
+  numberRange: { checkFn: numberRangeValidation, error: errorsMessages.NUMBER_RANGE },
+  minuteRange: { checkFn: minuteRangeValidation, error: errorsMessages.MINUTE_RANGE }
 };

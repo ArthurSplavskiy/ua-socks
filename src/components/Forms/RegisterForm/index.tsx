@@ -32,7 +32,7 @@ export const RegisterForm = () => {
         <InputField
           {...formData.email.inputProps}
           value={formData.email.value}
-          label={pageInterfaceText?.form_email}
+          label={pageInterfaceText?.form_email_new}
           errors={formData.email.errors}
         />
 

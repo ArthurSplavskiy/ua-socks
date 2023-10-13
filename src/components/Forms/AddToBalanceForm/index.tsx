@@ -33,6 +33,7 @@ export const AddToBalanceForm = () => {
       setPaymentMethods(
         gateways.gateways.map((item, idx) => ({ id: idx, label: item, value: item }))
       );
+      setSelectedOption({ id: 0, label: gateways.gateways[0], value: gateways.gateways[0] });
     }
   }, [gateways]);
 
