@@ -46,7 +46,6 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
   } = usePublicPopups((state) => state);
   const { openLogin } = useCommon();
   const { getProfileData } = useProfile();
-
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -122,7 +121,6 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
     (p) => p.rent_term === rentTerm?.value && p.operator === operator?.value && price === p.total
   );
 
-  console.log('mark', mark);
 
   return (
     <div className={`${className} TarifCard ${color} ${animate && 'animate'} delay-${dataId}`}>
@@ -161,7 +159,7 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
         <div className='TarifCard-selects'>
           <ReactSelect
             type='card'
-            icon='earth'
+            icon='calendar'
             color={color}
             placeholder={pageInterfaceText?.rent_term_text}
             defaultValue={pageInterfaceText?.rent_term_text}
@@ -169,6 +167,7 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
             onChange={setRentTerm}
             options={rent_terms?.map((r) => ({ value: r, label: r }))}
           />
+         
           <ReactSelect
             type='card'
             icon='phone'

@@ -1,16 +1,16 @@
-import { Checkbox } from '@/components/shared/FormComponents/Checkbox/Checkbox';
-import { Switcher } from '@/components/shared/FormComponents/Switcher';
-import { Icon } from '@/components/shared/Icon/Icon';
-import { useDevice } from '@/context/DeviceContext';
-import { useInterfaceText, useProfile } from '@/context/UserContext';
-import { formatter } from '@/helpers';
-import { useClickOutside } from '@/hooks/useClickOutside';
-import { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { OptionPopover } from './OptionPopover';
-import { Popover } from './Popover';
-import api from '@/api';
-import { usePrivatePopups } from '@/components/PopupSystem/state/PrivatePopups';
-import { useQueryClient } from 'react-query';
+import { Checkbox } from "@/components/shared/FormComponents/Checkbox/Checkbox";
+import { Switcher } from "@/components/shared/FormComponents/Switcher";
+import { Icon } from "@/components/shared/Icon/Icon";
+import { useDevice } from "@/context/DeviceContext";
+import { useInterfaceText, useProfile } from "@/context/UserContext";
+import { formatter } from "@/helpers";
+import { useClickOutside } from "@/hooks/useClickOutside";
+import { FC, useCallback, useEffect, useRef, useState } from "react";
+import { OptionPopover } from "./OptionPopover";
+import { Popover } from "./Popover";
+import api from "@/api";
+import { usePrivatePopups } from "@/components/PopupSystem/state/PrivatePopups";
+import { useQueryClient } from "react-query";
 
 interface Props {
   idx: number;
@@ -37,7 +37,7 @@ export const TableRowItem: FC<Props> = ({
   socks,
   http,
   urlIpReplace,
-  autoContinue
+  autoContinue,
 }) => {
   //const { pageInterfaceText } = useCommon();
   const { text: pageInterfaceText } = useInterfaceText();
@@ -57,7 +57,9 @@ export const TableRowItem: FC<Props> = ({
     }
   };
 
-  const { setSuccessMessagePopup, setErrorMessagePopup } = usePrivatePopups((state) => state);
+  const { setSuccessMessagePopup, setErrorMessagePopup } = usePrivatePopups(
+    (state) => state
+  );
 
   const optionsRef = useRef<HTMLDivElement | null>(null);
   const [optionOpen, setOptionOpen] = useState(false);
@@ -65,20 +67,33 @@ export const TableRowItem: FC<Props> = ({
 
   const spanHttpRef = useRef<HTMLSpanElement | null>(null);
   const spanIpRef = useRef<HTMLSpanElement | null>(null);
-  const handleCopiedHTTP = (e: React.MouseEvent<HTMLButtonElement>) => {
-    spanHttpRef.current && navigator.clipboard.writeText(spanHttpRef.current.textContent || '');
+  const spanSocksRef = useRef<HTMLSpanElement | null>(null);
+
+  const handleCopiedSocks = (e: React.MouseEvent<HTMLButtonElement>) => {
+    spanSocksRef.current &&
+      navigator.clipboard.writeText(spanSocksRef.current.textContent || "");
     const el = e.currentTarget;
-    el.classList.add('copied');
+    el.classList.add("copied");
     setTimeout(() => {
-      el.classList.remove('copied');
+      el.classList.remove("copied");
+    }, 1500);
+  };
+  const handleCopiedHTTP = (e: React.MouseEvent<HTMLButtonElement>) => {
+    spanHttpRef.current &&
+      navigator.clipboard.writeText(spanHttpRef.current.textContent || "");
+    const el = e.currentTarget;
+    el.classList.add("copied");
+    setTimeout(() => {
+      el.classList.remove("copied");
     }, 1500);
   };
   const handleCopiedIP = (e: React.MouseEvent<HTMLButtonElement>) => {
-    spanIpRef.current && navigator.clipboard.writeText(spanIpRef.current.textContent || '');
+    spanIpRef.current &&
+      navigator.clipboard.writeText(spanIpRef.current.textContent || "");
     const el = e.currentTarget;
-    el.classList.add('copied');
+    el.classList.add("copied");
     setTimeout(() => {
-      el.classList.remove('copied');
+      el.classList.remove("copied");
     }, 1500);
   };
 
@@ -87,19 +102,19 @@ export const TableRowItem: FC<Props> = ({
 
   const handleAutoSwitch = useCallback(async (e: React.ChangeEvent) => {
     try {
-      const res = await api.account.renewalProxy('uk', {
+      const res = await api.account.renewalProxy("uk", {
         contract_id: [id],
         // @ts-ignore
-        renewal: e.target.checked ? 1 : 0
+        renewal: e.target.checked ? 1 : 0,
       });
       // @ts-ignore
       if (res?.data.status) {
-        queryClient.invalidateQueries('account.proxyList');
+        queryClient.invalidateQueries("account.proxyList");
         getProfileData();
         setSuccessMessagePopup({
           isOpen: true,
           // @ts-ignore
-          message: res?.data?.['0']?.message || 'Успішно'
+          message: res?.data?.["0"]?.message || "Успішно",
         });
         // setTimeout(() => {
         //   setSuccessMessagePopup({ isOpen: false });
@@ -108,7 +123,7 @@ export const TableRowItem: FC<Props> = ({
         setErrorMessagePopup({
           isOpen: true,
           // @ts-ignore
-          message: res?.data?.message || 'Something went wrong'
+          message: res?.data?.message || "Something went wrong",
         });
       }
       setAutoContinueState((prev) => !prev);
@@ -135,22 +150,29 @@ export const TableRowItem: FC<Props> = ({
         if (exist) {
           return {
             ...prev,
-            select_contracts: prev.select_contracts.filter((item: number) => item !== id)
+            select_contracts: prev.select_contracts.filter(
+              (item: number) => item !== id
+            ),
           };
         }
 
-        return { ...prev, select_contracts: [...(prev?.select_contracts || []), id] };
+        return {
+          ...prev,
+          select_contracts: [...(prev?.select_contracts || []), id],
+        };
       } else {
         return {
           ...prev,
-          select_contracts: prev.select_contracts.filter((item: number) => item !== id)
+          select_contracts: prev.select_contracts.filter(
+            (item: number) => item !== id
+          ),
         };
       }
     });
   }, []);
 
   return (
-    <tr className={`ProxyItem ${selected ? 'selected' : ''}`}>
+    <tr className={`ProxyItem ${selected ? "selected" : ""}`}>
       <td>
         <div className={`ProxyItem-id`}>
           <Checkbox
@@ -158,45 +180,54 @@ export const TableRowItem: FC<Props> = ({
             onChange={selectProxy}
             label={`checker-${id}`}
             showTitle={false}
-            color={'green'}
+            color={"green"}
           />
-          {is810 ? '№' : null}
+          {is810 ? "№" : null}
           {idx}
         </div>
       </td>
-      <td style={{ justifyContent: 'flex-start', paddingLeft: '20px' }}>
+      <td style={{ justifyContent: "flex-start", paddingLeft: "20px" }}>
         <div
           ref={proxyItemHeadRef}
-          className={`ProxyItem-spoller ${!!proxyItemHeight && 'active'}`}>
+          className={`ProxyItem-spoller ${!!proxyItemHeight && "active"}`}
+        >
           {is810 ? (
-            <span className='ProxyItem-mobile-title'>{pageInterfaceText?.acc_proxy}</span>
+            <span className="ProxyItem-mobile-title">
+              {pageInterfaceText?.acc_proxy}
+            </span>
           ) : null}
           {logo && (
-            <div className='ProxyItem-title' onClick={proxyItemClickHandler}>
-              <img className='ProxyItem-title-logo' src={logo} alt={name} />
+            <div className="ProxyItem-title" onClick={proxyItemClickHandler}>
+              <img className="ProxyItem-title-logo" src={logo} alt={name} />
               {name}
-              {socks && http ? <Icon icon='arrow-down' /> : null}
+              {socks && http ? <Icon icon="arrow-down" /> : null}
             </div>
           )}
           <div
-            className='ProxyItem-body'
+            className="ProxyItem-body"
             ref={proxyItemBodyRef}
-            style={{ height: proxyItemHeight + 'px' }}>
+            style={{ height: proxyItemHeight + "px" }}
+          >
             {socks && (
               <>
-                <div className='ProxyItem-body-title'>Socks:</div>
-                <div className='ProxyItem-body-text'>
-                  <span>{socks}</span>
+                <div className="ProxyItem-body-title">socks5:</div>
+                <div className="ProxyItem-body-text">
+                  <span ref={spanSocksRef}>{socks}</span>
+                  <button onClick={handleCopiedSocks}>
+                    <img src="/images/copy.svg" alt="copy" />
+                    <span>{pageInterfaceText?.copied}</span>
+                  </button>
                 </div>
               </>
             )}
+
             {http && (
               <>
-                <div className='ProxyItem-body-title'>http:</div>
-                <div className='ProxyItem-body-text'>
+                <div className="ProxyItem-body-title">http:</div>
+                <div className="ProxyItem-body-text">
                   <span ref={spanHttpRef}>{http}</span>
                   <button onClick={handleCopiedHTTP}>
-                    <img src='/images/copy.svg' alt='copy' />
+                    <img src="/images/copy.svg" alt="copy" />
                     <span>{pageInterfaceText?.copied}</span>
                   </button>
                 </div>
@@ -204,11 +235,20 @@ export const TableRowItem: FC<Props> = ({
             )}
             {urlIpReplace && (
               <>
-                <div className='ProxyItem-body-title'>{pageInterfaceText?.acc_exchange}</div>
-                <div className='ProxyItem-body-text'>
-                  <span ref={spanIpRef}>{urlIpReplace}</span>
+                <div className="ProxyItem-body-title">
+                  {pageInterfaceText?.acc_exchange}
+                </div>
+                <div className="ProxyItem-body-text">
+                  <a
+                    href={urlIpReplace}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span ref={spanIpRef}>{urlIpReplace}</span>
+                  </a>
+
                   <button onClick={handleCopiedIP}>
-                    <img src='/images/copy.svg' alt='copy' />
+                    <img src="/images/copy.svg" alt="copy" />
                     <span>{pageInterfaceText?.copied}</span>
                   </button>
                 </div>
@@ -217,13 +257,15 @@ export const TableRowItem: FC<Props> = ({
           </div>
         </div>
       </td>
-      <td className='text-center'>
-        <div className='ProxyItem-day-label'>
+      <td className="text-center">
+        <div className="ProxyItem-day-label">
           {is810 ? (
-            <span className='ProxyItem-mobile-title'>{pageInterfaceText?.acc_validity}</span>
+            <span className="ProxyItem-mobile-title">
+              {pageInterfaceText?.acc_validity}
+            </span>
           ) : null}
-          <span className='ProxyItem-day-label-tag'>
-            {validity < 1 ? 'минув' : formatter.format(validity)}
+          <span className="ProxyItem-day-label-tag">
+            {validity < 1 ? "минув" : formatter.format(validity)}
             {/* {validity < 1
               ? validity === 0
                 ? 'закінчився'
@@ -233,10 +275,12 @@ export const TableRowItem: FC<Props> = ({
           {is810 ? null : <Popover text={pageInterfaceText?.acc_days_info} />}
         </div>
       </td>
-      <td className='text-center'>
-        <div className='ProxyItem-auto-switcher'>
+      <td className="text-center">
+        <div className="ProxyItem-auto-switcher">
           {is810 ? (
-            <span className='ProxyItem-mobile-title'>{pageInterfaceText?.acc_auto_continue}</span>
+            <span className="ProxyItem-mobile-title">
+              {pageInterfaceText?.acc_auto_continue}
+            </span>
           ) : null}
           <Switcher
             label={`switcher-${id}`}
@@ -245,9 +289,12 @@ export const TableRowItem: FC<Props> = ({
           />
         </div>
       </td>
-      <td className='text-center'>
-        <div ref={optionsRef} className='ProxyItem-option'>
-          <button className='ProxyItem-option-btn' onClick={() => setOptionOpen((prev) => !prev)}>
+      <td className="text-center">
+        <div ref={optionsRef} className="ProxyItem-option">
+          <button
+            className="ProxyItem-option-btn"
+            onClick={() => setOptionOpen((prev) => !prev)}
+          >
             <span></span>
             <span></span>
             <span></span>

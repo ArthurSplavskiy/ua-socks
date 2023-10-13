@@ -55,11 +55,13 @@ export const EmailWidget = () => {
 
   return (
     <form onSubmit={onSubmit} className='EmailWidget-form'>
-      <InputField {...formData.current_email.inputProps} value={currentEmail} label={'E-mail'} />
+      <InputField {...formData.current_email.inputProps} value={currentEmail} label={'Новий e-mail'} />
       <InputField
         {...formData.email.inputProps}
         value={formData.email.value}
-        label={pageInterfaceText?.form_email}
+        // label={pageInterfaceText?.form_email}
+        label={"Новий e-mail"}
+
         errors={formData.email.errors}
       />
       <Button type='submit' color='outline' loading={isLoading}>

@@ -6,10 +6,10 @@ import { TextBox } from './TextBox';
 import './index.scss';
 
 const textBoxData = [
-	{ id: 1, icon: <Icon icon='box' />, text: 'Shipments booked', color: 'purple' },
-	{ id: 2, icon: <Icon icon='smale' />, text: 'Happy customers', color: 'green' },
-	{ id: 3, icon: <Icon icon='clock' />, text: 'Years of successful operation', color: 'grey' },
-	{ id: 4, icon: <Icon icon='connect' />, text: 'Cities and towns covered', color: 'blue' }
+	{ id: 1, icon: <Icon icon='box' />, text: 'Сповіщення про технічні роботи у телеграм', color: 'purple' },
+	{ id: 2, icon: <Icon icon='smale' />, text: 'Ой у лузі червона калина..', color: 'green' },
+	{ id: 3, icon: <Icon icon='clock' />, text: 'Відповідаємо протягом 3 хвилин', color: 'grey' },
+	{ id: 4, icon: <Icon icon='connect' />, text: 'Стаємо краще з кожним днем!', color: 'blue' }
 ];
 
 export const AccountSupportContent: FC = () => {

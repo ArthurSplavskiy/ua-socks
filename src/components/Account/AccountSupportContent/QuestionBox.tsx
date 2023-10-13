@@ -28,7 +28,6 @@ export const QuestionBox: FC<Props> = ({ bg }) => {
   const { data, isLoading } = useQuery<ISupportData>(['account.support'], () =>
     api.account.getSupportData('uk')
   );
-  console.log(data);
   return (
     <div className='QuestionBox'>
       <div className='QuestionBox-content'>
@@ -38,7 +37,8 @@ export const QuestionBox: FC<Props> = ({ bg }) => {
           <>
             <h3>{data?.title_ua}</h3>
             {/* {pageInterfaceText?.support_info} */}
-            <p>{data?.sub_title_ua}</p>
+            {/* <p>{data?.sub_title_ua}</p> */}
+            <p>Наш сапорт вже готовий допомогти та відповісти на всі питання.</p>
             {/* {pageInterfaceText?.support_feedback} */}
             <Button icon='telegram' btnType='iconLeft'>
               {data?.btn_name}

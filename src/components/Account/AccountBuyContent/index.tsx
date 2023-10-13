@@ -21,14 +21,27 @@ export const AccountBuyContent: FC = () => {
 
     const normalizeData = data.region_data.map((item) => {
       const proxyList = item.tariffs.map((tariff, idx) => {
+        const getRentTermWithSuffix = (term: number) => {
+          let suffix = 'днів'
+        
+          if (term === 3) {
+            suffix = 'дні';
+          } else if (term === 7) {
+            suffix = 'днів';
+          } else if (term === 30) {
+            suffix = 'днів';
+          }
+        
+          return `${term} ${suffix}`;
+        };
+        
         const pricesList = tariff.packages.map((price) => ({
           active: !!tariff.tariff_status,
           total: +price.package_price,
-          rent_term: String(price.package_term),
+          rent_term: getRentTermWithSuffix(price.package_term),
           operator: price.package_operator_name,
           package_id: price.package_id
         }));
-
         const attributes = tariff.attributes.map((attribute) => ({
           // @ts-ignore
           support: attribute?.support,
@@ -42,7 +55,7 @@ export const AccountBuyContent: FC = () => {
           mark: idx === 0 ? true : false,
           //color: 'primary',
           operators: Object.values(item.operators[0]) as string[],
-          rent_terms: Object.keys(item.terms[0]) as string[],
+          rent_terms: Object.keys(item.terms[0]).map(term => getRentTermWithSuffix(parseInt(term))) as string[],
           prices: pricesList,
           stats: attributes
         };
@@ -58,7 +71,6 @@ export const AccountBuyContent: FC = () => {
 
     return normalizeData;
   }, [data]);
-
   return (
     <>
       {proxyList.length ? (
