@@ -67,6 +67,9 @@ export const useLogin = () => {
       }
     } finally {
       setIsLoading(false);
+      setTimeout(() => {
+        setSuccessLoginMessagePopup({ isOpen: false });
+      }, 2000);
     }
   };
 

@@ -348,6 +348,7 @@
   }
   &-option {
     position: relative;
+    height: 32px;
     &-btn {
       display: flex;
       align-items: center;
@@ -358,6 +359,19 @@
       border-radius: 100%;
       &:hover {
         background: var(--addition-blue);
+        span {
+          &:first-child {
+            margin-left: 4px;
+          }
+          &:last-child {
+            margin-right: 4px;
+          }
+        }
+      }
+      &:disabled {
+        border: none;
+        background: none;
+        opacity: 0.2;
         span {
           &:first-child {
             margin-left: 4px;
@@ -396,6 +410,10 @@
         pointer-events: all;
       }
       button {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
         display: flex;
         align-items: center;
         padding: 0 16px;

@@ -54,7 +54,7 @@ export const AccountDashboardContent = () => {
             // @ts-ignore
             proxy?.proxy?.socks?.type
               ? // @ts-ignore
-                `type: ${proxy?.proxy?.socks?.type}, port: ${proxy?.proxy?.socks?.port}`
+                `${proxy?.proxy?.ip}:${proxy?.proxy?.socks.port}:${proxy?.proxy?.username}:${proxy?.proxy?.password}`
               : null
           } // proxy.socks
           // @ts-ignore
@@ -62,7 +62,7 @@ export const AccountDashboardContent = () => {
             // @ts-ignore
             proxy?.proxy?.http?.type
               ? // @ts-ignore
-                `type: ${proxy?.proxy?.http?.type}, port: ${proxy?.proxy?.http?.port}`
+                `${proxy?.proxy?.ip}:${proxy?.proxy?.http.port}:${proxy?.proxy?.username}:${proxy?.proxy?.password}`
               : null
           } // proxy.http
           // @ts-ignore
@@ -102,7 +102,12 @@ export const AccountDashboardContent = () => {
                 disabled={user?.select_contracts?.length < 2}>
                 {pageInterfaceText?.acc_group_btn}
               </Button>
-              <OptionPopover isOpen={optionOpen} setIsOpen={setOptionOpen} withoutExport />
+              <OptionPopover
+                isOpen={optionOpen}
+                setIsOpen={setOptionOpen}
+                withoutExport
+                withoutAutoReplace
+              />
             </div>
           )}
         </div>
@@ -117,7 +122,12 @@ export const AccountDashboardContent = () => {
               disabled={user?.select_contracts?.length < 2}>
               {pageInterfaceText?.acc_group_btn}
             </Button>
-            <OptionPopover isOpen={optionOpen} setIsOpen={setOptionOpen} withoutExport />
+            <OptionPopover
+              isOpen={optionOpen}
+              setIsOpen={setOptionOpen}
+              withoutExport
+              withoutAutoReplace
+            />
           </div>
         )}
       </div>

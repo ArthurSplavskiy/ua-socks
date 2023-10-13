@@ -74,6 +74,7 @@ export interface IPageTextInterface {
   register_text1: string;
   register_text2: string;
   form_email: string;
+  form_email_new: string;
   form_password: string;
   form_repeat_password: string;
   registration_title: string;

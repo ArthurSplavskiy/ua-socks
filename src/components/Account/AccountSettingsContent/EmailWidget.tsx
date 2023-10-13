@@ -59,7 +59,7 @@ export const EmailWidget = () => {
       <InputField
         {...formData.email.inputProps}
         value={formData.email.value}
-        label={pageInterfaceText?.form_email}
+        label={pageInterfaceText?.form_email_new}
         errors={formData.email.errors}
       />
       <Button type='submit' color='outline' loading={isLoading}>

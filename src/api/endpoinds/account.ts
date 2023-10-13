@@ -47,6 +47,16 @@ const endpoints = {
     const res = await axios.put(`/${lang}/buy-renewal-proxy`, data);
     return res;
   },
+  autoReplaceIp: async (
+    lang: string,
+    data: {
+      contract_id: number;
+      changeIpDelayMin: number;
+    }
+  ) => {
+    const res = await axios.put(`/${lang}/change-ip`, data);
+    return res.data;
+  },
   exportProxy: async (lang: string, contract_id: number) => {
     const res = await axios.get(`/${lang}/export-proxy/${contract_id}`);
     return res;

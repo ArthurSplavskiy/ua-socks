@@ -13,6 +13,7 @@ import { usePrivatePopups } from '@/components/PopupSystem/state/PrivatePopups';
 import { useCommon } from '@/context/CommonContext';
 import { usePublicPopups } from '@/components/PopupSystem/state/PublicPopups';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { formatter } from '@/helpers';
 
 interface Props extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   //fadeUp?: boolean;
@@ -46,6 +47,8 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
   } = usePublicPopups((state) => state);
   const { openLogin } = useCommon();
   const { getProfileData } = useProfile();
+
+  const isHome = location.pathname === '/';
 
   const queryClient = useQueryClient();
 
@@ -113,7 +116,14 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
     if (prices?.length) {
       const activeProxy = prices.find((p) => p.active);
       setPrice(activeProxy?.total);
-      setRentTerm({ value: activeProxy?.rent_term || '', label: activeProxy?.rent_term || '' });
+      setRentTerm({
+        value: activeProxy?.rent_term || '',
+        label: isHome
+          ? activeProxy?.rent_term || ''
+          : activeProxy?.rent_term
+          ? formatter.format(+activeProxy.rent_term)
+          : '' || ''
+      });
       setOperator({ value: activeProxy?.operator || '', label: activeProxy?.operator || '' });
     }
   }, []);
@@ -161,13 +171,16 @@ export const TarifCard: FC<Props & Partial<Omit<IProxyTarif, 'id'>>> = ({
         <div className='TarifCard-selects'>
           <ReactSelect
             type='card'
-            icon='earth'
+            icon='calendar'
             color={color}
             placeholder={pageInterfaceText?.rent_term_text}
             defaultValue={pageInterfaceText?.rent_term_text}
             value={rentTerm}
             onChange={setRentTerm}
-            options={rent_terms?.map((r) => ({ value: r, label: r }))}
+            options={rent_terms?.map((r) => ({
+              value: r,
+              label: isHome ? r : formatter.format(+r)
+            }))}
           />
           <ReactSelect
             type='card'

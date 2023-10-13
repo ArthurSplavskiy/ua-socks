@@ -15,11 +15,7 @@ import { Icon } from '../shared/Icon/Icon';
 
 export const PrivatePopups: FC = memo(() => {
   const { text: pageInterfaceText } = useInterfaceText();
-  const {
-    state: { isReplaceIpPopup, closeReplaceIpPopup },
-    isPopupHide,
-    popupHide
-  } = useAccount();
+  const { isPopupHide, popupHide } = useAccount();
 
   const {
     successLoginMessagePopup,
@@ -38,7 +34,10 @@ export const PrivatePopups: FC = memo(() => {
     setExportProxyPopup,
 
     continueProxyPopup,
-    setContinueProxyPopup
+    setContinueProxyPopup,
+
+    autoreplaceProxyPopup,
+    setAutoreplaceProxyPopup
   } = usePrivatePopups((state) => state);
 
   useEffect(() => {
@@ -96,11 +95,11 @@ export const PrivatePopups: FC = memo(() => {
 
       {/* Proxy continue popup */}
       <ModalPopup
-        show={isReplaceIpPopup}
+        show={autoreplaceProxyPopup.isOpen}
         hide={isPopupHide}
         withBackdrop={false}
         onClose={() => {
-          closeReplaceIpPopup();
+          setAutoreplaceProxyPopup({ isOpen: false });
           //popupHide(false);
         }}>
         <TemplateModal background={<AccountPopupsBg />}>
