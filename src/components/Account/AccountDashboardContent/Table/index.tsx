@@ -73,7 +73,7 @@ export const Table: FC<Props> = ({ bodyChildren, className }) => {
               <Popover text={pageInterfaceText?.acc_proxy_info} />
             </span>
           </th>
-          <th className='ProxyTable-head-item ProxyTable-head-item-actions'></th>
+          <th className='ProxyTable-head-item ProxyTable-head-item-actions'>Налаштування</th>
         </tr>
       </thead>
       <tbody

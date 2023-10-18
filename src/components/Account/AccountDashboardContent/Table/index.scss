@@ -42,10 +42,10 @@
         width: 14%;
       }
       &-auto {
-        width: 22%;
+        width: 18%;
       }
       &-actions {
-        width: 8%;
+        width: 12%;
       }
       i {
         display: inline-block;
@@ -181,7 +181,7 @@
       }
     }
     &:last-child {
-      width: 8%;
+      width: 12%;
       border-radius: 0 10px 10px 0;
     }
     &:not(:last-child) {
@@ -195,7 +195,7 @@
       width: 14%;
     }
     &:nth-child(4) {
-      width: 22%;
+      width: 18%;
     }
   }
   &-id {
